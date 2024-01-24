@@ -33,5 +33,38 @@
                 FOREIGN KEY (id_album) REFERENCES ALBUM(id_album),
                 FOREIGN KEY (id_genre) REFERENCES GENRE(id_genre))");
         }
+        public function getAlbums(){
+            return $this->file_db->query('SELECT * from ALBUM');
+        }
+        public function getGenres(){
+            return $this->file_db->query('SELECT * from GENRE');
+        }
+        public function getArtistes(){
+            return $this->file_db->query('SELECT * from ARTISTE');
+        }
+        public function getAlbumsArtistes(){
+            return $this->file_db->query('SELECT * from ALBUM_ARTISTE');
+        }
+        public function getAlbumsGenres(){
+            return $this->file_db->query('SELECT * from ALBUM_GENRE');
+        }
+        public function getAlbumsArtistesGenres(){
+            return $this->file_db->query('SELECT * from ALBUM_ARTISTE natural join ALBUM_GENRE');
+        }
+        public function getAlbumsById($id){
+            return $this->file_db->query('SELECT * from ALBUM where id_album='.$id);
+        }
+        public function getArtistesById($id){
+            return $this->file_db->query('SELECT * from ARTISTE where id_artiste='.$id);
+        }
+        public function getGenresById($id){
+            return $this->file_db->query('SELECT * from GENRE where id_genre='.$id);
+        }
+        public function getAlbumsArtistesByIdAlbum($id){
+            return $this->file_db->query('SELECT * from ALBUM_ARTISTE where id_album='.$id);
+        }
+        public function getAlbumsArtistesByIdArtiste($id){
+            return $this->file_db->query('SELECT * from ALBUM_ARTISTE where id_artiste='.$id);
+        }
     }
 ?>
