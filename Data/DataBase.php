@@ -132,6 +132,13 @@
         public function getAlbumsArtistesByIdArtiste($id){
             return $this->file_db->query('SELECT * from ALBUM_ARTISTE where id_artiste='.$id);
         }
+        public function insertFavorisPlaylist($id_playlist,$id_utilisateur){
+            $insert="INSERT INTO PLAYLIST_FAVORIS (id_playlist, id_utilisateur) VALUES (:id_playlist, :id_utilisateur)";
+            $stmt=$this->file_db->prepare($insert);
+            $stmt->bindParam(':id_playlist',$id_playlist);
+            $stmt->bindParam(':id_utilisateur',$id_utilisateur);
+            $stmt->execute();
+        }
     }
     $database=new DataBase();
     $database->createTable();
