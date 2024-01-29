@@ -5,13 +5,13 @@ declare(strict_types=1);
 require 'Classes/Autoloader.php';
 Autoloader::register();
 
-// Version BD
-use Data\DataBase;
-$data = new DataBase();
+// // Version BD
+// use Data\DataBase;
+// $data = new DataBase();
 
-//Get instances of questions
-$q = $data->load();
-$questions = Factory::createQuestions($q);
+// //Get instances of questions
+// $q = $data->load();
+// $questions = Factory::createQuestions($q);
 ?>
 
 <!doctype html>
