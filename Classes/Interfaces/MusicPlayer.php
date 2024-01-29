@@ -1,7 +1,7 @@
 <?php
     declare(strict_types=1);
 
-    namespace Items;
+    namespace Interfaces;
 
     interface MusicPlayerInterface {
         public function play();
