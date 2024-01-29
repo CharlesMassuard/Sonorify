@@ -1,7 +1,9 @@
 <?php
     declare(strict_types=1);
 
-    namespace Items\TypeItem;
+    namespace Models;
+    use Interfaces\MusicPlayerInterface;
+    use Interfaces\RenderInterface;
 
     class Musique implements MusicPlayerInterface, RenderInterface {
         private $id_musique;
