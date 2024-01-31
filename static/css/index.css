@@ -1,4 +1,30 @@
 body{
-    background-color: rgba(230, 225, 220, 0.815);
+    background-color: rgba(25, 25, 25);
     margin: 10px;
+}
+div{
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: auto;
+    white-space: nowrap;
+}
+h2{
+    flex-basis: 100%;
+    margin: 20px;
+    color: white;
+}
+a{
+    text-decoration: none;
+    color: white;
+    background-color: rgba(50, 50, 50);
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    padding: 10px;
+    width: 11%; 
+    font-size: auto;
+    flex-shrink: 0;
 }
