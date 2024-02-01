@@ -15,6 +15,7 @@ Autoloader::register();
 <head>
     <title>PHP'O SONG</title>
     <link rel="stylesheet" href="./static/css/index.css">
+    <script src="./static/js/accueil.js" defer></script>
 </head>
 <?php 
     // if ($_SESSION['user'] == null) {
@@ -85,6 +86,7 @@ Autoloader::register();
             </div>
             <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1f2V8U1BiWaC9aJWmpOARe?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         </div> -->
+        <div id="circle"></div>
     </main>
 </body>
 </html>
