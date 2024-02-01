@@ -10,6 +10,7 @@
             $this->file_db->exec("CREATE TABLE IF NOT EXISTS GROUPE ( 
                 id_groupe INTEGER PRIMARY KEY AUTOINCREMENT,
                 nom_groupe TEXT,
+                image_groupe TEXT,
                 decription_groupe TEXT)");
             $this->file_db->exec("CREATE TABLE IF NOT EXISTS ALBUM ( 
                 id_album INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -20,9 +21,8 @@
                 FOREIGN KEY (id_artiste) REFERENCES ARTISTE(id_artiste))");
             $this->file_db->exec("CREATE TABLE IF NOT EXISTS ARTISTE ( 
                 id_artiste INTEGER PRIMARY KEY AUTOINCREMENT,
-                nom_artiste TEXT,
-                image_artiste TEXT,
-                prenom_artiste TEXT)");
+                pseudo_artiste TEXT,
+                image_artiste TEXT)");
             $this->file_db->exec("CREATE TABLE IF NOT EXISTS ALBUM_ARTISTE (
                 id_album INTEGER,
                 id_artiste INTEGER,
