@@ -98,6 +98,12 @@
                 PRIMARY KEY (id_playlist, id_utilisateur),
                 FOREIGN KEY (id_playlist) REFERENCES PLAYLIST(id_playlist),
                 FOREIGN KEY (id_utilisateur) REFERENCES UTILISATEUR(id_utilisateur))");
+            $this->file_db->exec("CREATE TABLE IF NOT EXISTS GROUPE_FAVORIS (
+                id_groupe INTEGER,
+                id_utilisateur INTEGER,
+                PRIMARY KEY (id_groupe, id_utilisateur),
+                FOREIGN KEY (id_groupe) REFERENCES GROUPE(id_groupe),
+                FOREIGN KEY (id_utilisateur) REFERENCES UTILISATEUR(id_utilisateur))");
         }
         public function getAlbums(){
             $albums = $this->file_db->query('SELECT * from ALBUM');
@@ -146,6 +152,7 @@
         public function getUser($login,$mdp){
             return $this->file_db->query('SELECT * from UTILISATEUR where login_utilisateur="'.$login.'" and password_utilisateur="'.$mdp.'"');
         }
+
         public function getAlbumsByIdGroupe($id){
             $albums = $this->file_db->query('SELECT * from ALBUM where id_groupe='.$id);
             if ($albums){
@@ -190,6 +197,20 @@
         public function getUtilisateur($id){
             $utilisateur = $this->file_db->query('SELECT * from UTILISATEUR where id_utilisateur='.$id);
             return $utilisateur->fetch();
+        }
+        public function insertFavorisPlaylist($id_playlist,$id_utilisateur){
+            $insert="INSERT INTO PLAYLIST_FAVORIS (id_playlist, id_utilisateur) VALUES (:id_playlist, :id_utilisateur)";
+            $stmt=$this->file_db->prepare($insert);
+            $stmt->bindParam(':id_playlist',$id_playlist);
+            $stmt->bindParam(':id_utilisateur',$id_utilisateur);
+            $stmt->execute();
+        }
+        public function insertFavoriteGroupe($id_groupe,$id_utilisateur){
+            $insert="INSERT INTO GROUPE_FAVORIS (id_groupe, id_utilisateur) VALUES (:id_groupe, :id_utilisateur)";
+            $stmt=$this->file_db->prepare($insert);
+            $stmt->bindParam(':id_groupe',$id_groupe);
+            $stmt->bindParam(':id_utilisateur',$id_utilisateur);
+            $stmt->execute();
         }
     }
 ?>
