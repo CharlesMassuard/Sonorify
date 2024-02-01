@@ -132,7 +132,8 @@
         public function getAlbumsArtistesByIdArtiste($id){
             return $this->file_db->query('SELECT * from ALBUM_ARTISTE where id_artiste='.$id);
         }
+        public function getUser($login,$mdp){
+            return $this->file_db->query('SELECT * from UTILISATEUR where login_utilisateur="'.$login.'" and password_utilisateur="'.$mdp.'"');
+        }
     }
-    $database=new DataBase();
-    $database->createTable();
 ?>
