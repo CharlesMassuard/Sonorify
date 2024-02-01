@@ -24,18 +24,8 @@ Autoloader::register();
     //     header('Location: login.php');
     // }
 ?>
-<header>
-    <div id="search-container">
-        <form action="search.php" method="get">
-            <i class="material-icons" id="my-icon">search</i>
-            <input type="text" id="search" placeholder="Rechercher un titre, un groupe, un artiste, un album, un genre">
-            <input hidden=true type="submit" value="Rechercher">
-        </form>
-    </div>
-    <section id="search_result">
-    </section>
-</header>
 <body>
+    <?php include 'header.php'; ?>
     <main>
         <div id="titre">
             <?php
