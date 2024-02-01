@@ -24,7 +24,15 @@ Autoloader::register();
 ?>
 <body>
 <main>
-        <h1>Bienvenue sur mon site de streaming de musique</h1>
+        <div id="titre">
+            <?php
+                if ($_SESSION['user'] == null) {
+                    echo '<h1> Bienvenue </h1>';
+                } else {
+                    echo '<h1> Bienvenue, '.$_SESSION['user']['nom_utilisateur'].'</h1>';
+                }
+            ?>
+        </div>
         <div id="playlist">
             <h2>Playlists</h2>
             <?php 
@@ -33,7 +41,7 @@ Autoloader::register();
             $playlists = $data->getPlaylists();
             foreach ($playlists as $playlist) {
                 echo '<a href= "">';
-                echo '<h2>'.$playlist['nom_playlist'].'</h2>';
+                echo '<h3>'.$playlist['nom_playlist'].'</h3>';
                 echo '<p>'.$playlist['description_playlist'].'</p>';
                 echo '</a>';
             }
@@ -45,7 +53,7 @@ Autoloader::register();
             $albums = $data->getAlbums();
             foreach ($albums as $album) {
                 echo '<a href= "">';
-                echo '<h2>'.$album['nom_album'].'</h2>';
+                echo '<h3>'.$album['nom_album'].'</h3>';
                 echo '<p>'.$album['description_album'].'</p>';
                 echo '</a>';
             }
@@ -57,7 +65,7 @@ Autoloader::register();
             $genres = $data->getGenres();
             foreach ($genres as $genre) {
                 echo '<a href= "">';
-                echo '<h2>'.$genre['nom_genre'].'</h2>';
+                echo '<h3>'.$genre['nom_genre'].'</h3>';
                 echo '<p>'.$genre['description_genre'].'</p>';
                 echo '</a>';
             }
@@ -69,7 +77,7 @@ Autoloader::register();
             $groupes = $data->getGroupes();
             foreach ($groupes as $groupe) {
                 echo '<a href= "">';
-                echo '<h2>'.$groupe['nom_groupe'].'</h2>';
+                echo '<h3>'.$groupe['nom_groupe'].'</h3>';
                 echo '<p>'.$groupe['description_groupe'].'</p>';
                 echo '</a>';
             }
