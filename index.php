@@ -1,17 +1,13 @@
 <?php
 declare(strict_types=1);
+session_start();
+
+require_once 'Data/DataBase.php';
+$data = new Data\DataBase();
 
 // Autoload
 require 'Classes/Autoloader.php';
 Autoloader::register();
-
-// // Version BD
-// use Data\DataBase;
-// $data = new DataBase();
-
-// //Get instances of questions
-// $q = $data->load();
-// $questions = Factory::createQuestions($q);
 ?>
 
 <!doctype html>
@@ -20,4 +16,9 @@ Autoloader::register();
     <title>PHP'oSong</title>
     <link rel="stylesheet" href="./static/css/index.css">
 </head>
+<?php 
+    if ($_SESSION['user'] == null) {
+        header('Location: login.php');
+    }
+?>
 <body>
