@@ -51,9 +51,26 @@ a{
     margin-left: 20px;
     margin-right: 20px;
 }
-#search_result a{
+#search_result>a{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
     flex-basis: 60%;
     flex-grow: 1;
     margin: 0px;
     font-size: auto;
+}
+#search_result a:hover{
+    background-color: rgba(80, 50, 50);
+}
+#search_result img{
+    margin: 0px;
+    height: 75px;
+    width: auto;
+}
+#search_result p{
+    margin: 0px;
+    margin-left: 10px;
+    font-size: auto;
+    align-self: center;
 }
