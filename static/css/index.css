@@ -3,6 +3,16 @@
   --mouse-y: 50%;
 }
 
+header{
+    position: fixed;
+    top: 0;
+    padding: 20px;
+    width: 100vw;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 9999; /*Header tjr au dessus de tout*/
+}
+
 body {
     margin: 0;
     height: 100vh;
@@ -11,6 +21,7 @@ body {
     background-position: center center;
     background-size: cover;
     position: relative;
+    padding-top: 50px;
 }
 
 #circle {
@@ -80,19 +91,18 @@ a{
     flex-shrink: 0;
 }
 #search-container {
-    position: relative;
+    position: absolute;
     width: 80%;
-    margin: 20px;
 }
 #search{
-    margin: 20px;
+    margin: 0;
     padding: 10px;
     width: 50%;
-    background-color: rgba(50, 50, 50, 0.5);
+    background-color: rgba(117, 117, 117, 0.4);
     color: white;
     border: none;
     border-radius: 10px;
-    padding-left: 40px;
+    padding-left: 60px;
 }
 #my-icon {
     color: white; /* Change the color to whatever you want */
@@ -112,9 +122,8 @@ a{
     display: none;
 }
 #search_result{
-    position: absolute;
     background-color: rgb(0, 0, 0);
-    margin-top: -40px;
+    margin-top: -15px;
     display: flex;
     flex-wrap: wrap;
     overflow: none;

@@ -24,8 +24,19 @@ Autoloader::register();
     //     header('Location: login.php');
     // }
 ?>
+<header>
+    <div id="search-container">
+        <form action="search.php" method="get">
+            <i class="material-icons" id="my-icon">search</i>
+            <input type="text" id="search" placeholder="Rechercher un titre, un groupe, un artiste, un album, un genre">
+            <input hidden=true type="submit" value="Rechercher">
+        </form>
+    </div>
+    <section id="search_result">
+    </section>
+</header>
 <body>
-<main>
+    <main>
         <div id="titre">
             <?php
                 if (!isset($_SESSION['user'])) {
@@ -35,15 +46,6 @@ Autoloader::register();
                 }
             ?>
         </div>
-        <div id="search-container">
-            <form action="search.php" method="get">
-                <i class="material-icons" id="my-icon">search</i>
-                <input type="text" id="search" placeholder="Rechercher un titre, un groupe, un artiste, un album, un genre">
-                <input hidden=true type="submit" value="Rechercher">
-            </form>
-        </div>
-        <section id="search_result">
-        </section>
         <div id="playlist" class="sections_accueil">
             <h2>Playlists</h2>
             <?php 
