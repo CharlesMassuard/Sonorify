@@ -47,8 +47,11 @@ document.addEventListener('DOMContentLoaded', function() {
                         var a = document.createElement("a");
                         var nom = document.createElement("p");
                         var desc = document.createElement("p");
+                        var img = document.createElement("img");
                         nom.innerHTML = res['nom_playlist'];
                         desc.innerHTML = res['description_playlist'];
+                        img.setAttribute("src", "./ressources/images/playlist.png");
+                        a.appendChild(img);
                         a.appendChild(nom);
                         a.appendChild(desc);
                         a.setAttribute("href", "playlist.php?id=" + res['id_playlist']);
