@@ -8,7 +8,6 @@ $data = new Data\DataBase();
 // Autoload
 require 'Classes/Autoloader.php';
 Autoloader::register();
-
 ?>
 
 <!doctype html>

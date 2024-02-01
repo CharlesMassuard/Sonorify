@@ -66,7 +66,7 @@
                 description_playlist TEXT,
                 public BOOLEAN,
                 id_auteur INTEGER,
-                FOREIGN KEY (id_auteur) REFERENCES PLAYLIST(id_utilisateur)
+                FOREIGN KEY (id_auteur) REFERENCES UTILISATEUR(id_utilisateur)
                 )");
             $this->file_db->exec("CREATE TABLE IF NOT EXISTS MUSIQUE (
                 id_musique INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -131,7 +131,16 @@
         }
         public function getAlbumsArtistesByIdArtiste($id){
             return $this->file_db->query('SELECT * from ALBUM_ARTISTE where id_artiste='.$id);
+        } 
+        public function getPlaylists(){
+            $playlist = $this->file_db->query('SELECT * from PLAYLIST');
+            return $playlist->fetchAll();
         }
+      
+        public function getGroupes(){
+            return $this->file_db->query('SELECT * from GROUPE');
+        }
+
         public function getUser($login,$mdp){
             return $this->file_db->query('SELECT * from UTILISATEUR where login_utilisateur="'.$login.'" and password_utilisateur="'.$mdp.'"');
         }
