@@ -29,7 +29,7 @@ Autoloader::register();
                 if ($_SESSION['user'] == null) {
                     echo '<h1> Bienvenue </h1>';
                 } else {
-                    echo '<h1> Bienvenue, '.$_SESSION['user']['nom_utilisateur'].'</h1>';
+                    echo '<h1> Bienvenue, '.$_SESSION['user']['prenom_utilisateur'].'</h1>';
                 }
             ?>
         </div>
