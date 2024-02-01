@@ -1,4 +1,4 @@
-var circle = document.getElementById('circle');
+let circle = document.getElementById('circle');
 
 document.addEventListener('mousemove', function(e) {
   circle.style.left = e.pageX + 'px';
