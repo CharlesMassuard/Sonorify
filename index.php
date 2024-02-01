@@ -62,7 +62,6 @@ Autoloader::register();
             foreach ($genres as $genre) {
                 echo '<a href= "">';
                 echo '<h2>'.$genre['nom_genre'].'</h2>';
-                echo '<p>'.$genre['description_genre'].'</p>';
                 echo '</a>';
             }
             ?>
