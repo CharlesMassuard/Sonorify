@@ -15,6 +15,7 @@ Autoloader::register();
 <head>
     <title>PHP'O SONG</title>
     <link rel="stylesheet" href="./static/css/index.css">
+    <script src="./static/js/index.js" defer></script>
 </head>
 <?php 
     // if ($_SESSION['user'] == null) {
@@ -24,14 +25,18 @@ Autoloader::register();
 <body>
 <main>
         <h1>Bienvenue sur mon site de streaming de musique</h1>
+        <form action="search.php" method="get">
+            <input type="text" id="search" placeholder="Rechercher un titre, un groupe, un artiste, un album, un genre">
+            <input type="submit" value="Rechercher">
+        </form>
+        <section id="search_result">
+        </section>
         <div id="playlist">
             <h2>Playlists</h2>
             <?php 
-            require_once 'Data/DataBase.php';
-            $data = new Data\DataBase();
             $playlists = $data->getPlaylists();
             foreach ($playlists as $playlist) {
-                echo '<a href= "">';
+                echo '<a href= "playlist.php?id='.$playlist['id_playlist'].'">';
                 echo '<h2>'.$playlist['nom_playlist'].'</h2>';
                 echo '<p>'.$playlist['description_playlist'].'</p>';
                 echo '</a>';
@@ -44,8 +49,8 @@ Autoloader::register();
             $albums = $data->getAlbums();
             foreach ($albums as $album) {
                 echo '<a href= "">';
-                echo '<h2>'.$album['nom_album'].'</h2>';
-                echo '<p>'.$album['description_album'].'</p>';
+                echo '<img src="./ressources/images/'.$album['image_album'].'">';
+                echo '<h2>'.$album['titre'].'</h2>';
                 echo '</a>';
             }
             ?>

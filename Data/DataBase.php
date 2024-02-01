@@ -100,10 +100,12 @@
                 FOREIGN KEY (id_utilisateur) REFERENCES UTILISATEUR(id_utilisateur))");
         }
         public function getAlbums(){
-            return $this->file_db->query('SELECT * from ALBUM');
+            $albums = $this->file_db->query('SELECT * from ALBUM');
+            return $albums->fetchAll();
         }
         public function getGenres(){
-            return $this->file_db->query('SELECT * from GENRE');
+            $genres = $this->file_db->query('SELECT * from GENRE');
+            return $genres->fetchAll();
         }
         public function getArtistes(){
             return $this->file_db->query('SELECT * from ARTISTE');
@@ -143,6 +145,51 @@
 
         public function getUser($login,$mdp){
             return $this->file_db->query('SELECT * from UTILISATEUR where login_utilisateur="'.$login.'" and password_utilisateur="'.$mdp.'"');
+        }
+        public function getAlbumsByIdGroupe($id){
+            $albums = $this->file_db->query('SELECT * from ALBUM where id_groupe='.$id);
+            if ($albums){
+                return $albums->fetchAll();
+            } else {
+                return null;
+            }
+        }
+        public function getGenresByName($nom){
+            $genres = $this->file_db->query('SELECT * from GENRE where nom_genre LIKE "%'.$nom.'%"');
+            return $genres->fetchAll();
+        }
+        public function getAlbumsByName($nom){
+            $albums = $this->file_db->query('SELECT * from ALBUM where titre LIKE "%'.$nom.'%"');
+            return $albums->fetchAll();
+        }
+        public function getPlaylistsByName($nom){
+            $playlists = $this->file_db->query('SELECT * from PLAYLIST where nom_playlist LIKE "%'.$nom.'%"');
+            
+            return $playlists->fetchAll();
+        }
+        public function getPlaylist($id){
+            $playlist = $this->file_db->query('SELECT * from PLAYLIST where id_playlist='.$id);
+            return $playlist->fetch();
+        }
+        public function getMusiquesPlaylist($id){
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join PLAYLIST_MUSIQUE where id_playlist='.$id);
+            return $musiques->fetchAll();
+        }
+        public function getMusiques(){
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE');
+            return $musiques->fetchAll();
+        }
+        public function getGroupesByName($nom){
+            $groupes = $this->file_db->query('SELECT * from GROUPE where nom_groupe LIKE "%'.$nom.'%"');
+            return $groupes->fetchAll();
+        }
+        public function getGroupe($id){
+            $groupe = $this->file_db->query('SELECT * from GROUPE where id_groupe='.$id);
+            return $groupe->fetch();
+        }
+        public function getUtilisateur($id){
+            $utilisateur = $this->file_db->query('SELECT * from UTILISATEUR where id_utilisateur='.$id);
+            return $utilisateur->fetch();
         }
     }
 ?>
