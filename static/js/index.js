@@ -59,11 +59,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     for (res of JSON.parse(data)['albums']) {
                         var a = document.createElement("a");
                         var nom = document.createElement("p");
-                        var desc = document.createElement("p");
-                        nom.innerHTML = res['nom_album'];
-                        desc.innerHTML = res['description_album'];
+                        var img = document.createElement("img");
+                        img.setAttribute("src", "./ressources/images/"+ res['image_album']);
+                        nom.innerHTML = res['titre'];
+                        a.appendChild(img);
                         a.appendChild(nom);
-                        a.appendChild(desc);
                         a.setAttribute("href", "album.php?id=" + res['id_album']);
                         document.querySelector("#search_result").appendChild(a);
                     }
