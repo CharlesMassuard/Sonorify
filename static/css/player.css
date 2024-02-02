@@ -1,7 +1,8 @@
-#customPlayer{
+#customPlayer {
     position: fixed;
     bottom: 0;
     width: 100%;
+    height: 90px;  
     background-color: rgb(14, 14, 14);
     display: flex;
     flex-direction: column;
@@ -28,7 +29,7 @@
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background: rgb(14, 108, 118); 
+    background: rgb(14, 108, 118);
 }
 
 #progress {
@@ -38,16 +39,20 @@
     transition: width 0.2s ease;
 }
 
+.infos {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Pour séparer les contrôles et infos_music */
+    margin-left: 20px; /* Ajouter une marge à gauche pour les contrôles */  
+}
+
 .controls {
     display: flex;
     align-items: center;
     justify-content: flex-start; /* Aligner les contrôles à gauche */
-    margin-left: 20px; /* Ajouter une marge à gauche pour les contrôles */
-    margin-top: -17px; /* Déplacer les contrôles vers le haut */
 }
 
-
-.controls>button{
+.controls > button {
     background-color: transparent;
     border: none;
     color: white;
@@ -60,19 +65,65 @@
     font-size: 40px; /* Augmenter la taille de l'icône */
 }
 
-.controls #prevButton i{
+.controls #prevButton i {
     font-size: 25px; /* Augmenter la taille de l'icône */
     margin-right: -30px;
 }
 
-.controls #nextButton i{
+.controls #nextButton i {
     font-size: 25px; /* Augmenter la taille de l'icône */
     margin-left: -30px;
 }
 
-#currentTimeDisplay{
-    color: gray;
+#currentTimeDisplay {
+    color: rgb(167, 167, 167);
     font-weight: normal;
     font-size: 14px;
-    margin-right: 30px;
+}
+
+#infos_music {
+    position: absolute; /* Positionne l'élément par rapport à son parent le plus proche avec une position non statique (dans ce cas, #customPlayer) */
+    top: 25%; /* Le déplace à 50% de la hauteur de #customPlayer */
+    left: 50%; /* Le déplace à 50% de la largeur de l'écran */
+    transform: translateX(-50%); /* Déplace l'élément vers la gauche de 50% de sa propre largeur, ce qui le centre horizontalement */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#cover {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+}
+
+#title{
+    margin-left: 10px;
+    margin-top: -0px;
+}
+
+.infos_supplementaires{
+    display: flex;
+    flex-direction: row;
+    margin-left: 10px;
+    color: rgb(167, 167, 167);
+    font-size: 14px;
+    font-weight: normal;
+    margin-top: -18px;
+
+}
+
+@media (max-width: 950px) { /* Change la disposition lorsque l'écran est de 600px ou moins */
+    .infos {
+        justify-content: space-around; /* Distribue l'espace autour des éléments pour éviter la superposition */
+    }
+    #currentTimeDisplay {
+       white-space: nowrap;
+       margin-right: 10px;
+    }
+    #infos_music {
+        position: static; /* Fait se comporter #infos_music comme un élément de bloc normal */
+        transform: none; /* Supprime la transformation qui était utilisée pour le centrage */
+    }
 }
