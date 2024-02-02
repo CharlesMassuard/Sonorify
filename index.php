@@ -42,6 +42,8 @@ Autoloader::register();
             $playlists = $data->getPlaylists();
             foreach ($playlists as $playlist) {
                 echo '<a href= "playlist.php?id='.$playlist['id_playlist'].'">';
+                $image = $data->getMusiquesAlbumsByPlaylist($playlist['id_playlist'])['image_album'] ?? 'default.jpg';
+                echo '<img src="./ressources/images/'.$image.'">';
                 echo '<h3>'.$playlist['nom_playlist'].'</h3>';
                 echo '<p class="infos_supp">'.$playlist['description_playlist'].'</p>';
                 echo '</a>';

@@ -202,6 +202,14 @@
             $utilisateur = $this->file_db->query('SELECT * from UTILISATEUR where id_utilisateur='.$id);
             return $utilisateur->fetch();
         }
+        public function getMusiquesAlbumsByPlaylist($id){
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural join PLAYLIST_MUSIQUE where id_playlist='.$id);
+            if ($musiques){
+                return $musiques->fetch(); 
+            } else {
+                return null;
+            }
+        }
         public function insertFavorisPlaylist($id_playlist,$id_utilisateur){
             $insert="INSERT INTO PLAYLIST_FAVORIS (id_playlist, id_utilisateur) VALUES (:id_playlist, :id_utilisateur)";
             $stmt=$this->file_db->prepare($insert);
