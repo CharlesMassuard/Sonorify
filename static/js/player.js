@@ -1,6 +1,6 @@
 // Sélection des éléments HTML
 var sound = new Howl({
-    src: ['../musics/ARK_MainTheme.mp3']
+    src: ["https://od.lk/s/ODFfNzcxMzg3MDFf/38%20Finale.mp3"] // utilisation de l'hebergeur Opendrive.com
 });
 
 var searchBar = document.getElementById('search');
