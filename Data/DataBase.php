@@ -202,6 +202,10 @@
             $utilisateur = $this->file_db->query('SELECT * from UTILISATEUR where id_utilisateur='.$id);
             return $utilisateur->fetch();
         }
+        public function getMusiqueByName($nom){
+            $musique = $this->file_db->query('SELECT * from MUSIQUE where nom_musique = "'.$nom.'"');
+            return $musique->fetch();
+        }
         public function getMusiquesAlbumsByPlaylist($id){
             $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural join PLAYLIST_MUSIQUE where id_playlist='.$id);
             if ($musiques){
@@ -223,6 +227,31 @@
             $stmt->bindParam(':id_groupe',$id_groupe);
             $stmt->bindParam(':id_utilisateur',$id_utilisateur);
             $stmt->execute();
+        }
+        public function insertMusiquePlaylist($id_musique,$id_playlist){
+            $insert="INSERT INTO PLAYLIST_MUSIQUE (id_playlist, id_musique) VALUES (:id_playlist, :id_musique)";
+            $stmt=$this->file_db->prepare($insert);
+            $stmt->bindParam(':id_playlist',$id_playlist);
+            $stmt->bindParam(':id_musique',$id_musique);
+            $stmt->execute();
+        }
+        public function deleteMusiquePlaylist($id_musique,$id_playlist){
+            $delete="DELETE FROM PLAYLIST_MUSIQUE WHERE id_playlist=:id_playlist and id_musique=:id_musique";
+            $stmt=$this->file_db->prepare($delete);
+            $stmt->bindParam(':id_playlist',$id_playlist);
+            $stmt->bindParam(':id_musique',$id_musique);
+            $stmt->execute();
+        }
+        public function deleteFavorisPlaylist($id_playlist,$id_utilisateur){
+            $delete="DELETE FROM PLAYLIST_FAVORIS WHERE id_playlist=:id_playlist and id_utilisateur=:id_utilisateur";
+            $stmt=$this->file_db->prepare($delete);
+            $stmt->bindParam(':id_playlist',$id_playlist);
+            $stmt->bindParam(':id_utilisateur',$id_utilisateur);
+            $stmt->execute();
+        }
+        public function isFavorisPlaylist($id_playlist,$id_utilisateur){
+            $favoris = $this->file_db->query('SELECT * from PLAYLIST_FAVORIS where id_playlist='.$id_playlist.' and id_utilisateur='.$id_utilisateur);
+            return $favoris->fetch();
         }
     }
 ?>
