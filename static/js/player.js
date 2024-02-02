@@ -59,6 +59,7 @@ function updateProgressBar() {
     if(currentTime == totalTime) {
         sound.stop();
         in_play = false;
+        buttonIconPlay.textContent = 'play_arrow';
     }
 }
 
