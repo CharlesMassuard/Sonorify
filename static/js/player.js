@@ -10,6 +10,7 @@ var pauseButton = document.getElementById('pauseButton');
 var currentTime = document.getElementById('currentTime');
 var circle_progress = document.getElementById('circle_progress');
 let timeoutId;
+var in_play = false;
 
 
 // Fonction de mise à jour de la barre de progression
@@ -24,6 +25,11 @@ function updateProgressBar() {
     var totalTime = formatTime(sound.duration());
     
     currentTimeDisplay.textContent = currentTime + ' / ' + totalTime;
+
+    if(currentTime == totalTime) {
+        sound.stop();
+        in_play = false;
+    }
 }
 
 progressBar.addEventListener('mouseenter', function() {
@@ -59,7 +65,10 @@ function pad(number) {
 
 // Événement pour lire la musique
 playButton.addEventListener('click', function() {
-    sound.play();
+    if(!in_play) {
+        sound.play();
+        in_play = true;
+    }
 });
 
 // Événement pour mettre en pause la musique

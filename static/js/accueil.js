@@ -11,6 +11,10 @@ window.addEventListener('mousemove', function(e) {
 window.addEventListener('scroll', updateCirclePosition);
 
 function updateCirclePosition() {
-    circle.style.left = (window.scrollX + mouseX) + 'px';
-    circle.style.top = (window.scrollY + mouseY) + 'px';
+    if(mouseX < window.innerWidth - 120) {
+      circle.style.left = (window.scrollX + mouseX) + 'px';
+    } 
+    if(mouseY < window.innerHeight - 120) {
+      circle.style.top = (window.scrollY + mouseY) + 'px';
+    }
 }

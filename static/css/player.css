@@ -34,7 +34,7 @@
 
 #progress {
     height: 100%;
-    background: linear-gradient(to right, rgb(25, 171, 187), rgb(14, 108, 118));
+    background: linear-gradient(to right, rgb(15, 100, 109), rgb(14, 108, 118));
     width: 0;
     transition: width 0.2s ease;
 }
