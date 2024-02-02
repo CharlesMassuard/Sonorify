@@ -43,7 +43,7 @@
     align-items: center;
     justify-content: flex-start; /* Aligner les contrôles à gauche */
     margin-left: 20px; /* Ajouter une marge à gauche pour les contrôles */
-    margin-top: -10px; /* Déplacer les contrôles vers le haut */
+    margin-top: -17px; /* Déplacer les contrôles vers le haut */
 }
 
 
@@ -68,4 +68,11 @@
 .controls #nextButton i{
     font-size: 25px; /* Augmenter la taille de l'icône */
     margin-left: -30px;
+}
+
+#currentTimeDisplay{
+    color: gray;
+    font-weight: normal;
+    font-size: 14px;
+    margin-right: 30px;
 }

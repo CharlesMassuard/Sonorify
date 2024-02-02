@@ -2,6 +2,7 @@ window.addEventListener('scroll', function() {
     let searchContainer = document.getElementById('search');
     let header = document.querySelector('header');
     let searchContainerTop = searchContainer.getBoundingClientRect().top;
+    header.style.transition = 'background-color 0.2s ease, border-bottom 0.2s ease';
   
     if (window.pageYOffset > searchContainerTop) {
         header.style.backgroundColor = 'rgba(0, 0, 0, 1)';
