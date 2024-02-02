@@ -3,16 +3,46 @@ var sound = new Howl({
     src: ['../musics/ARK_MainTheme.mp3']
 });
 
+var searchBar = document.getElementById('search');
 var progressBar = document.getElementById('progressBar');
 var progress = document.getElementById('progress');
+
 var playButton = document.getElementById('playButton');
-var pauseButton = document.getElementById('pauseButton');
+var previousButton = document.getElementById('prevButton');
+var nextButton = document.getElementById('nextButton');
+
 var currentTime = document.getElementById('currentTime');
 var circle_progress = document.getElementById('circle_progress');
+var buttonIconPlay = document.querySelector('#playButton i.material-icons');
 let timeoutId;
 var in_play = false;
 
+// METTRE EN PAUSE AVEC SPACE BAR
+isUserTyping = false;
 
+searchBar.addEventListener('input', function() {
+    isUserTyping = true;
+});
+
+searchBar.addEventListener('blur', function() {
+    isUserTyping = false;
+});
+
+searchBar.addEventListener('mouseenter', function() {
+    isUserTyping = true;
+});
+
+searchBar.addEventListener('mouseleave', function() {
+    isUserTyping = false;
+});
+
+document.addEventListener('keydown', function(event) {
+    if (event.code === 'Space' && !isUserTyping){
+        event.preventDefault();
+        play();
+    }
+});
+//////////////////////////////////////////////////////
 // Fonction de mise à jour de la barre de progression
 function updateProgressBar() {
     var percentage = (sound.seek() / sound.duration()) * 100;
@@ -62,18 +92,21 @@ function pad(number) {
     return (number < 10 ? '0' : '') + number;
 }
 
-
-// Événement pour lire la musique
-playButton.addEventListener('click', function() {
+function play() {
     if(!in_play) {
         sound.play();
         in_play = true;
+        buttonIconPlay.textContent = 'pause';
+    } else {
+        sound.pause();
+        in_play = false;
+        buttonIconPlay.textContent = 'play_arrow';
     }
-});
+}
 
-// Événement pour mettre en pause la musique
-pauseButton.addEventListener('click', function() {
-    sound.pause();
+// Événement pour lire la musique
+playButton.addEventListener('click', function () {
+    play();
 });
 
 // Événement pour mettre à jour la barre de progression
