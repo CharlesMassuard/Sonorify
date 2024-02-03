@@ -143,6 +143,14 @@
     transition: transform 0.3s ease; /* Ajoute une transition à la transformation */
 }
 
+#arrowUp i.material-icons {
+    transition: transform 0.3s ease; /* Ajoute une transition à la transformation */
+}
+
+.rotate_arrow {
+    transform: rotate(180deg); /* Applique la transformation de rotation */
+}
+
 .rotate {
     transform: rotateX(360deg); /* Applique la transformation de rotation */
 }

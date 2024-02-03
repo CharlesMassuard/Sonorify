@@ -16,6 +16,7 @@ var repeatButton = document.getElementById('repeatButton');
 var aleatoireButton = document.getElementById('shuffleButton');
 var progressVolume = document.getElementById('progressVolume');
 var sliderVolume = document.getElementById('sliderVolume');
+var arrowUp = document.getElementById('arrowUp');
 
 var currentTime = document.getElementById('currentTime');
 var circle_progress = document.getElementById('circle_progress');
@@ -23,6 +24,7 @@ var buttonIconPlay = document.querySelector('#playButton i.material-icons');
 var volumeButtonI = document.querySelector('#volumeButton i.material-icons');
 var repeatButtonI = document.querySelector('#repeatButton i.material-icons');
 var aleatoireButtonI = document.querySelector('#shuffleButton i.material-icons');
+var arrowUpI = document.querySelector('#arrowUp i.material-icons');
 let timeoutId;
 var in_play = false;
 var isMute = false;
@@ -167,6 +169,15 @@ aleatoireButton.addEventListener('click', function() {
     aleatoireButtonI.classList.toggle('rotate'); // Ajoute ou supprime la classe 'rotate'
 });
 
+arrowUp.addEventListener('click', function() {
+    if(arrowUpI.classList.contains('rotate_arrow')) {
+        arrowUp.style.opacity = 0.5;
+    } else {
+        arrowUp.style.opacity = 1;
+    }
+    arrowUpI.classList.toggle('rotate_arrow');
+});
+
 // Événement pour mettre à jour la barre de progression
 sound.on('play', function() {
     setInterval(updateProgressBar, 100);
@@ -190,4 +201,31 @@ function changeVolume(volume){
     } else {
         volumeButtonI.textContent = 'volume_up';
     }
+}
+
+function toggleSection() {
+    var section = document.getElementById('detailsSection');
+    if (section.style.display === 'none' || section.style.display === '') {
+        showDetailsSection();
+    } else {
+        hideDetailsSection();
+    }
+}
+
+// Fonction pour afficher la section
+function showDetailsSection() {
+    var detailsSection = document.getElementById('detailsSection');
+    detailsSection.style.display = 'block'; // Afficher la section
+    setTimeout(function () {
+        detailsSection.style.transform = 'translateY(-100%)'; // Faire monter la section
+    }, 10); // Ajouter un petit délai pour assurer que la transition est appliquée correctement
+}
+
+// Fonction pour masquer la section
+function hideDetailsSection() {
+    var detailsSection = document.getElementById('detailsSection');
+    detailsSection.style.transform = 'translateY(0)'; // Faire descendre la section
+    setTimeout(function () {
+        detailsSection.style.display = 'none'; // Masquer la section après la transition
+    }, 300); // Attendre la fin de la transition avant de masquer la section
 }
