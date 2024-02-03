@@ -1,7 +1,6 @@
 <!doctype html>
 <html>
 <head>
-    <title>PHP'O SONG</title>
     <link rel="stylesheet" href="./static/css/player.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="./static/js/player.js" defer></script>

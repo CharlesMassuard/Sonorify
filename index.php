@@ -13,7 +13,8 @@ Autoloader::register();
 <!doctype html>
 <html>
 <head>
-    <title>PHP'O SONG</title>
+    <title>Sonorify</title>
+    <link rel="icon" type="image/x-icon" href="./ressources/images/logo.png">
     <link rel="stylesheet" href="./static/css/index.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="./static/js/index.js" defer></script>
