@@ -16,8 +16,8 @@ header{
     padding: 20px;
     width: 100vw;
     height: 30px;
-    z-index: 9999; /*Header tjr au dessus de tout*/
-    border-bottom:  solid rgba(61, 61, 61, 0);
+    border-bottom:  solid rgba(61, 61, 61, 0); 
+    z-index: 9999;
 }
 main{
     margin-left: 100px;

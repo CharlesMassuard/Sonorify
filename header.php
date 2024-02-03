@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-    <header id="header">
+    <header>
         <div id="search-container">
             <form action="search.php" method="get">
                 <i class="material-icons" id="my-icon">search</i>

@@ -7,6 +7,8 @@ var searchBar = document.getElementById('search');
 var progressBar = document.getElementById('progressBar');
 var progress = document.getElementById('progress');
 
+var header = document.querySelector('header');
+
 var player = document.getElementById('customPlayer');
 var playButton = document.getElementById('playButton');
 var previousButton = document.getElementById('prevButton');
@@ -216,6 +218,7 @@ function showDetailsSection() {
     var detailsSection = document.getElementById('detailsSection');
     detailsSection.style.transition = 'transform 0.3s ease';
     detailsSection.style.display = 'block'; // Afficher la section
+    header.style.borderBottom = '1px solid rgba(61, 61, 61, 0.8)';
     setTimeout(function () {
         detailsSection.style.transform = 'translateY(-100%)'; // Faire monter la section
     }, 10); // Ajouter un petit délai pour assurer que la transition est appliquée correctement

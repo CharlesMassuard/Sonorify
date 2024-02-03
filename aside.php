@@ -10,16 +10,14 @@
         <header id="headerAsside">
             <div class="hamburger-menu">
                 <input id="menu__toggle" type="checkbox" />
-                <label class="menu__btn" for="menu__toggle">
+                <label id="hamburger" class="menu__btn" for="menu__toggle">
                     <span></span>
                 </label>
                 <img id="logo" src="./ressources/images/grandLogo.png" alt="logo">
                 <ul class="menu__box">
-                    <li><a class="menu__item" href="#">Home</a></li>
-                    <li><a class="menu__item" href="#">About</a></li>
-                    <li><a class="menu__item" href="#">Team</a></li>
-                    <li><a class="menu__item" href="#">Contact</a></li>
-                    <li><a class="menu__item" href="#">Twitter</a></li>
+                    <li><a class="menu__item" href="index.php"><i class="material-icons">home</i><span class="menu__text">Accueil</span></a></li>
+                    <li><a class="menu__item" href="index.php"><i class="material-icons">explore</i><span class="menu__text">Explorer</span></a></li>
+                    <li><a class="menu__item" href="index.php"><i class="material-icons">library_books</i><span class="menu__text">Bibliothèque</span></a></li>
                 </ul>
             </div>
         </header>

@@ -1,3 +1,5 @@
+var detailsSection = document.getElementById('detailsSection');
+
 window.addEventListener('scroll', function() {
     let searchContainer = document.getElementById('search');
     let header = document.querySelector('header');
@@ -8,8 +10,10 @@ window.addEventListener('scroll', function() {
         header.style.backgroundColor = 'rgba(0, 0, 0, 1)';
         header.style.borderBottom = '1px solid rgba(61, 61, 61, 0.8)';
     } else {
-        header.style.backgroundColor = 'rgba(0, 0, 0, 0)';
-        header.style.borderBottom = '1px solid rgba(61, 61, 61, 0)';
+        header.style.backgroundColor = 'rgba(0, 0, 0, 1)';
+        if(detailsSection.style.display === 'none' || detailsSection.style.display === ''){
+            header.style.borderBottom = '1px solid rgba(61, 61, 61, 0)';
+        }
     }
   });
 
