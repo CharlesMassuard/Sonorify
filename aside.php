@@ -13,7 +13,7 @@
                 <label class="menu__btn" for="menu__toggle">
                     <span></span>
                 </label>
-                <img id="logoGrand" src="./ressources/images/grandLogo.png" alt="logo">
+                <img id="logo" src="./ressources/images/grandLogo.png" alt="logo">
                 <ul class="menu__box">
                     <li><a class="menu__item" href="#">Home</a></li>
                     <li><a class="menu__item" href="#">About</a></li>

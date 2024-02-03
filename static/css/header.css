@@ -1,8 +1,7 @@
 body {
     margin: 0;
     height: 100vh;
-    max-width: 99%;
-    margin-left: 200px;
+    max-width: 85%;
     background-color: black;
     background-position: center center;
     background-size: cover;
@@ -20,7 +19,9 @@ header{
     z-index: 9999; /*Header tjr au dessus de tout*/
     border-bottom:  solid rgba(61, 61, 61, 0);
 }
-
+main{
+    margin-left: 100px;
+}
 #search-container {
     position: absolute;
     width: 80%;
@@ -70,7 +71,6 @@ header{
 }
 #search_result a:hover{
     background-color:rgb(80, 80, 80);
-    border-radius: 5px;
     transform: scale(1.0);
 }
 #search_result img{

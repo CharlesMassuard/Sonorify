@@ -31,7 +31,6 @@ var isMute = false;
 var currentVolume;
 
 
-
 // METTRE EN PAUSE AVEC SPACE BAR
 isUserTyping = false;
 
@@ -215,6 +214,7 @@ function toggleSection() {
 // Fonction pour afficher la section
 function showDetailsSection() {
     var detailsSection = document.getElementById('detailsSection');
+    detailsSection.style.transition = 'transform 0.3s ease';
     detailsSection.style.display = 'block'; // Afficher la section
     setTimeout(function () {
         detailsSection.style.transform = 'translateY(-100%)'; // Faire monter la section
@@ -224,6 +224,7 @@ function showDetailsSection() {
 // Fonction pour masquer la section
 function hideDetailsSection() {
     var detailsSection = document.getElementById('detailsSection');
+    detailsSection.style.transition = 'transform 0.3s ease';
     detailsSection.style.transform = 'translateY(0)'; // Faire descendre la section
     setTimeout(function () {
         detailsSection.style.display = 'none'; // Masquer la section après la transition

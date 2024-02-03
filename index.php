@@ -26,10 +26,10 @@ Autoloader::register();
     // }
 ?>
 <body>
-    <?php include 'header.php'; ?>
     <?php include 'aside.php'; ?>
     <?php include 'bigPlayer.php'; ?>
     <main>
+        <?php include 'header.php'; ?>
         <div id="titre">
             <?php
                 if (!isset($_SESSION['user'])) {
@@ -88,8 +88,8 @@ Autoloader::register();
             }
             ?>
         </div>
-        <?php include 'player.php'; ?>
         <div id="circle"></div> <!-- Cercle qui suit le pointeur de la souris -->
     </main>
+    <?php include 'player.php'; ?>
 </body>
 </html>

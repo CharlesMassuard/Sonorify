@@ -9,7 +9,7 @@
     z-index: 1000;
     font-family: 'Luminari', sans-serif;
     font-weight: bold;
-    margin-left: -200px;
+    z-index: 10000;
 }
 
 #progressBar {

@@ -7,7 +7,6 @@ window.addEventListener('scroll', function() {
     if (window.pageYOffset > searchContainerTop) {
         header.style.backgroundColor = 'rgba(0, 0, 0, 1)';
         header.style.borderBottom = '1px solid rgba(61, 61, 61, 0.8)';
-        header.style.borderLeft = '1px solid rgba(61, 61, 61, 0.8)';
     } else {
         header.style.backgroundColor = 'rgba(0, 0, 0, 0)';
         header.style.borderBottom = '1px solid rgba(61, 61, 61, 0)';
