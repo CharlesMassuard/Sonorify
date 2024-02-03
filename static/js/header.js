@@ -14,17 +14,20 @@ window.addEventListener('scroll', function() {
   });
 
 // BARRE DE RECHERCHE
+var searchBar = document.getElementById('search');
 document.addEventListener('DOMContentLoaded', function() {
     console.log(document.querySelector("#search"));
     var stock = [];
-    document.querySelector("#search").addEventListener('input', function(e) {
+    searchBar.addEventListener('input', function(e) {
         if (e.target.value == "" || e.target.value.length < 3 ) {
+            searchBar.style.borderRadius = "10px";
             let searchResult = document.querySelector("#search_result");
             while (searchResult.firstChild) {
                 searchResult.removeChild(searchResult.firstChild);
             }
             return;
         } else {
+            searchBar.style.borderRadius = "10px 10px 0px 0px ";
             fetch('rechercheData.php', {
                 method: 'POST',
                 headers: {

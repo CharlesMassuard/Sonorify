@@ -32,9 +32,10 @@
                 <div id="progressVolume">
                     <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="1" onchange="changeVolume(value)" oninput="changeVolume(value)">
                 </div>
-                <button id="volumeButton" title="Activer le son"><i class="material-icons">volume_up</i></button>
+                <button id="volumeButton" title="Désactiver le son"><i class="material-icons">volume_up</i></button>
                 <button id="repeatButton" title="Activer la répétition"><i class="material-icons">repeat</i></button>
                 <button id="shuffleButton" title="Lecture aléatoire"><i class="material-icons">shuffle</i></button>
+                <button id="arrowUp" title="Afficher les détails"><i class="material-icons">arrow_drop_up</i></button>
             </div>
         <!-- <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="1"> -->
         </div>

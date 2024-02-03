@@ -124,10 +124,6 @@
     opacity: 0;
 }
 
-#volumeSlider{
-    background: red;
-}
-
 .controls2 > button {
     background-color: transparent;
     border: none;
@@ -141,6 +137,7 @@
 .controls2 i {
     font-size: 30px; /* Augmenter la taille de l'icône */
 }
+
 
 #shuffleButton i.material-icons {
     transition: transform 0.3s ease; /* Ajoute une transition à la transformation */
