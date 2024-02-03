@@ -28,6 +28,9 @@
                     <div class="infos_supplementaires">Gareth Coker • ARK: Genesis Part 2 (Original Soundtrack) • 2021</div>
                 </div>
             </div>
+            <div class="controls2">
+                <button id="repeatButton"><i class="material-icons">repeat</i></button>
+            </div>
         <!-- <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="1"> -->
         </div>
     </div>

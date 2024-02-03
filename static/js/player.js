@@ -17,6 +17,8 @@ var buttonIconPlay = document.querySelector('#playButton i.material-icons');
 let timeoutId;
 var in_play = false;
 
+var repeatButton = document.getElementById('repeatButton');
+
 // METTRE EN PAUSE AVEC SPACE BAR
 isUserTyping = false;
 
@@ -57,9 +59,10 @@ function updateProgressBar() {
     currentTimeDisplay.textContent = currentTime + ' / ' + totalTime;
 
     if(currentTime == totalTime) {
-        sound.stop();
-        in_play = false;
-        buttonIconPlay.textContent = 'play_arrow';
+        if(!sound.loop()) {
+            in_play = false;
+            buttonIconPlay.textContent = 'play_arrow';
+        }
     }
 }
 
@@ -108,6 +111,16 @@ function play() {
 // Événement pour lire la musique
 playButton.addEventListener('click', function () {
     play();
+});
+
+repeatButton.addEventListener('click', function() {
+    if(sound.loop()) {
+        sound.loop(false);
+        repeatButton.style.color = 'white';
+    } else {
+        sound.loop(true);
+        repeatButton.style.color = 'red';
+    }
 });
 
 // Événement pour mettre à jour la barre de progression

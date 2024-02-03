@@ -14,7 +14,7 @@ body {
     padding-top: 50px;
 }
 
-#circle {
+/* #circle {
     position: absolute;
     width: 200px;
     height: 200px;
@@ -22,10 +22,9 @@ body {
     border-radius: 100%;
     transform: translate(-50%, -50%);
     pointer-events: none;
-    z-index: -1;
     filter: blur(50px);
     transition: top 0.05s, left 0.05s;
-}
+} */
   
 main {
     width: 100%;
