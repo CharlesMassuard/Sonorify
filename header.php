@@ -1,7 +1,6 @@
 <!doctype html>
 <html>
 <head>
-    <title>PHP'O SONG</title>
     <link rel="stylesheet" href="./static/css/header.css">
     <script src="./static/js/index.js" defer></script>
     <script src="./static/js/header.js" defer></script>

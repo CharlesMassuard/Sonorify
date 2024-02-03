@@ -1,0 +1,106 @@
+aside {
+    position: fixed; /* Fixe l'élément à une position spécifique */
+    left: 0; /* Positionne l'élément à gauche de l'écran */
+    top: 0; /* Positionne l'élément en haut de l'écran */
+    height: 100%; /* Fait en sorte que l'élément prenne toute la hauteur de l'écran */
+    width: 200px; /* Définit la largeur de l'élément */
+    overflow-y: auto; /* Ajoute une barre de défilement si le contenu dépasse la hauteur */
+    background-color: black;
+    border-right: solid rgba(61, 61, 61, 0.8);
+    border-width: 1px;
+    display: flex; /* Utilise le modèle de boîte flexible */
+}
+
+#headerAsside {
+    display: flex;
+    align-items: center; /* Alignement vertical */
+}
+
+#logoGrand{
+    height: 45px;
+    width: auto;
+    margin-left: 15px;
+}
+
+#menu__toggle {
+    opacity: 0;
+}
+
+#menu__toggle:checked + .menu__btn > span {
+    transform: rotate(45deg);
+}
+
+#menu__toggle:checked + .menu__btn > span::before {
+    top: 0;
+    transform: rotate(0deg);
+}
+
+#menu__toggle:checked + .menu__btn > span::after {
+    top: 0;
+    transform: rotate(90deg);
+}
+
+#menu__toggle:checked ~ .menu__box {
+    left: 0 !important;
+}
+
+.menu__btn {
+    position: fixed;
+    top: 30px;
+    left: 20px;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.menu__btn > span,
+.menu__btn > span::before,
+.menu__btn > span::after {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    transition-duration: .25s;
+}
+
+.menu__btn > span::before {
+    content: '';
+    top: -8px;
+}
+
+.menu__btn > span::after {
+    content: '';
+    top: 8px;
+}
+
+.menu__box {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 200px;
+    height: 100%;
+    margin: 0;
+    padding: 80px 0;
+    list-style: none;
+    background-color: #000000;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
+    transition-duration: .25s;
+}
+
+.menu__item {
+    display: block;
+    padding: 12px 24px;
+    color: white;
+    font-family: 'Luminari', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    transition-duration: .25s;
+}
+
+.menu__item:hover {
+    transform: scale(1.05);
+}

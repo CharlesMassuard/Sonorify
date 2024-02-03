@@ -27,6 +27,7 @@ Autoloader::register();
 ?>
 <body>
     <?php include 'header.php'; ?>
+    <?php include 'aside.php'; ?>
     <?php include 'bigPlayer.php'; ?>
     <main>
         <div id="titre">

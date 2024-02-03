@@ -10,4 +10,5 @@
     z-index: 999; /* Assurez-vous que la section s'affiche au-dessus de tout le reste */
     overflow: hidden; /* Empêche le défilement lorsque la section est affichée */
     transform: translateY(0); /* Par défaut, la section est cachée en dehors de l'écran */
+    margin-left: 201px;
 }
