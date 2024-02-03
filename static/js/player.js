@@ -7,17 +7,28 @@ var searchBar = document.getElementById('search');
 var progressBar = document.getElementById('progressBar');
 var progress = document.getElementById('progress');
 
+var player = document.getElementById('customPlayer');
 var playButton = document.getElementById('playButton');
 var previousButton = document.getElementById('prevButton');
 var nextButton = document.getElementById('nextButton');
+var volumeButton = document.getElementById('volumeButton');
+var repeatButton = document.getElementById('repeatButton');
+var aleatoireButton = document.getElementById('shuffleButton');
+var progressVolume = document.getElementById('progressVolume');
+var sliderVolume = document.getElementById('sliderVolume');
 
 var currentTime = document.getElementById('currentTime');
 var circle_progress = document.getElementById('circle_progress');
 var buttonIconPlay = document.querySelector('#playButton i.material-icons');
+var volumeButtonI = document.querySelector('#volumeButton i.material-icons');
+var repeatButtonI = document.querySelector('#repeatButton i.material-icons');
+var aleatoireButtonI = document.querySelector('#shuffleButton i.material-icons');
 let timeoutId;
 var in_play = false;
+var isMute = false;
+var currentVolume;
 
-var repeatButton = document.getElementById('repeatButton');
+
 
 // METTRE EN PAUSE AVEC SPACE BAR
 isUserTyping = false;
@@ -101,10 +112,12 @@ function play() {
         sound.play();
         in_play = true;
         buttonIconPlay.textContent = 'pause';
+        buttonIconPlay.setAttribute('title', 'Pause');
     } else {
         sound.pause();
         in_play = false;
         buttonIconPlay.textContent = 'play_arrow';
+        buttonIconPlay.setAttribute('title', 'Lire');
     }
 }
 
@@ -113,14 +126,45 @@ playButton.addEventListener('click', function () {
     play();
 });
 
+volumeButton.addEventListener('mouseenter', function() {
+    progressVolume.style.transition = 'opacity 0.4s ease';
+    progressVolume.style.opacity = 1;
+});
+
+volumeButton.addEventListener('click', function() {
+    if(!isMute) {
+        isMute = true;
+        currentVolume = sound.volume();
+        sound.volume(0);
+        volumeButtonI.textContent = 'volume_off';
+        volumeButton.setAttribute('title', 'Activer le son');
+    } else{
+        isMute = false;
+        changeVolume(currentVolume);
+    }
+});
+
+player.addEventListener('mouseleave', function() {
+    progressVolume.style.opacity = 0;
+});
+
+
 repeatButton.addEventListener('click', function() {
     if(sound.loop()) {
         sound.loop(false);
-        repeatButton.style.color = 'white';
+        repeatButton.style.opacity = 0.5;
+        repeatButtonI.textContent = 'repeat';
+        repeatButton.setAttribute('title', 'Activer la répétition');
     } else {
         sound.loop(true);
-        repeatButton.style.color = 'red';
+        repeatButton.style.opacity = 1;
+        repeatButtonI.textContent = 'repeat_one';
+        repeatButton.setAttribute('title', 'Désactiver la répétition');
     }
+});
+
+aleatoireButton.addEventListener('click', function() {
+    aleatoireButtonI.classList.toggle('rotate'); // Ajoute ou supprime la classe 'rotate'
 });
 
 // Événement pour mettre à jour la barre de progression
@@ -136,3 +180,14 @@ progressBar.addEventListener('click', function(e) {
     sound.seek(sound.duration() * clickPositionInPercentage);
     updateProgressBar(); // Mettre à jour la barre de progression après le déplacement
 });
+
+function changeVolume(volume){
+    sound.volume(volume);
+    if(volume == 0) {
+        volumeButtonI.textContent = 'volume_mute';
+    } else if (volume > 0 && volume < 0.5) {
+        volumeButtonI.textContent = 'volume_down';
+    } else {
+        volumeButtonI.textContent = 'volume_up';
+    }
+}

@@ -16,9 +16,9 @@
         </div>
         <div class="infos">
             <div class="controls">
-                <button id="prevButton"><i class="material-icons">skip_previous</i></button>
-                <button id="playButton"><i class="material-icons">play_arrow</i></button>
-                <button id="nextButton"><i class="material-icons">skip_next</i></button>
+                <button id="prevButton" title="Précédent"><i class="material-icons">skip_previous</i></button>
+                <button id="playButton" title="Lire"><i class="material-icons">play_arrow</i></button>
+                <button id="nextButton" title="Suivant"><i class="material-icons">skip_next</i></button>
                 <div id="currentTimeDisplay">--:-- / --:--</div>
             </div>
             <div id="infos_music">
@@ -29,7 +29,12 @@
                 </div>
             </div>
             <div class="controls2">
-                <button id="repeatButton"><i class="material-icons">repeat</i></button>
+                <div id="progressVolume">
+                    <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="1" onchange="changeVolume(value)" oninput="changeVolume(value)">
+                </div>
+                <button id="volumeButton" title="Activer le son"><i class="material-icons">volume_up</i></button>
+                <button id="repeatButton" title="Activer la répétition"><i class="material-icons">repeat</i></button>
+                <button id="shuffleButton" title="Lecture aléatoire"><i class="material-icons">shuffle</i></button>
             </div>
         <!-- <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="1"> -->
         </div>

@@ -120,6 +120,14 @@
     justify-content: flex-end; /* Aligner les contrôles à droite */
 }
 
+#progressVolume{
+    opacity: 0;
+}
+
+#volumeSlider{
+    background: red;
+}
+
 .controls2 > button {
     background-color: transparent;
     border: none;
@@ -127,6 +135,19 @@
     font-size: 20px;
     margin: 0 10px;
     cursor: pointer;
+    opacity: 0.5;
+}
+
+.controls2 i {
+    font-size: 30px; /* Augmenter la taille de l'icône */
+}
+
+#shuffleButton i.material-icons {
+    transition: transform 0.3s ease; /* Ajoute une transition à la transformation */
+}
+
+.rotate {
+    transform: rotateX(360deg); /* Applique la transformation de rotation */
 }
 
 @media (max-width: 950px) { /* Change la disposition lorsque l'écran est de 600px ou moins */
