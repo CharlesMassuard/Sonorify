@@ -138,7 +138,7 @@ aside {
     display: inline-block; /* Afficher le texte du menu lorsque le bouton est activé */
 }
 .menu__item:hover{
-    transform: scale(1.001);
+    transform: scale(1.02);
     opacity: 0.9;
 }
 

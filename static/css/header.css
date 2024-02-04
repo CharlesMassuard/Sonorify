@@ -88,3 +88,18 @@ main{
     font-size: auto;
     align-self: center;
 }
+a{
+    text-decoration: none;
+    color: white;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    padding: 10px;
+    width: 11%; 
+    font-size: auto;
+    flex-shrink: 0;
+}
+a{
+    opacity: 0.9;
+}
