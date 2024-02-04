@@ -218,6 +218,22 @@
             $playlists = $this->file_db->query('SELECT * from PLAYLIST natural left join PLAYLIST_NOTE group by id_playlist order by avg(note) desc');
             return $playlists->fetchAll();
         }
+        public function getPlaylistsByUser($id){
+            $playlists = $this->file_db->query('SELECT *, AVG(note) moyenne_note from PLAYLIST natural left join PLAYLIST_NOTE where id_auteur='.$id .' group by id_playlist');
+            return $playlists->fetchAll();
+        }
+        public function getPlaylistsFavorisByUser($id){
+            $playlists = $this->file_db->query('SELECT * from PLAYLIST natural join PLAYLIST_FAVORIS where id_utilisateur='.$id);
+            return $playlists->fetchAll();
+        }
+        public function getMusiquesFavorisByUser($id){
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join MUSIQUE_FAVORIS where id_utilisateur='.$id);
+            return $musiques->fetchAll();
+        }
+        public function getGroupesFavorisByUser($id){
+            $groupes = $this->file_db->query('SELECT * from GROUPE natural join GROUPE_FAVORIS where id_utilisateur='.$id);
+            return $groupes->fetchAll();
+        }
         public function insertFavorisPlaylist($id_playlist,$id_utilisateur){
             $insert="INSERT INTO PLAYLIST_FAVORIS (id_playlist, id_utilisateur) VALUES (:id_playlist, :id_utilisateur)";
             $stmt=$this->file_db->prepare($insert);
@@ -246,7 +262,7 @@
             if ($note < 1){
                 $note = 1;
             }
-            if ($this->file_db->query('SELECT * from PLAYLIST_NOTE where id_playlist='.$id_playlist.' and id_utilisateur='.$id_utilisateur) != null){
+            if ($this->file_db->query('SELECT * from PLAYLIST_NOTE where id_playlist='.$id_playlist.' and id_utilisateur='.$id_utilisateur)->fetch()){
                 $update="UPDATE PLAYLIST_NOTE SET note=:note where id_playlist=:id_playlist and id_utilisateur=:id_utilisateur";
                 $stmt=$this->file_db->prepare($update);
                 $stmt->bindParam(':id_playlist',$id_playlist);
