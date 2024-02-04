@@ -38,7 +38,7 @@
             echo "Durée : " . $somme . " secondes";
             echo '<div id="note">';
             for ($i=0; $i < 5; $i++) { 
-                echo '<a id="ajout_note" href="ajouterNotePlaylist.php?id='.$musique['id_musique'].'&note='.($i+1).'">';
+                echo '<a id="ajout_note" href="ajouterNotePlaylist.php?id='.$playlist['id_playlist'].'&note='.($i+1).'">';
                 echo '<i class="material-icons">star</i>';
                 echo '</a>';
             }
