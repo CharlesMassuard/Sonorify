@@ -2,15 +2,13 @@ var detailsSection = document.getElementById('detailsSection');
 
 window.addEventListener('scroll', function() {
     let searchContainer = document.getElementById('search');
-    let header = document.querySelector('header');
+    let header = document.getElementById('trueHeader');
     let searchContainerTop = searchContainer.getBoundingClientRect().top;
-    header.style.transition = 'background-color 0.2s ease, border-bottom 0.2s ease';
+    header.style.transition = 'background-color 0.2s ease, border-bottom 0.5s ease';
   
     if (window.pageYOffset > searchContainerTop) {
-        header.style.backgroundColor = 'rgba(0, 0, 0, 1)';
         header.style.borderBottom = '1px solid rgba(61, 61, 61, 0.8)';
     } else {
-        header.style.backgroundColor = 'rgba(0, 0, 0, 1)';
         if(detailsSection.style.display === 'none' || detailsSection.style.display === ''){
             header.style.borderBottom = '1px solid rgba(61, 61, 61, 0)';
         }

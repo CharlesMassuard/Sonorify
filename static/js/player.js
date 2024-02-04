@@ -7,7 +7,7 @@ var searchBar = document.getElementById('search');
 var progressBar = document.getElementById('progressBar');
 var progress = document.getElementById('progress');
 
-var header = document.querySelector('header');
+var header = document.getElementById('trueHeader');
 
 var player = document.getElementById('customPlayer');
 var playButton = document.getElementById('playButton');
