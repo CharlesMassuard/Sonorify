@@ -39,7 +39,7 @@ Autoloader::register();
         <div id="playlist" class="sections_accueil">
             <h2>Playlists</h2>
             <?php 
-            $playlists = $data->getPlaylists();
+            $playlists = $data->getPlaylistsTrieesParNote();
             foreach ($playlists as $playlist) {
                 echo '<a href= "playlist.php?id='.$playlist['id_playlist'].'">';
                 $image = $data->getMusiquesAlbumsByPlaylist($playlist['id_playlist'])['image_album'] ?? 'default.jpg';
