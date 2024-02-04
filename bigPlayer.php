@@ -6,6 +6,7 @@
 </head>
 <body>
     <section id="detailsSection">
+        <img id="bigCover" src="./ressources/images/TerryAllen_Juarez.jpg" alt="cover">
     </section>
 </body>
 </html>

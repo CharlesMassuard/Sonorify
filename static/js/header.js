@@ -4,7 +4,7 @@ window.addEventListener('scroll', function() {
     let searchContainer = document.getElementById('search');
     let header = document.getElementById('trueHeader');
     let searchContainerTop = searchContainer.getBoundingClientRect().top;
-    header.style.transition = 'background-color 0.2s ease, border-bottom 0.5s ease';
+    header.style.transition = 'background-color 0.2s ease, border-bottom 0.3s ease';
   
     if (window.pageYOffset > searchContainerTop) {
         header.style.borderBottom = '1px solid rgba(61, 61, 61, 0.8)';

@@ -118,7 +118,11 @@ aside {
     font-size: 20px;
     font-weight: 600;
     text-decoration: none;
+    background-color: transparent;
+    flex-direction: column;
+    padding: 10px;
     /* transition-duration: 0.2s; */
+
 }
 
 .menu__item:hover {
@@ -132,6 +136,10 @@ aside {
 
 #menu__toggle:checked ~ .menu__box .menu__text {
     display: inline-block; /* Afficher le texte du menu lorsque le bouton est activé */
+}
+.menu__item:hover{
+    transform: scale(1.001);
+    opacity: 0.9;
 }
 
 

@@ -67,7 +67,7 @@ h3{
     font-size: 25px;
 }
 
-a{
+.a_accueil{
     text-decoration: none;
     color: white;
     background-color: transparent;
@@ -79,7 +79,7 @@ a{
     font-size: auto;
     flex-shrink: 0;
 }
-a:hover{
+.a_accueil:hover{
     transform: scale(1.02);
     opacity: 0.9;
 }

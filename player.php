@@ -23,7 +23,7 @@
             <img id="cover" src="./ressources/images/TerryAllen_Juarez.jpg" alt="cover">
             <div id='infos_ecrites'>
                 <h4 id="title">Finale</h4>
-                <div class="infos_supplementaires">Gareth Coker • ARK: Genesis Part 2 (Original Soundtrack) • 2021</div>
+                <div class="infos_supplementaires"><a class="infos_music" href="artiste">Gareth Coker</a>&nbsp; • &nbsp;<a class="infos_music" href="album">ARK: Genesis Part 2 (Original Soundtrack)</a>&nbsp; •&nbsp; <a class="infos_music" href="date">2021</a></div>
             </div>
         </div>
         <div class="controls2">

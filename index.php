@@ -44,7 +44,7 @@ Autoloader::register();
             <?php 
             $playlists = $data->getPlaylists();
             foreach ($playlists as $playlist) {
-                echo '<a href= "playlist.php?id='.$playlist['id_playlist'].'">';
+                echo '<a class="a_accueil" href= "playlist.php?id='.$playlist['id_playlist'].'">';
                 echo '<h3>'.$playlist['nom_playlist'].'</h3>';
                 echo '<p class="infos_supp">'.$playlist['description_playlist'].'</p>';
                 echo '</a>';
@@ -56,7 +56,7 @@ Autoloader::register();
             <?php 
             $albums = $data->getAlbums();
             foreach ($albums as $album) {
-                echo '<a href= "">';
+                echo '<a class="a_accueil" href= "">';
                 echo '<img src="./ressources/images/'.$album['image_album'].'">';
                 echo '<h3>'.$album['titre'].'</h3>';
                 echo '<p class="infos_supp">'.$data->getNomGroupe($album['id_groupe'])['nom_groupe'].'</p>';
@@ -70,7 +70,7 @@ Autoloader::register();
             <?php 
             $genres = $data->getGenres();
             foreach ($genres as $genre) {
-                echo '<a href= "">';
+                echo '<a class="a_accueil" href= "">';
                 echo '<h3>'.$genre['nom_genre'].'</h3>';
                 echo '</a>';
             }
@@ -81,7 +81,7 @@ Autoloader::register();
             <?php 
             $groupes = $data->getGroupes();
             foreach ($groupes as $groupe) {
-                echo '<a href= "">';
+                echo '<a class="a_accueil" href= "">';
                 echo '<h3>'.$groupe['nom_groupe'].'</h3>';
                 echo '<p class="infos_supp">'.$groupe['description_groupe'].'</p>';
                 echo '</a>';

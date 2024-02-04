@@ -1,5 +1,4 @@
 #detailsSection {
-    display: none;
     position: fixed;
     top: calc(100% - 90px);
     height: calc((100% - 90px) - 71px);
@@ -10,4 +9,9 @@
     overflow: hidden;
     transform: translateY(0);
     margin-left: 101px; /* Pour que le contenu ne soit pas caché sous l'aside */
+}
+
+#bigCover{
+    height: 80%;
+    width: auto;
 }
