@@ -214,6 +214,10 @@
                 return null;
             }
         }
+        public function getPlaylistsTrieesParNote(){
+            $playlists = $this->file_db->query('SELECT * from PLAYLIST natural left join PLAYLIST_NOTE group by id_playlist order by avg(note) desc');
+            return $playlists->fetchAll();
+        }
         public function insertFavorisPlaylist($id_playlist,$id_utilisateur){
             $insert="INSERT INTO PLAYLIST_FAVORIS (id_playlist, id_utilisateur) VALUES (:id_playlist, :id_utilisateur)";
             $stmt=$this->file_db->prepare($insert);
@@ -234,6 +238,29 @@
             $stmt->bindParam(':id_playlist',$id_playlist);
             $stmt->bindParam(':id_musique',$id_musique);
             $stmt->execute();
+        }
+        public function insertNotePlaylist($id_playlist,$id_utilisateur,$note){
+            if ($note > 5){
+                $note = 5;
+            }
+            if ($note < 1){
+                $note = 1;
+            }
+            if ($this->file_db->query('SELECT * from PLAYLIST_NOTE where id_playlist='.$id_playlist.' and id_utilisateur='.$id_utilisateur) != null){
+                $update="UPDATE PLAYLIST_NOTE SET note=:note where id_playlist=:id_playlist and id_utilisateur=:id_utilisateur";
+                $stmt=$this->file_db->prepare($update);
+                $stmt->bindParam(':id_playlist',$id_playlist);
+                $stmt->bindParam(':id_utilisateur',$id_utilisateur);
+                $stmt->bindParam(':note',$note);
+                $stmt->execute();
+            } else {
+                $insert="INSERT INTO PLAYLIST_NOTE (id_playlist, id_utilisateur, note) VALUES (:id_playlist, :id_utilisateur, :note)";
+                $stmt=$this->file_db->prepare($insert);
+                $stmt->bindParam(':id_playlist',$id_playlist);
+                $stmt->bindParam(':id_utilisateur',$id_utilisateur);
+                $stmt->bindParam(':note',$note);
+                $stmt->execute();
+            }
         }
         public function deleteMusiquePlaylist($id_musique,$id_playlist){
             $delete="DELETE FROM PLAYLIST_MUSIQUE WHERE id_playlist=:id_playlist and id_musique=:id_musique";
