@@ -36,6 +36,13 @@
                 $somme += $musique['duree'];
             }
             echo "Durée : " . $somme . " secondes";
+            echo '<div id="note">';
+            for ($i=0; $i < 5; $i++) { 
+                echo '<a id="ajout_note" href="ajouterNotePlaylist.php?id='.$musique['id_musique'].'&note='.($i+1).'">';
+                echo '<i class="material-icons">star</i>';
+                echo '</a>';
+            }
+            echo '</div>';
             if ($_SESSION  && is_array($_SESSION) && $data->isFavorisPlaylist($id_playlist, $_SESSION['user']['id_utilisateur']) ?? false){
                 echo '<a href="supprimerFavorisPlaylist.php?id='.$id_playlist.'">Supprimer des favoris</a>';
             } else {
