@@ -2,12 +2,12 @@
 declare(strict_types=1);
 session_start();
 
-require_once 'Data/DataBase.php';
-$data = new Data\DataBase();
-
 // Autoload
 require 'Classes/Autoloader.php';
 Autoloader::register();
+
+use Data\DataBase;
+$data = new DataBase();
 ?>
 
 <!doctype html>
