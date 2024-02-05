@@ -1,6 +1,10 @@
 <?php
 declare(strict_types=1);
 session_start();
+if ($_SESSION['user'] == null) {
+    $_SESSION['redirect_to'] = $_SERVER['REQUEST_URI'];
+    header('Location: login.php');
+}
 
 require_once 'Data/DataBase.php';
 $data = new Data\DataBase();

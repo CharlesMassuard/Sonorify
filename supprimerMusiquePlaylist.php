@@ -1,4 +1,8 @@
 <?php
+    if ($_SESSION['user'] == null) {
+        $_SESSION['redirect_to'] = $_SERVER['REQUEST_URI'];
+        header('Location: login.php');
+    }
     $id_playlist = $_GET['id_playlist'] ?? 1;
     $id_musique = $_GET['id_musique'] ?? 1;
     require_once 'Data/DataBase.php';
