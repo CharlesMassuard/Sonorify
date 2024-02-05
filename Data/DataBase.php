@@ -158,7 +158,7 @@
             return $playlist->fetchAll();
         }
         public function getMusiqueRecente(){
-            $musiques = $this->file_db->query('SELECT * from MUSIQUE order by date_ajout desc');
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM order by dateSortie desc');
             return $musiques->fetchAll();
         }
         public function getMusiqueRecemmentEcoutee(){
