@@ -11,9 +11,10 @@
         
             if ($isNewDb) {
                 $this->createTable();
+                $this->executeSqlFile(__DIR__ . '/insert_php.sql');
             }
         }
-        public function createTable(){
+        private function createTable(){
             $this->file_db->exec("CREATE TABLE IF NOT EXISTS GROUPE ( 
                 id_groupe INTEGER PRIMARY KEY AUTOINCREMENT,
                 nom_groupe TEXT,
@@ -124,6 +125,19 @@
                 PRIMARY KEY (id_musique, id_utilisateur, date_lecture),
                 FOREIGN KEY (id_musique) REFERENCES MUSIQUE(id_musique),
                 FOREIGN KEY (id_utilisateur) REFERENCES UTILISATEUR(id_utilisateur))");
+        }
+        private function executeSqlFile($filePath) {
+            try {
+                // Read SQL file
+                $sql = file_get_contents($filePath);
+        
+                // Execute SQL
+                $this->file_db->exec($sql) or die(print_r($this->file_db->errorInfo(), true));
+        
+                echo "SQL file executed successfully";
+            } catch(PDOException $e) {
+                echo "Error: " . $e->getMessage();
+            }
         }
         public function getAlbums(){
             $albums = $this->file_db->query('SELECT * from ALBUM');

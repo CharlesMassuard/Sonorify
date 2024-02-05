@@ -1,31 +1,31 @@
-INSERT INTO GROUPE (nom_groupe, image_groupe, decription_groupe) VALUES
-    ("Alabama Shakes", "Alabama_Shakes.jpg", "Alabama Shakes est un groupe de rock américain, originaire d'Athens, en Alabama. Il est formé en 2009 et composé de Brittany Howard, Zac Cockrell, Heath Fogg et Steve Johnson."),
-    ("Ryan Adams", "Ryan_Adams_2014.jpg", "Ryan Adams, né David Ryan Adams le 5 novembre 1974 à Jacksonville, en Caroline du Nord, est un auteur-compositeur-interprète, musicien, producteur, poète et peintre américain."),
-    ("Taylor Swift", "Taylor_Swift_2019_by_Glenn_Francis.jpg", "Taylor Alison Swift, née le 13 décembre 1989 à Reading, en Pennsylvanie, est une auteure-compositrice-interprète et actrice américaine."),
-    ("The Strokes", "The_Strokes_2019.jpg", "The Strokes est un groupe de rock américain, originaire de New York. Formé en 1998, il est composé de Julian Casablancas, Nick Valensi, Albert Hammond Jr., Nikolai Fraiture et Fabrizio Moretti."),
-    ("The White Stripes", "The_White_Stripes.jpg", "The White Stripes est un groupe de rock américain, originaire de Détroit, dans le Michigan. Il est formé en 1997 par le guitariste et chanteur Jack White et la batteuse Meg White.")
-    ("16 Horsepower", "16_Horsepower.jpg", "16 Horsepower est un groupe de rock alternatif américain, originaire de Denver, dans le Colorado. Il est formé en 1992 par David Eugene Edwards, Jean-Yves Tola et Keven Soll."),
-    ("A Perfect Circle", "A_Perfect_Circle_2018.jpg", "A Perfect Circle est un groupe de rock alternatif américain, originaire de Los Angeles, en Californie. Il est formé en 1999 par le guitariste Billy Howerdel et le chanteur Maynard James Keenan."),
-    ("AC/DC", "ACDC.jpg", "AC/DC est un groupe de hard rock australo-britannique, originaire de Sydney. Il est formé en 1973 par les frères Angus et Malcolm Young."),
-    ("Aerosmith", "Aerosmith_2019.jpg", "Aerosmith est un groupe de hard rock américain, originaire de Boston, dans le Massachusetts. Il est formé en 1970 par Steven Tyler, Joe Perry, Tom Hamilton, Joey Kramer et Ray Tabano."),
-    ("Alice in Chains", "Alice_in_Chains_2013.jpg", "Alice in Chains est un groupe de rock américain, originaire de Seattle, dans l'État de Washington. Il est formé en 1987 par le chanteur Layne Staley et le guitariste Jerry Cantrell."),
-    ("The Beatles", "The_Beatles_in_America.jpg", "The Beatles est un groupe de rock britannique, originaire de Liverpool, en Angleterre. Il est formé en 1960 et composé de John Lennon, Paul McCartney, George Harrison et Ringo Starr."),
-    ("The Rolling Stones", "The_Rolling_Stones_2016.jpg", "The Rolling Stones est un groupe de rock britannique, originaire de Londres, en Angleterre. Il est formé en 1962 par le guitariste et leader original Brian Jones, le pianiste Ian Stewart, le chanteur Mick Jagger et le guitariste Keith Richards."),
-    ("Joan Benz", "Joan_Baez.jpg", "Joan Baez, née le 9 janvier 1941 à Staten Island, New York, est une auteure-compositrice-interprète, musicienne et militante américaine."),
-    ("Bob Dylan", "Bob_Dylan_-_Azkena_Rock_Festival_2010_2.jpg", "Bob Dylan, né Robert Allen Zimmerman le 24 mai 1941 à Duluth, dans le Minnesota, est un auteur-compositeur-interprète, musicien, peintre et poète américain."),
-    ("Neil Young", "Neil_Young_2012.jpg", "Neil Young, né le 12 novembre 1945 à Toronto, en Ontario, est un auteur-compositeur-interprète et musicien canadien."),
-    ("The Doors", "The_Doors_1967.jpg", "The Doors est un groupe de rock américain, originaire de Los Angeles, en Californie. Il est formé en 1965 par Jim Morrison, Ray Manzarek, Robby Krieger et John Densmore."),
-    ("The Velvet Underground", "The_Velvet_Underground.jpg", "The Velvet Underground est un groupe de rock américain, originaire de New York. Il est formé en 1964 par Lou Reed, Sterling Morrison, John Cale et Angus MacLise."),
-    ("The Who", "The_Who_1975.jpg", "The Who est un groupe de rock britannique, originaire de Londres, en Angleterre. Il est formé en 1964 par Roger Daltrey, Pete Townshend, John Entwistle et Keith Moon."),
-    ("The Yardbirds", "The_Yardbirds_1966.jpg", "The Yardbirds est un groupe de rock britannique, originaire de Londres, en Angleterre. Il est formé en 1963 par Keith Relf, Paul Samwell-Smith, Chris Dreja, Jim McCarty et Anthony Topham."),
-    ("The Kinks", "The_Kinks_1965.jpg", "The Kinks est un groupe de rock britannique, originaire de Londres, en Angleterre. Il est formé en 1964 par Ray Davies, Dave Davies, Pete Quaife et Mick Avory.");
+INSERT INTO GROUPE (id_groupe, nom_groupe, image_groupe, decription_groupe) VALUES
+    (1, "Alabama Shakes", "Alabama_Shakes.jpg", "Alabama Shakes est un groupe de rock américain, originaire d'Athens, en Alabama. Il est formé en 2009 et composé de Brittany Howard, Zac Cockrell, Heath Fogg et Steve Johnson."),
+    (2, "Ryan Adams", "Ryan_Adams_2014.jpg", "Ryan Adams, né David Ryan Adams le 5 novembre 1974 à Jacksonville, en Caroline du Nord, est un auteur-compositeur-interprète, musicien, producteur, poète et peintre américain."),
+    (3, "Taylor Swift", "Taylor_Swift_2019_by_Glenn_Francis.jpg", "Taylor Alison Swift, née le 13 décembre 1989 à Reading, en Pennsylvanie, est une auteure-compositrice-interprète et actrice américaine."),
+    (4, "The Strokes", "The_Strokes_2019.jpg", "The Strokes est un groupe de rock américain, originaire de New York. Formé en 1998, il est composé de Julian Casablancas, Nick Valensi, Albert Hammond Jr., Nikolai Fraiture et Fabrizio Moretti."),
+    (5, "The White Stripes", "The_White_Stripes.jpg", "The White Stripes est un groupe de rock américain, originaire de Détroit, dans le Michigan. Il est formé en 1997 par le guitariste et chanteur Jack White et la batteuse Meg White."),
+    (6, "16 Horsepower", "16_Horsepower.jpg", "16 Horsepower est un groupe de rock alternatif américain, originaire de Denver, dans le Colorado. Il est formé en 1992 par David Eugene Edwards, Jean-Yves Tola et Keven Soll."),
+    (7, "A Perfect Circle", "A_Perfect_Circle_2018.jpg", "A Perfect Circle est un groupe de rock alternatif américain, originaire de Los Angeles, en Californie. Il est formé en 1999 par le guitariste Billy Howerdel et le chanteur Maynard James Keenan."),
+    (8, "AC/DC", "ACDC.jpg", "AC/DC est un groupe de hard rock australo-britannique, originaire de Sydney. Il est formé en 1973 par les frères Angus et Malcolm Young."),
+    (9, "Aerosmith", "Aerosmith_2019.jpg", "Aerosmith est un groupe de hard rock américain, originaire de Boston, dans le Massachusetts. Il est formé en 1970 par Steven Tyler, Joe Perry, Tom Hamilton, Joey Kramer et Ray Tabano."),
+    (10, "Alice in Chains", "Alice_in_Chains_2013.jpg", "Alice in Chains est un groupe de rock américain, originaire de Seattle, dans l'État de Washington. Il est formé en 1987 par le chanteur Layne Staley et le guitariste Jerry Cantrell."),
+    (11, "The Beatles", "The_Beatles_in_America.jpg", "The Beatles est un groupe de rock britannique, originaire de Liverpool, en Angleterre. Il est formé en 1960 et composé de John Lennon, Paul McCartney, George Harrison et Ringo Starr."),
+    (12, "The Rolling Stones", "The_Rolling_Stones_2016.jpg", "The Rolling Stones est un groupe de rock britannique, originaire de Londres, en Angleterre. Il est formé en 1962 par le guitariste et leader original Brian Jones, le pianiste Ian Stewart, le chanteur Mick Jagger et le guitariste Keith Richards."),
+    (13, "Joan Benz", "Joan_Baez.jpg", "Joan Baez, née le 9 janvier 1941 à Staten Island, New York, est une auteure-compositrice-interprète, musicienne et militante américaine."),
+    (14, "Bob Dylan", "Bob_Dylan_-_Azkena_Rock_Festival_2010_2.jpg", "Bob Dylan, né Robert Allen Zimmerman le 24 mai 1941 à Duluth, dans le Minnesota, est un auteur-compositeur-interprète, musicien, peintre et poète américain."),
+    (15, "Neil Young", "Neil_Young_2012.jpg", "Neil Young, né le 12 novembre 1945 à Toronto, en Ontario, est un auteur-compositeur-interprète et musicien canadien."),
+    (16, "The Doors", "The_Doors_1967.jpg", "The Doors est un groupe de rock américain, originaire de Los Angeles, en Californie. Il est formé en 1965 par Jim Morrison, Ray Manzarek, Robby Krieger et John Densmore."),
+    (17, "The Velvet Underground", "The_Velvet_Underground.jpg", "The Velvet Underground est un groupe de rock américain, originaire de New York. Il est formé en 1964 par Lou Reed, Sterling Morrison, John Cale et Angus MacLise."),
+    (18, "The Who", "The_Who_1975.jpg", "The Who est un groupe de rock britannique, originaire de Londres, en Angleterre. Il est formé en 1964 par Roger Daltrey, Pete Townshend, John Entwistle et Keith Moon."),
+    (19, "The Yardbirds", "The_Yardbirds_1966.jpg", "The Yardbirds est un groupe de rock britannique, originaire de Londres, en Angleterre. Il est formé en 1963 par Keith Relf, Paul Samwell-Smith, Chris Dreja, Jim McCarty et Anthony Topham."),
+    (20, "The Kinks", "The_Kinks_1965.jpg", "The Kinks est un groupe de rock britannique, originaire de Londres, en Angleterre. Il est formé en 1964 par Ray Davies, Dave Davies, Pete Quaife et Mick Avory.");
 
-INSERT INTO ALBUM (titre, image_album, id_album, dateSortie) VALUES
-    ("Sound & Color", "220px-Alabama_Shakes_-_Sound_%26_Color_album_cover.jpg", 1, "17/04/2017"),
-    ("Dark Chords on a Big Guitar", "220px-DarkChords.jpg", 2, "27/09/2003"),
-    ("Folklore", "220px-Folklore_hp.jpg", 3, "18/05/2010"),
-    ("Love Is Hell", "220px-Love_Is_Hell.jpg", 4, "15/04/2003"),
-    ("Orion", "220px-Ryan-adams-orion.jpg", 5, "18/05/2010");
+INSERT INTO ALBUM (id_album, titre, image_album, id_groupe, dateSortie) VALUES
+    (1, "Sound & Color", "220px-Alabama_Shakes_-_Sound_%26_Color_album_cover.jpg", 1, "17/04/2017"),
+    (2, "Dark Chords on a Big Guitar", "220px-DarkChords.jpg", 13, "27/09/2003"),
+    (3, "Folklore", "220px-Folklore_hp.jpg", 3, "18/05/2010"),
+    (4, "Love Is Hell", "220px-Love_Is_Hell.jpg", 2, "15/04/2003"),
+    (5, "Orion", "220px-Ryan-adams-orion.jpg", 2, "18/05/2010");
 
 INSERT INTO ARTISTE (pseudo_artiste, image_artiste) VALUES
     ("Brittany Howard", "Brittany_Howard.jpg"),
@@ -135,8 +135,8 @@ INSERT INTO ROLE (nom_role) VALUES
 
 INSERT INTO UTILISATEUR (id_utilisateur, login_utilisateur, password_utilisateur, nom_utilisateur, prenom_utilisateur, ddn_utilisateur, email_utilisateur, image_utilisateur, id_role) VALUES
     (1, "admin", "$2y$10$07/0jlGYYSSwcRV0cdtw8.pUNM9SJniFA6slOgNtNBQ5UX5NJoeaC", "admin", "admin", "1990-01-01", "administrateur@phposong.com", NULL, 2),
-    (2, "Pixa253lulu", "$2y$10$j2k4KQI8QDnikv6T7Mc7YeZpFNu0ERntS9/9s6/xbE0aGw8KrSKNu", "Ludmann", "Dorian", "dorianludm7@gmail.com", NULL, 1),
-    (3, "LutinTag", "$2y$10$IYDDKNrDaeYmVNLpQNWpLu/ETu9xCo4h03mRbMqaeO.Sx.KOlE1Qa", "Massuard", "Charles", "lutintagpro@youtube.com", NULL, 1);
+    (2, "Pixa253lulu", "$2y$10$j2k4KQI8QDnikv6T7Mc7YeZpFNu0ERntS9/9s6/xbE0aGw8KrSKNu", "Ludmann", "Dorian", "dorianludm7@gmail.com", "2005-19-12", NULL, 1),
+    (3, "LutinTag", "$2y$10$IYDDKNrDaeYmVNLpQNWpLu/ETu9xCo4h03mRbMqaeO.Sx.KOlE1Qa", "Massuard", "Charles", "lutintagpro@youtube.com", "2004-14-06", NULL, 1);
 
 INSERT INTO ALBUM_NOTE (id_album, id_utilisateur, note) VALUES 
     (1, 2, 3),
