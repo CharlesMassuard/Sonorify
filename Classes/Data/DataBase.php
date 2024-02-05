@@ -3,8 +3,15 @@
     class DataBase{
         private $file_db;
         public function __construct(){
-            $this->file_db=new \PDO('sqlite:Data/PHPOSONG.sqlite');
+            $dbPath = __DIR__ . '/PHPOSONG.sqlite';
+            $isNewDb = !file_exists($dbPath);
+        
+            $this->file_db = new \PDO('sqlite:'.$dbPath);
             $this->file_db->setAttribute(\PDO::ATTR_ERRMODE,\PDO::ERRMODE_WARNING);
+        
+            if ($isNewDb) {
+                $this->createTable();
+            }
         }
         public function createTable(){
             $this->file_db->exec("CREATE TABLE IF NOT EXISTS GROUPE ( 
@@ -18,7 +25,7 @@
                 image_album TEXT,
                 id_groupe INTEGER,
                 dateSortie DATE,
-                FOREIGN KEY (id_artiste) REFERENCES ARTISTE(id_artiste))");
+                FOREIGN KEY (id_groupe) REFERENCES GROUPE(id_groupe))");
             $this->file_db->exec("CREATE TABLE IF NOT EXISTS ARTISTE ( 
                 id_artiste INTEGER PRIMARY KEY AUTOINCREMENT,
                 pseudo_artiste TEXT,
