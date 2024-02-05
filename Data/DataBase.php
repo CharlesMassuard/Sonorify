@@ -116,6 +116,13 @@
                 PRIMARY KEY (id_groupe, id_utilisateur),
                 FOREIGN KEY (id_groupe) REFERENCES GROUPE(id_groupe),
                 FOREIGN KEY (id_utilisateur) REFERENCES UTILISATEUR(id_utilisateur))");
+            $this->file_db->exec("CREATE TABLE IF NOT EXISTS MUSIQUE_HISTORIQUE (
+                id_musique INTEGER,
+                id_utilisateur INTEGER,
+                date_lecture DATE,
+                PRIMARY KEY (id_musique, id_utilisateur, date_lecture),
+                FOREIGN KEY (id_musique) REFERENCES MUSIQUE(id_musique),
+                FOREIGN KEY (id_utilisateur) REFERENCES UTILISATEUR(id_utilisateur))");
         }
         public function getAlbums(){
             $albums = $this->file_db->query('SELECT * from ALBUM');
