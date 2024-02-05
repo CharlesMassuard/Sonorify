@@ -55,84 +55,12 @@ Autoloader::register();
                 echo '<p class="infos_supp">Note : '.$note .'</p>';
                 echo '</a>';
             }
-            foreach ($playlists as $playlist) {
-                echo '<a href= "playlist.php?id='.$playlist['id_playlist'].'">';
-                $image = $data->getMusiquesAlbumsByPlaylist($playlist['id_playlist'])['image_album'] ?? 'default.jpg';
-                echo '<img src="./ressources/images/'.$image.'">';
-                echo '<h3>'.$playlist['nom_playlist'].'</h3>';
-                echo '<p class="infos_supp">'.$playlist['description_playlist'].'</p>';
-                $statut = $playlist['public'] ? "Publique" : "Privée";
-                echo '<p class="infos_supp">'.$statut.'</p>';
-                $note = $playlist['moyenne_note'] ?? "0";
-                echo '<p class="infos_supp">Note : '.$note .'</p>';
-                echo '</a>';
-            }
-            foreach ($playlists as $playlist) {
-                echo '<a href= "playlist.php?id='.$playlist['id_playlist'].'">';
-                $image = $data->getMusiquesAlbumsByPlaylist($playlist['id_playlist'])['image_album'] ?? 'default.jpg';
-                echo '<img src="./ressources/images/'.$image.'">';
-                echo '<h3>'.$playlist['nom_playlist'].'</h3>';
-                echo '<p class="infos_supp">'.$playlist['description_playlist'].'</p>';
-                $statut = $playlist['public'] ? "Publique" : "Privée";
-                echo '<p class="infos_supp">'.$statut.'</p>';
-                $note = $playlist['moyenne_note'] ?? "0";
-                echo '<p class="infos_supp">Note : '.$note .'</p>';
-                echo '</a>';
-            }
             ?>
         </div>
         <div id="playlists_favoris" class="sections_accueil">
             <h2>Vos Playlists favorites :</h2>
             <?php 
             $playlists = $data->getPlaylistsFavorisByUser($_SESSION['user']['id_utilisateur']);
-            foreach ($playlists as $playlist) {
-                echo '<a href= "playlist.php?id='.$playlist['id_playlist'].'">';
-                $image = $data->getMusiquesAlbumsByPlaylist($playlist['id_playlist'])['image_album'] ?? 'default.jpg';
-                echo '<img src="./ressources/images/'.$image.'">';
-                echo '<h3>'.$playlist['nom_playlist'].'</h3>';
-                echo '<p class="infos_supp">'.$playlist['description_playlist'].'</p>';
-                echo '</a>';
-            }
-            foreach ($playlists as $playlist) {
-                echo '<a href= "playlist.php?id='.$playlist['id_playlist'].'">';
-                $image = $data->getMusiquesAlbumsByPlaylist($playlist['id_playlist'])['image_album'] ?? 'default.jpg';
-                echo '<img src="./ressources/images/'.$image.'">';
-                echo '<h3>'.$playlist['nom_playlist'].'</h3>';
-                echo '<p class="infos_supp">'.$playlist['description_playlist'].'</p>';
-                echo '</a>';
-            }
-            foreach ($playlists as $playlist) {
-                echo '<a href= "playlist.php?id='.$playlist['id_playlist'].'">';
-                $image = $data->getMusiquesAlbumsByPlaylist($playlist['id_playlist'])['image_album'] ?? 'default.jpg';
-                echo '<img src="./ressources/images/'.$image.'">';
-                echo '<h3>'.$playlist['nom_playlist'].'</h3>';
-                echo '<p class="infos_supp">'.$playlist['description_playlist'].'</p>';
-                echo '</a>';
-            }
-            foreach ($playlists as $playlist) {
-                echo '<a href= "playlist.php?id='.$playlist['id_playlist'].'">';
-                $image = $data->getMusiquesAlbumsByPlaylist($playlist['id_playlist'])['image_album'] ?? 'default.jpg';
-                echo '<img src="./ressources/images/'.$image.'">';
-                echo '<h3>'.$playlist['nom_playlist'].'</h3>';
-                echo '<p class="infos_supp">'.$playlist['description_playlist'].'</p>';
-                echo '</a>';
-            }
-            foreach ($playlists as $playlist) {
-                echo '<a href= "playlist.php?id='.$playlist['id_playlist'].'">';
-                $image = $data->getMusiquesAlbumsByPlaylist($playlist['id_playlist'])['image_album'] ?? 'default.jpg';
-                echo '<img src="./ressources/images/'.$image.'">';
-                echo '<h3>'.$playlist['nom_playlist'].'</h3>';
-                echo '<p class="infos_supp">'.$playlist['description_playlist'].'</p>';
-                echo '</a>';
-            }
-            foreach ($playlists as $playlist) {
-                echo '<a href= "playlist.php?id='.$playlist['id_playlist'].'">';
-                $image = $data->getMusiquesAlbumsByPlaylist($playlist['id_playlist'])['image_album'] ?? 'default.jpg';
-                echo '<img src="./ressources/images/'.$image.'">';
-                echo '<h3>'.$playlist['nom_playlist'].'</h3>';
-                echo '<p class="infos_supp">'.$playlist['description_playlist'].'</p>';
-                echo '</a>';
-            }
             foreach ($playlists as $playlist) {
                 echo '<a href= "playlist.php?id='.$playlist['id_playlist'].'">';
                 $image = $data->getMusiquesAlbumsByPlaylist($playlist['id_playlist'])['image_album'] ?? 'default.jpg';
