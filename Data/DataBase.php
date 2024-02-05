@@ -23,12 +23,6 @@
                 id_artiste INTEGER PRIMARY KEY AUTOINCREMENT,
                 pseudo_artiste TEXT,
                 image_artiste TEXT)");
-            $this->file_db->exec("CREATE TABLE IF NOT EXISTS ALBUM_ARTISTE (
-                id_album INTEGER,
-                id_artiste INTEGER,
-                PRIMARY KEY (id_album, id_artiste),
-                FOREIGN KEY (id_album) REFERENCES ALBUM(id_album),
-                FOREIGN KEY (id_artiste) REFERENCES ARTISTE(id_artiste))");
             $this->file_db->exec("CREATE TABLE IF NOT EXISTS GROUPE_ARTISTE (
                 id_groupe INTEGER,
                 id_artiste INTEGER,
