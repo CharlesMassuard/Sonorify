@@ -139,16 +139,16 @@ INSERT INTO UTILISATEUR (id_utilisateur, login_utilisateur, password_utilisateur
     (3, "LutinTag", "2y$10$IYDDKNrDaeYmVNLpQNWpLu/ETu9xCo4h03mRbMqaeO.Sx.KOlE1Qa", "Massuard", "Charles", "lutintagpro@youtube.com", NULL, 1);
 
 INSERT INTO ALBUM_NOTE (id_album, id_utilisateur, note) VALUES 
-    (1, 2, 8), -- User 2 rates album 1 with a score of 8
-    (1, 3, 7), -- User 3 rates album 1 with a score of 7
-    (2, 2, 9), -- User 2 rates album 2 with a score of 9
-    (2, 3, 8), -- User 3 rates album 2 with a score of 8
-    (3, 2, 7), -- User 2 rates album 3 with a score of 7
-    (3, 3, 8), -- User 3 rates album 3 with a score of 8
-    (4, 2, 8), -- User 2 rates album 4 with a score of 8
-    (4, 3, 7), -- User 3 rates album 4 with a score of 7
-    (5, 2, 9), -- User 2 rates album 5 with a score of 9
-    (5, 3, 8); -- User 3 rates album 5 with a score of 8
+    (1, 2, 3),
+    (1, 3, 4),
+    (2, 2, 5),
+    (2, 3, 5),
+    (3, 2, 4),
+    (3, 3, 2),
+    (4, 2, 1),
+    (4, 3, 2),
+    (5, 2, 3),
+    (5, 3, 5);
 
 INSERT INTO GENRE_SIMILAIRE (id_genre, id_genre_similaire) VALUES 
     (1, 2), -- Rock is similar to Pop
