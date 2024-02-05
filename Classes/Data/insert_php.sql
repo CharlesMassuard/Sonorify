@@ -1,4 +1,4 @@
-INSERT INTO GROUPE (id_groupe, nom_groupe, image_groupe, decription_groupe) VALUES
+INSERT INTO GROUPE (id_groupe, nom_groupe, image_groupe, description_groupe) VALUES
     (1, "Alabama Shakes", "Alabama_Shakes.jpg", "Alabama Shakes est un groupe de rock américain, originaire d'Athens, en Alabama. Il est formé en 2009 et composé de Brittany Howard, Zac Cockrell, Heath Fogg et Steve Johnson."),
     (2, "Ryan Adams", "Ryan_Adams_2014.jpg", "Ryan Adams, né David Ryan Adams le 5 novembre 1974 à Jacksonville, en Caroline du Nord, est un auteur-compositeur-interprète, musicien, producteur, poète et peintre américain."),
     (3, "Taylor Swift", "Taylor_Swift_2019_by_Glenn_Francis.jpg", "Taylor Alison Swift, née le 13 décembre 1989 à Reading, en Pennsylvanie, est une auteure-compositrice-interprète et actrice américaine."),
