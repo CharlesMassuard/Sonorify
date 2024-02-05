@@ -9,6 +9,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user = $userStatement->fetch(PDO::FETCH_ASSOC);
     if ($user !== false) {
         $_SESSION['user'] = $user;
+        if (isset($_SESSION['redirect_to'])) {
+            $redirect_url = $_SESSION['redirect_to'];
+            unset($_SESSION['redirect_to']);
+            header('Location: ' . $redirect_url);
+        }
         header('Location: index.php');
     }
     else {

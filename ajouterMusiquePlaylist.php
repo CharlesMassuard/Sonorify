@@ -4,9 +4,11 @@
         header('Location: login.php');
     }
     $id_playlist = $_GET['id'] ?? 1;
-    $id_utilisateur = $_SESSION['user']['id_utilisateur'] ?? 1;
-    require_once 'Data/DataBase.php'; 
+    require_once 'Data/DataBase.php';
     $data = new Data\DataBase();
-    $userStatement = $data->insertFavorisPlaylist($id_playlist, $id_utilisateur);
+    $nom_musique = $_POST['nom_musique'] ?? 'AA';
+    $musique = $data->getMusiqueByName($nom_musique);
+    $id_musique = $musique['id_musique'];
+    $userStatement = $data->insertMusiquePlaylist($id_musique, $id_playlist);
     header('Location: playlist.php?id='.$id_playlist);
 ?>
