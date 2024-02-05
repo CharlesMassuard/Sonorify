@@ -144,7 +144,14 @@
             $playlist = $this->file_db->query('SELECT * from PLAYLIST');
             return $playlist->fetchAll();
         }
-      
+        public function getMusiqueRecente(){
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE order by date_ajout desc');
+            return $musiques->fetchAll();
+        }
+        public function getMusiqueRecemmentEcoutee(){
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join MUSIQUE_HISTORIQUE order by date_lecture desc');
+            return $musiques->fetchAll();
+        }
         public function getGroupes(){
             return $this->file_db->query('SELECT * from GROUPE');
         }
