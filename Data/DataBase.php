@@ -23,12 +23,6 @@
                 id_artiste INTEGER PRIMARY KEY AUTOINCREMENT,
                 pseudo_artiste TEXT,
                 image_artiste TEXT)");
-            $this->file_db->exec("CREATE TABLE IF NOT EXISTS ALBUM_ARTISTE (
-                id_album INTEGER,
-                id_artiste INTEGER,
-                PRIMARY KEY (id_album, id_artiste),
-                FOREIGN KEY (id_album) REFERENCES ALBUM(id_album),
-                FOREIGN KEY (id_artiste) REFERENCES ARTISTE(id_artiste))");
             $this->file_db->exec("CREATE TABLE IF NOT EXISTS GROUPE_ARTISTE (
                 id_groupe INTEGER,
                 id_artiste INTEGER,
@@ -115,6 +109,13 @@
                 id_utilisateur INTEGER,
                 PRIMARY KEY (id_groupe, id_utilisateur),
                 FOREIGN KEY (id_groupe) REFERENCES GROUPE(id_groupe),
+                FOREIGN KEY (id_utilisateur) REFERENCES UTILISATEUR(id_utilisateur))");
+            $this->file_db->exec("CREATE TABLE IF NOT EXISTS MUSIQUE_HISTORIQUE (
+                id_musique INTEGER,
+                id_utilisateur INTEGER,
+                date_lecture DATE,
+                PRIMARY KEY (id_musique, id_utilisateur, date_lecture),
+                FOREIGN KEY (id_musique) REFERENCES MUSIQUE(id_musique),
                 FOREIGN KEY (id_utilisateur) REFERENCES UTILISATEUR(id_utilisateur))");
         }
         public function getAlbums(){
