@@ -16,8 +16,11 @@
     <script src="./static/js/playlist.js" defer></script>
 </head>
 <body>
-    <?php include 'header.php'; ?>
+    <?php include 'aside.php'; ?>
+    <?php include 'bigPlayer.php'; ?>
+    <?php include 'player.php'; ?>
     <main>
+        <?php include 'header.php'; ?>
         <h1>Playlist</h1>
         <div id="playlist">
             <h2><?php echo "Nom : " . $playlist['nom_playlist'] ?></h2>

@@ -1,29 +1,35 @@
+var detailsSection = document.getElementById('detailsSection');
+
 window.addEventListener('scroll', function() {
     let searchContainer = document.getElementById('search');
-    let header = document.querySelector('header');
+    let header = document.getElementById('trueHeader');
     let searchContainerTop = searchContainer.getBoundingClientRect().top;
+    header.style.transition = 'background-color 0.2s ease, border-bottom 0.3s ease';
   
     if (window.pageYOffset > searchContainerTop) {
-        header.style.backgroundColor = 'rgba(0, 0, 0, 1)';
         header.style.borderBottom = '1px solid rgba(61, 61, 61, 0.8)';
     } else {
-        header.style.backgroundColor = 'rgba(0, 0, 0, 0)';
-        header.style.borderBottom = '1px solid rgba(61, 61, 61, 0)';
+        if(detailsSection.style.display === 'none' || detailsSection.style.display === ''){
+            header.style.borderBottom = '1px solid rgba(61, 61, 61, 0)';
+        }
     }
   });
 
 // BARRE DE RECHERCHE
+var searchBar = document.getElementById('search');
 document.addEventListener('DOMContentLoaded', function() {
     console.log(document.querySelector("#search"));
     var stock = [];
-    document.querySelector("#search").addEventListener('input', function(e) {
+    searchBar.addEventListener('input', function(e) {
         if (e.target.value == "" || e.target.value.length < 3 ) {
+            searchBar.style.borderRadius = "10px";
             let searchResult = document.querySelector("#search_result");
             while (searchResult.firstChild) {
                 searchResult.removeChild(searchResult.firstChild);
             }
             return;
         } else {
+            searchBar.style.borderRadius = "10px 10px 0px 0px ";
             fetch('rechercheData.php', {
                 method: 'POST',
                 headers: {
