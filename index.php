@@ -32,10 +32,36 @@ Autoloader::register();
                 if (!isset($_SESSION['user'])) {
                     echo '<h1> Bienvenue </h1>';
                 } else {
-                    echo '<h1> Bienvenue, '.$_SESSION['user']['prenom_utilisateur'].'</h1>';
+                    echo '<h1> Bienvenue '.$_SESSION['user']['prenom_utilisateur'].',</h1>';
                 }
             ?>
         </div>
+        
+        <?php
+            if (!isset($_SESSION['user'])) {
+                echo '<div id="musiques">';
+                echo '<h2>Musiques</h2>';
+                $musiques = $data->getMusiqueRecente();
+                foreach ($musiques as $musique) {
+                    echo '<a href= "">';
+                    echo '<h3>'.$musique['titre'].'</h3>';
+                    echo '<p class="infos_supp">'.$data->getNomGroupe($musique['id_groupe'])['nom_groupe'].'</p>';
+                    echo '</a>';
+                }
+                echo '</div>';
+            } else {
+                echo '<div id="musiques">';
+                echo '<h2>Vos Musiques Récentes</h2>';
+                $musiques = $data->getMusiqueRecemmentEcoutee();
+                foreach ($musiques as $musique) {
+                    echo '<a href= "">';
+                    echo '<h3>'.$musique['titre'].'</h3>';
+                    echo '<p class="infos_supp">'.$data->getNomGroupe($musique['id_groupe'])['nom_groupe'].'</p>';
+                    echo '</a>';
+                }
+                echo '</div>';
+            }
+        ?>
         <div id="playlist" class="sections_accueil">
             <h2>Playlists</h2>
             <?php 
