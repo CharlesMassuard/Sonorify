@@ -16,7 +16,7 @@
                 id_album INTEGER PRIMARY KEY AUTOINCREMENT,
                 titre TEXT,
                 image_album TEXT,
-                id_artiste INTEGER,
+                id_groupe INTEGER,
                 dateSortie DATE,
                 FOREIGN KEY (id_artiste) REFERENCES ARTISTE(id_artiste))");
             $this->file_db->exec("CREATE TABLE IF NOT EXISTS ARTISTE ( 
@@ -37,7 +37,10 @@
                 FOREIGN KEY (id_artiste) REFERENCES ARTISTE(id_artiste))");
             $this->file_db->exec("CREATE TABLE IF NOT EXISTS GENRE (
                 id_genre INTEGER PRIMARY KEY AUTOINCREMENT,
-                nom_genre TEXT)");
+                nom_genre TEXT UNIQUE)");
+            $this->file_db->exec("CREATE TABLE IF NOT EXISTS ROLE (
+                id_role INTEGER PRIMARY KEY AUTOINCREMENT,
+                nom_role TEXT UNIQUE)");
             $this->file_db->exec("CREATE TABLE IF NOT EXISTS UTILISATEUR ( 
                 id_utilisateur INTEGER PRIMARY KEY AUTOINCREMENT,
                 login_utilisateur TEXT,
@@ -45,7 +48,10 @@
                 nom_utilisateur TEXT,
                 prenom_utilisateur TEXT,
                 ddn_utilisateur DATE,
-                email_utilisateur TEXT)");
+                email_utilisateur TEXT,
+                image_utilisateur TEXT,
+                id_role INTEGER,
+                FOREIGN KEY (id_role) REFERENCES ROLE(id_role))");
             $this->file_db->exec("CREATE TABLE IF NOT EXISTS ALBUM_NOTE (
                 id_album INTEGER,
                 id_utilisateur INTEGER,
@@ -97,6 +103,12 @@
                 id_utilisateur INTEGER,
                 PRIMARY KEY (id_playlist, id_utilisateur),
                 FOREIGN KEY (id_playlist) REFERENCES PLAYLIST(id_playlist),
+                FOREIGN KEY (id_utilisateur) REFERENCES UTILISATEUR(id_utilisateur))");
+            $this->file_db->exec("CREATE TABLE IF NOT EXISTS MUSIQUE_FAVORIS (
+                id_musique INTEGER,
+                id_utilisateur INTEGER,
+                PRIMARY KEY (id_musique, id_utilisateur),
+                FOREIGN KEY (id_musique) REFERENCES MUSIQUE(id_musique),
                 FOREIGN KEY (id_utilisateur) REFERENCES UTILISATEUR(id_utilisateur))");
             $this->file_db->exec("CREATE TABLE IF NOT EXISTS GROUPE_FAVORIS (
                 id_groupe INTEGER,
