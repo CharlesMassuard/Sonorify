@@ -1,10 +1,15 @@
-<?php 
+<?php
+
+use Encrypteur;
+
 session_start();
 require_once 'Data/DataBase.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $data = new Data\DataBase();
     $login = $_POST['identifiant'];
     $mdp = $_POST['mdp'];
+    $mdp = Encrypteur::encrypt($mdp);
+    unset($_POST['mdp']);
     $userStatement = $data->getUser($login, $mdp);
     $user = $userStatement->fetch(PDO::FETCH_ASSOC);
     if ($user !== false) {
