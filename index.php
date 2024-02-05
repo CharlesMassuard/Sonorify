@@ -47,7 +47,7 @@ Autoloader::register();
                 $musiques = $data->getMusiqueRecente();
                 foreach ($musiques as $musique) {
                     echo '<a href= "">';
-                    echo '<h3>'.$musique['titre'].'</h3>';
+                    echo '<h3>'.$musique['nom_musique'].'</h3>';
                     echo '<p class="infos_supp">'.$data->getNomGroupe($musique['id_groupe'])['nom_groupe'].'</p>';
                     echo '</a>';
                 }
