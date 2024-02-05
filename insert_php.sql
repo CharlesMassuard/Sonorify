@@ -134,9 +134,9 @@ INSERT INTO ROLE (nom_role) VALUES
     ("Administrateur");
 
 INSERT INTO UTILISATEUR (id_utilisateur, login_utilisateur, password_utilisateur, nom_utilisateur, prenom_utilisateur, ddn_utilisateur, email_utilisateur, image_utilisateur, id_role) VALUES
-    (1, "admin", "2y$10$07/0jlGYYSSwcRV0cdtw8.pUNM9SJniFA6slOgNtNBQ5UX5NJoeaC", "admin", "admin", "1990-01-01", "administrateur@phposong.com", NULL, 2),
-    (2, "Pixa253lulu", "2y$10$j2k4KQI8QDnikv6T7Mc7YeZpFNu0ERntS9/9s6/xbE0aGw8KrSKNu", "Ludmann", "Dorian", "dorianludm7@gmail.com", NULL, 1),
-    (3, "LutinTag", "2y$10$IYDDKNrDaeYmVNLpQNWpLu/ETu9xCo4h03mRbMqaeO.Sx.KOlE1Qa", "Massuard", "Charles", "lutintagpro@youtube.com", NULL, 1);
+    (1, "admin", "$2y$10$07/0jlGYYSSwcRV0cdtw8.pUNM9SJniFA6slOgNtNBQ5UX5NJoeaC", "admin", "admin", "1990-01-01", "administrateur@phposong.com", NULL, 2),
+    (2, "Pixa253lulu", "$2y$10$j2k4KQI8QDnikv6T7Mc7YeZpFNu0ERntS9/9s6/xbE0aGw8KrSKNu", "Ludmann", "Dorian", "dorianludm7@gmail.com", NULL, 1),
+    (3, "LutinTag", "$2y$10$IYDDKNrDaeYmVNLpQNWpLu/ETu9xCo4h03mRbMqaeO.Sx.KOlE1Qa", "Massuard", "Charles", "lutintagpro@youtube.com", NULL, 1);
 
 INSERT INTO ALBUM_NOTE (id_album, id_utilisateur, note) VALUES 
     (1, 2, 3),
