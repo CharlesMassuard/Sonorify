@@ -1,8 +1,38 @@
-body{
-    background: linear-gradient(to bottom right, rgb(0, 139, 219), 0.5%, black);
-    margin: 10px;
+:root {
+  --mouse-x: 50%;
+  --mouse-y: 50%;
 }
-div{
+
+body {
+    margin: 0;
+    height: 100vh;
+    max-width: 99%;
+    background-color: black;
+    background-position: center center;
+    background-size: cover;
+    position: relative;
+    padding-top: 50px;
+}
+
+/* #circle {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background-color: rgba(14, 108, 118, 0.75);
+    border-radius: 100%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    filter: blur(50px);
+    transition: top 0.05s, left 0.05s;
+} */
+  
+main {
+    width: 100%;
+    height: 100vh;
+    font-family: 'Luminari', sans-serif;
+}
+
+.sections_accueil{
     border-radius: 10px;
     padding: 10px;
     margin: 10px;
@@ -10,16 +40,37 @@ div{
     flex-wrap: wrap;
     overflow: auto;
     white-space: nowrap;
+    margin-bottom: 60px;
+}
+.infos_supp{
+    flex-basis: 100%;
+    margin-top: -20px;
+    color: rgb(96, 96, 96);
+    font-size: 18px;
+    font-weight: bold;
+}
+h1{
+    flex-basis: 100%;
+    margin: 20px;
+    color: white;
+    font-size: 50px;
 }
 h2{
     flex-basis: 100%;
     margin: 20px;
     color: white;
+    font-size: 40px;
 }
-a{
+h3{
+    flex-basis: 100%;
+    color: white;
+    font-size: 25px;
+}
+
+.a_accueil{
     text-decoration: none;
     color: white;
-    background-color: rgba(50, 50, 50);
+    background-color: transparent;
     display: flex;
     flex-direction: column;
     margin: 20px;
@@ -28,49 +79,7 @@ a{
     font-size: auto;
     flex-shrink: 0;
 }
-#search{
-    margin: 20px;
-    padding: 10px;
-    width: 80%;
-    background-color: rgba(50, 50, 50);
-    color: white;
-    border: none;
-    border-radius: 10px;
-}
-#search:focus{
-    outline: none;
-}
-#search::placeholder{
-    color: white;
-}
-#search_result{
-    display: flex;
-    flex-wrap: wrap;
-    overflow: none;
-    white-space: none;
-    margin-left: 20px;
-    margin-right: 20px;
-}
-#search_result>a{
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    flex-basis: 60%;
-    flex-grow: 1;
-    margin: 0px;
-    font-size: auto;
-}
-#search_result a:hover{
-    background-color: rgba(80, 50, 50);
-}
-#search_result img{
-    margin: 0px;
-    height: 75px;
-    width: auto;
-}
-#search_result p{
-    margin: 0px;
-    margin-left: 10px;
-    font-size: auto;
-    align-self: center;
+.a_accueil:hover{
+    transform: scale(1.02);
+    opacity: 0.9;
 }

@@ -206,6 +206,10 @@
             $groupe = $this->file_db->query('SELECT * from GROUPE where id_groupe='.$id);
             return $groupe->fetch();
         }
+        public function getNomGroupe($id){
+            $groupe = $this->file_db->query('SELECT nom_groupe from GROUPE where id_groupe='.$id);
+            return $groupe->fetch();
+        }
         public function getUtilisateur($id){
             $utilisateur = $this->file_db->query('SELECT * from UTILISATEUR where id_utilisateur='.$id);
             return $utilisateur->fetch();

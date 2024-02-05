@@ -10,10 +10,15 @@
 <html>
 <head>
     <title>PHP'oSong</title>
-    <link rel="stylesheet" href="./static/css/playlist.css">
+    <link rel="stylesheet" href="./static/css/header.css">
+    <!-- <link rel="stylesheet" href="./static/css/playlist.css"> -->
 </head>
 <body>
+    <?php include 'aside.php'; ?>
+    <?php include 'bigPlayer.php'; ?>
+    <?php include 'player.php'; ?>
     <main>
+        <?php include 'header.php'; ?>
         <h1>Playlist</h1>
         <div id="playlist">
             <h2><?php echo "Nom : " . $playlist['nom_playlist'] ?></h2>
@@ -21,7 +26,7 @@
             <p>
             <?php 
                 if ($playlist['public']){
-                    echo "Public";
+                    echo "Publique";
                 } else {
                     echo "Privée";
                 } ?></p>

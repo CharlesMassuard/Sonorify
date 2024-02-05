@@ -1,0 +1,105 @@
+body {
+    margin: 0;
+    height: 100vh;
+    max-width: 85%;
+    background-color: black;
+    background-position: center center;
+    background-size: cover;
+    position: relative;
+    padding-top: 50px;
+    font-family: 'Luminari', sans-serif;
+    color: white;
+}
+header{
+    position: fixed;
+    top: 0;
+    padding: 20px;
+    width: 100vw;
+    height: 30px;
+    z-index: 9999;
+    border-bottom:  solid rgba(61, 61, 61, 0); 
+}   
+#trueHeader{
+    background-color: black;
+    border-bottom:  solid rgba(61, 61, 61, 0); 
+}
+main{
+    margin-left: 100px;
+}
+#search-container {
+    position: absolute;
+    width: 80%;
+}
+#search{
+    margin: 0;
+    padding: 10px;
+    width: 50%;
+    background-color: rgba(117, 117, 117, 0.4);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding-left: 60px;
+}
+#my-icon {
+    color: white; /* Change the color to whatever you want */
+    position: absolute;
+    top: 50%;
+    left: 25px;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+#search:focus{
+    outline: none;
+}
+#search::placeholder{
+    color: white;
+}
+#search_result{
+    margin-top: 35px;
+    background-color: rgb(20, 20, 20);
+    display: flex;
+    flex-wrap: wrap;
+    overflow: none;
+    white-space: none;
+    border-radius: 0px 0px 10px 10px;;
+    width: 44.5%;
+}
+#search_result>a{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    flex-basis: 60%;
+    flex-grow: 1;
+    margin: 0px;
+    font-size: auto;
+}
+#search_result a:hover{
+    background-color:rgb(80, 80, 80);
+    transform: scale(1.0);
+}
+#search_result img{
+    margin: 0px;
+    height: 35px;
+    width: auto;
+}
+#search_result p{
+    margin: 0px;
+    margin-left: 12px;
+    font-size: auto;
+    align-self: center;
+}
+a{
+    text-decoration: none;
+    color: white;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    padding: 10px;
+    width: 11%; 
+    font-size: auto;
+    flex-shrink: 0;
+}
+a{
+    opacity: 0.9;
+}

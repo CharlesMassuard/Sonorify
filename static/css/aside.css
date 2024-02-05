@@ -1,0 +1,145 @@
+aside {
+    position: fixed; /* Fixe l'élément à une position spécifique */
+    left: 0; /* Positionne l'élément à gauche de l'écran */
+    top: 0; /* Positionne l'élément en haut de l'écran */
+    height: calc(100% - 90px); /* Fait en sorte que l'élément prenne toute la hauteur de l'écran */
+    width: 100px; /* Définit la largeur de l'élément */
+    overflow-y: auto; /* Ajoute une barre de défilement si le contenu dépasse la hauteur */
+    background-color: black;
+    border-right: solid rgba(61, 61, 61, 0.8);
+    border-width: 1px;
+    display: flex; /* Utilise le modèle de boîte flexible */
+    z-index: 9999;
+}
+
+#logo{
+    position: relative;
+    height: 45px;
+    width: auto;
+    margin-top: -5px;
+    margin-left: 15px;
+    z-index: 9999;
+    opacity: 0;
+}
+
+#menu__toggle {
+    opacity: 0;
+}
+
+#menu__toggle:checked + .menu__btn > span {
+    transform: rotate(45deg);
+}
+
+#menu__toggle:checked + .menu__btn > span::before {
+    top: 0;
+    transform: rotate(0deg);
+}
+
+#menu__toggle:checked + .menu__btn > span::after {
+    top: 0;
+    transform: rotate(90deg);
+}
+
+#menu__toggle:checked ~ .menu__box p{
+    left: 85px;
+    max-width: 10px;
+}
+
+.menu__btn {
+    position: fixed;
+    top: 35px;
+    left: 35px;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.menu__btn > span,
+.menu__btn > span::before,
+.menu__btn > span::after {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    transition-duration: 0.2s;
+}
+
+.menu__btn > span::before {
+    content: '';
+    top: -8px;
+}
+
+.menu__btn > span::after {
+    content: '';
+    top: 8px;
+}
+    
+.menu__box {
+    /* display: block;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 200px;
+    height: 100%;
+    margin: 0;
+    padding: 80px 0; */
+    list-style: none;
+    /* background-color: #000000;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
+    transition-duration: 0.2s; */
+}
+
+.menu__box p{
+    display: block;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 200px;
+    height: 100%;
+    margin: 0;
+    padding: 80px 0;
+    list-style: none;
+    background-color: #000000;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
+    transition-duration: 0.2s;
+    font-size: 20px;
+    font-weight: bold;
+    float: left;
+}
+
+.menu__item {
+    display: block;
+    margin-left: -35px; 
+    /* padding: 12px 24px; */
+    color: white;
+    font-family: 'Luminari', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    background-color: transparent;
+    flex-direction: column;
+    padding: 10px;
+    /* transition-duration: 0.2s; */
+
+}
+
+.menu__item:hover {
+    opacity: 0.8;
+}
+
+.menu__text {
+    display: none; /* Masquer initialement le texte du menu */
+    margin-left: 10px; /* Ajouter une marge à gauche pour le texte du menu */
+}
+
+#menu__toggle:checked ~ .menu__box .menu__text {
+    display: inline-block; /* Afficher le texte du menu lorsque le bouton est activé */
+}
+.menu__item:hover{
+    transform: scale(1.02);
+    opacity: 0.9;
+}
+
+
