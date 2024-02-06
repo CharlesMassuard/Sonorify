@@ -42,7 +42,7 @@ $data = new DataBase();
         
         <?php
             if (!isset($_SESSION['user'])) {
-                echo '<div id="musiques">';
+                echo '<div id="musiques" class="sections_accueil">';
                 echo '<h2>Musiques</h2>';
                 $musiques = $data->getMusiqueRecente();
                 foreach ($musiques as $musique) {
@@ -53,7 +53,7 @@ $data = new DataBase();
                 }
                 echo '</div>';
             } else {
-                echo '<div id="musiques">';
+                echo '<div id="musiques" class="sections_accueil">';
                 echo '<h2>Vos Musiques Récentes</h2>';
                 $musiques = $data->getMusiqueRecemmentEcoutee();
                 foreach ($musiques as $musique) {

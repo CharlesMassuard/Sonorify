@@ -62,9 +62,11 @@ h2{
     font-size: 40px;
 }
 h3{
+    max-width: 1px;
     flex-basis: 100%;
     color: white;
     font-size: 25px;
+    word-wrap: break-word;
 }
 
 .a_accueil{
