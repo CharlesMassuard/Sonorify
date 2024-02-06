@@ -1,11 +1,7 @@
-import { loadFichier } from './audioVisualizer.js';
-import { playVisualize } from './audioVisualizer.js';
-
 var sound = new Howl({
-    src: ["https://audio.jukehost.co.uk/RJZlOinQcXyxi48c9eKKmiZavmIdQhqi.mp3"] // utilisation de l'hebergeur Opendrive.com
+    src: ["https://audio.jukehost.co.uk/2BNwH5heGwPsQ3lOHhMfgBA9Pm5mAxow"],
+    format: ['mp3'],
 });
-
-loadFichier(sound);
 
 var searchBar = document.getElementById('search');
 var progressBar = document.getElementById('progressBar');
@@ -128,10 +124,20 @@ function play() {
     }
 }
 
+function changeVolume(volume){
+    sound.volume(volume);
+    if(volume == 0) {
+        volumeButtonI.textContent = 'volume_mute';
+    } else if (volume > 0 && volume < 0.5) {
+        volumeButtonI.textContent = 'volume_down';
+    } else {
+        volumeButtonI.textContent = 'volume_up';
+    }
+}
+
 // Événement pour lire la musique
 playButton.addEventListener('click', function () {
     play();
-    playVisualize()
 });
 
 volumeButton.addEventListener('mouseenter', function() {
@@ -197,17 +203,6 @@ progressBar.addEventListener('click', function(e) {
     sound.seek(sound.duration() * clickPositionInPercentage);
     updateProgressBar(); // Mettre à jour la barre de progression après le déplacement
 });
-
-function changeVolume(volume){
-    sound.volume(volume);
-    if(volume == 0) {
-        volumeButtonI.textContent = 'volume_mute';
-    } else if (volume > 0 && volume < 0.5) {
-        volumeButtonI.textContent = 'volume_down';
-    } else {
-        volumeButtonI.textContent = 'volume_up';
-    }
-}
 
 function toggleSection() {
     var section = document.getElementById('detailsSection');

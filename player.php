@@ -2,10 +2,14 @@
 <html>
 <head>
     <link rel="stylesheet" href="./static/css/player.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script type="module" src="./static/js/player.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/84/three.min.js'></script>
+    <script src='https://cdn.rawgit.com/mrdoob/three.js/master/examples/js/controls/OrbitControls.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.3/dat.gui.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.3.0/simplex-noise.min.js'></script>
 </head>
+<?php include 'audioVisualizer.php'; ?>
 <div id="customPlayer">
     <div id="progressBar">
         <div id="progress">
@@ -38,4 +42,5 @@
     <!-- <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="1"> -->
     </div>
 </div>
+<script src="./static/js/player.js"></script>
 </html>
