@@ -7,7 +7,6 @@
     $playlist = $data->getPlaylist($id_playlist);
     $musiques = $data->getMusiquesPlaylist($id_playlist);
 ?>
-<!doctype>
 <html>
 <head>
     <title>PHP'oSong</title>

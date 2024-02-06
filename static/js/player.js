@@ -1,7 +1,11 @@
-// Sélection des éléments HTML
+import { loadFichier } from './audioVisualizer.js';
+import { playVisualize } from './audioVisualizer.js';
+
 var sound = new Howl({
-    src: ["https://od.lk/s/ODFfNzcxMzg3MDFf/38%20Finale.mp3"] // utilisation de l'hebergeur Opendrive.com
+    src: ["https://audio.jukehost.co.uk/RJZlOinQcXyxi48c9eKKmiZavmIdQhqi.mp3"] // utilisation de l'hebergeur Opendrive.com
 });
+
+loadFichier(sound);
 
 var searchBar = document.getElementById('search');
 var progressBar = document.getElementById('progressBar');
@@ -34,7 +38,7 @@ var currentVolume;
 
 
 // METTRE EN PAUSE AVEC SPACE BAR
-isUserTyping = false;
+var isUserTyping = false;
 
 searchBar.addEventListener('input', function() {
     isUserTyping = true;
@@ -127,6 +131,7 @@ function play() {
 // Événement pour lire la musique
 playButton.addEventListener('click', function () {
     play();
+    playVisualize()
 });
 
 volumeButton.addEventListener('mouseenter', function() {

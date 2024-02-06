@@ -3,7 +3,7 @@
 <head>
     <link rel="stylesheet" href="./static/css/player.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="./static/js/player.js" defer></script>
+    <script type="module" src="./static/js/player.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
 </head>
 <div id="customPlayer">
