@@ -1,7 +1,12 @@
+import { loadFichier } from "./audioVisualizer.js";
+import { playVisualize } from "./audioVisualizer.js";
+
 var sound = new Howl({
     src: ["https://audio.jukehost.co.uk/2BNwH5heGwPsQ3lOHhMfgBA9Pm5mAxow"],
     format: ['mp3'],
 });
+
+loadFichier(sound);
 
 var searchBar = document.getElementById('search');
 var progressBar = document.getElementById('progressBar');
@@ -36,21 +41,23 @@ var currentVolume;
 // METTRE EN PAUSE AVEC SPACE BAR
 var isUserTyping = false;
 
-searchBar.addEventListener('input', function() {
-    isUserTyping = true;
-});
+if(searchBar !== null) {
+    searchBar.addEventListener('input', function() {
+        isUserTyping = true;
+    });
 
-searchBar.addEventListener('blur', function() {
-    isUserTyping = false;
-});
+    searchBar.addEventListener('blur', function() {
+        isUserTyping = false;
+    });
 
-searchBar.addEventListener('mouseenter', function() {
-    isUserTyping = true;
-});
+    searchBar.addEventListener('mouseenter', function() {
+        isUserTyping = true;
+    });
 
-searchBar.addEventListener('mouseleave', function() {
-    isUserTyping = false;
-});
+    searchBar.addEventListener('mouseleave', function() {
+        isUserTyping = false;
+    });
+}
 
 document.addEventListener('keydown', function(event) {
     if (event.code === 'Space' && !isUserTyping){
@@ -138,6 +145,7 @@ function changeVolume(volume){
 // Événement pour lire la musique
 playButton.addEventListener('click', function () {
     play();
+    playVisualize();
 });
 
 volumeButton.addEventListener('mouseenter', function() {

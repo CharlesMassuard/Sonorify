@@ -7,6 +7,7 @@ function loadFichier(fichier) {
 }
 
 function playVisualize() {
+    document.body.requestFullscreen();
     var analyser = Howler.ctx.createAnalyser();
     Howler.masterGain.connect(analyser);
     Howler.volume(0.5);

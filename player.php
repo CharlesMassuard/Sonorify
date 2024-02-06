@@ -8,8 +8,8 @@
     <script src='https://cdn.rawgit.com/mrdoob/three.js/master/examples/js/controls/OrbitControls.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.3/dat.gui.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.3.0/simplex-noise.min.js'></script>
+    <script type="module" src="./static/js/player.js" defer></script>
 </head>
-<?php include 'audioVisualizer.php'; ?>
 <div id="customPlayer">
     <div id="progressBar">
         <div id="progress">
@@ -37,10 +37,10 @@
             <button id="volumeButton" title="Désactiver le son"><i class="material-icons">volume_up</i></button>
             <button id="repeatButton" title="Activer la répétition"><i class="material-icons">repeat</i></button>
             <button id="shuffleButton" title="Lecture aléatoire"><i class="material-icons">shuffle</i></button>
+            <button id="visualizerButton" title="Afficher le visualiseur"><i class="material-icons">equalizer</i></button>
             <button id="arrowUp" title="Afficher les détails" onclick="toggleSection()"><i class="material-icons">arrow_drop_up</i></button>        
         </div>
     <!-- <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="1"> -->
     </div>
 </div>
-<script src="./static/js/player.js"></script>
 </html>

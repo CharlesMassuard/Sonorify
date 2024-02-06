@@ -8,12 +8,15 @@
   <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
 </head>
 <body>
-    <?php include 'header.php'; ?>
-    <?php include 'aside.php'; ?>
+    <?php include 'player.php'; ?>
         <div id="content">
             <div id="out"></div>
         </div>
         <!-- partial -->
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/84/three.min.js'></script>
+        <script src='https://cdn.rawgit.com/mrdoob/three.js/master/examples/js/controls/OrbitControls.js'></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.3/dat.gui.min.js'></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.3.0/simplex-noise.min.js'></script>
         <script  type="module" src="./static/js/audioVisualizer.js"></script>
 </body>
 </html>
