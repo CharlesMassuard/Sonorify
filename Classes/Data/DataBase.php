@@ -19,7 +19,7 @@
                 id_groupe INTEGER PRIMARY KEY AUTOINCREMENT,
                 nom_groupe TEXT,
                 image_groupe TEXT,
-                decription_groupe TEXT)");
+                description_groupe TEXT)");
             $this->file_db->exec("CREATE TABLE IF NOT EXISTS ALBUM ( 
                 id_album INTEGER PRIMARY KEY AUTOINCREMENT,
                 titre TEXT,
