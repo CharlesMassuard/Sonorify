@@ -38,13 +38,13 @@ let timeoutId;
 var in_play = false;
 var isMute = false;
 var currentVolume;
+var currentTrackIndex = 0;
 
 var in_play = false;
 var repeat = 0;
 var pause = false;
 
 function playPlaylist() {
-    var currentTrackIndex = 0;
 
     // Fonction récursive pour jouer la playlist
     function playNextTrack() {
@@ -52,7 +52,6 @@ function playPlaylist() {
         if (sound) {
             sound.unload();
         }
-    
         if (currentTrackIndex < playlist.length) {
             sound = new Howl({
                 src: [playlist[currentTrackIndex]],
@@ -65,7 +64,7 @@ function playPlaylist() {
                     playNextTrack(); // Appeler la fonction pour jouer la piste suivante
                 }
             });
-            play();
+            play(true);
             sound.on('play', function () {
                 setInterval(updateProgressBar, 100);
             });
@@ -73,6 +72,11 @@ function playPlaylist() {
             if(repeat == 1) {
                 currentTrackIndex = 0;
                 playNextTrack();
+            } else {
+                currentTrackIndex = 0;
+                play();
+                in_play = false;
+                pause = false;
             }
         }
     }
@@ -125,13 +129,6 @@ function updateProgressBar() {
     var totalTime = formatTime(sound.duration());
 
     currentTimeDisplay.textContent = currentTime + ' / ' + totalTime;
-
-    if (currentTime == totalTime) {
-        if (!sound.loop()) {
-            in_play = false;
-            buttonIconPlay.textContent = 'play_arrow';
-        }
-    }
 }
 
 progressBar.addEventListener('mouseenter', function () {
@@ -164,26 +161,35 @@ function pad(number) {
     return (number < 10 ? '0' : '') + number;
 }
 
-function play() {
-    if (!in_play && !pause) {
+function play(suite_playlist = false) {
+    if(!suite_playlist) {
+        if (!in_play && !pause) {
+            sound.play();
+            loadFichier(sound);
+            playVisualize();
+            in_play = true;
+            buttonIconPlay.textContent = 'pause';
+            buttonIconPlay.setAttribute('title', 'Pause');
+        } else if(pause){
+            pause = false;
+            sound.play();
+            in_play = true;
+            buttonIconPlay.textContent = 'pause';
+            buttonIconPlay.setAttribute('title', 'Pause');
+        } else{
+            pause = true;
+            sound.pause();
+            in_play = false;
+            buttonIconPlay.textContent = 'play_arrow';
+            buttonIconPlay.setAttribute('title', 'Lire');
+        }
+    } else {
         sound.play();
         loadFichier(sound);
         playVisualize();
         in_play = true;
         buttonIconPlay.textContent = 'pause';
         buttonIconPlay.setAttribute('title', 'Pause');
-    } else if(pause){
-        pause = false;
-        sound.play();
-        in_play = true;
-        buttonIconPlay.textContent = 'pause';
-        buttonIconPlay.setAttribute('title', 'Pause');
-    } else{
-        pause = true;
-        sound.pause();
-        in_play = false;
-        buttonIconPlay.textContent = 'play_arrow';
-        buttonIconPlay.setAttribute('title', 'Lire');
     }
 }
 

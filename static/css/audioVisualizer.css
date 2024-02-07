@@ -15,4 +15,5 @@
     position: relative;
     background-color: black;
     color: white;
+    overflow: hidden;
   }
