@@ -9,7 +9,6 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.3/dat.gui.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.3.0/simplex-noise.min.js'></script>
     <script type="module" src="./static/js/player.js" defer></script>
-    <script src="./static/js/playerNotModule.js" defer></script>
 </head>
 <?php include 'audioVisualizer.php';?>
 <div id="customPlayer">

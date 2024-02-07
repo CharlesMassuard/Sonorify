@@ -126,6 +126,8 @@ function updateProgressBar() {
     var percentage = (sound.seek() / sound.duration()) * 100;
     progress.style.width = percentage + '%';
 
+    circle_progress.style.left = (percentage-0.2) + '%';
+
     // Convertir le temps de lecture en format HH:MM:SS
     currentTime = formatTime(sound.seek());
     var totalTime = formatTime(sound.duration());
