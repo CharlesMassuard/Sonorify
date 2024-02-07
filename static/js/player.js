@@ -231,6 +231,14 @@ repeatButton.addEventListener('click', function () {
 
 aleatoireButton.addEventListener('click', function () {
     aleatoireButtonI.classList.toggle('rotate'); // Ajoute ou supprime la classe 'rotate'
+    var currentMusic = playlist[currentTrackIndex];
+    do{
+        playlist.sort(function () {
+            return 0.5 - Math.random();
+        });
+    } while(playlist[1] != currentMusic);
+    currentTrackIndex = 0;
+    console.log(playlist);
 });
 
 arrowUp.addEventListener('click', function () {
