@@ -84,7 +84,7 @@ Autoloader::register();
             <?php 
             $albums = $data->getAlbums();
             foreach ($albums as $album) {
-                echo '<a class="a_accueil" href= "">';
+                echo '<a class="a_accueil" href= "album.php?id='.$album['id_album'].'">';
                 echo '<img src="./ressources/images/'.$album['image_album'].'">';
                 echo '<h3>'.$album['titre'].'</h3>';
                 echo '<p class="infos_supp">'.$data->getNomGroupe($album['id_groupe'])['nom_groupe'].'</p>';
