@@ -20,11 +20,6 @@ $data = new DataBase();
     <script src="./static/js/index.js" defer></script>
     <script src="./static/js/accueil.js" defer></script>
 </head>
-<?php 
-    if ($_SESSION['user'] == null) {
-        header('Location: login.php');
-    }
-?>
 <body>
     <?php include 'aside.php'; ?>
     <?php include 'bigPlayer.php'; ?>
