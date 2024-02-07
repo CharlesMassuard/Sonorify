@@ -2,7 +2,7 @@
 <?php 
     session_start();
     $id_playlist = $_GET['id'] ?? 1;
-    require_once 'Data/DataBase.php';
+    require_once 'Classes/Data/DataBase.php';
     $data = new Data\DataBase();
     $playlist = $data->getPlaylist($id_playlist);
     $musiques = $data->getMusiquesPlaylist($id_playlist);
