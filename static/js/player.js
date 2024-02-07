@@ -44,6 +44,8 @@ var in_play = false;
 var repeat = 0;
 var pause = false;
 
+var currentTime;
+
 function playPlaylist() {
 
     // Fonction récursive pour jouer la playlist
@@ -125,7 +127,7 @@ function updateProgressBar() {
     progress.style.width = percentage + '%';
 
     // Convertir le temps de lecture en format HH:MM:SS
-    var currentTime = formatTime(sound.seek());
+    currentTime = formatTime(sound.seek());
     var totalTime = formatTime(sound.duration());
 
     currentTimeDisplay.textContent = currentTime + ' / ' + totalTime;
@@ -326,4 +328,30 @@ arrowUp.addEventListener('click', function () {
 
 visualizerButton.addEventListener('click', function () {
     window.location.href = "../../audioVisualizer.php";
+});
+
+previousButton.addEventListener('click', function () {
+    if(currentTime <= "00:05"){
+        pause = false;
+        in_play = false;
+        if(currentTrackIndex == 0) {
+            currentTrackIndex = playlist.length - 1;
+        } else {
+            currentTrackIndex--;
+        }
+        playPlaylist();
+    } else {
+        sound.seek(0);
+    }
+});
+
+nextButton.addEventListener('click', function () {
+    pause = false;
+    in_play = false;
+    if(currentTrackIndex == playlist.length - 1) {
+        currentTrackIndex = 0;
+    } else {
+        currentTrackIndex++;
+    }
+    playPlaylist();
 });
