@@ -1,17 +1,16 @@
 var noise = new SimplexNoise();
 
 var audio;
+var analyser;
 
 function loadFichier(fichier) {
     audio = fichier;
+    analyser = Howler.ctx.createAnalyser();
 }
 
 function playVisualize() {
     // document.body.requestFullscreen();
-    var analyser = Howler.ctx.createAnalyser();
     Howler.masterGain.connect(analyser);
-    Howler.volume(0.5);
-    analyser.connect(Howler.ctx.destination);
     analyser.fftSize = 512;
     var bufferLength = analyser.frequencyBinCount;
     var dataArray = new Uint8Array(bufferLength);

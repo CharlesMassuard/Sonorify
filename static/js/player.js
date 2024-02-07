@@ -5,6 +5,7 @@ var sound;
 var playlist = [
     "https://audio.jukehost.co.uk/2BNwH5heGwPsQ3lOHhMfgBA9Pm5mAxow",
     "https://audio.jukehost.co.uk/RJZlOinQcXyxi48c9eKKmiZavmIdQhqi",
+    "https://audio.jukehost.co.uk/RfYql1AahtejVIK4vl8iRLZ4SSln3huB",
 ];
 
 var searchBar = document.getElementById('search');
@@ -47,6 +48,11 @@ function playPlaylist() {
 
     // Fonction récursive pour jouer la playlist
     function playNextTrack() {
+        // Libérer les ressources de la piste audio précédente
+        if (sound) {
+            sound.unload();
+        }
+    
         if (currentTrackIndex < playlist.length) {
             sound = new Howl({
                 src: [playlist[currentTrackIndex]],
@@ -70,12 +76,13 @@ function playPlaylist() {
             }
         }
     }
+    
 
     // Commencer la lecture de la playlist
     playNextTrack();
 }
 
-// METTRE EN PAUSE AVEC SPACE BAR
+
 var isUserTyping = false;
 
 if (searchBar !== null) {
@@ -96,10 +103,15 @@ if (searchBar !== null) {
     });
 }
 
+// METTRE EN PAUSE AVEC SPACE BAR
 document.addEventListener('keydown', function (event) {
     if (event.code === 'Space' && !isUserTyping) {
         event.preventDefault();
-        play();
+        if(in_play || pause) {
+            play();
+        } else {
+            playPlaylist();
+        }
     }
 });
 
