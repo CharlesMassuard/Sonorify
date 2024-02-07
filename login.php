@@ -1,11 +1,13 @@
 <?php
+require 'Classes/Autoloader.php';
+Autoloader::register();
 
-use Encrypteur;
-
+use Data\Encrypteur;
+use Data\DataBase;
 session_start();
-require_once 'Data/DataBase.php';
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $data = new Data\DataBase();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST"){
+    $data = new DataBase();
     $login = $_POST['identifiant'];
     $mdp = $_POST['mdp'];
     $mdp = Encrypteur::encrypt($mdp);
