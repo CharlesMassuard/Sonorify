@@ -46,7 +46,7 @@ $data = new DataBase();
                 echo '<h2>Musiques</h2>';
                 $musiques = $data->getMusiqueRecente();
                 foreach ($musiques as $musique) {
-                    echo '<a href= "">';
+                    echo '<a class="a_accueil" href= "">';
                     echo '<h3>'.$musique['nom_musique'].'</h3>';
                     echo '<p class="infos_supp">'.$data->getNomGroupe($musique['id_groupe'])['nom_groupe'].'</p>';
                     echo '</a>';
@@ -57,7 +57,7 @@ $data = new DataBase();
                 echo '<h2>Vos Musiques Récentes</h2>';
                 $musiques = $data->getMusiqueRecemmentEcoutee();
                 foreach ($musiques as $musique) {
-                    echo '<a href= "">';
+                    echo '<a class="a_accueil" href= "">';
                     echo '<h3>'.$musique['titre'].'</h3>';
                     echo '<p class="infos_supp">'.$data->getNomGroupe($musique['id_groupe'])['nom_groupe'].'</p>';
                     echo '</a>';
@@ -74,7 +74,6 @@ $data = new DataBase();
                 $image = $data->getMusiquesAlbumsByPlaylist($playlist['id_playlist'])['image_album'] ?? 'default.jpg';
                 echo '<img src="./ressources/images/'.$image.'">';
                 echo '<h3>'.$playlist['nom_playlist'].'</h3>';
-                echo '<p class="infos_supp">'.$playlist['description_playlist'].'</p>';
                 echo '</a>';
             }
             ?>
@@ -111,7 +110,6 @@ $data = new DataBase();
             foreach ($groupes as $groupe) {
                 echo '<a class="a_accueil" href= "">';
                 echo '<h3>'.$groupe['nom_groupe'].'</h3>';
-                echo '<p class="infos_supp">'.$groupe['description_groupe'].'</p>';
                 echo '</a>';
             }
             ?>
