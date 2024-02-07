@@ -21,8 +21,9 @@ var volumeButton = document.getElementById('volumeButton');
 var repeatButton = document.getElementById('repeatButton');
 var aleatoireButton = document.getElementById('shuffleButton');
 var progressVolume = document.getElementById('progressVolume');
-var sliderVolume = document.getElementById('sliderVolume');
+var sliderVolume = document.getElementById('volumeSlider');
 var arrowUp = document.getElementById('arrowUp');
+var visualizerButton = document.getElementById("visualizerButton");
 
 var currentTime = document.getElementById('currentTime');
 var circle_progress = document.getElementById('circle_progress');
@@ -31,6 +32,7 @@ var volumeButtonI = document.querySelector('#volumeButton i.material-icons');
 var repeatButtonI = document.querySelector('#repeatButton i.material-icons');
 var aleatoireButtonI = document.querySelector('#shuffleButton i.material-icons');
 var arrowUpI = document.querySelector('#arrowUp i.material-icons');
+var visualizerButtonI = document.querySelector('#visualizerButton i.material-icons');
 let timeoutId;
 var in_play = false;
 var isMute = false;
@@ -38,6 +40,7 @@ var currentVolume;
 
 var in_play = false;
 var repeat = 0;
+var pause = false;
 
 function playPlaylist() {
     var currentTrackIndex = 0;
@@ -51,20 +54,26 @@ function playPlaylist() {
             });
             // Définir l'événement onend seulement si sound est défini
             sound.on('end', function () {
-                currentTrackIndex++;
-                playNextTrack(); // Appeler la fonction pour jouer la piste suivante
+                if(repeat != 2) {
+                    currentTrackIndex++;
+                    playNextTrack(); // Appeler la fonction pour jouer la piste suivante
+                }
             });
             play();
             sound.on('play', function () {
                 setInterval(updateProgressBar, 100);
             });
+        } else {
+            if(repeat == 1) {
+                currentTrackIndex = 0;
+                playNextTrack();
+            }
         }
     }
 
     // Commencer la lecture de la playlist
     playNextTrack();
 }
-
 
 // METTRE EN PAUSE AVEC SPACE BAR
 var isUserTyping = false;
@@ -144,14 +153,21 @@ function pad(number) {
 }
 
 function play() {
-    if (!in_play) {
+    if (!in_play && !pause) {
         sound.play();
         loadFichier(sound);
         playVisualize();
         in_play = true;
         buttonIconPlay.textContent = 'pause';
         buttonIconPlay.setAttribute('title', 'Pause');
-    } else {
+    } else if(pause){
+        pause = false;
+        sound.play();
+        in_play = true;
+        buttonIconPlay.textContent = 'pause';
+        buttonIconPlay.setAttribute('title', 'Pause');
+    } else{
+        pause = true;
         sound.pause();
         in_play = false;
         buttonIconPlay.textContent = 'play_arrow';
@@ -161,7 +177,11 @@ function play() {
 
 // Événement pour lire la musique
 playButton.addEventListener('click', function () {
-    playPlaylist();
+    if(in_play || pause) {
+        play();
+    } else {
+        playPlaylist();
+    }
 });
 
 player.addEventListener('mouseleave', function () {
@@ -212,5 +232,80 @@ progressBar.addEventListener('click', function (e) {
 });
 
 
+var volumeButtonI = document.querySelector('#volumeButton i.material-icons');
+var volumeButton = document.getElementById('volumeButton');
 
+function toggleSection() {
+    var section = document.getElementById('detailsSection');
+    if (section.style.display === 'none' || section.style.display === '') {
+        showDetailsSection();
+    } else {
+        hideDetailsSection();
+    }
+}
 
+// Fonction pour afficher la section
+function showDetailsSection() {
+    var detailsSection = document.getElementById('detailsSection');
+    detailsSection.style.transition = 'transform 0.3s ease';
+    detailsSection.style.display = 'block'; // Afficher la section
+    header.style.borderBottom = '1px solid rgba(61, 61, 61, 0.8)';
+    setTimeout(function () {
+        detailsSection.style.transform = 'translateY(-100%)'; // Faire monter la section
+    }, 10); // Ajouter un petit délai pour assurer que la transition est appliquée correctement
+}
+
+// Fonction pour masquer la section
+function hideDetailsSection() {
+    var detailsSection = document.getElementById('detailsSection');
+    detailsSection.style.transition = 'transform 0.3s ease';
+    detailsSection.style.transform = 'translateY(0)'; // Faire descendre la section
+    setTimeout(function () {
+        detailsSection.style.display = 'none'; // Masquer la section après la transition
+    }, 300); // Attendre la fin de la transition avant de masquer la section
+}
+
+function changeVolume(volume){
+    sound.volume(volume);
+    if(volume == 0) {
+        volumeButtonI.textContent = 'volume_mute';
+    } else if (volume > 0 && volume < 0.5) {
+        volumeButtonI.textContent = 'volume_down';
+    } else {
+        volumeButtonI.textContent = 'volume_up';
+    }
+}
+
+volumeButton.addEventListener('mouseenter', function() {
+    progressVolume.style.transition = 'opacity 0.4s ease';
+    progressVolume.style.opacity = 1;
+});
+
+volumeButton.addEventListener('click', function() {
+    if(!isMute) {
+        isMute = true;
+        currentVolume = sound.volume();
+        sound.volume(0);
+        volumeButtonI.textContent = 'volume_off';
+        volumeButton.setAttribute('title', 'Activer le son');
+    } else{
+        isMute = false;
+        changeVolume(currentVolume);
+    }
+});
+
+sliderVolume.addEventListener('input', function () {
+    changeVolume(sliderVolume.value);
+});
+
+sliderVolume.addEventListener('change', function () {
+    changeVolume(sliderVolume.value);
+});
+
+arrowUp.addEventListener('click', function () {
+    toggleSection();
+});
+
+visualizerButton.addEventListener('click', function () {
+    window.location.href = "../../audioVisualizer.php";
+});

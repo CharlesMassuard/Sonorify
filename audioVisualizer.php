@@ -8,7 +8,6 @@
   <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
 </head>
 <body>
-    <?php include 'player.php'; ?>
         <div id="content">
             <div id="out"></div>
         </div>
