@@ -1,8 +1,10 @@
 INSERT INTO GROUPE (nom_groupe, image_groupe, description_groupe) VALUES
-    ("Adèle Castillon", "groupes_artistes/adele_castillon.jpg", "Adèle Castillon");
+    ("Adèle Castillon", "groupes_artistes/adele_castillon.jpg", "Adèle Castillon"),
+    ("Vidéoclub", "groupes_artistes/videoclub.png", "Vidéoclub");
 
 INSERT INTO ALBUM (titre, image_album, id_groupe, dateSortie) VALUES
-    ("Plaisir Risque Dépendance", "Cover/PRD.jpg", 1, "2021-01-01");
+    ("Plaisir Risque Dépendance", "Cover/PRD.jpg", 1, "20-10-2023"),
+    ("Euphories", "Cover/Euphories.jpg", 2, "29-01-2021");
 
 INSERT INTO ARTISTE (pseudo_artiste, image_artiste) VALUES
     ("Adèle Castillon", "groupes_artistes/adele_castillon.jpg");
@@ -71,5 +73,16 @@ INSERT INTO MUSIQUE (nom_musique, duree, id_groupe, id_album, id_genre, url_musi
     ("Promis", "3:02", 1, 1, 2, "https://audio.jukehost.co.uk/D22hiosnmAf9Zrdy4KFyfBIMHW2T9GIa"),
     ("Rêve", "3:09", 1, 1, 2, "https://audio.jukehost.co.uk/kvz9UZDkjNnjkDYyiR574V8w5eehJUGy"),
     ("Sensations", "2:42", 1, 1, 2, "https://audio.jukehost.co.uk/Ih7CEkrMhE5vmTehoHZfvcOXSco6w4p0"),
-    ("Souvenirs", "2:59", 1, 1, 2, "https://audio.jukehost.co.uk/XuXQljPdYR8YO0Za1nggCe8GL0eaq0m8");
+    ("Souvenirs", "2:59", 1, 1, 2, "https://audio.jukehost.co.uk/XuXQljPdYR8YO0Za1nggCe8GL0eaq0m8"),
+    ("808", "2:57", 2, 2, 2, "https://audio.jukehost.co.uk/Kv05SqT6wAKgCuB90TLAc3kj0muzFzKO"),
+    ("Amour Plastique", "3:45", 2, 2, 2, "https://audio.jukehost.co.uk/wVHxQCHmPouUT5P48UWQ7RAptb6qylpw"),
+    ("En nuit", "3:41", 2, 2, 2, "https://audio.jukehost.co.uk/OFv7K7OeD6Q3eTCSuKgmiEXXnh9U0r8v"),
+    ("Enfance 80", "3:40", 2, 2, 2, "https://audio.jukehost.co.uk/sHVvg00YUK6ulEPEdI32xC2hO8ILDWCL"),
+    ("Euphories", "3:29", 2, 2, 2, "https://audio.jukehost.co.uk/amtRaGfPH8uB4mQrIJZWis6aGZMH0cds"),
+    ("Mai", "3:35", 2, 2, 2, "https://audio.jukehost.co.uk/57AySJwqQvpGA3ULW9TzQG6N2Y59bVO9"),
+    ("Petit monde", "3:28", 2, 2, 2, "https://audio.jukehost.co.uk/knjlc0uY1V0F53Va2Cps1JOkNtwM7jg2"),
+    ("Polaroids", "3:07", 2, 2, 2, "https://audio.jukehost.co.uk/WCrxGpObXMiqHMiU8WSMyOvEcBd6bjNH"),
+    ("Roi", "3:42", 2, 2, 2, "https://audio.jukehost.co.uk/Po43nYEcNVJmlLt7bHlAI6b7dfCMnY1d"),
+    ("SMS", "3:52", 2, 2, 2, "https://audio.jukehost.co.uk/ICYVr0DucwhWFwmbY5XDs28DKGj9jolL"),
+    ("Suricate (ODZ)", "3:13", 2, 2, 2, "https://audio.jukehost.co.uk/aSFl3YhXmBCK0Y1ZL4WlHbO7eHn6RGVV");
 

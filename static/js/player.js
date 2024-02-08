@@ -81,8 +81,13 @@ export function playPlaylist() {
                     playNextTrack(); // Appeler la fonction pour jouer la piste suivante
                 }
             });
-            titlePage.textContent = playlistDetails[currentTrackIndex][0] + " - " + playlistDetails[currentTrackIndex][2];
-            title.textContent = playlistDetails[currentTrackIndex][0];
+            title = "Sonorify | "+playlistDetails[currentTrackIndex][0] + " - " + playlistDetails[currentTrackIndex][2] + " | ";
+            var counter = 0;
+
+            setInterval(function() {
+                document.title = title.substring(counter) + " " + title.substring(0, counter);
+                counter = (counter + 1) % title.length;
+            }, 500);
             cover.src = "../../ressources/images/"+playlistDetails[currentTrackIndex][1];
             artiste.textContent = playlistDetails[currentTrackIndex][2];
             album.textContent = playlistDetails[currentTrackIndex][3];
