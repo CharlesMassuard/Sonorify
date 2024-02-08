@@ -21,7 +21,7 @@ INSERT INTO GROUPE (id_groupe, nom_groupe, image_groupe, description_groupe) VAL
     (20, "The Kinks", "The_Kinks_1965.jpg", "The Kinks est un groupe de rock britannique, originaire de Londres, en Angleterre. Il est formé en 1964 par Ray Davies, Dave Davies, Pete Quaife et Mick Avory.");
 
 INSERT INTO ALBUM (id_album, titre, image_album, id_groupe, dateSortie) VALUES
-    (1, "Sound & Color", "220px-Alabama_Shakes_-_Sound_%26_Color_album_cover.jpg", 1, "17/04/2017"),
+    (1, "Sound & Color", "220px-Alabama_Shakes_Album_Cover.jpg", 1, "17/04/2017"),
     (2, "Dark Chords on a Big Guitar", "220px-DarkChords.jpg", 13, "27/09/2003"),
     (3, "Folklore", "220px-Folklore_hp.jpg", 3, "18/05/2010"),
     (4, "Love Is Hell", "220px-Love_Is_Hell.jpg", 2, "15/04/2003"),

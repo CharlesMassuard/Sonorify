@@ -275,6 +275,17 @@
             $groupes = $this->file_db->query('SELECT * from GROUPE natural join GROUPE_FAVORIS where id_utilisateur='.$id);
             return $groupes->fetchAll();
         }
+        public function insertUser($pseudo, $password, $nom, $prenom, $email, $ddn){
+            $insert="INSERT INTO UTILISATEUR (login_utilisateur, password_utilisateur, nom_utilisateur, prenom_utilisateur, email_utilisateur, ddn_utilisateur, id_role) VALUES (:pseudo, :pswd, :nom, :prenom, :email, :ddn, 1)";
+            $stmt=$this->file_db->prepare($insert);
+            $stmt->bindParam(':pseudo',$pseudo);
+            $stmt->bindParam(':pswd',$password);
+            $stmt->bindParam(':nom',$nom);
+            $stmt->bindParam(':prenom',$prenom);
+            $stmt->bindParam(':email',$email);
+            $stmt->bindParam(':ddn',$ddn);
+            $stmt->execute();
+        }
         public function insertFavorisPlaylist($id_playlist,$id_utilisateur){
             $insert="INSERT INTO PLAYLIST_FAVORIS (id_playlist, id_utilisateur) VALUES (:id_playlist, :id_utilisateur)";
             $stmt=$this->file_db->prepare($insert);
