@@ -35,7 +35,7 @@ $data = new DataBase();
                 if (!isset($_SESSION['user'])) {
                     echo '<h1> Bienvenue </h1>';
                 } else {
-                    echo '<h1> Bienvenue '.$_SESSION['user']['prenom_utilisateur'].',</h1>';
+                    echo '<h1> Bienvenue '.$_SESSION['user']['prenom_utilisateur'].'</h1>';
                 }
             ?>
         </div>
@@ -47,7 +47,9 @@ $data = new DataBase();
                 $musiques = $data->getMusiqueRecente();
                 foreach ($musiques as $musique) {
                     echo '<a class="a_accueil" href= "">';
+                    echo '<div class="a_content">';
                     echo '<h3>'.$musique['nom_musique'].'</h3>';
+                    echo '</div>';
                     echo '<p class="infos_supp">'.$data->getNomGroupe($musique['id_groupe'])['nom_groupe'].'</p>';
                     echo '</a>';
                 }
@@ -58,7 +60,9 @@ $data = new DataBase();
                 $musiques = $data->getMusiqueRecemmentEcoutee();
                 foreach ($musiques as $musique) {
                     echo '<a class="a_accueil" href= "">';
+                    echo '<div class="a_content">';
                     echo '<h3>'.$musique['titre'].'</h3>';
+                    echo '</div>';
                     echo '<p class="infos_supp">'.$data->getNomGroupe($musique['id_groupe'])['nom_groupe'].'</p>';
                     echo '</a>';
                 }
@@ -71,9 +75,11 @@ $data = new DataBase();
             $playlists = $data->getPlaylistsTrieesParNote();
             foreach ($playlists as $playlist) {
                 echo '<a class="a_accueil" href= "playlist.php?id='.$playlist['id_playlist'].'">';
+                echo '<div class="a_content">';
                 $image = $data->getMusiquesAlbumsByPlaylist($playlist['id_playlist'])['image_album'] ?? 'default.jpg';
                 echo '<img src="./ressources/images/'.$image.'">';
                 echo '<h3>'.$playlist['nom_playlist'].'</h3>';
+                echo '</div>';
                 echo '</a>';
             }
             ?>
@@ -83,12 +89,14 @@ $data = new DataBase();
             <?php 
             $albums = $data->getAlbums();
             foreach ($albums as $album) {
+
                 echo '<a class="a_accueil" href= "">';
+                echo '<div class="a_content">';
                 echo '<img src="./ressources/images/'.$album['image_album'].'">';
                 echo '<h3>'.$album['titre'].'</h3>';
+                echo '</div>';
                 echo '<p class="infos_supp">'.$data->getNomGroupe($album['id_groupe'])['nom_groupe'].'</p>';
                 echo '</a>';
-
             }
             ?>
         </div>
@@ -98,7 +106,9 @@ $data = new DataBase();
             $genres = $data->getGenres();
             foreach ($genres as $genre) {
                 echo '<a class="a_accueil" href= "">';
+                echo '<div class="a_content">';
                 echo '<h3>'.$genre['nom_genre'].'</h3>';
+                echo '</div>';
                 echo '</a>';
             }
             ?>
@@ -109,7 +119,9 @@ $data = new DataBase();
             $groupes = $data->getGroupes();
             foreach ($groupes as $groupe) {
                 echo '<a class="a_accueil" href= "">';
+                echo '<div class="a_content">';
                 echo '<h3>'.$groupe['nom_groupe'].'</h3>';
+                echo '</div>';
                 echo '</a>';
             }
             ?>
