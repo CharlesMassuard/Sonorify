@@ -5,7 +5,8 @@
 
 body {
     margin: 0;
-    height: 100vh;
+    height: 100%;
+    overflow-y: scroll;
     max-width: 99%;
     background-color: black;
     background-position: center center;
@@ -14,18 +15,6 @@ body {
     padding-top: 50px;
 }
 
-/* #circle {
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    background-color: rgba(14, 108, 118, 0.75);
-    border-radius: 100%;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    filter: blur(50px);
-    transition: top 0.05s, left 0.05s;
-} */
-  
 main {
     width: 100%;
     height: 100vh;
@@ -36,18 +25,23 @@ main {
     border-radius: 10px;
     padding: 10px;
     margin: 10px;
-    display: flex;
     flex-wrap: wrap;
-    overflow: auto;
-    white-space: nowrap;
     margin-bottom: 60px;
+    overflow-x: hidden;
+    white-space: nowrap;
+}
+.sections_accueil:hover{
+    overflow-x: auto;
 }
 .infos_supp{
     flex-basis: 100%;
-    margin-top: -20px;
+    margin-top: -15px;
     color: rgb(96, 96, 96);
     font-size: 18px;
-    font-weight: bold;
+    font-weight: 500;
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
 }
 h1{
     flex-basis: 100%;
@@ -61,25 +55,98 @@ h2{
     color: white;
     font-size: 40px;
 }
-h3{
-    flex-basis: 100%;
+h3 {
     color: white;
-    font-size: 25px;
+    font-size: 20px;
+    display: flex;
+    white-space: normal;
 }
+
 
 .a_accueil{
     text-decoration: none;
     color: white;
     background-color: transparent;
-    display: flex;
-    flex-direction: column;
+    display: inline-block;
     margin: 20px;
     padding: 10px;
     width: 11%; 
     font-size: auto;
-    flex-shrink: 0;
 }
 .a_accueil:hover{
     transform: scale(1.02);
     opacity: 0.9;
+}
+.a_accueil img{
+    width: 10vw;
+}
+
+#bottomPage{
+    padding-bottom: 80px;
+}
+
+/* Cible toutes les barres de défilement horizontales */
+::-webkit-scrollbar {
+    height: 5px; /* Ajustez à la hauteur désirée */
+}
+
+/* Couleur de fond de la barre de défilement */
+::-webkit-scrollbar-track:horizontal {
+    background: rgb(22, 22, 22);
+    border-radius: 10px;
+}
+
+/* Couleur de la poignée de la barre de défilement */
+::-webkit-scrollbar-thumb:horizontal {
+    background: #2e2e2e;; /* Ajustez à la couleur désirée */
+    border-radius: 10px;
+}
+
+/* Couleur de la poignée de la barre de défilement lors du survol */
+::-webkit-scrollbar-thumb:hover:horizontal {
+    background: #3f3f3f;; /* Ajustez à la couleur désirée */
+}
+
+/* Couleur de fond de la barre de défilement */
+::-webkit-scrollbar-track:vertical {
+    background: rgb(22, 22, 22);
+}
+
+/* Couleur de la poignée de la barre de défilement */
+::-webkit-scrollbar-thumb:vertical {
+    background: #2e2e2e; /* Ajustez à la couleur désirée */
+}
+
+/* Couleur de la poignée de la barre de défilement lors du survol */
+::-webkit-scrollbar-thumb:hover:vertical {
+    background: #3f3f3f; /* Ajustez à la couleur désirée */
+}
+
+
+.a_content {
+    display: flex;
+    flex-direction: column;
+}
+
+
+@media screen and (max-width: 800px){
+    .a_accueil{
+        width: 20%;
+    }
+    .sections_accueil{
+        width: 100%;
+    }
+    h1{
+        font-size: 40px;    
+    }
+    h2{
+        font-size: 30px;
+    }
+    h3{
+        font-size: 20px;
+    }
+    .infos_supp{
+        font-size: 15px;
+    }
+    
 }
