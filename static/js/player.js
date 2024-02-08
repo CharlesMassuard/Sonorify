@@ -1,6 +1,6 @@
 // Sélection des éléments HTML
 var sound = new Howl({
-    src: ["https://od.lk/s/ODFfNzcxMzg3MDFf/38%20Finale.mp3"] // utilisation de l'hebergeur Opendrive.com
+    src: ["https://audio.jukehost.co.uk/RfYql1AahtejVIK4vl8iRLZ4SSln3huB.mp3"] // utilisation de l'hebergeur Opendrive.com
 });
 
 var searchBar = document.getElementById('search');

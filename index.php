@@ -113,13 +113,14 @@ $data = new DataBase();
             }
             ?>
         </div>
-        <h2>Groupes</h2>
+        <h2>Groupes et Artistes</h2>
         <div id="groupes" class="sections_accueil">
             <?php 
             $groupes = $data->getGroupes();
             foreach ($groupes as $groupe) {
                 echo '<a class="a_accueil" href= "">';
                 echo '<div class="a_content">';
+                echo '<img src="./ressources/images/'.$groupe['image_groupe'].'">';
                 echo '<h3>'.$groupe['nom_groupe'].'</h3>';
                 echo '</div>';
                 echo '</a>';

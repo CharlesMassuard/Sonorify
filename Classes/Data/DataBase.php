@@ -84,6 +84,7 @@
                 id_groupe INTEGER,
                 id_album INTEGER,
                 id_genre INTEGER,
+                url_musique TEXT,
                 FOREIGN KEY (id_groupe) REFERENCES GROUPE(id_groupe),
                 FOREIGN KEY (id_genre) REFERENCES GENRE(id_genre),
                 FOREIGN KEY (id_album) REFERENCES ALBUM(id_album)

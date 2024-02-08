@@ -79,14 +79,30 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (JSON.parse(data)['groupes'] != undefined) {
                     for (res of JSON.parse(data)['groupes']) {
                         var a = document.createElement("a");
+                        var div = document.createElement("div");
+                        var textDiv = document.createElement("div");
                         var nom = document.createElement("p");
-                        var desc = document.createElement("p");
+                        var details = document.createElement("p");
+                        var img = document.createElement("img");
                         nom.innerHTML = res['nom_groupe'];
-                        desc.innerHTML = res['description_groupe'];
-                        a.appendChild(nom);
-                        a.appendChild(desc);
+                        nom.style.fontWeight = "bold";
+                        nom.style.textAlign = "left";
+                        details.innerHTML = "Artiste";
+                        img.setAttribute("src", "./ressources/images/"+ res['image_groupe']);
+                        img.style.width = "35px";
+                        img.style.height = "auto";
+                        textDiv.appendChild(nom);
+                        textDiv.appendChild(details);
+                        div.appendChild(img);
+                        div.appendChild(textDiv);
+                        a.appendChild(div);
                         a.setAttribute("href", "groupe.php?id=" + res['id_groupe']);
                         document.querySelector("#search_result").appendChild(a);
+
+                        div.style.display = "flex";
+                        div.style.alignItems = "center"; // Aligner verticalement au centre
+                        div.style.width = "100%";
+                        img.style.marginRight = "10px";
                     }
                 }
                 console.log(JSON.parse(data)['albums']);
