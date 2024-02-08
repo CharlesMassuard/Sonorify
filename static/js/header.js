@@ -97,11 +97,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     for (res of JSON.parse(data)['genres']) {
                         var a = document.createElement("a");
                         var nom = document.createElement("p");
-                        var desc = document.createElement("p");
+                        var img = document.createElement("img");
+                        img.setAttribute("src", "./ressources/images/"+ res['image_genre']);
                         nom.innerHTML = res['nom_genre'];
-                        desc.innerHTML = res['description_genre'];
+                        img.innerHTML = res['image_genre'];
+                        a.appendChild(img);
                         a.appendChild(nom);
-                        a.appendChild(desc);
                         a.setAttribute("href", "genre.php?id=" + res['id_genre']);
                         document.querySelector("#search_result").appendChild(a);
                     }
