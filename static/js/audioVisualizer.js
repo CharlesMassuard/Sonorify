@@ -9,7 +9,9 @@ function loadFichier(fichier) {
 }
 
 function playVisualize() {
-    // document.body.requestFullscreen();
+    if(window.location.pathname === '/audioVisualizer.php') {
+        document.body.requestFullscreen();
+    }
     Howler.masterGain.connect(analyser);
     analyser.fftSize = 512;
     var bufferLength = analyser.frequencyBinCount;
