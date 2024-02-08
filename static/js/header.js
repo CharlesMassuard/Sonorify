@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         var img = document.createElement("img");
                         img.setAttribute("src", "./ressources/images/"+ res['image_genre']);
                         nom.innerHTML = res['nom_musique'];
-                        img.innerHTML = res['image_genre'];
+                        img.innerHTML = res['image_album'];
                         details.innerHTML = "Titre • "+ res['artiste'] + " • " + res['album'];
                         a.appendChild(img);
                         a.appendChild(nom);
