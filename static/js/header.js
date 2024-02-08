@@ -107,6 +107,24 @@ document.addEventListener('DOMContentLoaded', function() {
                         document.querySelector("#search_result").appendChild(a);
                     }
                 }
+                console.log(JSON.parse(data)['musiques']);
+                if (JSON.parse(data)['musiques'] != undefined) {
+                    for (res of JSON.parse(data)['musiques']) {
+                        var a = document.createElement("a");
+                        var nom = document.createElement("p");
+                        var details = document.createElement("p");
+                        var img = document.createElement("img");
+                        img.setAttribute("src", "./ressources/images/"+ res['image_genre']);
+                        nom.innerHTML = res['nom_musique'];
+                        img.innerHTML = res['image_genre'];
+                        details.innerHTML = "Titre • "+ res['artiste'] + " • " + res['album'];
+                        a.appendChild(img);
+                        a.appendChild(nom);
+                        a.appendChild(details);
+                        a.setAttribute("href", "musique.php?id=" + res['nom_musique']);
+                        document.querySelector("#search_result").appendChild(a);
+                    }
+                }
             })
             .catch((error) => {
                 console.error('Error:', error);
