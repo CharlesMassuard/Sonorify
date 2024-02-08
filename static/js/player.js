@@ -99,6 +99,7 @@ export function playPlaylist() {
                 play();
                 in_play = false;
                 pause = false;
+                titlePage.textContent = "Sonorify";
             }
         }
     }
