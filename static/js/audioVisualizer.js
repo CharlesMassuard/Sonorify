@@ -10,7 +10,7 @@ function loadFichier(fichier) {
 
 function playVisualize() {
     if(window.location.pathname === '/audioVisualizer.php') {
-        document.body.requestFullscreen();
+        modeVisualizer();
     }
     Howler.masterGain.connect(analyser);
     analyser.fftSize = 512;
@@ -159,7 +159,28 @@ function playVisualize() {
         return arr.reduce(function(a, b){ return Math.max(a, b); })
     }
 
+var player = document.getElementById('customPlayer');
+player.style.transition = 'opacity 0.5s ease';
 
+function modeVisualizer() {
+    document.body.requestFullscreen();
+    player.style.opacity = 0;
+}
+
+var page = document.querySelector('body');
+
+page.addEventListener('mouseenter', function() {
+
+    player.style.opacity = 1;
+});
+
+page.addEventListener('mousemove', function() {
+    player.style.opacity = 1;
+});
+
+page.addEventListener('mouseleave', function() {
+    player.style.opacity = 0;
+});
 
 export { loadFichier };
 export { playVisualize };
