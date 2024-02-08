@@ -49,8 +49,8 @@ $data = new DataBase();
                     echo '<a class="a_accueil" href= "">';
                     echo '<div class="a_content">';
                     echo '<h3>'.$musique['nom_musique'].'</h3>';
-                    echo '</div>';
                     echo '<p class="infos_supp">'.$data->getNomGroupe($musique['id_groupe'])['nom_groupe'].'</p>';
+                    echo '</div>';
                     echo '</a>';
                 }
                 echo '</div>';
@@ -62,8 +62,8 @@ $data = new DataBase();
                     echo '<a class="a_accueil" href= "">';
                     echo '<div class="a_content">';
                     echo '<h3>'.$musique['titre'].'</h3>';
-                    echo '</div>';
                     echo '<p class="infos_supp">'.$data->getNomGroupe($musique['id_groupe'])['nom_groupe'].'</p>';
+                    echo '</div>';
                     echo '</a>';
                 }
                 echo '</div>';
@@ -94,8 +94,8 @@ $data = new DataBase();
                 echo '<div class="a_content">';
                 echo '<img src="./ressources/images/'.$album['image_album'].'">';
                 echo '<h3>'.$album['titre'].'</h3>';
-                echo '</div>';
                 echo '<p class="infos_supp">'.$data->getNomGroupe($album['id_groupe'])['nom_groupe'].'</p>';
+                echo '</div>';
                 echo '</a>';
             }
             ?>
