@@ -87,7 +87,7 @@ h3 {
 
 /* Cible toutes les barres de défilement horizontales */
 ::-webkit-scrollbar {
-    height: 5px; /* Ajustez à la hauteur désirée */
+    height: 8px; /* Ajustez à la hauteur désirée */
 }
 
 /* Couleur de fond de la barre de défilement */
