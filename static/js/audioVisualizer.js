@@ -63,7 +63,10 @@ function playVisualize() {
 
     scene.add(group);
 
-    document.getElementById('out').appendChild(renderer.domElement);
+    try{
+        document.getElementById('out').appendChild(renderer.domElement);
+    } catch(e) {
+    }
 
     window.addEventListener('resize', onWindowResize, false);
 

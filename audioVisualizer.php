@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="./static/css/audioVisualizer.css">
   <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
 </head>
+<?php include 'player.php'; ?>
 <body id="bodyAudioVisualizer">
         <div id="content">
             <div id="out"></div>
