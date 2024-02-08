@@ -1,3 +1,10 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Sonorify</title>
+        <link rel="icon" type="image/x-icon" href="./ressources/images/logo.png">
+    </head>
+</html>
 <?php
     include 'player.php';
     $id_musique = $_GET['id_musique'] ?? 1;
@@ -12,9 +19,9 @@
     $urlMusique = $musiqueDetails['url_musique'];
     echo "<script type='module' src='static/js/player.js'></script>";
     echo "<script type='module'>";
-    echo "import { addPlaylist } from './static/js/player.js';";
+    echo "import { lireUneMusique } from './static/js/player.js';";
     echo "import { playPlaylist } from './static/js/player.js';";
-    echo "addPlaylist('$nomMusique', '$cover', '$nomGroupe', '$nomAlbum', '$urlMusique');";
+    echo "lireUneMusique('$nomMusique', '$cover', '$nomGroupe', '$nomAlbum', '$urlMusique');";
     echo "playPlaylist();";
     echo "</script>";
     // header('Location: index.php');

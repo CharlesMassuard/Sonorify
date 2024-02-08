@@ -10,6 +10,8 @@ var playlist = [
 
 var playlistDetails = [];
 
+var titlePage = document.querySelector('title');
+
 var searchBar = document.getElementById('search');
 var progressBar = document.getElementById('progressBar');
 var progress = document.getElementById('progress');
@@ -50,7 +52,7 @@ var repeat = 0;
 var pause = false;
 var currentTime;
 
-export function addPlaylist(nom, cover, nomGroupe, nomAlbum, url) {
+export function lireUneMusique(nom, cover, nomGroupe, nomAlbum, url) {
     playlist = [];
     playlist.push(url);
     playlistDetails = [];
@@ -79,6 +81,7 @@ export function playPlaylist() {
                     playNextTrack(); // Appeler la fonction pour jouer la piste suivante
                 }
             });
+            titlePage.textContent = playlistDetails[currentTrackIndex][0] + " - " + playlistDetails[currentTrackIndex][2];
             title.textContent = playlistDetails[currentTrackIndex][0];
             cover.src = "../../ressources/images/"+playlistDetails[currentTrackIndex][1];
             artiste.textContent = playlistDetails[currentTrackIndex][2];
