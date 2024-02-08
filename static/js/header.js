@@ -114,10 +114,11 @@ document.addEventListener('DOMContentLoaded', function() {
                         var nom = document.createElement("p");
                         var details = document.createElement("p");
                         var img = document.createElement("img");
-                        img.setAttribute("src", "./ressources/images/"+ res['image_genre']);
+                        img.setAttribute("src", "./ressources/images/"+ res['image_album']);
                         nom.innerHTML = res['nom_musique'];
                         img.innerHTML = res['image_album'];
-                        details.innerHTML = "Titre • "+ res['artiste'] + " • " + res['album'];
+                        nom.style.fontWeight = "bold";
+                        details.innerHTML = "Titre • "+ res['nom_groupe'];
                         a.appendChild(img);
                         a.appendChild(nom);
                         a.appendChild(details);

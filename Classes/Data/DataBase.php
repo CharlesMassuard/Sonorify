@@ -281,7 +281,7 @@
             return $album->fetch();
         }
         public function getMusiquesByName($nom){
-            $musiques = $this->file_db->query('SELECT * from MUSIQUE where nom_musique LIKE "%'.$nom.'%"');
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural join GROUPE where nom_musique LIKE "%'.$nom.'%"');
             return $musiques->fetchAll();
         }
         public function insertUser($pseudo, $password, $nom, $prenom, $email, $ddn){
