@@ -102,6 +102,7 @@ $data = new DataBase();
             foreach ($genres as $genre) {
                 echo '<a class="a_accueil" href= "">';
                 echo '<div class="a_content">';
+                echo '<img src="./ressources/images/'.$genre['image_genre'].'">';
                 echo '<h3>'.$genre['nom_genre'].'</h3>';
                 echo '</div>';
                 echo '</a>';

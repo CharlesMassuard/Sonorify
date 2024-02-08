@@ -107,27 +107,25 @@ INSERT INTO GROUPE_ARTISTE (id_groupe, id_artiste) VALUES
     ("20", "46"),
     ("20", "47");
 
-INSERT INTO GENRE (nom_genre) VALUES
-    ("Rock"),
-    ("Pop"),
-    ("Rap"),
-    ("Classique"),
-    ("Jazz"),
-    ("Metal"),
-    ("Electro"),
-    ("Reggae"),
-    ("Funk"),
-    ("Soul"),
-    ("Country"),
-    ("Blues"),
-    ("Disco"),
-    ("Folk"),
-    ("Hip-Hop"),
-    ("Punk"),
-    ("RnB"),
-    ("Techno"),
-    ("Variété"),
-    ("World");
+INSERT INTO GENRE (nom_genre, image_genre) VALUES
+    ("Rock", "genres/rock.png"),
+    ("Pop",  "genres/pop.png"),
+    ("Rap", "genres/rap.png"),
+    ("Classique", "genres/classique.png"),
+    ("Jazz", "genres/jazz.png"),
+    ("Metal", "genres/metal.png"),
+    ("Electro", "genres/electro.png"),
+    ("Reggae", "genres/reggae.png"),
+    ("Funk", "genres/funk.png"),
+    ("Soul", "genres/soul.png"),
+    ("Country", "genres/country.png"),
+    ("Blues", "genres/blues.png"),
+    ("Disco", "genres/disco.png"),
+    ("Folk", "genres/folk.png"),
+    ("Hip-Hop", "genres/hip-hop.png"),
+    ("Punk", "genres/punk.png"),
+    ("RnB", "genres/rnb.png"),
+    ("Bandes originales", "genres/bandes_originales.png");
 
 INSERT INTO ROLE (nom_role) VALUES
     ("Utilisateur"),

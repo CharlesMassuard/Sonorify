@@ -39,7 +39,8 @@
                 FOREIGN KEY (id_artiste) REFERENCES ARTISTE(id_artiste))");
             $this->file_db->exec("CREATE TABLE IF NOT EXISTS GENRE (
                 id_genre INTEGER PRIMARY KEY AUTOINCREMENT,
-                nom_genre TEXT UNIQUE)");
+                nom_genre TEXT UNIQUE,
+                image_genre TEXT)");
             $this->file_db->exec("CREATE TABLE IF NOT EXISTS ROLE (
                 id_role INTEGER PRIMARY KEY AUTOINCREMENT,
                 nom_role TEXT UNIQUE)");
