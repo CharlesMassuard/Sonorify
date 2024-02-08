@@ -285,6 +285,10 @@
             $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural join GROUPE where nom_musique LIKE "%'.$nom.'%"');
             return $musiques->fetchAll();
         }
+        public function getMusique($id){
+            $musique = $this->file_db->query('SELECT * from MUSIQUE where id_musique='.$id);
+            return $musique->fetch();
+        }
         public function insertUser($pseudo, $password, $nom, $prenom, $email, $ddn){
             $insert="INSERT INTO UTILISATEUR (login_utilisateur, password_utilisateur, nom_utilisateur, prenom_utilisateur, email_utilisateur, ddn_utilisateur, id_role) VALUES (:pseudo, :pswd, :nom, :prenom, :email, :ddn, 1)";
             $stmt=$this->file_db->prepare($insert);

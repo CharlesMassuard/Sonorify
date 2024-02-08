@@ -2,7 +2,7 @@ INSERT INTO GROUPE (nom_groupe, image_groupe, description_groupe) VALUES
     ("Adèle Castillon", "groupes_artistes/adele_castillon.jpg", "Adèle Castillon");
 
 INSERT INTO ALBUM (titre, image_album, id_groupe, dateSortie) VALUES
-    ("PRD", "Cover/PRD.jpg", 1, "2021-01-01");
+    ("Plaisir Risque Dépendance", "Cover/PRD.jpg", 1, "2021-01-01");
 
 INSERT INTO ARTISTE (pseudo_artiste, image_artiste) VALUES
     ("Adèle Castillon", "groupes_artistes/adele_castillon.jpg");

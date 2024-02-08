@@ -8,6 +8,8 @@ var playlist = [
     "https://audio.jukehost.co.uk/RfYql1AahtejVIK4vl8iRLZ4SSln3huB",
 ];
 
+var playlistDetails = [];
+
 var searchBar = document.getElementById('search');
 var progressBar = document.getElementById('progressBar');
 var progress = document.getElementById('progress');
@@ -34,6 +36,11 @@ var aleatoireButtonI = document.querySelector('#shuffleButton i.material-icons')
 var arrowUpI = document.querySelector('#arrowUp i.material-icons');
 var visualizerButtonI = document.querySelector('#visualizerButton i.material-icons');
 
+var title = document.getElementById('title');
+var cover = document.getElementById('cover');
+var artiste = document.getElementById('nomArtiste');
+var album = document.getElementById('nomAlbum');
+
 let timeoutId;
 var in_play = false;
 var isMute = false;
@@ -43,7 +50,16 @@ var repeat = 0;
 var pause = false;
 var currentTime;
 
-function playPlaylist() {
+export function addPlaylist(nom, cover, nomGroupe, nomAlbum, url) {
+    playlist = [];
+    playlist.push(url);
+    playlistDetails = [];
+    playlistDetails.push([nom, cover, nomGroupe, nomAlbum]);
+}
+
+export function playPlaylist() {
+
+    console.log('playPlaylist');
 
     // Fonction récursive pour jouer la playlist
     function playNextTrack() {
@@ -63,6 +79,10 @@ function playPlaylist() {
                     playNextTrack(); // Appeler la fonction pour jouer la piste suivante
                 }
             });
+            title.textContent = playlistDetails[currentTrackIndex][0];
+            cover.src = "../../ressources/images/"+playlistDetails[currentTrackIndex][1];
+            artiste.textContent = playlistDetails[currentTrackIndex][2];
+            album.textContent = playlistDetails[currentTrackIndex][3];
             play(true);
             sound.on('play', function () {
                 setInterval(updateProgressBar, 100);

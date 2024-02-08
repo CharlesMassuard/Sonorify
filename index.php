@@ -20,6 +20,7 @@ $data = new DataBase();
     <script src="./static/js/index.js" defer></script>
     <script src="./static/js/accueil.js" defer></script>
 </head>
+<?php include 'player.php'; ?>
 <body>
     <?php include 'aside.php'; ?>
     <main>
@@ -40,7 +41,7 @@ $data = new DataBase();
                 echo '<div id="musiques" class="sections_accueil">';
                 $musiques = $data->getMusiqueRecente();
                 foreach ($musiques as $musique) {
-                    echo '<a class="a_accueil" href= "">';
+                    echo "<a class='a_accueil' href='jouerMusique.php?id_musique={$musique['id_musique']}'>";
                     echo '<div class="a_content">';
                     $album = $data->getAlbumByMusique($musique['id_musique']);
                     echo '<img src="./ressources/images/'.$album['image_album'].'">';
@@ -129,5 +130,4 @@ $data = new DataBase();
         <div id="bottomPage" class="sections_accueil"></div>
     </main>
 </body>
-<?php include 'player.php'; ?>
 </html>
