@@ -42,8 +42,8 @@ $data = new DataBase();
         
         <?php
             if (!isset($_SESSION['user'])) {
-                echo '<div id="musiques" class="sections_accueil">';
                 echo '<h2>Musiques</h2>';
+                echo '<div id="musiques" class="sections_accueil">';
                 $musiques = $data->getMusiqueRecente();
                 foreach ($musiques as $musique) {
                     echo '<a class="a_accueil" href= "">';
@@ -53,8 +53,8 @@ $data = new DataBase();
                 }
                 echo '</div>';
             } else {
-                echo '<div id="musiques" class="sections_accueil">';
                 echo '<h2>Vos Musiques Récentes</h2>';
+                echo '<div id="musiques" class="sections_accueil">';
                 $musiques = $data->getMusiqueRecemmentEcoutee();
                 foreach ($musiques as $musique) {
                     echo '<a class="a_accueil" href= "">';
@@ -65,8 +65,8 @@ $data = new DataBase();
                 echo '</div>';
             }
         ?>
+        <h2>Playlists</h2>
         <div id="playlist" class="sections_accueil">
-            <h2>Playlists</h2>
             <?php 
             $playlists = $data->getPlaylistsTrieesParNote();
             foreach ($playlists as $playlist) {
@@ -78,8 +78,8 @@ $data = new DataBase();
             }
             ?>
         </div>
+        <h2>Albums</h2>
         <div id="albums" class="sections_accueil">
-            <h2>Albums</h2>
             <?php 
             $albums = $data->getAlbums();
             foreach ($albums as $album) {
@@ -92,8 +92,8 @@ $data = new DataBase();
             }
             ?>
         </div>
+        <h2>Genres</h2>
         <div id="genres" class="sections_accueil">
-            <h2>Genres</h2>
             <?php 
             $genres = $data->getGenres();
             foreach ($genres as $genre) {
@@ -103,8 +103,8 @@ $data = new DataBase();
             }
             ?>
         </div>
+        <h2>Groupes</h2>
         <div id="groupes" class="sections_accueil">
-            <h2>Groupes</h2>
             <?php 
             $groupes = $data->getGroupes();
             foreach ($groupes as $groupe) {
@@ -114,8 +114,8 @@ $data = new DataBase();
             }
             ?>
         </div>
-        <div id="circle"></div> <!-- Cercle qui suit le pointeur de la souris -->
+        <div id="bottomPage" class="sections_accueil"></div>
     </main>
-    <?php include 'player.php'; ?>
 </body>
+<?php include 'player.php'; ?>
 </html>

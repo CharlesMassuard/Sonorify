@@ -5,7 +5,8 @@
 
 body {
     margin: 0;
-    height: 100vh;
+    height: 100%;
+    overflow-y: auto;
     max-width: 99%;
     background-color: black;
     background-position: center center;
@@ -14,18 +15,6 @@ body {
     padding-top: 50px;
 }
 
-/* #circle {
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    background-color: rgba(14, 108, 118, 0.75);
-    border-radius: 100%;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    filter: blur(50px);
-    transition: top 0.05s, left 0.05s;
-} */
-  
 main {
     width: 100%;
     height: 100vh;
@@ -38,8 +27,11 @@ main {
     margin: 10px;
     flex-wrap: wrap;
     margin-bottom: 60px;
-    overflow: auto;
+    overflow-x: hidden;
     white-space: nowrap;
+}
+.sections_accueil:hover{
+    overflow-x: auto;
 }
 .infos_supp{
     flex-basis: 100%;
@@ -90,4 +82,52 @@ h3{
 }
 .a_accueil img{
     width: 10vw;
+}
+
+#bottomPage{
+    padding-bottom: 80px;
+}
+
+/* Cible toutes les barres de défilement horizontales */
+::-webkit-scrollbar {
+    height: 8px; /* Ajustez à la hauteur désirée */
+}
+
+/* Couleur de fond de la barre de défilement */
+::-webkit-scrollbar-track {
+    background: rgb(167, 167, 167);
+    border-radius: 10px;
+}
+
+/* Couleur de la poignée de la barre de défilement */
+::-webkit-scrollbar-thumb {
+    background: #888; /* Ajustez à la couleur désirée */
+    border-radius: 10px;
+}
+
+/* Couleur de la poignée de la barre de défilement lors du survol */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Ajustez à la couleur désirée */
+}
+
+@media screen and (max-width: 800px){
+    .a_accueil{
+        width: 20%;
+    }
+    .sections_accueil{
+        width: 100%;
+    }
+    h1{
+        font-size: 40px;    
+    }
+    h2{
+        font-size: 30px;
+    }
+    h3{
+        font-size: 20px;
+    }
+    .infos_supp{
+        font-size: 15px;
+    }
+    
 }
