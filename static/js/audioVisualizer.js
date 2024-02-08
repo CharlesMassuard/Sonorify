@@ -165,28 +165,28 @@ player.style.transition = 'opacity 0.5s ease';
 function modeVisualizer() {
     document.body.requestFullscreen();
     player.style.opacity = 0;
-}
+    
+    var page = document.querySelector('body');
 
-var page = document.querySelector('body');
+    page.addEventListener('mouseenter', function() {
+        player.style.opacity = 1;
+    });
 
-page.addEventListener('mouseenter', function() {
-    player.style.opacity = 1;
-});
+    var timeout;
 
-var timeout;
+    document.addEventListener('mousemove', function() {
+        clearTimeout(timeout);
+        player.style.opacity = 1;
 
-document.addEventListener('mousemove', function() {
-    clearTimeout(timeout);
-    player.style.opacity = 1;
+        timeout = setTimeout(function() {
+            player.style.opacity = 0;
+        }, 5000);
+    });
 
-    timeout = setTimeout(function() {
+    page.addEventListener('mouseleave', function() {
         player.style.opacity = 0;
-    }, 5000);
-});
-
-page.addEventListener('mouseleave', function() {
-    player.style.opacity = 0;
-});
+    });
+}
 
 export { loadFichier };
 export { playVisualize };
