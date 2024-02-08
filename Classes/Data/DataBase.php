@@ -208,7 +208,7 @@
             return $genres->fetchAll();
         }
         public function getAlbumsByName($nom){
-            $albums = $this->file_db->query('SELECT * from ALBUM where titre LIKE "%'.$nom.'%"');
+            $albums = $this->file_db->query('SELECT * from ALBUM natural join GROUPE where titre LIKE "%'.$nom.'%"');
             return $albums->fetchAll();
         }
         public function getPlaylistsByName($nom){
