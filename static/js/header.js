@@ -51,59 +51,144 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (JSON.parse(data)['playlists'] != undefined) {
                     for (res of JSON.parse(data)['playlists']) {
                         var a = document.createElement("a");
+                        var div = document.createElement("div");
+                        var textDiv = document.createElement("div");
                         var nom = document.createElement("p");
-                        var desc = document.createElement("p");
+                        var details = document.createElement("p");
                         var img = document.createElement("img");
                         nom.innerHTML = res['nom_playlist'];
-                        desc.innerHTML = res['description_playlist'];
+                        details.innerHTML = "Playlsit";
                         img.setAttribute("src", "./ressources/images/playlist.png");
-                        a.appendChild(img);
-                        a.appendChild(nom);
-                        a.appendChild(desc);
+                        nom.style.fontWeight = "bold";
+                        nom.style.textAlign = "left";
+                        textDiv.appendChild(nom);
+                        textDiv.appendChild(details);
+                        div.appendChild(img);
+                        div.appendChild(textDiv);
+                        a.appendChild(div);
                         a.setAttribute("href", "playlist.php?id=" + res['id_playlist']);
                         document.querySelector("#search_result").appendChild(a);
+                        
+                        div.style.display = "flex";
+                        div.style.alignItems = "center"; // Aligner verticalement au centre
+                        div.style.width = "100%";
+                        img.style.marginRight = "10px"; 
                     }
                 }
                 console.log(JSON.parse(data)['groupes']);
                 if (JSON.parse(data)['groupes'] != undefined) {
                     for (res of JSON.parse(data)['groupes']) {
                         var a = document.createElement("a");
+                        var div = document.createElement("div");
+                        var textDiv = document.createElement("div");
                         var nom = document.createElement("p");
-                        var desc = document.createElement("p");
+                        var details = document.createElement("p");
+                        var img = document.createElement("img");
                         nom.innerHTML = res['nom_groupe'];
-                        desc.innerHTML = res['description_groupe'];
-                        a.appendChild(nom);
-                        a.appendChild(desc);
+                        nom.style.fontWeight = "bold";
+                        nom.style.textAlign = "left";
+                        details.innerHTML = "Artiste";
+                        img.setAttribute("src", "./ressources/images/"+ res['image_groupe']);
+                        img.style.width = "35px";
+                        img.style.height = "auto";
+                        textDiv.appendChild(nom);
+                        textDiv.appendChild(details);
+                        div.appendChild(img);
+                        div.appendChild(textDiv);
+                        a.appendChild(div);
                         a.setAttribute("href", "groupe.php?id=" + res['id_groupe']);
                         document.querySelector("#search_result").appendChild(a);
+
+                        div.style.display = "flex";
+                        div.style.alignItems = "center"; // Aligner verticalement au centre
+                        div.style.width = "100%";
+                        img.style.marginRight = "10px";
                     }
                 }
                 console.log(JSON.parse(data)['albums']);
                 if (JSON.parse(data)['albums'] != undefined) {
                     for (res of JSON.parse(data)['albums']) {
                         var a = document.createElement("a");
+                        var div = document.createElement("div");
+                        var textDiv = document.createElement("div");
                         var nom = document.createElement("p");
+                        var details = document.createElement("p");
                         var img = document.createElement("img");
                         img.setAttribute("src", "./ressources/images/"+ res['image_album']);
                         nom.innerHTML = res['titre'];
-                        a.appendChild(img);
-                        a.appendChild(nom);
+                        nom.style.fontWeight = "bold";
+                        nom.style.textAlign = "left";
+                        details.innerHTML = "Album • "+ res['nom_groupe'];
+                        textDiv.appendChild(nom);
+                        textDiv.appendChild(details);
+                        div.appendChild(img);
+                        div.appendChild(textDiv);
+                        a.appendChild(div);
                         a.setAttribute("href", "album.php?id=" + res['id_album']);
                         document.querySelector("#search_result").appendChild(a);
+                        
+                        div.style.display = "flex";
+                        div.style.alignItems = "center"; // Aligner verticalement au centre
+                        div.style.width = "100%";
+                        img.style.marginRight = "10px";
                     }
                 }
                 console.log(JSON.parse(data)['genres']);
                 if (JSON.parse(data)['genres'] != undefined) {
                     for (res of JSON.parse(data)['genres']) {
                         var a = document.createElement("a");
+                        var div = document.createElement("div");
+                        var textDiv = document.createElement("div");
                         var nom = document.createElement("p");
-                        var desc = document.createElement("p");
+                        var img = document.createElement("img");
+                        var details = document.createElement("p");
+                        img.setAttribute("src", "./ressources/images/"+ res['image_genre']);
                         nom.innerHTML = res['nom_genre'];
-                        desc.innerHTML = res['description_genre'];
-                        a.appendChild(nom);
-                        a.appendChild(desc);
+                        nom.style.fontWeight = "bold";
+                        nom.style.textAlign = "left";
+                        img.innerHTML = res['image_genre'];
+                        details.innerHTML = "Genre";
+                        textDiv.appendChild(nom);
+                        textDiv.appendChild(details);
+                        div.appendChild(img);
+                        div.appendChild(textDiv);
+                        a.appendChild(div);
                         a.setAttribute("href", "genre.php?id=" + res['id_genre']);
                         document.querySelector("#search_result").appendChild(a);
+                        
+                        div.style.display = "flex";
+                        div.style.alignItems = "center"; // Aligner verticalement au centre
+                        div.style.width = "100%";
+                        img.style.marginRight = "10px";
+                    }
+                }
+                console.log(JSON.parse(data)['musiques']);
+                if (JSON.parse(data)['musiques'] != undefined) {
+                    for (res of JSON.parse(data)['musiques']) {
+                        var a = document.createElement("a");
+                        var div = document.createElement("div");
+                        var textDiv = document.createElement("div");
+                        var nom = document.createElement("p");
+                        var details = document.createElement("p");
+                        var img = document.createElement("img");
+                        img.setAttribute("src", "./ressources/images/"+ res['image_album']);
+                        nom.innerHTML = res['nom_musique'];
+                        nom.style.fontWeight = "bold";
+                        nom.style.textAlign = "left";
+                        details.innerHTML = "Titre • "+ res['nom_groupe'];
+                        textDiv.appendChild(nom);
+                        textDiv.appendChild(details);
+                        div.appendChild(img);
+                        div.appendChild(textDiv);
+                        a.appendChild(div);
+                        a.setAttribute("href", "musique.php?id=" + res['nom_musique']);
+                        document.querySelector("#search_result").appendChild(a);
+                    
+                        // Apply CSS styles
+                        div.style.display = "flex";
+                        div.style.alignItems = "center"; // Aligner verticalement au centre
+                        div.style.width = "100%";
+                        img.style.marginRight = "10px"; // Ajouter une marge à l'image
                     }
                 }
             })

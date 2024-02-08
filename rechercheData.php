@@ -15,6 +15,8 @@ function rechercheData($data) {
         $playlists = $database->getPlaylistsByName($data);
         $genres = $database->getGenresByName($data);
         $albums = $database->getAlbumsByName($data);
+        $musiques = $database->getMusiquesByName($data);
+        $resultats['musiques'] = $musiques;
         $resultats['albums'] = $albums;
         $resultats['playlists'] = $playlists;
         $resultats['genres'] = $genres;

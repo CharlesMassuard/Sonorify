@@ -39,7 +39,8 @@
                 FOREIGN KEY (id_artiste) REFERENCES ARTISTE(id_artiste))");
             $this->file_db->exec("CREATE TABLE IF NOT EXISTS GENRE (
                 id_genre INTEGER PRIMARY KEY AUTOINCREMENT,
-                nom_genre TEXT UNIQUE)");
+                nom_genre TEXT UNIQUE,
+                image_genre TEXT)");
             $this->file_db->exec("CREATE TABLE IF NOT EXISTS ROLE (
                 id_role INTEGER PRIMARY KEY AUTOINCREMENT,
                 nom_role TEXT UNIQUE)");
@@ -83,6 +84,7 @@
                 id_groupe INTEGER,
                 id_album INTEGER,
                 id_genre INTEGER,
+                url_musique TEXT,
                 FOREIGN KEY (id_groupe) REFERENCES GROUPE(id_groupe),
                 FOREIGN KEY (id_genre) REFERENCES GENRE(id_genre),
                 FOREIGN KEY (id_album) REFERENCES ALBUM(id_album)
@@ -207,7 +209,7 @@
             return $genres->fetchAll();
         }
         public function getAlbumsByName($nom){
-            $albums = $this->file_db->query('SELECT * from ALBUM where titre LIKE "%'.$nom.'%"');
+            $albums = $this->file_db->query('SELECT * from ALBUM natural join GROUPE where titre LIKE "%'.$nom.'%"');
             return $albums->fetchAll();
         }
         public function getPlaylistsByName($nom){
@@ -274,6 +276,25 @@
         public function getGroupesFavorisByUser($id){
             $groupes = $this->file_db->query('SELECT * from GROUPE natural join GROUPE_FAVORIS where id_utilisateur='.$id);
             return $groupes->fetchAll();
+        }
+        public function getAlbumByMusique($id){
+            $album = $this->file_db->query('SELECT * from ALBUM natural join MUSIQUE where id_musique='.$id);
+            return $album->fetch();
+        }
+        public function getMusiquesByName($nom){
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural join GROUPE where nom_musique LIKE "%'.$nom.'%"');
+            return $musiques->fetchAll();
+        }
+        public function insertUser($pseudo, $password, $nom, $prenom, $email, $ddn){
+            $insert="INSERT INTO UTILISATEUR (login_utilisateur, password_utilisateur, nom_utilisateur, prenom_utilisateur, email_utilisateur, ddn_utilisateur, id_role) VALUES (:pseudo, :pswd, :nom, :prenom, :email, :ddn, 1)";
+            $stmt=$this->file_db->prepare($insert);
+            $stmt->bindParam(':pseudo',$pseudo);
+            $stmt->bindParam(':pswd',$password);
+            $stmt->bindParam(':nom',$nom);
+            $stmt->bindParam(':prenom',$prenom);
+            $stmt->bindParam(':email',$email);
+            $stmt->bindParam(':ddn',$ddn);
+            $stmt->execute();
         }
         public function insertFavorisPlaylist($id_playlist,$id_utilisateur){
             $insert="INSERT INTO PLAYLIST_FAVORIS (id_playlist, id_utilisateur) VALUES (:id_playlist, :id_utilisateur)";
