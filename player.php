@@ -10,6 +10,7 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.3.0/simplex-noise.min.js'></script>
     <script type="module" src="./static/js/player.js" defer></script>
 </head>
+<?php include 'bigPlayer.php'; ?>
 <div id="customPlayer">
     <div id="progressBar">
         <div id="progress">

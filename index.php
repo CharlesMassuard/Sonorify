@@ -27,7 +27,6 @@ $data = new DataBase();
 ?>
 <body>
     <?php include 'aside.php'; ?>
-    <?php include 'bigPlayer.php'; ?>
     <main>
         <?php include 'header.php'; ?>
         <div id="titre">

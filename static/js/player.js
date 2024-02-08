@@ -11,7 +11,6 @@ var playlist = [
 var searchBar = document.getElementById('search');
 var progressBar = document.getElementById('progressBar');
 var progress = document.getElementById('progress');
-
 var header = document.getElementById('trueHeader');
 
 var player = document.getElementById('customPlayer');
@@ -34,16 +33,14 @@ var repeatButtonI = document.querySelector('#repeatButton i.material-icons');
 var aleatoireButtonI = document.querySelector('#shuffleButton i.material-icons');
 var arrowUpI = document.querySelector('#arrowUp i.material-icons');
 var visualizerButtonI = document.querySelector('#visualizerButton i.material-icons');
+
 let timeoutId;
 var in_play = false;
 var isMute = false;
 var currentVolume;
 var currentTrackIndex = 0;
-
-var in_play = false;
 var repeat = 0;
 var pause = false;
-
 var currentTime;
 
 function playPlaylist() {
@@ -238,7 +235,7 @@ aleatoireButton.addEventListener('click', function () {
         playlist.sort(function () {
             return 0.5 - Math.random();
         });
-    } while(playlist[1] != currentMusic);
+    } while(playlist[0] != currentMusic);
     currentTrackIndex = 0;
     console.log(playlist);
 });
