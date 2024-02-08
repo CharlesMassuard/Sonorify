@@ -10,9 +10,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $data = new DataBase();
     $login = $_POST['identifiant'];
     $mdp = $_POST['mdp'];
-    $mdp_crypted = Encrypteur::encrypt($mdp);
+    $mdpCrypted = Encrypteur::encrypt($mdp);
     unset($_POST['mdp']);
-    $userStatement = $data->getUser($login, $mdp_crypted);
+    $userStatement = $data->getUser($login, $mdpCrypted);
     $user = $userStatement->fetch(PDO::FETCH_ASSOC);
     if ($user !== false) {
         $_SESSION['user'] = $user;
