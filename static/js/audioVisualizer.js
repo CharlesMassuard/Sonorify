@@ -170,12 +170,18 @@ function modeVisualizer() {
 var page = document.querySelector('body');
 
 page.addEventListener('mouseenter', function() {
-
     player.style.opacity = 1;
 });
 
-page.addEventListener('mousemove', function() {
+var timeout;
+
+document.addEventListener('mousemove', function() {
+    clearTimeout(timeout);
     player.style.opacity = 1;
+
+    timeout = setTimeout(function() {
+        player.style.opacity = 0;
+    }, 5000);
 });
 
 page.addEventListener('mouseleave', function() {
