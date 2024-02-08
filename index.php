@@ -43,6 +43,8 @@ $data = new DataBase();
                 foreach ($musiques as $musique) {
                     echo '<a class="a_accueil" href= "">';
                     echo '<div class="a_content">';
+                    $album = $data->getAlbumByMusique($musique['id_musique']);
+                    echo '<img src="./ressources/images/'.$album['image_album'].'">';
                     echo '<h3>'.$musique['nom_musique'].'</h3>';
                     echo '<p class="infos_supp">'.$data->getNomGroupe($musique['id_groupe'])['nom_groupe'].'</p>';
                     echo '</div>';
@@ -56,6 +58,8 @@ $data = new DataBase();
                 foreach ($musiques as $musique) {
                     echo '<a class="a_accueil" href= "">';
                     echo '<div class="a_content">';
+                    $album = $data->getAlbumByMusique($musique['id_musique']);
+                    echo '<img src="./ressources/images/'.$album['image_album'].'">';
                     echo '<h3>'.$musique['titre'].'</h3>';
                     echo '<p class="infos_supp">'.$data->getNomGroupe($musique['id_groupe'])['nom_groupe'].'</p>';
                     echo '</div>';
