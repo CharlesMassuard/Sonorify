@@ -2,7 +2,7 @@
 <?php 
     session_start();
     $id_album = $_GET['id'] ?? 1;
-    require_once 'Data/DataBase.php';
+    require_once 'Classes/Data/DataBase.php';
     $data = new Data\DataBase();
     $album = $data->getAlbum($id_album);
     $musiques = $data->getMusiquesAlbum($id_album);
@@ -27,14 +27,30 @@
             <p><?php 
             $somme = 0;
             foreach ($musiques as $musique) {
-                $somme += $musique['duree'];
+                // Divisez la durée en minutes et secondes
+                list($minutes, $secondes) = explode(':', $musique['duree']);
+                
+                // Convertissez la durée en secondes et ajoutez-la à $somme
+                $somme += $minutes * 60 + $secondes;
             }
-            echo "Durée : " . $somme . " secondes</p>";
+            
+            // Convertissez $somme en un format de temps approprié
+            $heures = floor($somme / 3600);
+            $minutes = floor(($somme % 3600) / 60);
+            $secondes = $somme % 60;
+            
+            // Formattez le temps en une chaîne de caractères
+            if($heures == 0){
+                $dureeTotale = sprintf("%02dm %02ds", $minutes, $secondes);
+            } else {
+                $dureeTotale = sprintf("%02dh %02dm %02ds", $heures, $minutes, $secondes);
+            }
+            echo "Durée : " . $dureeTotale."</p>";
             echo '<p>Sortie : ' . $album['dateSortie'] . '</p>';
-            echo 'Créer par : <a href="groupe.php?id='.$album['id_groupe'].'">'.$data->getGroupe($album['id_groupe'])['nom_groupe'].'</a>';
+            echo '<a href="groupe.php?id='.$album['id_groupe'].'">'.$data->getGroupe($album['id_groupe'])['nom_groupe'].'</a>';
             echo '<div id="note">';
             for ($i=0; $i < 5; $i++) { 
-                echo '<a id="ajout_note" href="ajouterNoteAlbum.php?id='.$playlist['id_playlist'].'&note='.($i+1).'">';
+                echo '<a id="ajout_note" href="ajouterNoteAlbum.php?id='.$album['id_album'].'&note='.($i+1).'">';
                 echo '<i class="material-icons">star</i>';
                 echo '</a>';
             }
