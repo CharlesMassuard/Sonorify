@@ -62,7 +62,8 @@ INSERT INTO GENRE_SIMILAIRE (id_genre, id_genre_similaire) VALUES
     
 
 INSERT INTO PLAYLIST (nom_playlist, description_playlist, public, id_auteur) VALUES 
-    ("Playlist de Charles", "This is Charles's first playlist", true, 3);
+    ("Playlist de Charles", "This is Charles's first playlist", true, 3),
+    ("Playlist de l'administrateur", "Playlist privée de l'admin", false, 1);
 
 INSERT INTO MUSIQUE (nom_musique, duree, id_groupe, id_album, id_genre, url_musique) VALUES
     -- PRD
@@ -151,4 +152,9 @@ INSERT INTO PLAYLIST_MUSIQUE (id_playlist, id_musique) VALUES
     (1, 64),
     (1, 45),
     (1, 21),
-    (1, 56);
+    (1, 56),
+    (2, 29),
+    (2, 45),
+    (2, 56),
+    (2, 64),
+    (2, 21);

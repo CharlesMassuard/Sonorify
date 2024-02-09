@@ -86,7 +86,7 @@
                             echo '<label for="addFavoriteAlbum"  title="Ajouter aux favoris"><i class="material-icons">favorite</i></label>';
                             echo '</form>';
                         }
-                    echo '</div>';
+                        echo '</div>';
                         ?>
                         
                     </div>

@@ -95,6 +95,12 @@
 #note {
     display: flex;
     flex-direction: row;
+    max-width: 300px;
+}
+
+#inputPlaylistAlbum{
+    max-width: 156px;
+    margin-top: 20px;
 }
 
 #musiques #note {
