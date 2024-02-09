@@ -204,7 +204,7 @@
             return $playlist->fetchAll();
         }
         public function getMusiqueRecente(){
-            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural left join MUSIQUE_NOTE order by note desc');
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural left join MUSIQUE_NOTE order by note desc LIMIT 15');
             return $musiques->fetchAll();
         }
         public function getMusiqueRecemmentEcoutee(){
