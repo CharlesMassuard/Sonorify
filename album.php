@@ -112,7 +112,10 @@
                         echo '</a>';
                     }
                     echo '</div>';
-                    echo '<button id="prevButton" title="Précédent"><i class="material-icons">favorite</i></button>';
+                    echo '<form action="votre_page.php" method="post">';
+                    echo '<input type="submit" id="favMusique" name="addFavoriteMusique" style="display: none;">';
+                    echo '<label for="addFavoriteMusique"  title="Ajouter aux favoris"><i class="material-icons">favorite</i></label>';
+                    echo '</form>';
                     echo '<p>'.$musique['duree'].'</p>';
                     echo '</div>';
                 }

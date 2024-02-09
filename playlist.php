@@ -30,7 +30,7 @@
                     <?php 
                         $status = ($playlist['public'] ? "Publique" : "Privée");
                         $auteur =  $data->getUtilisateur($playlist['id_auteur'])['nom_utilisateur']; 
-                        echo '<p>'.$status.' • '.$auteur.'</p>';
+                        echo '<p> Playlist • '.$status.' • Par '.$auteur.'</p>';
                         ?>
                         <p><?php 
                         $somme = 0;
@@ -119,7 +119,10 @@
                         echo '</a>';
                     }
                     echo '</div>';
-                    echo '<a href="ajouter_favoris?id='.$musique['id_musique'].'">Ajouter aux favoris</a>';
+                    echo '<form action="votre_page.php" method="post">';
+                    echo '<input type="submit" id="favMusique" name="addFavoriteMusique" style="display: none;">';
+                    echo '<label for="addFavoriteMusique"  title="Ajouter aux favoris"><i class="material-icons">favorite</i></label>';
+                    echo '</form>';
                     if ($_SESSION  && $playlist['id_auteur'] == $_SESSION['user']['id_utilisateur']){
                         echo '<a href="supprimerMusiquePlaylist.php?id='.$musique['id_musique'].'&id_playlist='.$id_playlist.'">Supprimer</a>';
                     }
