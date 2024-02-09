@@ -10,7 +10,7 @@ function rechercheData($data) {
     $resultats['groupes'] = $groupes;
     if ($groupes !== null && is_array($groupes) && count($groupes)  == 1){
         $resultats['albums'] = $database->getAlbumsByIdGroupe($groupes[0]['id_groupe']);
-        // $resultats['albums'] = $database->getAlbums();
+        $resultats['musiques'] = $database->getMusiquesByIdGroupe($groupes[0]['id_groupe']);
     } else {
         $playlists = $database->getPlaylistsByName($data);
         $genres = $database->getGenresByName($data);

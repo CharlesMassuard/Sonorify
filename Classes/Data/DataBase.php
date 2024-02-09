@@ -220,7 +220,7 @@
         }
 
         public function getAlbumsByIdGroupe($id){
-            $albums = $this->file_db->query('SELECT * from ALBUM natural join GROUPE  where id_groupe='.$id);
+            $albums = $this->file_db->query('SELECT * from ALBUM natural join GROUPE  where id_groupe='.$id.' LIMIT 2');
             if ($albums){
                 return $albums->fetchAll();
             } else {
@@ -384,6 +384,10 @@
         public function isFavorisPlaylist($id_playlist,$id_utilisateur){
             $favoris = $this->file_db->query('SELECT * from PLAYLIST_FAVORIS where id_playlist='.$id_playlist.' and id_utilisateur='.$id_utilisateur);
             return $favoris->fetch();
+        }
+        public function getMusiquesByIdGroupe($id){
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural join GROUPE natural left join MUSIQUE_NOTE where id_groupe='.$id.' order by note desc LIMIT 2');
+            return $musiques->fetchAll();
         }
     }
 ?>
