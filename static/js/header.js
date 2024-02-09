@@ -18,7 +18,6 @@ window.addEventListener('scroll', function() {
 // BARRE DE RECHERCHE
 var searchBar = document.getElementById('search');
 document.addEventListener('DOMContentLoaded', function() {
-    console.log(document.querySelector("#search"));
     var stock = [];
     searchBar.addEventListener('input', function(e) {
         if (e.target.value == "" || e.target.value.length < 3 ) {
@@ -44,9 +43,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 while (searchResult.firstChild) {
                     searchResult.removeChild(searchResult.firstChild);
                 }
-                console.log(data);
-                console.log(JSON.parse(data));
-                console.log(JSON.parse(data)['playlists']);
 
                 if (JSON.parse(data)['playlists'] != undefined) {
                     for (res of JSON.parse(data)['playlists']) {
@@ -75,7 +71,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         img.style.marginRight = "10px"; 
                     }
                 }
-                console.log(JSON.parse(data)['groupes']);
                 if (JSON.parse(data)['groupes'] != undefined) {
                     for (res of JSON.parse(data)['groupes']) {
                         var a = document.createElement("a");
@@ -105,7 +100,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         img.style.marginRight = "10px";
                     }
                 }
-                console.log(JSON.parse(data)['albums']);
                 if (JSON.parse(data)['albums'] != undefined) {
                     for (res of JSON.parse(data)['albums']) {
                         var a = document.createElement("a");
@@ -133,7 +127,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         img.style.marginRight = "10px";
                     }
                 }
-                console.log(JSON.parse(data)['genres']);
                 if (JSON.parse(data)['genres'] != undefined) {
                     for (res of JSON.parse(data)['genres']) {
                         var a = document.createElement("a");
@@ -162,7 +155,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         img.style.marginRight = "10px";
                     }
                 }
-                console.log(JSON.parse(data)['musiques']);
                 if (JSON.parse(data)['musiques'] != undefined) {
                     for (res of JSON.parse(data)['musiques']) {
                         var a = document.createElement("a");

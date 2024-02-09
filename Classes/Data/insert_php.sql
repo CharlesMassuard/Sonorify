@@ -139,4 +139,4 @@ INSERT INTO MUSIQUE (nom_musique, duree, id_groupe, id_album, id_genre, url_musi
     ("You Make Me", "3:53", 5, 5, 14, "https://audio.jukehost.co.uk/av0T271NIq4an2Fz3gdiv2WEl3Hydbm0");
 
 INSERT INTO MUSIQUE_NOTE (id_musique, id_utilisateur, note) VALUES
-    (59, 1, 4);
+    (64, 1, 4);
