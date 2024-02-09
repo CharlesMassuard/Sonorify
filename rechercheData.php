@@ -28,8 +28,10 @@ function rechercheData($data) {
             } else if(count($resultats['genres']) == 1){
                 $musiques = $database->getMusiquesByIdGenre($resultats['genres'][0]['id_genre']);
             }
+            $resultats['musiques'] = $musiques;
+        } else {
+            $resultats['musiques'] = $database->getMusiquesByName($data);
         }
-        $resultats['musiques'] = $musiques;
     }
     print_r(json_encode($resultats));
 }
