@@ -38,35 +38,28 @@ $data = new DataBase();
         <?php
             if (!isset($_SESSION['user'])) {
                 echo '<h2>Musiques</h2>';
-                echo '<div id="musiques" class="sections_accueil">';
                 $musiques = $data->getMusiqueRecente();
-                foreach ($musiques as $musique) {
-                    echo "<a class='a_accueil' href='jouerMusique.php?id_musique={$musique['id_musique']}'>";
-                    echo '<div class="a_content">';
-                    $album = $data->getAlbumByMusique($musique['id_musique']);
-                    echo '<img src="./ressources/images/'.$album['image_album'].'">';
-                    echo '<h3>'.$musique['nom_musique'].'</h3>';
-                    echo '<p class="infos_supp">'.$data->getNomGroupe($musique['id_groupe'])['nom_groupe'].'</p>';
-                    echo '</div>';
-                    echo '</a>';
-                }
-                echo '</div>';
             } else {
-                echo '<h2>Vos Musiques Récentes</h2>';
-                echo '<div id="musiques" class="sections_accueil">';
                 $musiques = $data->getMusiqueRecemmentEcoutee();
-                foreach ($musiques as $musique) {
-                    echo '<a class="a_accueil" href= "">';
-                    echo '<div class="a_content">';
-                    $album = $data->getAlbumByMusique($musique['id_musique']);
-                    echo '<img src="./ressources/images/'.$album['image_album'].'">';
-                    echo '<h3>'.$musique['titre'].'</h3>';
-                    echo '<p class="infos_supp">'.$data->getNomGroupe($musique['id_groupe'])['nom_groupe'].'</p>';
-                    echo '</div>';
-                    echo '</a>';
+                if(count($musiques) == 0) {
+                    $musiques = $data->getMusiqueRecente();
+                    echo '<h2>Musiques</h2>';
+                } else {
+                    echo '<h2>Musiques Recemment Ecoutées</h2>';
                 }
-                echo '</div>';
             }
+            echo '<div id="musiques" class="sections_accueil">';
+            foreach ($musiques as $musique) {
+                echo "<a class='a_accueil' href='jouerMusique.php?id_musique={$musique['id_musique']}'>";
+                echo '<div class="a_content">';
+                $album = $data->getAlbumByMusique($musique['id_musique']);
+                echo '<img src="./ressources/images/'.$album['image_album'].'">';
+                echo '<h3>'.$musique['nom_musique'].'</h3>';
+                echo '<p class="infos_supp">'.$data->getNomGroupe($musique['id_groupe'])['nom_groupe'].'</p>';
+                echo '</div>';
+                echo '</a>';
+            }
+            echo '</div>';
         ?>
         <h2>Playlists</h2>
         <div id="playlist" class="sections_accueil">
