@@ -121,21 +121,24 @@
     padding-bottom: 80px;
 }
 
-button {
-    background-color: transparent;
-    border: none;
-    color: white;
-    font-size: 20px;
-    margin: 0 10px;
-    cursor: pointer;
-}
 
-button:hover {
+input:hover {
     opacity: 0.8;
 }
 
-#jouerAlbum{
-    background-color: white;
-    color: black;
-    border-radius: 50px;
+#inputPlaylistAlbum{
+    display: flex;
+    justify-content: space-between;
+}
+
+label {
+    cursor: pointer;
+}
+
+label i.material-icons {
+    font-size: 25px;
+}
+
+label:hover{
+    opacity: 0.8;
 }

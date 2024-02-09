@@ -22,7 +22,6 @@
     echo "import { lireUneMusique } from './static/js/player.js';";
     echo "import { playPlaylist } from './static/js/player.js';";
     echo "lireUneMusique('$nomMusique', '$cover', '$nomGroupe', '$nomAlbum', '$urlMusique');";
-    echo "playPlaylist();";
     echo "</script>";
     // header('Location: index.php');
 ?>

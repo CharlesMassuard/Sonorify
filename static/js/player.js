@@ -57,12 +57,20 @@ export function lireUneMusique(nom, cover, nomGroupe, nomAlbum, url) {
     playlist.push(url);
     playlistDetails = [];
     playlistDetails.push([nom, cover, nomGroupe, nomAlbum]);
-}
+    playPlaylist();
+};
+
+export function addToPlaylist(nom, cover, nomGroupe, nomAlbum, url) {
+    playlist.push(url);
+    playlistDetails.push([nom, cover, nomGroupe, nomAlbum]);
+};
+
+export function clearPlaylist() {
+    playlist = [];
+    playlistDetails = [];
+};
 
 export function playPlaylist() {
-
-    console.log('playPlaylist');
-
     // Fonction récursive pour jouer la playlist
     function playNextTrack() {
         // Libérer les ressources de la piste audio précédente
@@ -260,16 +268,18 @@ repeatButton.addEventListener('click', function () {
     }
 });
 
+export function aleatoire() {
+    var currentMusic = playlist[currentTrackIndex];
+    for (let i = playlist.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [playlist[i], playlist[j]] = [playlist[j], playlist[i]];
+    }
+    currentTrackIndex = playlist.indexOf(currentMusic);
+}
+
 aleatoireButton.addEventListener('click', function () {
     aleatoireButtonI.classList.toggle('rotate'); // Ajoute ou supprime la classe 'rotate'
-    var currentMusic = playlist[currentTrackIndex];
-    do{
-        playlist.sort(function () {
-            return 0.5 - Math.random();
-        });
-    } while(playlist[0] != currentMusic);
-    currentTrackIndex = 0;
-    console.log(playlist);
+    aleatoire();
 });
 
 arrowUp.addEventListener('click', function () {

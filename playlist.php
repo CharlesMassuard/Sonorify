@@ -13,6 +13,7 @@
     <title>Sonorify - <?php echo $playlist['nom_playlist']?></title>
     <link rel="icon" type="image/x-icon" href="./ressources/images/logo.png">
     <link rel="stylesheet" href="./static/css/playlist.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="./static/js/playlist.js" defer></script>
 </head>
 <body>
@@ -64,14 +65,28 @@
                             echo '</a>';
                         }
                         echo '</div>';
-                        echo '<p>'.$playlist['description_playlist'].'</p>';
-                        echo '<button id="jouerAlbum" title="Lire l\'album"><i class="material-icons">play_arrow</i></button>';
-                        echo '<button id="jouerAlbum" title="Lire l\'album aléatoirement"><i class="material-icons">shuffle</i></button>';
+                        echo '<div id="inputPlaylistAlbum">';
+                        echo '<form action="votre_page.php" method="post">';
+                        echo '<input type="submit" id="jouerAlbum" name="jouerAlbum" style="display: none;">';
+                        echo '<label for="jouerAlbum"  title="Lire la playlist"><i class="material-icons">play_arrow</i></label>';
+                        echo '</form>';
+
+                        echo '<form action="votre_page.php" method="post">';
+                        echo '<input type="submit" id="jouerAlbumAleatoire" name="jouerAlbumAleatoire" style="display: none;">';
+                        echo '<label for="jouerAlbumAleatoire"  title="Lire la playlist aléatoirement"><i class="material-icons">shuffle</i></label>';
+                        echo '</form>';
                         if ($_SESSION  && is_array($_SESSION) && $data->isFavorisPlaylist($id_playlist, $_SESSION['user']['id_utilisateur']) ?? false){
-                            echo '<button id="favorisAlbum" title="Supprimer des favoris"><i class="material-icons">favorite</i></button>';
+                            echo '<form action="votre_page.php" method="post">';
+                            echo '<input type="submit" id="favAlbum" name="deleteFavoriteAlbum" style="display: none;">';
+                            echo '<label for="deleteFavoriteAlbum"  title="Supprimer des favoris"><i class="material-icons">favorite</i></label>';
+                            echo '</form>';
                         } else {
-                            echo '<button id="favorisAlbum" title="Ajouter aux favoris"><i class="material-icons">favorite</i></button>';
+                            echo '<form action="votre_page.php" method="post">';
+                            echo '<input type="submit" id="favAlbum" name="addFavoriteAlbum" style="display: none;">';
+                            echo '<label for="addFavoriteAlbum"  title="Ajouter aux favoris"><i class="material-icons">favorite</i></label>';
+                            echo '</form>';
                         }
+                    echo '</div>';
                         ?>
                         
                     </div>
