@@ -3,22 +3,30 @@
     class DataBase{
         private $file_db;
         public function __construct(){
-            $this->file_db=new \PDO('sqlite:Data/PHPOSONG.sqlite');
+            $dbPath = __DIR__ . '/PHPOSONG.sqlite';
+            $isNewDb = !file_exists($dbPath);
+        
+            $this->file_db = new \PDO('sqlite:'.$dbPath);
             $this->file_db->setAttribute(\PDO::ATTR_ERRMODE,\PDO::ERRMODE_WARNING);
+        
+            if ($isNewDb) {
+                $this->createTable();
+                $this->executeSqlFile(__DIR__ . '/insert_php.sql');
+            }
         }
-        public function createTable(){
+        private function createTable(){
             $this->file_db->exec("CREATE TABLE IF NOT EXISTS GROUPE ( 
                 id_groupe INTEGER PRIMARY KEY AUTOINCREMENT,
                 nom_groupe TEXT,
                 image_groupe TEXT,
-                decription_groupe TEXT)");
+                description_groupe TEXT)");
             $this->file_db->exec("CREATE TABLE IF NOT EXISTS ALBUM ( 
                 id_album INTEGER PRIMARY KEY AUTOINCREMENT,
                 titre TEXT,
                 image_album TEXT,
                 id_groupe INTEGER,
                 dateSortie DATE,
-                FOREIGN KEY (id_artiste) REFERENCES ARTISTE(id_artiste))");
+                FOREIGN KEY (id_groupe) REFERENCES GROUPE(id_groupe))");
             $this->file_db->exec("CREATE TABLE IF NOT EXISTS ARTISTE ( 
                 id_artiste INTEGER PRIMARY KEY AUTOINCREMENT,
                 pseudo_artiste TEXT,
@@ -117,6 +125,19 @@
                 PRIMARY KEY (id_musique, id_utilisateur, date_lecture),
                 FOREIGN KEY (id_musique) REFERENCES MUSIQUE(id_musique),
                 FOREIGN KEY (id_utilisateur) REFERENCES UTILISATEUR(id_utilisateur))");
+        }
+        private function executeSqlFile($filePath) {
+            try {
+                // Read SQL file
+                $sql = file_get_contents($filePath);
+        
+                // Execute SQL
+                $this->file_db->exec($sql) or die(print_r($this->file_db->errorInfo(), true));
+        
+                echo "SQL file executed successfully";
+            } catch(PDOException $e) {
+                echo "Error: " . $e->getMessage();
+            }
         }
         public function getAlbums(){
             $albums = $this->file_db->query('SELECT * from ALBUM');
@@ -261,6 +282,17 @@
         public function getGroupesFavorisByUser($id){
             $groupes = $this->file_db->query('SELECT * from GROUPE natural join GROUPE_FAVORIS where id_utilisateur='.$id);
             return $groupes->fetchAll();
+        }
+        public function insertUser($pseudo, $password, $nom, $prenom, $email, $ddn){
+            $insert="INSERT INTO UTILISATEUR (login_utilisateur, password_utilisateur, nom_utilisateur, prenom_utilisateur, email_utilisateur, ddn_utilisateur, id_role) VALUES (:pseudo, :pswd, :nom, :prenom, :email, :ddn, 1)";
+            $stmt=$this->file_db->prepare($insert);
+            $stmt->bindParam(':pseudo',$pseudo);
+            $stmt->bindParam(':pswd',$password);
+            $stmt->bindParam(':nom',$nom);
+            $stmt->bindParam(':prenom',$prenom);
+            $stmt->bindParam(':email',$email);
+            $stmt->bindParam(':ddn',$ddn);
+            $stmt->execute();
         }
         public function insertFavorisPlaylist($id_playlist,$id_utilisateur){
             $insert="INSERT INTO PLAYLIST_FAVORIS (id_playlist, id_utilisateur) VALUES (:id_playlist, :id_utilisateur)";
