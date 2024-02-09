@@ -72,25 +72,25 @@
                     echo '</div>';
                     echo '<div id="inputPlaylistAlbum">';
                     echo '<form action="jouerAlbum.php?id_album='.$album["id_album"].'&aleatoire=false" method="post">';
-                        echo '<input type="submit" id="jouerAlbum" name="jouerAlbum" style="display: none;">';
-                        echo '<label for="jouerAlbum"  title="Lire l\'album"><i class="material-icons">play_arrow</i></label>';
-                        echo '</form>';
+                    echo '<input type="submit" id="jouerAlbum" name="jouerAlbum" style="display: none;">';
+                    echo '<label for="jouerAlbum"  title="Lire l\'album"><i class="material-icons">play_arrow</i></label>';
+                    echo '</form>';
 
-                        echo '<form action="jouerAlbum.php?id_album='.$album["id_album"].'&aleatoire=true" method="post">';
-                        echo '<input type="submit" id="jouerAlbumAleatoire" name="jouerAlbumAleatoire" style="display: none;">';
-                        echo '<label for="jouerAlbumAleatoire"  title="Lire l\'album aléatoirement"><i class="material-icons">shuffle</i></label>';
+                    echo '<form action="jouerAlbum.php?id_album='.$album["id_album"].'&aleatoire=true" method="post">';
+                    echo '<input type="submit" id="jouerAlbumAleatoire" name="jouerAlbumAleatoire" style="display: none;">';
+                    echo '<label for="jouerAlbumAleatoire"  title="Lire l\'album aléatoirement"><i class="material-icons">shuffle</i></label>';
+                    echo '</form>';
+                    if ($_SESSION  && is_array($_SESSION) && $data->isFavorisAlbum($id_album, $_SESSION['user']['id_utilisateur']) ?? false){
+                        echo '<form action="votre_page.php" method="post">';
+                        echo '<input type="submit" id="favAlbum" name="deleteFavoriteAlbum" style="display: none;">';
+                        echo '<label for="deleteFavoriteAlbum"  title="Supprimer des favoris"><i class="material-icons">favorite</i></label>';
                         echo '</form>';
-                        if ($_SESSION  && is_array($_SESSION) && $data->isFavorisAlbum($id_album, $_SESSION['user']['id_utilisateur']) ?? false){
-                            echo '<form action="votre_page.php" method="post">';
-                            echo '<input type="submit" id="favAlbum" name="deleteFavoriteAlbum" style="display: none;">';
-                            echo '<label for="deleteFavoriteAlbum"  title="Supprimer des favoris"><i class="material-icons">favorite</i></label>';
-                            echo '</form>';
-                        } else {
-                            echo '<form action="votre_page.php" method="post">';
-                            echo '<input type="submit" id="favAlbum" name="addFavoriteAlbum" style="display: none;">';
-                            echo '<label for="addFavoriteAlbum"  title="Ajouter aux favoris"><i class="material-icons">favorite</i></label>';
-                            echo '</form>';
-                        }
+                    } else {
+                        echo '<form action="votre_page.php" method="post">';
+                        echo '<input type="submit" id="favAlbum" name="addFavoriteAlbum" style="display: none;">';
+                        echo '<label for="addFavoriteAlbum"  title="Ajouter aux favoris"><i class="material-icons">favorite</i></label>';
+                        echo '</form>';
+                    }
                     echo '</div>';
                     ?>
                 </div>
@@ -101,7 +101,7 @@
                 foreach ($musiques as $musique) {
                     echo '<div id="musique">';
                     echo '<img id="imgMusiqueAlbum" src="./ressources/images/'.$album['image_album'].'">';
-                    echo "<a href= 'jouerMusique.php?id_musique={$musique['id_musique']}'>";
+                    echo '<a href= "jouerAlbum.php?id_album='.$album["id_album"].'&aleatoire=false&musiqueStart='.$musique["id_musique"].'" method="post">';
                     echo '<h2>'.$musique['nom_musique'].'</h2>';
                     echo '</a>';
                     echo '<a href="groupe.php?id='.$musique['id_groupe'].'">'.$data->getGroupe($musique['id_groupe'])['nom_groupe'].'</a>';

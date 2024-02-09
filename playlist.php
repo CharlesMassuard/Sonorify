@@ -66,14 +66,14 @@
                         }
                         echo '</div>';
                         echo '<div id="inputPlaylistAlbum">';
-                        echo '<form action="votre_page.php" method="post">';
-                        echo '<input type="submit" id="jouerAlbum" name="jouerAlbum" style="display: none;">';
-                        echo '<label for="jouerAlbum"  title="Lire la playlist"><i class="material-icons">play_arrow</i></label>';
+                        echo '<form action="jouerPlaylist.php?id_playlist='.$id_playlist.'&aleatoire=false" method="post">';
+                        echo '<input type="submit" id="jouerPlaylist" name="jouerPlaylist" style="display: none;">';
+                        echo '<label for="jouerPlaylist"  title="Lire la playlist"><i class="material-icons">play_arrow</i></label>';
                         echo '</form>';
 
-                        echo '<form action="votre_page.php" method="post">';
-                        echo '<input type="submit" id="jouerAlbumAleatoire" name="jouerAlbumAleatoire" style="display: none;">';
-                        echo '<label for="jouerAlbumAleatoire"  title="Lire la playlist aléatoirement"><i class="material-icons">shuffle</i></label>';
+                        echo '<form action="jouerPlaylist.php?id_playlist='.$id_playlist.'&aleatoire=true" method="post">';
+                        echo '<input type="submit" id="jouerPlaylistAleatoire" name="jouerPlaylistAleatoire" style="display: none;">';
+                        echo '<label for="jouerPlaylistAleatoire"  title="Lire la playlist aléatoirement"><i class="material-icons">shuffle</i></label>';
                         echo '</form>';
                         if ($_SESSION  && is_array($_SESSION) && $data->isFavorisPlaylist($id_playlist, $_SESSION['user']['id_utilisateur']) ?? false){
                             echo '<form action="votre_page.php" method="post">';
@@ -106,9 +106,9 @@
 
                 foreach ($musiques as $musique) {
                     echo '<div id="musique">';
-                    $image = $data->getMusiquesAlbumsByPlaylist($playlist['id_playlist'])['image_album'] ?? 'default.jpg';
-                    echo '<img id="imgMusiqueAlbum" src="./ressources/images/'.$image.'">';
-                    echo "<a href= 'jouerMusique.php?id_musique={$musique['id_musique']}'>";
+                    $album = $data->getAlbumByMusique($musique['id_musique']);
+                    echo '<img id="imgMusiqueAlbum" src="./ressources/images/'.$album["image_album"].'">';
+                    echo '<a href= "jouerPlaylist.php?id_playlist='.$id_playlist.'&aleatoire=false&musiqueStart='.$musique["id_musique"].'" method="post">';
                     echo '<h2>'.$musique['nom_musique'].'</h2>';
                     echo '</a>';
                     echo '<a href="groupe.php?id='.$musique['id_groupe'].'">'.$data->getGroupe($musique['id_groupe'])['nom_groupe'].'</a>';

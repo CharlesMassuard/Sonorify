@@ -7,13 +7,13 @@
 </html>
 <?php
     include 'player.php';
-    $id_album = $_GET['id_album'] ?? 1;
+    $id_playlist = $_GET['id_playlist'] ?? 1;
     $aleatoire = $_GET['aleatoire'] ?? false;
     $musiqueStart = $_GET['musiqueStart'] ?? false;
     $aleatoire = filter_var($_GET['aleatoire'], FILTER_VALIDATE_BOOLEAN);
     require_once 'Classes/Data/DataBase.php'; 
     $data = new Data\DataBase();
-    $musiques = $data->getMusiquesAlbum($id_album);
+    $musiques = $data->getMusiquesPlaylist($id_playlist);
     echo "<script type='module' src='static/js/player.js'></script>";
     echo "<script type='module'>";
     echo "import { clearPlaylist } from './static/js/player.js';";

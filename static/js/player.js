@@ -70,6 +70,11 @@ export function clearPlaylist() {
     playlistDetails = [];
 };
 
+export function setFirstTrack(index) {
+    currentTrackIndex = index;
+};
+
+
 export function playPlaylist() {
     // Fonction récursive pour jouer la playlist
     function playNextTrack() {
@@ -269,12 +274,11 @@ repeatButton.addEventListener('click', function () {
 });
 
 export function aleatoire() {
-    var currentMusic = playlist[currentTrackIndex];
     for (let i = playlist.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [playlist[i], playlist[j]] = [playlist[j], playlist[i]];
+        [playlistDetails[i], playlistDetails[j]] = [playlistDetails[j], playlistDetails[i]];
     }
-    currentTrackIndex = playlist.indexOf(currentMusic);
 }
 
 aleatoireButton.addEventListener('click', function () {

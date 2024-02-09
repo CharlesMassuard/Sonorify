@@ -145,4 +145,10 @@ INSERT INTO MUSIQUE_NOTE (id_musique, id_utilisateur, note) VALUES
     (56, 2, 1);
 
 INSERT INTO PLAYLIST_MUSIQUE (id_playlist, id_musique) VALUES
-    (1, 1);
+    (1, 1),
+    (1, 5),
+    (1, 54),
+    (1, 64),
+    (1, 45),
+    (1, 21),
+    (1, 56);
