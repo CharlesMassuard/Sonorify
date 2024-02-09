@@ -197,7 +197,7 @@
         }
 
         public function getAlbumsByIdGroupe($id){
-            $albums = $this->file_db->query('SELECT * from ALBUM where id_groupe='.$id);
+            $albums = $this->file_db->query('SELECT * from ALBUM natural join GROUPE where id_groupe='.$id);
             if ($albums){
                 return $albums->fetchAll();
             } else {
