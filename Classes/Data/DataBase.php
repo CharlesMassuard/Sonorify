@@ -409,6 +409,5 @@
             $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural join GROUPE natural left join MUSIQUE_NOTE where id_genre='.$id.' GROUP BY id_musique order by note desc LIMIT 2');
             return $musiques->fetchAll();
         }
-
     }
 ?>

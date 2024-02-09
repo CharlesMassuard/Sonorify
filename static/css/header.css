@@ -103,3 +103,8 @@ a{
 a{
     opacity: 0.9;
 }
+
+.search__result__item{
+    margin: 20px;
+    padding: 10px;
+}

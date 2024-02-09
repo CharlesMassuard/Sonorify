@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (JSON.parse(data)['playlists'] != undefined) {
                     for (res of JSON.parse(data)['playlists']) {
                         var a = document.createElement("a");
+                        a.classList.add("search__result__item");
                         var div = document.createElement("div");
                         var textDiv = document.createElement("div");
                         var nom = document.createElement("p");
@@ -74,6 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (JSON.parse(data)['groupes'] != undefined) {
                     for (res of JSON.parse(data)['groupes']) {
                         var a = document.createElement("a");
+                        a.classList.add("search__result__item");
                         var div = document.createElement("div");
                         var textDiv = document.createElement("div");
                         var nom = document.createElement("p");
@@ -103,6 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (JSON.parse(data)['albums'] != undefined) {
                     for (res of JSON.parse(data)['albums']) {
                         var a = document.createElement("a");
+                        a.classList.add("search__result__item");
                         var div = document.createElement("div");
                         var textDiv = document.createElement("div");
                         var nom = document.createElement("p");
@@ -130,6 +133,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (JSON.parse(data)['genres'] != undefined) {
                     for (res of JSON.parse(data)['genres']) {
                         var a = document.createElement("a");
+                        a.classList.add("search__result__item");
                         var div = document.createElement("div");
                         var textDiv = document.createElement("div");
                         var nom = document.createElement("p");
@@ -158,6 +162,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (JSON.parse(data)['musiques'] != undefined) {
                     for (res of JSON.parse(data)['musiques']) {
                         var a = document.createElement("a");
+                        a.classList.add("search__result__item");
                         var div = document.createElement("div");
                         var textDiv = document.createElement("div");
                         var nom = document.createElement("p");

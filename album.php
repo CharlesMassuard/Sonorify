@@ -11,7 +11,6 @@
 <html>
 <head>
     <title>PHP'oSong</title>
-    <link rel="stylesheet" href="./static/css/header.css">
     <link rel="stylesheet" href="./static/css/playlist.css">
     <script src="./static/js/playlist.js" defer></script>
 </head>
@@ -64,7 +63,7 @@
             
             foreach ($musiques as $musique) {
                 echo '<div id="musique">';
-                echo '<img src="./ressources/images/'.$album['image_album'].'">';
+                echo '<img id="imgMusiqueAlbum" src="./ressources/images/'.$album['image_album'].'">';
                 echo '<a href= "">';
                 echo '<h2>'.$musique['nom_musique'].'</h2>';
                 echo '</a>';
