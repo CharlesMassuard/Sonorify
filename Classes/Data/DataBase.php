@@ -143,6 +143,10 @@
             $albums = $this->file_db->query('SELECT * from ALBUM');
             return $albums->fetchAll();
         }
+        public function getAlbum($id){
+            $album = $this->file_db->query('SELECT * from ALBUM where id_album='.$id);
+            return $album->fetch();
+        }
         public function getGenres(){
             $genres = $this->file_db->query('SELECT * from GENRE');
             return $genres->fetchAll();
@@ -242,6 +246,10 @@
         public function getUtilisateur($id){
             $utilisateur = $this->file_db->query('SELECT * from UTILISATEUR where id_utilisateur='.$id);
             return $utilisateur->fetch();
+        }
+        public function getMusiquesAlbum($id){
+            $musique = $this->file_db->query('SELECT * from MUSIQUE where id_album='.$id);
+            return $musique->fetchAll();
         }
         public function getMusiqueByName($nom){
             $musique = $this->file_db->query('SELECT * from MUSIQUE where nom_musique = "'.$nom.'"');
