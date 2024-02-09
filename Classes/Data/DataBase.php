@@ -204,7 +204,7 @@
             return $playlist->fetchAll();
         }
         public function getMusiqueRecente(){
-            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural left join MUSIQUE_NOTE order by note desc LIMIT 15');
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural left join MUSIQUE_NOTE GROUP BY id_musique order by note desc LIMIT 15');
             return $musiques->fetchAll();
         }
         public function getMusiqueRecemmentEcoutee(){
@@ -386,7 +386,7 @@
             return $favoris->fetch();
         }
         public function getMusiquesByIdGroupe($id){
-            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural join GROUPE natural left join MUSIQUE_NOTE where id_groupe='.$id.' order by note desc LIMIT 2');
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural join GROUPE natural left join MUSIQUE_NOTE where id_groupe='.$id.' GROUP BY id_musique order by note desc LIMIT 2');
             return $musiques->fetchAll();
         }
     }
