@@ -133,6 +133,7 @@ input:hover {
 
 label {
     cursor: pointer;
+    margin-top: 15px;
 }
 
 label i.material-icons {
