@@ -9,10 +9,30 @@
         private $id_album;
         private $titre;
         private $image_album;
-        private $id_artiste;
+        private $id_groupe;
         private $dateSortie;
         private $note;
     
+        public function __construct(int $id_album, string $titre, string $dateSortie, string $image_album, string $nom_groupe){
+            $this->id_album = $id_album;
+            $this->titre = $titre;
+            $this->dateSortie = $dateSortie;
+            $this->image_album = $image_album;
+            $this->nom_groupe = $nom_groupe;
+        }
+
+        public function render(){
+            echo '<a class="a_accueil" href= "album.php?id='.$this->id_album.'">';
+            echo '<div class="a_content">';
+            echo '<img src="./ressources/images/'.$this->image_album.'">';
+            echo '<h3>'.$this->titre.'</h3>';
+            echo '<p class="infos_supp">'.$this->nom_groupe.'</p>';
+            echo '</div>';
+            echo '</a>';
+        }
+        public function play(){
+            echo "Playing album";
+        }
         // implement the methods from the interfaces
     }
 ?>

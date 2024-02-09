@@ -83,15 +83,9 @@ $data = new DataBase();
         <div id="albums" class="sections_accueil">
             <?php 
             $albums = $data->getAlbums();
+            $albums = Factory::createAlbums($albums);
             foreach ($albums as $album) {
-
-                echo '<a class="a_accueil" href= "album.php?id='.$album['id_album'].'">';
-                echo '<div class="a_content">';
-                echo '<img src="./ressources/images/'.$album['image_album'].'">';
-                echo '<h3>'.$album['titre'].'</h3>';
-                echo '<p class="infos_supp">'.$data->getNomGroupe($album['id_groupe'])['nom_groupe'].'</p>';
-                echo '</div>';
-                echo '</a>';
+                $album->render();
             }
             ?>
         </div>
