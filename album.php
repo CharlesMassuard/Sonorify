@@ -6,79 +6,97 @@
     $data = new Data\DataBase();
     $album = $data->getAlbum($id_album);
     $musiques = $data->getMusiquesAlbum($id_album);
+    $nbrMusiques = count($musiques);
+    $groupe = $data->getAlbumsArtistesByIdAlbum($album['id_album']);
 ?>
 <!doctype>
 <html>
 <head>
-    <title>PHP'oSong</title>
+    <title><?php echo $groupe['nom_groupe']?> - <?php echo $album['titre']?></title>
+    <link rel="icon" type="image/x-icon" href="./ressources/images/logo.png">
     <link rel="stylesheet" href="./static/css/playlist.css">
     <script src="./static/js/playlist.js" defer></script>
 </head>
 <body>
     <?php include 'aside.php'; ?>
-    <?php include 'bigPlayer.php'; ?>
     <?php include 'player.php'; ?>
     <main>
         <?php include 'header.php'; ?>
-        <h1>Albums</h1>
-        <div id="album">
-            <h2><?php echo "Nom : " . $album['titre'] ?></h2>
-            <p><?php 
-            $somme = 0;
-            foreach ($musiques as $musique) {
-                // Divisez la durée en minutes et secondes
-                list($minutes, $secondes) = explode(':', $musique['duree']);
+        <div id="playlistAlbum">
+            <div id="playlist">
+                <img id="imgPlaylistAlbum" src="./ressources/images/<?php echo $album["image_album"]?>">
+                <div id="playlistDetails">
+                    <h2><?php echo $album['titre'] ?></h2>
+                    <?php  
+                        $dateSortie = substr($album["dateSortie"], -4);
+                        echo '<p> Album  • '.$groupe['nom_groupe'].' • '.$dateSortie.'</p>';
+                        ?>
+                    <p><?php 
+                    $somme = 0;
+                    foreach ($musiques as $musique) {
+                        // Divisez la durée en minutes et secondes
+                        list($minutes, $secondes) = explode(':', $musique['duree']);
+                        
+                        // Convertissez la durée en secondes et ajoutez-la à $somme
+                        $somme += $minutes * 60 + $secondes;
+                    }
+                    
+                    // Convertissez $somme en un format de temps approprié
+                    $heures = floor($somme / 3600);
+                    $minutes = floor(($somme % 3600) / 60);
+                    $secondes = $somme % 60;
+                    
+                    // Formattez le temps en une chaîne de caractères
+                    if($heures == 0){
+                        $dureeTotale = sprintf("%02dm %02ds", $minutes, $secondes);
+                    } else {
+                        $dureeTotale = sprintf("%02dh %02dm %02ds", $heures, $minutes, $secondes);
+                    }
+                    if($heures == 0){
+                        $dureeTotale = sprintf("%02dm %02ds", $minutes, $secondes);
+                    } else {
+                        $dureeTotale = sprintf("%02dh %02dm %02ds", $heures, $minutes, $secondes);
+                    }
+                    if($nbrMusiques == 1){
+                        echo $nbrMusiques." Titre • ".$dureeTotale . "</p>";
+                    } else {
+                        echo $nbrMusiques." Titres • ".$dureeTotale . "</p>";
+                    }
+                    echo '<div id="note">';
+                    for ($i=0; $i < 5; $i++) { 
+                        echo '<a id="ajout_note" href="ajouterNoteAlbum.php?id='.$album['id_album'].'&note='.($i+1).'">';
+                        echo '<i class="material-icons">star</i>';
+                        echo '</a>';
+                    }
+                    echo '</div>';
+                    ?>
+                </div>
+            </div>
+            <div id="musiquesAlbum">
+                <?php 
                 
-                // Convertissez la durée en secondes et ajoutez-la à $somme
-                $somme += $minutes * 60 + $secondes;
-            }
-            
-            // Convertissez $somme en un format de temps approprié
-            $heures = floor($somme / 3600);
-            $minutes = floor(($somme % 3600) / 60);
-            $secondes = $somme % 60;
-            
-            // Formattez le temps en une chaîne de caractères
-            if($heures == 0){
-                $dureeTotale = sprintf("%02dm %02ds", $minutes, $secondes);
-            } else {
-                $dureeTotale = sprintf("%02dh %02dm %02ds", $heures, $minutes, $secondes);
-            }
-            echo "Durée : " . $dureeTotale."</p>";
-            echo '<p>Sortie : ' . $album['dateSortie'] . '</p>';
-            echo '<a href="groupe.php?id='.$album['id_groupe'].'">'.$data->getGroupe($album['id_groupe'])['nom_groupe'].'</a>';
-            echo '<div id="note">';
-            for ($i=0; $i < 5; $i++) { 
-                echo '<a id="ajout_note" href="ajouterNoteAlbum.php?id='.$album['id_album'].'&note='.($i+1).'">';
-                echo '<i class="material-icons">star</i>';
-                echo '</a>';
-            }
-            echo '</div>';
-             ?>
-
-        </div>
-        <div id="musiques">
-            <h2>Musiques</h2>
-            <?php 
-            
-            foreach ($musiques as $musique) {
-                echo '<div id="musique">';
-                echo '<img id="imgMusiqueAlbum" src="./ressources/images/'.$album['image_album'].'">';
-                echo '<a href= "">';
-                echo '<h2>'.$musique['nom_musique'].'</h2>';
-                echo '</a>';
-                echo '<a href="groupe.php?id='.$musique['id_groupe'].'">'.$data->getGroupe($musique['id_groupe'])['nom_groupe'].'</a>';
-                echo '<div id="note">';
-                for ($i=0; $i < 5; $i++) { 
-                    echo '<a id="ajout_note" href="ajouterNotePlaylist.php?id='.$musique['id_musique'].'&note='.($i+1).'">';
-                    echo '<i class="material-icons">star</i>';
+                foreach ($musiques as $musique) {
+                    echo '<div id="musique">';
+                    echo '<img id="imgMusiqueAlbum" src="./ressources/images/'.$album['image_album'].'">';
+                    echo '<a href= "">';
+                    echo '<h2>'.$musique['nom_musique'].'</h2>';
                     echo '</a>';
+                    echo '<a href="groupe.php?id='.$musique['id_groupe'].'">'.$data->getGroupe($musique['id_groupe'])['nom_groupe'].'</a>';
+                    echo '<div id="note">';
+                    for ($i=0; $i < 5; $i++) { 
+                        echo '<a id="ajout_note" href="ajouterNotePlaylist.php?id='.$musique['id_musique'].'&note='.($i+1).'">';
+                        echo '<i class="material-icons">star</i>';
+                        echo '</a>';
+                    }
+                    echo '</div>';
+                    echo '<a href="ajouter_favoris?id='.$musique['id_musique'].'">Ajouter aux favoris</a>';
+                    echo '<p>Durée : '.$musique['duree'].'</p>';
+                    echo '</div>';
                 }
-                echo '</div>';
-                echo '<p>Durée : '.$musique['duree'].'</p>';
-                echo '</div>';
-            }
-            ?>
+                ?>
+            </div>
+        </div>
+        <div id="bottomPage" class="sections_accueil"></div>
     </main>
 </body>
 </html>

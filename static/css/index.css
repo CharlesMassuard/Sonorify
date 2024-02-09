@@ -101,7 +101,7 @@ h3 {
     background: #2e2e2e;; /* Ajustez à la couleur désirée */
     border-radius: 10px;
 }
-
+    
 /* Couleur de la poignée de la barre de défilement lors du survol */
 ::-webkit-scrollbar-thumb:hover:horizontal {
     background: #3f3f3f;; /* Ajustez à la couleur désirée */

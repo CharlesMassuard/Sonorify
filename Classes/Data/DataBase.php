@@ -198,7 +198,8 @@
             return $this->file_db->query('SELECT * from GENRE where id_genre='.$id);
         }
         public function getAlbumsArtistesByIdAlbum($id){
-            return $this->file_db->query('SELECT * from ALBUM_ARTISTE where id_album='.$id);
+            $groupe = $this->file_db->query('SELECT nom_groupe from GROUPE natural join ALBUM where id_album='.$id);
+            return $groupe->fetch();
         }
         public function getAlbumsArtistesByIdArtiste($id){
             return $this->file_db->query('SELECT * from ALBUM_ARTISTE where id_artiste='.$id);

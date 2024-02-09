@@ -6,7 +6,7 @@
 
 #playlist {
     display: flex;
-    align-items: flex-start; /* Alignement vertical en haut */
+    align-items: center; /* Alignement vertical en haut */
 }
 
 #playlistDetails {
@@ -24,22 +24,35 @@
 
 }
 
-#musiques{
+#musiquesPlaylist{
     margin-top: 20px;
     margin-bottom: 20px;
     padding: 20px;
-    border: 1px solid #ffffff;
-    border-radius: 10px;
     width: 80vw;
-    margin-left: 100px;
+    margin-left: 100px;  
 }
 
-#musiques form{
+#musiquesPlaylist form{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
 }
+
+#musiquesAlbum{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    width: 80vw;
+}
+
+#musiquesAlbum form{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
 
 #barre_ajout{
     padding: 5px;

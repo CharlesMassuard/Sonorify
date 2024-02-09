@@ -12,7 +12,6 @@
 <head>
     <title>Sonorify - <?php echo $playlist['nom_playlist']?></title>
     <link rel="icon" type="image/x-icon" href="./ressources/images/logo.png">
-    <link rel="stylesheet" href="./static/css/header.css">
     <link rel="stylesheet" href="./static/css/playlist.css">
     <script src="./static/js/playlist.js" defer></script>
 </head>
@@ -78,8 +77,7 @@
                     </div>
                 </div>
             </div>
-            <div id="musiques">
-                <h2>Musiques</h2>
+            <div id="musiquesPlaylist">
                 <?php
                 echo '<form action="ajouterMusiquePlaylist.php?id='.$id_playlist.'" method="post">';
                 echo '<input id="barre_ajout" type="text" name="nom_musique" list="allMusiques">';
@@ -116,6 +114,7 @@
                 ?>
             </div>
         </div>
+        <div id="bottomPage" class="sections_accueil"></div>
     </main>
 </body>
 </html>
