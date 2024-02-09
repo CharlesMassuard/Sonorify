@@ -239,11 +239,18 @@ repeatButton.addEventListener('click', function () {
         repeatButton.setAttribute('title', 'Tout lire en boucle');
         repeat = 1;
     } else if (repeat == 1) {
-        repeatButton.style.opacity = 1;
-        repeatButtonI.textContent = 'repeat_one';
-        repeatButton.setAttribute('title', 'Lire un titre en boucle');
-        sound.loop(true);
-        repeat = 2;
+        try{
+            sound.loop(true);
+            repeatButton.style.opacity = 1;
+            repeatButtonI.textContent = 'repeat_one';
+            repeatButton.setAttribute('title', 'Lire un titre en boucle');
+            repeat = 2;
+        } catch (e) {
+            repeatButton.style.opacity = 0.5;
+            repeatButtonI.textContent = 'repeat';
+            repeatButton.setAttribute('title', 'Activer la répétition');
+            repeat = 0;
+        }
     } else {
         repeatButton.style.opacity = 0.5;
         repeatButtonI.textContent = 'repeat';
