@@ -121,6 +121,13 @@
                 FOREIGN KEY (id_playlist) REFERENCES PLAYLIST(id_playlist),
                 FOREIGN KEY (id_utilisateur) REFERENCES UTILISATEUR(id_utilisateur))");
 
+            $this->file_db->exec("CREATE TABLE IF NOT EXISTS ALBUM_FAVORIS (
+                id_album INTEGER,
+                id_utilisateur INTEGER,
+                PRIMARY KEY (id_album, id_utilisateur),
+                FOREIGN KEY (id_album) REFERENCES ALBUM(id_album),
+                FOREIGN KEY (id_utilisateur) REFERENCES UTILISATEUR(id_utilisateur))");
+
             $this->file_db->exec("CREATE TABLE IF NOT EXISTS MUSIQUE_FAVORIS (
                 id_musique INTEGER,
                 id_utilisateur INTEGER,
@@ -392,6 +399,10 @@
         }
         public function isFavorisPlaylist($id_playlist,$id_utilisateur){
             $favoris = $this->file_db->query('SELECT * from PLAYLIST_FAVORIS where id_playlist='.$id_playlist.' and id_utilisateur='.$id_utilisateur);
+            return $favoris->fetch();
+        }
+        public function isFavorisAlbum($id_album,$id_utilisateur){
+            $favoris = $this->file_db->query('SELECT * from ALBUM_FAVORIS where id_album='.$id_album.' and id_utilisateur='.$id_utilisateur);
             return $favoris->fetch();
         }
         public function getMusiquesByIdGroupe($id){

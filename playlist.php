@@ -64,16 +64,16 @@
                             echo '</a>';
                         }
                         echo '</div>';
+                        echo '<p>'.$playlist['description_playlist'].'</p>';
+                        echo '<button id="jouerAlbum" title="Lire l\'album"><i class="material-icons">play_arrow</i></button>';
+                        echo '<button id="jouerAlbum" title="Lire l\'album aléatoirement"><i class="material-icons">shuffle</i></button>';
                         if ($_SESSION  && is_array($_SESSION) && $data->isFavorisPlaylist($id_playlist, $_SESSION['user']['id_utilisateur']) ?? false){
-                            echo '<a href="supprimerFavorisPlaylist.php?id='.$id_playlist.'">Supprimer des favoris</a>';
+                            echo '<button id="favorisAlbum" title="Supprimer des favoris"><i class="material-icons">favorite</i></button>';
                         } else {
-                            echo '<a href="ajouterFavorisPlaylist.php?id='.$id_playlist.'">Ajouter aux favoris</a>';
+                            echo '<button id="favorisAlbum" title="Ajouter aux favoris"><i class="material-icons">favorite</i></button>';
                         }
-                        if ($_SESSION  && $playlist['id_auteur'] == $_SESSION['user']['id_utilisateur']){
-                            echo '<a href="supprimerPlaylist.php?id='.$id_playlist.'">Supprimer</a>';
-                        }
-                        ?></p>
-                        <p><?php echo $playlist['description_playlist']; ?></p>
+                        ?>
+                        
                     </div>
                 </div>
             </div>
@@ -93,7 +93,7 @@
                     echo '<div id="musique">';
                     $image = $data->getMusiquesAlbumsByPlaylist($playlist['id_playlist'])['image_album'] ?? 'default.jpg';
                     echo '<img id="imgMusiqueAlbum" src="./ressources/images/'.$image.'">';
-                    echo '<a href= "">';
+                    echo "<a href= 'jouerMusique.php?id_musique={$musique['id_musique']}'>";
                     echo '<h2>'.$musique['nom_musique'].'</h2>';
                     echo '</a>';
                     echo '<a href="groupe.php?id='.$musique['id_groupe'].'">'.$data->getGroupe($musique['id_groupe'])['nom_groupe'].'</a>';
@@ -108,7 +108,7 @@
                     if ($_SESSION  && $playlist['id_auteur'] == $_SESSION['user']['id_utilisateur']){
                         echo '<a href="supprimerMusiquePlaylist.php?id='.$musique['id_musique'].'&id_playlist='.$id_playlist.'">Supprimer</a>';
                     }
-                    echo '<p>Durée : '.$musique['duree'].'</p>';
+                    echo '<p>'.$musique['duree'].'</p>';
                     echo '</div>';
                 }
                 ?>

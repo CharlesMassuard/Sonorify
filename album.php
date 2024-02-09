@@ -15,6 +15,7 @@
     <title><?php echo $groupe['nom_groupe']?> - <?php echo $album['titre']?></title>
     <link rel="icon" type="image/x-icon" href="./ressources/images/logo.png">
     <link rel="stylesheet" href="./static/css/playlist.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="./static/js/playlist.js" defer></script>
 </head>
 <body>
@@ -69,6 +70,13 @@
                         echo '</a>';
                     }
                     echo '</div>';
+                    echo '<button id="jouerAlbum" title="Lire l\'album"><i class="material-icons">play_arrow</i></button>';
+                    echo '<button id="jouerAlbum" title="Lire l\'album aléatoirement"><i class="material-icons">shuffle</i></button>';
+                    if ($_SESSION  && is_array($_SESSION) && $data->isFavorisAlbum($id_album, $_SESSION['user']['id_utilisateur']) ?? false){
+                        echo '<button id="favorisAlbum" title="Supprimer des favoris"><i class="material-icons">favorite</i></button>';
+                    } else {
+                        echo '<button id="favorisAlbum" title="Ajouter aux favoris"><i class="material-icons">favorite</i></button>';
+                    }
                     ?>
                 </div>
             </div>
@@ -78,7 +86,7 @@
                 foreach ($musiques as $musique) {
                     echo '<div id="musique">';
                     echo '<img id="imgMusiqueAlbum" src="./ressources/images/'.$album['image_album'].'">';
-                    echo '<a href= "">';
+                    echo "<a href= 'jouerMusique.php?id_musique={$musique['id_musique']}'>";
                     echo '<h2>'.$musique['nom_musique'].'</h2>';
                     echo '</a>';
                     echo '<a href="groupe.php?id='.$musique['id_groupe'].'">'.$data->getGroupe($musique['id_groupe'])['nom_groupe'].'</a>';
@@ -89,8 +97,8 @@
                         echo '</a>';
                     }
                     echo '</div>';
-                    echo '<a href="ajouter_favoris?id='.$musique['id_musique'].'">Ajouter aux favoris</a>';
-                    echo '<p>Durée : '.$musique['duree'].'</p>';
+                    echo '<button id="prevButton" title="Précédent"><i class="material-icons">favorite</i></button>';
+                    echo '<p>'.$musique['duree'].'</p>';
                     echo '</div>';
                 }
                 ?>
