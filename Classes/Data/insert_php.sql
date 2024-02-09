@@ -10,7 +10,8 @@ INSERT INTO ALBUM (titre, image_album, id_groupe, dateSortie) VALUES
     ("Euphories", "Cover/Euphories.jpg", 2, "29-01-2021"),
     ("La peste & le choléra", "Cover/LaPesteEtLeCholera.jpeg", 3, "03-03-2017"),
     ("Inception", "Cover/Inception.jpg", 4, "21-07-2010"),
-    ("True", "Cover/True.jpg", 5, "16-09-2013");
+    ("True", "Cover/True.jpg", 5, "16-09-2013"),
+    ("Interstellar", "Cover/interstellar.jpg", 4, "07-11-2014");
 
 INSERT INTO ARTISTE (pseudo_artiste, image_artiste) VALUES
     ("Adèle Castillon", "groupes_artistes/adele_castillon.jpg");
@@ -61,10 +62,7 @@ INSERT INTO GENRE_SIMILAIRE (id_genre, id_genre_similaire) VALUES
     
 
 INSERT INTO PLAYLIST (nom_playlist, description_playlist, public, id_auteur) VALUES 
-    ("Dorian Playlist1", "This is Dorian's first playlist", true, 2),
-    ("Dorian Playlist2", "This is Dorian's second playlist", false, 2),
-    ("Charles Playlist1", "This is Charles's first playlist", true, 2),
-    ("Charles Playlist2", "This is Charles's second playlist", false, 3);
+    ("Playlist de Charles", "This is Charles's first playlist", true, 3);
 
 INSERT INTO MUSIQUE (nom_musique, duree, id_groupe, id_album, id_genre, url_musique) VALUES
     -- PRD
@@ -145,3 +143,6 @@ INSERT INTO MUSIQUE_NOTE (id_musique, id_utilisateur, note) VALUES
     (45, 2, 2),
     (21, 1, 3),
     (56, 2, 1);
+
+INSERT INTO PLAYLIST_MUSIQUE (id_playlist, id_musique) VALUES
+    (1, 1);

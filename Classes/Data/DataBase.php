@@ -389,5 +389,18 @@
             $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural join GROUPE natural left join MUSIQUE_NOTE where id_groupe='.$id.' GROUP BY id_musique order by note desc LIMIT 2');
             return $musiques->fetchAll();
         }
+        public function getMusiquesByIdAlbum($id){
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural join GROUPE natural left join MUSIQUE_NOTE where id_album='.$id.' GROUP BY id_musique order by note desc LIMIT 2');
+            return $musiques->fetchAll();
+        }
+        public function getMusiquesByIdPlaylist($id){
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join PLAYLIST_MUSIQUE natural left join ALBUM natural join GROUPE natural join MUSiQUE_NOTE where id_playlist='.$id.' GROUP BY id_musique order by note desc LIMIT 2');
+            return $musiques->fetchAll();
+        }
+        public function getMusiquesByIdGenre($id){
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural join GROUPE natural left join MUSIQUE_NOTE where id_genre='.$id.' GROUP BY id_musique order by note desc LIMIT 2');
+            return $musiques->fetchAll();
+        }
+
     }
 ?>

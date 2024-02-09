@@ -15,11 +15,21 @@ function rechercheData($data) {
         $playlists = $database->getPlaylistsByName($data);
         $genres = $database->getGenresByName($data);
         $albums = $database->getAlbumsByName($data);
-        $musiques = $database->getMusiquesByName($data);
-        $resultats['musiques'] = $musiques;
         $resultats['albums'] = $albums;
         $resultats['playlists'] = $playlists;
         $resultats['genres'] = $genres;
+        if(count($resultats['albums']) + count($resultats['playlists']) + count($resultats['genres']) > 1){
+            $musiques = $database->getMusiquesByName($data);
+        } else if (count($resultats['albums']) + count($resultats['playlists']) + count($resultats['genres']) == 1){
+            if(count($resultats['albums']) == 1){
+                $musiques = $database->getMusiquesByIdAlbum($resultats['albums'][0]['id_album']);
+            } else if(count($resultats['playlists']) == 1){
+                $musiques = $database->getMusiquesByIdPlaylist($resultats['playlists'][0]['id_playlist']);
+            } else if(count($resultats['genres']) == 1){
+                $musiques = $database->getMusiquesByIdGenre($resultats['genres'][0]['id_genre']);
+            }
+        }
+        $resultats['musiques'] = $musiques;
     }
     print_r(json_encode($resultats));
 }
