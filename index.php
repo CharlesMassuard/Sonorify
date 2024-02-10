@@ -20,9 +20,9 @@ $data = new DataBase();
     <script src="./static/js/index.js" defer></script>
     <script src="./static/js/accueil.js" defer></script>
 </head>
+<?php include 'player.php'; ?>
 <body>
     <?php include 'aside.php'; ?>
-    <?php include 'bigPlayer.php'; ?>
     <main>
         <?php include 'header.php'; ?>
         <div id="titre">
@@ -38,31 +38,28 @@ $data = new DataBase();
         <?php
             if (!isset($_SESSION['user'])) {
                 echo '<h2>Musiques</h2>';
-                echo '<div id="musiques" class="sections_accueil">';
                 $musiques = $data->getMusiqueRecente();
-                foreach ($musiques as $musique) {
-                    echo '<a class="a_accueil" href= "">';
-                    echo '<div class="a_content">';
-                    echo '<h3>'.$musique['nom_musique'].'</h3>';
-                    echo '<p class="infos_supp">'.$data->getNomGroupe($musique['id_groupe'])['nom_groupe'].'</p>';
-                    echo '</div>';
-                    echo '</a>';
-                }
-                echo '</div>';
             } else {
-                echo '<h2>Vos Musiques Récentes</h2>';
-                echo '<div id="musiques" class="sections_accueil">';
                 $musiques = $data->getMusiqueRecemmentEcoutee();
-                foreach ($musiques as $musique) {
-                    echo '<a class="a_accueil" href= "">';
-                    echo '<div class="a_content">';
-                    echo '<h3>'.$musique['titre'].'</h3>';
-                    echo '<p class="infos_supp">'.$data->getNomGroupe($musique['id_groupe'])['nom_groupe'].'</p>';
-                    echo '</div>';
-                    echo '</a>';
+                if(count($musiques) == 0) {
+                    $musiques = $data->getMusiqueRecente();
+                    echo '<h2>Musiques</h2>';
+                } else {
+                    echo '<h2>Musiques Recemment Ecoutées</h2>';
                 }
-                echo '</div>';
             }
+            echo '<div id="musiques" class="sections_accueil">';
+            foreach ($musiques as $musique) {
+                echo "<a class='a_accueil' href='jouerMusique.php?id_musique={$musique['id_musique']}'>";
+                echo '<div class="a_content">';
+                $album = $data->getAlbumByMusique($musique['id_musique']);
+                echo '<img src="./ressources/images/'.$album['image_album'].'">';
+                echo '<h3>'.$musique['nom_musique'].'</h3>';
+                echo '<p class="infos_supp">'.$data->getNomGroupe($musique['id_groupe'])['nom_groupe'].'</p>';
+                echo '</div>';
+                echo '</a>';
+            }
+            echo '</div>';
         ?>
         <h2>Playlists</h2>
         <div id="playlist" class="sections_accueil">
@@ -102,19 +99,21 @@ $data = new DataBase();
             foreach ($genres as $genre) {
                 echo '<a class="a_accueil" href= "">';
                 echo '<div class="a_content">';
+                echo '<img src="./ressources/images/'.$genre['image_genre'].'">';
                 echo '<h3>'.$genre['nom_genre'].'</h3>';
                 echo '</div>';
                 echo '</a>';
             }
             ?>
         </div>
-        <h2>Groupes</h2>
+        <h2>Groupes et Artistes</h2>
         <div id="groupes" class="sections_accueil">
             <?php 
             $groupes = $data->getGroupes();
             foreach ($groupes as $groupe) {
                 echo '<a class="a_accueil" href= "">';
                 echo '<div class="a_content">';
+                echo '<img src="./ressources/images/'.$groupe['image_groupe'].'">';
                 echo '<h3>'.$groupe['nom_groupe'].'</h3>';
                 echo '</div>';
                 echo '</a>';
@@ -124,5 +123,4 @@ $data = new DataBase();
         <div id="bottomPage" class="sections_accueil"></div>
     </main>
 </body>
-<?php include 'player.php'; ?>
 </html>

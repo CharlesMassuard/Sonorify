@@ -85,44 +85,6 @@ h3 {
     padding-bottom: 80px;
 }
 
-/* Cible toutes les barres de défilement horizontales */
-::-webkit-scrollbar {
-    height: 5px; /* Ajustez à la hauteur désirée */
-}
-
-/* Couleur de fond de la barre de défilement */
-::-webkit-scrollbar-track:horizontal {
-    background: rgb(22, 22, 22);
-    border-radius: 10px;
-}
-
-/* Couleur de la poignée de la barre de défilement */
-::-webkit-scrollbar-thumb:horizontal {
-    background: #2e2e2e;; /* Ajustez à la couleur désirée */
-    border-radius: 10px;
-}
-
-/* Couleur de la poignée de la barre de défilement lors du survol */
-::-webkit-scrollbar-thumb:hover:horizontal {
-    background: #3f3f3f;; /* Ajustez à la couleur désirée */
-}
-
-/* Couleur de fond de la barre de défilement */
-::-webkit-scrollbar-track:vertical {
-    background: rgb(22, 22, 22);
-}
-
-/* Couleur de la poignée de la barre de défilement */
-::-webkit-scrollbar-thumb:vertical {
-    background: #2e2e2e; /* Ajustez à la couleur désirée */
-}
-
-/* Couleur de la poignée de la barre de défilement lors du survol */
-::-webkit-scrollbar-thumb:hover:vertical {
-    background: #3f3f3f; /* Ajustez à la couleur désirée */
-}
-
-
 .a_content {
     display: flex;
     flex-direction: column;

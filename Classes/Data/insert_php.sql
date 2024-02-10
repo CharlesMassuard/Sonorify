@@ -1,133 +1,44 @@
-INSERT INTO GROUPE (id_groupe, nom_groupe, image_groupe, description_groupe) VALUES
-    (1, "Alabama Shakes", "Alabama_Shakes.jpg", "Alabama Shakes est un groupe de rock américain, originaire d'Athens, en Alabama. Il est formé en 2009 et composé de Brittany Howard, Zac Cockrell, Heath Fogg et Steve Johnson."),
-    (2, "Ryan Adams", "Ryan_Adams_2014.jpg", "Ryan Adams, né David Ryan Adams le 5 novembre 1974 à Jacksonville, en Caroline du Nord, est un auteur-compositeur-interprète, musicien, producteur, poète et peintre américain."),
-    (3, "Taylor Swift", "Taylor_Swift_2019_by_Glenn_Francis.jpg", "Taylor Alison Swift, née le 13 décembre 1989 à Reading, en Pennsylvanie, est une auteure-compositrice-interprète et actrice américaine."),
-    (4, "The Strokes", "The_Strokes_2019.jpg", "The Strokes est un groupe de rock américain, originaire de New York. Formé en 1998, il est composé de Julian Casablancas, Nick Valensi, Albert Hammond Jr., Nikolai Fraiture et Fabrizio Moretti."),
-    (5, "The White Stripes", "The_White_Stripes.jpg", "The White Stripes est un groupe de rock américain, originaire de Détroit, dans le Michigan. Il est formé en 1997 par le guitariste et chanteur Jack White et la batteuse Meg White."),
-    (6, "16 Horsepower", "16_Horsepower.jpg", "16 Horsepower est un groupe de rock alternatif américain, originaire de Denver, dans le Colorado. Il est formé en 1992 par David Eugene Edwards, Jean-Yves Tola et Keven Soll."),
-    (7, "A Perfect Circle", "A_Perfect_Circle_2018.jpg", "A Perfect Circle est un groupe de rock alternatif américain, originaire de Los Angeles, en Californie. Il est formé en 1999 par le guitariste Billy Howerdel et le chanteur Maynard James Keenan."),
-    (8, "AC/DC", "ACDC.jpg", "AC/DC est un groupe de hard rock australo-britannique, originaire de Sydney. Il est formé en 1973 par les frères Angus et Malcolm Young."),
-    (9, "Aerosmith", "Aerosmith_2019.jpg", "Aerosmith est un groupe de hard rock américain, originaire de Boston, dans le Massachusetts. Il est formé en 1970 par Steven Tyler, Joe Perry, Tom Hamilton, Joey Kramer et Ray Tabano."),
-    (10, "Alice in Chains", "Alice_in_Chains_2013.jpg", "Alice in Chains est un groupe de rock américain, originaire de Seattle, dans l'État de Washington. Il est formé en 1987 par le chanteur Layne Staley et le guitariste Jerry Cantrell."),
-    (11, "The Beatles", "The_Beatles_in_America.jpg", "The Beatles est un groupe de rock britannique, originaire de Liverpool, en Angleterre. Il est formé en 1960 et composé de John Lennon, Paul McCartney, George Harrison et Ringo Starr."),
-    (12, "The Rolling Stones", "The_Rolling_Stones_2016.jpg", "The Rolling Stones est un groupe de rock britannique, originaire de Londres, en Angleterre. Il est formé en 1962 par le guitariste et leader original Brian Jones, le pianiste Ian Stewart, le chanteur Mick Jagger et le guitariste Keith Richards."),
-    (13, "Joan Benz", "Joan_Baez.jpg", "Joan Baez, née le 9 janvier 1941 à Staten Island, New York, est une auteure-compositrice-interprète, musicienne et militante américaine."),
-    (14, "Bob Dylan", "Bob_Dylan_-_Azkena_Rock_Festival_2010_2.jpg", "Bob Dylan, né Robert Allen Zimmerman le 24 mai 1941 à Duluth, dans le Minnesota, est un auteur-compositeur-interprète, musicien, peintre et poète américain."),
-    (15, "Neil Young", "Neil_Young_2012.jpg", "Neil Young, né le 12 novembre 1945 à Toronto, en Ontario, est un auteur-compositeur-interprète et musicien canadien."),
-    (16, "The Doors", "The_Doors_1967.jpg", "The Doors est un groupe de rock américain, originaire de Los Angeles, en Californie. Il est formé en 1965 par Jim Morrison, Ray Manzarek, Robby Krieger et John Densmore."),
-    (17, "The Velvet Underground", "The_Velvet_Underground.jpg", "The Velvet Underground est un groupe de rock américain, originaire de New York. Il est formé en 1964 par Lou Reed, Sterling Morrison, John Cale et Angus MacLise."),
-    (18, "The Who", "The_Who_1975.jpg", "The Who est un groupe de rock britannique, originaire de Londres, en Angleterre. Il est formé en 1964 par Roger Daltrey, Pete Townshend, John Entwistle et Keith Moon."),
-    (19, "The Yardbirds", "The_Yardbirds_1966.jpg", "The Yardbirds est un groupe de rock britannique, originaire de Londres, en Angleterre. Il est formé en 1963 par Keith Relf, Paul Samwell-Smith, Chris Dreja, Jim McCarty et Anthony Topham."),
-    (20, "The Kinks", "The_Kinks_1965.jpg", "The Kinks est un groupe de rock britannique, originaire de Londres, en Angleterre. Il est formé en 1964 par Ray Davies, Dave Davies, Pete Quaife et Mick Avory.");
+INSERT INTO GROUPE (nom_groupe, image_groupe, description_groupe) VALUES
+    ("Adèle Castillon", "groupes_artistes/adele_castillon.jpg", "Adèle Castillon"),
+    ("Vidéoclub", "groupes_artistes/videoclub.png", "Vidéoclub"),
+    ("TagadaJones", "groupes_artistes/tagadajones.jpg", "TagadaJones"),
+    ("Hans Zimmer", "groupes_artistes/hanszimmer.jpg", "Hans Zimmer"),
+    ("Avicii", "groupes_artistes/avicii.jpg", "Avicii");
 
-INSERT INTO ALBUM (id_album, titre, image_album, id_groupe, dateSortie) VALUES
-    (1, "Sound & Color", "220px-Alabama_Shakes_Album_Cover.jpg", 1, "17/04/2017"),
-    (2, "Dark Chords on a Big Guitar", "220px-DarkChords.jpg", 13, "27/09/2003"),
-    (3, "Folklore", "220px-Folklore_hp.jpg", 3, "18/05/2010"),
-    (4, "Love Is Hell", "220px-Love_Is_Hell.jpg", 2, "15/04/2003"),
-    (5, "Orion", "220px-Ryan-adams-orion.jpg", 2, "18/05/2010");
+INSERT INTO ALBUM (titre, image_album, id_groupe, dateSortie) VALUES
+    ("Plaisir Risque Dépendance", "Cover/PRD.jpg", 1, "20-10-2023"),
+    ("Euphories", "Cover/Euphories.jpg", 2, "29-01-2021"),
+    ("La peste & le choléra", "Cover/LaPesteEtLeCholera.jpeg", 3, "03-03-2017"),
+    ("Inception", "Cover/Inception.jpg", 4, "21-07-2010"),
+    ("True", "Cover/True.jpg", 5, "16-09-2013"),
+    ("Interstellar", "Cover/interstellar.jpg", 4, "07-11-2014");
 
 INSERT INTO ARTISTE (pseudo_artiste, image_artiste) VALUES
-    ("Brittany Howard", "Brittany_Howard.jpg"),
-    ("Zac Cockrell", "Zac_Cockrell.jpg"),
-    ("Heath Fogg", "Heath_Fogg.jpg"),
-    ("Steve Johnson", "Steve_Johnson.jpg"),
-    ("Ryan Adams", "Ryan_Adams_2014.jpg"),
-    ("Taylor Swift", "Taylor_Swift_2019_by_Glenn_Francis.jpg"),
-    ("Julian Casablancas", "Julian_Casablancas.jpg"),
-    ("Nick Valensi", "Nick_Valensi.jpg"),
-    ("Albert Hammond Jr.", "Albert_Hammond_Jr.jpg"),
-    ("Nikolai Fraiture", "Nikolai_Fraiture.jpg"),
-    ("Fabrizio Moretti", "Fabrizio_Moretti.jpg"),
-    ("Jack White", "Jack_White_2012.jpg"),
-    ("Meg White", "Meg_White.jpg"),
-    ("David Eugene Edwards", "David_Eugene_Edwards.jpg"),
-    ("Jean-Yves Tola", "Jean-Yves_Tola.jpg"),
-    ("Keven Soll", "Keven_Soll.jpg"),
-    ("Billy Howerdel", "Billy_Howerdel.jpg"),
-    ("Maynard James Keenan", "Maynard_James_Keenan.jpg"),
-    ("Angus Young", "Angus_Young.jpg"),
-    ("Malcolm Young", "Malcolm_Young.jpg"),
-    ("Steven Tyler", "Steven_Tyler.jpg"),
-    ("Joe Perry", "Joe_Perry.jpg"),
-    ("Tom Hamilton", "Tom_Hamilton.jpg"),
-    ("Joey Kramer", "Joey_Kramer.jpg"),
-    ("Ray Tabano", "Ray_Tabano.jpg"),
-    ("Layne Staley", "Layne_Staley.jpg"),
-    ("Jerry Cantrell", "Jerry_Cantrell.jpg"),
-    ("John Lennon", "John_Lennon_1969.jpg"),
-    ("Paul McCartney", "Paul_McCartney_1964.jpg");
+    ("Adèle Castillon", "groupes_artistes/adele_castillon.jpg");
 
 INSERT INTO GROUPE_ARTISTE (id_groupe, id_artiste) VALUES
     ("1", "1"),
-    ("1", "2"),
-    ("1", "3"),
-    ("1", "4"),
-    ("2", "5"),
-    ("3", "6"),
-    ("4", "7"),
-    ("4", "8"),
-    ("4", "9"),
-    ("4", "10"),
-    ("4", "11"),
-    ("5", "12"),
-    ("5", "13"),
-    ("6", "14"),
-    ("6", "15"),
-    ("6", "16"),
-    ("7", "17"),
-    ("7", "18"),
-    ("8", "19"),
-    ("8", "20"),
-    ("9", "21"),
-    ("9", "22"),
-    ("9", "23"),
-    ("9", "24"),
-    ("9", "25"),
-    ("10", "26"),
-    ("10", "27"),
-    ("11", "28"),
-    ("11", "29"),
-    ("12", "30"),
-    ("12", "31"),
-    ("13", "32"),
-    ("13", "33"),
-    ("14", "34"),
-    ("14", "35"),
-    ("15", "36"),
-    ("15", "37"),
-    ("16", "38"),
-    ("16", "39"),
-    ("17", "40"),
-    ("17", "41"),
-    ("18", "42"),
-    ("18", "43"),
-    ("19", "44"),
-    ("19", "45"),
-    ("20", "46"),
-    ("20", "47");
+    ("2", "1");
 
-INSERT INTO GENRE (nom_genre) VALUES
-    ("Rock"),
-    ("Pop"),
-    ("Rap"),
-    ("Classique"),
-    ("Jazz"),
-    ("Metal"),
-    ("Electro"),
-    ("Reggae"),
-    ("Funk"),
-    ("Soul"),
-    ("Country"),
-    ("Blues"),
-    ("Disco"),
-    ("Folk"),
-    ("Hip-Hop"),
-    ("Punk"),
-    ("RnB"),
-    ("Techno"),
-    ("Variété"),
-    ("World");
+INSERT INTO GENRE (nom_genre, image_genre) VALUES
+    ("Rock", "genres/rock.png"),
+    ("Pop",  "genres/pop.png"),
+    ("Classique", "genres/classique.png"),
+    ("Jazz", "genres/jazz.png"),
+    ("Metal", "genres/metal.png"),
+    ("Bandes originales", "genres/bandes_originales.png"),
+    ("Electro", "genres/electro.png"),
+    ("Reggae", "genres/reggae.png"),
+    ("Funk", "genres/funk.png"),
+    ("Soul", "genres/soul.png"),
+    ("Country", "genres/country.png"),
+    ("Blues", "genres/blues.png"),
+    ("Disco", "genres/disco.png"),
+    ("Folk", "genres/folk.png"),
+    ("Punk", "genres/punk.png"),
+    ("Hip-Hop", "genres/hip-hop.png"),
+    ("RnB", "genres/rnb.png"),
+    ("Rap", "genres/rap.png");
 
 INSERT INTO ROLE (nom_role) VALUES
     ("Utilisateur"),
@@ -138,106 +49,112 @@ INSERT INTO UTILISATEUR (id_utilisateur, login_utilisateur, password_utilisateur
     (2, "Pixa253lulu", "2e44118c06a1d5de31e551f83549ba3d9a421accf98673239ee02e4d56bc4bb1", "Ludmann", "Dorian", "dorianludm7@gmail.com", "2005-19-12", NULL, 1),
     (3, "LutinTag", "52c8658d23223219f1e8e610bcf6896963a694e7cf63cf26eddeb4aef4057868", "Massuard", "Charles", "lutintagpro@youtube.com", "2004-14-06", NULL, 1);
 
-INSERT INTO ALBUM_NOTE (id_album, id_utilisateur, note) VALUES 
-    (1, 2, 3),
-    (1, 3, 4),
-    (2, 2, 5),
-    (2, 3, 5),
-    (3, 2, 4),
-    (3, 3, 2),
-    (4, 2, 1),
-    (4, 3, 2),
-    (5, 2, 3),
-    (5, 3, 5);
-
-INSERT INTO GENRE_SIMILAIRE (id_genre, id_genre_similaire) VALUES 
-    (1, 2), -- Rock is similar to Pop
-    (1, 6), -- Rock is similar to Metal
-    (2, 1), -- Pop is similar to Rock
-    (2, 15), -- Pop is similar to Hip-Hop
-    (3, 15), -- Rap is similar to Hip-Hop
-    (3, 17), -- Rap is similar to RnB
-    (4, 5), -- Classique is similar to Jazz
-    (5, 4), -- Jazz is similar to Classique
-    (6, 1), -- Metal is similar to Rock
-    (7, 18), -- Electro is similar to Techno
-    (8, 10), -- Reggae is similar to Soul
+INSERT INTO GENRE_SIMILAIRE (id_genre, id_genre_similaire) VALUES
+    (1, 2),  -- Rock is similar to Pop
+    (3, 4),  -- Classique is similar to Jazz
+    (5, 6),  -- Metal is similar to Bandes originales
+    (7, 8),  -- Electro is similar to Reggae
     (9, 10), -- Funk is similar to Soul
-    (10, 9), -- Soul is similar to Funk
-    (11, 14), -- Country is similar to Folk
-    (12, 13), -- Blues is similar to Disco
-    (13, 12), -- Disco is similar to Blues
-    (14, 11), -- Folk is similar to Country
-    (15, 3), -- Hip-Hop is similar to Rap
-    (16, 1), -- Punk is similar to Rock
-    (17, 3), -- RnB is similar to Rap
-    (18, 7), -- Techno is similar to Electro
-    (19, 2), -- Variété is similar to Pop
-    (20, 14); -- World is similar to Folk
+    (11, 12),-- Country is similar to Blues
+    (13, 14),-- Disco is similar to Folk
+    (15, 16),-- Punk is similar to Hip-Hop
+    (17, 18);-- RnB is similar to Rap
+    
 
 INSERT INTO PLAYLIST (nom_playlist, description_playlist, public, id_auteur) VALUES 
-    ("Dorian Playlist1", "This is Dorian's first playlist", true, 2),
-    ("Dorian Playlist2", "This is Dorian's second playlist", false, 2),
-    ("Charles Playlist1", "This is Charles's first playlist", true, 2),
-    ("Charles Playlist2", "This is Charles's second playlist", false, 3);
+    ("Playlist de Charles", "This is Charles's first playlist", true, 3),
+    ("Playlist de l'administrateur", "Playlist privée de l'admin", false, 1);
 
-INSERT INTO MUSIQUE (nom_musique, duree, id_groupe, id_album, id_genre) VALUES
-    ("Hold On", "3:46", 1, 1, 1),
-    ("Gimme All Your Love", "4:03", 1, 1, 1),
-    ("Sound & Color", "3:03", 1, 1, 1),
-    ("Don't Wanna Fight", "3:52", 1, 1, 1),
-    ("Heartbreaker", "4:01", 2, 2, 2),
-    ("New York, New York", "3:47", 2, 2, 2),
-    ("Come Pick Me Up", "5:19", 2, 2, 2),
-    ("Wrecking Ball", "3:48", 3, 3, 3),
-    ("Exile", "4:58", 3, 3, 3),
-    ("My Tears Ricochet", "4:15", 3, 3, 3),
-    ("Hard to Love", "3:09", 4, 4, 4),
-    ("Wish You Were Here", "3:24", 4, 4, 4),
-    ("Wonderwall", "4:18", 4, 4, 4),
-    ("Call It What You Want", "3:23", 5, 5, 5),
-    ("Cruel Summer", "2:58", 5, 5, 5),
-    ("August", "4:22", 5, 5, 5);
+INSERT INTO MUSIQUE (nom_musique, duree, id_groupe, id_album, id_genre, url_musique) VALUES
+    -- PRD
+    ("Alabama", "3:34", 1, 1, 2, "https://audio.jukehost.co.uk/X3NaYsB1Sc08ziSROSmXq0cHuvmAXHIn"),
+    ("C'est drôle", "2:57", 1, 1, 2, "https://audio.jukehost.co.uk/S7SU27M9nTGLOwRLPdH7VT7Oqi2nvtAwé"),
+    ("Doliprane", "2:46", 1, 1, 2, "https://audio.jukehost.co.uk/bzsXL9swuzwNl2NjWc2zNyaWWJmwaO1e"),
+    ("Gabrielle", "3:02", 1, 1, 2, "https://audio.jukehost.co.uk/VybOSPqfOdzrWX0hPZuPxEJyMF638GXN"),
+    ("Impala", "2:10", 1, 1, 2, "https://audio.jukehost.co.uk/QdmSJD67hXRQDnsgvbYhYM7xym7mcNJq"),
+    ("Je t'aime", "2:19", 1, 1, 2, "https://audio.jukehost.co.uk/omJyhhKfuoYbKiZo4hbY3tr58GemEKuo"),
+    ("Novembre", "2:38", 1, 1, 2, "https://audio.jukehost.co.uk/UQ7v2YVjpjNtVtFwU47z9caiR1a0vyp4"),
+    ("Partir", "2:50", 1, 1, 2, "https://audio.jukehost.co.uk/gBWJXM1KAe30X0DvYmUYdwUdTSXb1XHs"),
+    ("Petite Fille", "2:16", 1, 1, 2, "https://audio.jukehost.co.uk/1PQTgNzxmiV8ty85j0yJncF6DYZAkqkw"),
+    ("PRD", "3:03", 1, 1, 2, "https://audio.jukehost.co.uk/eoC0mzmWIEgzZL96JZtPitUMl6bzlQhs"),
+    ("Promis", "3:02", 1, 1, 2, "https://audio.jukehost.co.uk/D22hiosnmAf9Zrdy4KFyfBIMHW2T9GIa"),
+    ("Rêve", "3:09", 1, 1, 2, "https://audio.jukehost.co.uk/kvz9UZDkjNnjkDYyiR574V8w5eehJUGy"),
+    ("Sensations", "2:42", 1, 1, 2, "https://audio.jukehost.co.uk/Ih7CEkrMhE5vmTehoHZfvcOXSco6w4p0"),
+    ("Souvenirs", "2:59", 1, 1, 2, "https://audio.jukehost.co.uk/XuXQljPdYR8YO0Za1nggCe8GL0eaq0m8"),
+    -- Euphories
+    ("808", "2:57", 2, 2, 2, "https://audio.jukehost.co.uk/Kv05SqT6wAKgCuB90TLAc3kj0muzFzKO"),
+    ("Amour Plastique", "3:45", 2, 2, 2, "https://audio.jukehost.co.uk/wVHxQCHmPouUT5P48UWQ7RAptb6qylpw"),
+    ("En nuit", "3:41", 2, 2, 2, "https://audio.jukehost.co.uk/OFv7K7OeD6Q3eTCSuKgmiEXXnh9U0r8v"),
+    ("Enfance 80", "3:40", 2, 2, 2, "https://audio.jukehost.co.uk/sHVvg00YUK6ulEPEdI32xC2hO8ILDWCL"),
+    ("Euphories", "3:29", 2, 2, 2, "https://audio.jukehost.co.uk/amtRaGfPH8uB4mQrIJZWis6aGZMH0cds"),
+    ("Mai", "3:35", 2, 2, 2, "https://audio.jukehost.co.uk/57AySJwqQvpGA3ULW9TzQG6N2Y59bVO9"),
+    ("Petit monde", "3:28", 2, 2, 2, "https://audio.jukehost.co.uk/knjlc0uY1V0F53Va2Cps1JOkNtwM7jg2"),
+    ("Polaroids", "3:07", 2, 2, 2, "https://audio.jukehost.co.uk/WCrxGpObXMiqHMiU8WSMyOvEcBd6bjNH"),
+    ("Roi", "3:42", 2, 2, 2, "https://audio.jukehost.co.uk/Po43nYEcNVJmlLt7bHlAI6b7dfCMnY1d"),
+    ("SMS", "3:52", 2, 2, 2, "https://audio.jukehost.co.uk/ICYVr0DucwhWFwmbY5XDs28DKGj9jolL"),
+    ("Suricate (ODZ)", "3:13", 2, 2, 2, "https://audio.jukehost.co.uk/aSFl3YhXmBCK0Y1ZL4WlHbO7eHn6RGVV"),
+    ("Trois Jours", "3:58", 2, 2, 2, "https://audio.jukehost.co.uk/FyCk24ieJDvsdAiyVK6GVdOmTB3Vn2Xa"),
+    ("What Are You So Afraid Of", "2:27", 2, 2, 2, "https://audio.jukehost.co.uk/w4a3NOpNDOKpfaEndPhyX5NZoSEejL6g"),
+    -- La peste & le choléra
+    ("Enfant des rues", "3:50", 3, 3, 15, "https://audio.jukehost.co.uk/cwhiMaE6gQFrg1L2bKxf4Ycy6PmJsucW"),
+    ("Envers et contre tous", "3:24", 3, 3, 15, "https://audio.jukehost.co.uk/rh7FQbYwASEKbhjN6xkqEnZhj5d0e5sT"),
+    ("Guns", "4:05", 3, 3, 15, "https://audio.jukehost.co.uk/88jCc3XVwkCYdogFqWVMlNHEgavWN8RT"),
+    ("Je suis démocratie", "3:49", 3, 3, 15, "https://audio.jukehost.co.uk/CtgXOYfDbTIxDF5uJHgewWSkOUMDlYC6"),
+    ("La peste et le choléra", "4:05", 3, 3, 15, "https://audio.jukehost.co.uk/4y4ZVF0mc2s39pgI6ghyKy5Bs8zSabCx"),
+    ("Le monde tourne à l'envers", "3:29", 3, 3, 15, "https://audio.jukehost.co.uk/HpOYA4vLYKqQN1nnmntu2z0HgZ5cTvt7"),
+    ("Le point de non-retour", "3:55", 3, 3, 15, "https://audio.jukehost.co.uk/XSO3uZxl6yuZ9sARNCBUxxXMRrAeqi4j"),
+    ("Mort aux cons", "4:01", 3, 3, 15, "https://audio.jukehost.co.uk/5DLyWsHXQetgWpGCEeYyBaWUfkRCtK0b"),
+    ("Pas de futur", "3:32", 3, 3, 15, "https://audio.jukehost.co.uk/8RFDHFbPRSb8mC8I9TV1412Rs1PwT9ro"),
+    ("Pertes et fracas", "3:55", 3, 3, 15, "https://audio.jukehost.co.uk/DcP9ZF00BnDhVk9yo0z0UaoRQJAWPdTq"),
+    ("Vendredi 13", "4:10", 3, 3, 15, "https://audio.jukehost.co.uk/rbQNDULOd9iiv69JbSP5IOcTPl8rgm0F"),
+    -- Inception
+    ("528491", "2:23", 4, 4, 6, "https://audio.jukehost.co.uk/KEnMsupOkSS8SAT5DYKCXSaP29M0K9Kd"),
+    ("Dream is Collapsing", "2:23", 4, 4, 6, "https://audio.jukehost.co.uk/67G120mY8SBUCA1bi4mOqi1fTypTVOKI"),
+    ("Dream Within a Dream", "5:04", 4, 4, 6, "https://audio.jukehost.co.uk/yPcxonkmzksOPQ9PqzKDRoTDpDG5pt9f"),
+    ("Half Remembered Dream", "1:11", 4, 4, 6, "https://audio.jukehost.co.uk/gl62bEq6tS7WPNchkWLovDflRhbKpQKq"),
+    ("Mombasa", "4:54", 4, 4, 6, "https://audio.jukehost.co.uk/dpl7UBHTM1TXh7eTA6BgypSKvkQFVvL5"),
+    ("Old Souls", "7:44", 4, 4, 6, "https://audio.jukehost.co.uk/17FIb3ei2rztLnj2uq45DexGLUGkiQl1"),
+    ("One Simple Idea", "2:28", 4, 4, 6, "https://audio.jukehost.co.uk/DKBabTV9C7l2lPeINKaEjuSRLSTVMMLc"),
+    ("Paradox", "3:25", 4, 4, 6, "https://audio.jukehost.co.uk/KlEjkWP5m7uZlEtiEJF3dYm34XSR9qqx"),
+    ("Radical Notion", "3:42", 4, 4, 6, "https://audio.jukehost.co.uk/l1ieTlcuUEknuLaPakrsu4cJQCIePr72"),
+    ("Time", "4:35", 4, 4, 6, "https://audio.jukehost.co.uk/Ej7t6M2dZrALJ4V6qASG5hn9L2Al2ggr"),
+    ("Waiting for a Train", "9:50", 4, 4, 6, "https://audio.jukehost.co.uk/FyD0JWeFU1a8BJpN7qufX1mws5mxDE73"),
+    ("We Built Our Own World", "1:55", 4, 4, 6, "https://audio.jukehost.co.uk/sWIaSXc1jHtrnKZBuBThQarxuv5vPnnS"),
+    -- True
+    ("Addicted to You", "2:28", 5, 5, 14, "https://audio.jukehost.co.uk/1k1wMunSTVoilcT7iANkOATjFKYytEYn"),
+    ("All You Need Is Love", "6:21", 5, 5, 14, "https://audio.jukehost.co.uk/BeJoa8XkXyxvKzmu5eDKQ2PIK4e53P1l"),
+    ("Always On The Run", "4:55", 5, 5, 14, "https://audio.jukehost.co.uk/btF0L8NOxf9fwkkmayOzx8hZUDSeUGCp"),
+    ("Canyions", "7:29", 5, 5, 14, "https://audio.jukehost.co.uk/c1CZ44zrkIV36tMoo3BslXQfBv5d3eEB"),
+    ("Dear Boy", "7:59", 5, 5, 14, "https://audio.jukehost.co.uk/EBp1Pkw2TlMiksQxqFLFtvdN5NLK4PwV"),
+    ("EDOM", "8:15", 5, 5, 14, "https://audio.jukehost.co.uk/djk4VZDicIYLOYIZnZPD4S6IEhWiPrMd"),
+    ("Heart Upon My Sleeve", "4:43", 5, 5, 14, "https://audio.jukehost.co.uk/pLmOIXk9KHsTTPo0D7WQ67uMMB8sU7if"),
+    ("Hey Brother", "4:15", 5, 5, 14, "https://audio.jukehost.co.uk/f1QElcg00IlJ89xWaVODQ3oMwo6SdX0X"),
+    ("Hope There's Someone", "6:21", 5, 5, 14, "https://audio.jukehost.co.uk/mOBuMtgb2H6U8uKPWcRxhrp0xajRhnz9"),
+    ("Lay Me Down", "5:00", 5, 5, 14, "https://audio.jukehost.co.uk/V8IArx4BkF5FKlMvisg5ZFFmzfzfbz3h"),
+    ("Liar Liar", "3:58", 5, 5, 14, "https://audio.jukehost.co.uk/lKpJOxqTXliKMRSHo5qMgd0iViiRL5l7"),
+    ("Long Road To Hell", "3:42", 5, 5, 14, "https://audio.jukehost.co.uk/Y5fx4ecEqj2jqZ9v4mt8EwPAaYGsUauc"),
+    ("Shame On Me", "4:13", 5, 5, 14, "https://audio.jukehost.co.uk/sSpTCJgbWI1PolBklU31H6J8ur1PRV8u"),
+    ("Wake Me Up", "4:07", 5, 5, 14, "https://audio.jukehost.co.uk/mFhcvlmttkr3uL4RxGBWgo3nIJOwnE9b"),
+    ("You Make Me", "3:53", 5, 5, 14, "https://audio.jukehost.co.uk/av0T271NIq4an2Fz3gdiv2WEl3Hydbm0");
 
-INSERT INTO PLAYLIST_MUSIQUE (id_playlist, id_musique)
-SELECT 1, id_musique
-FROM MUSIQUE;
+INSERT INTO MUSIQUE_NOTE (id_musique, id_utilisateur, note) VALUES
+    (64, 1, 4),
+    (1, 3, 5),
+    (64, 3, 5),
+    (45, 2, 2),
+    (21, 1, 3),
+    (56, 2, 1);
 
 INSERT INTO PLAYLIST_MUSIQUE (id_playlist, id_musique) VALUES
-    (2, 5), -- Dorian Playlist2: Heartbreaker
-    (2, 6), -- Dorian Playlist2: New York, New York
-    (2, 7), -- Dorian Playlist2: Come Pick Me Up
-    (3, 8), -- Charles Playlist1: Wrecking Ball
-    (3, 9), -- Charles Playlist1: Exile
-    (3, 10), -- Charles Playlist1: My Tears Ricochet
-    (4, 11), -- Charles Playlist2: Hard to Love
-    (4, 12), -- Charles Playlist2: Wish You Were Here
-    (4, 13), -- Charles Playlist2: Wonderwall
-    (4, 14), -- Charles Playlist2: Call It What You Want
-    (4, 15), -- Charles Playlist2: Cruel Summer
-    (4, 16); -- Charles Playlist2: August
-
-INSERT INTO PLAYLIST_NOTE (id_playlist, id_utilisateur, note) VALUES
-    (1, 2, 8), -- User 2 rates Dorian Playlist1 with a score of 8
-    (1, 3, 7), -- User 3 rates Dorian Playlist1 with a score of 7
-    (2, 2, 9), -- User 2 rates Dorian Playlist2 with a score of 9
-    (2, 3, 8), -- User 3 rates Dorian Playlist2 with a score of 8
-    (3, 2, 7), -- User 2 rates Charles Playlist1 with a score of 7
-    (3, 3, 8), -- User 3 rates Charles Playlist1 with a score of 8
-    (4, 2, 8), -- User 2 rates Charles Playlist2 with a score of 8
-    (4, 3, 7); -- User 3 rates Charles Playlist2 with a score of 7
-
-INSERT INTO PLAYLIST_FAVORIS (id_playlist, id_utilisateur) VALUES
-    (1, 2), -- Dorian Playlist1 is a favorite of User 2
-    (1, 3), -- Dorian Playlist1 is a favorite of User 3
-    (2, 2), -- Dorian Playlist2 is a favorite of User 2
-    (3, 3), -- Charles Playlist1 is a favorite of User 3
-    (4, 2); -- Charles Playlist2 is a favorite of User 2
-
-INSERT INTO GROUPE_FAVORIS (id_groupe, id_utilisateur) VALUES
-    (1, 2), -- Alabama Shakes is a favorite of User 2
-    (1, 3), -- Alabama Shakes is a favorite of User 3
-    (2, 2), -- Ryan Adams is a favorite of User 2
-    (3, 3), -- Taylor Swift is a favorite of User 3
-    (4, 2), -- The Strokes is a favorite of User 2
-    (5, 3); -- The White Stripes is a favorite of User 3
+    (1, 1),
+    (1, 5),
+    (1, 54),
+    (1, 64),
+    (1, 45),
+    (1, 21),
+    (1, 56),
+    (2, 29),
+    (2, 45),
+    (2, 56),
+    (2, 64),
+    (2, 21);

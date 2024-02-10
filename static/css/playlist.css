@@ -1,19 +1,58 @@
-#musiques{
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
-    padding: 20px;
-    border: 1px solid #ffffff;
-    border-radius: 10px;
+#playlistAlbum{
+    margin: 10px;
+    margin-top: 30px;
+    margin-left: 100px;
 }
 
-#musiques form{
+#playlist {
+    display: flex;
+    align-items: flex-start; /* Alignement vertical en haut */
+}
+
+#playlistDetails {
+    margin-left: 20px;
+}
+
+#playlistDetails h1 {
+    margin-top: 0; /* Supprime la marge supérieure du titre */
+}
+
+
+#imgPlaylistAlbum{
+    height: 200px;
+    width: auto;
+
+}
+
+#musiquesPlaylist{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    width: 80vw;
+    margin-left: 100px;  
+}
+
+#musiquesPlaylist form{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
 }
+
+#musiquesAlbum{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    width: 80vw;
+}
+
+#musiquesAlbum form{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
 
 #barre_ajout{
     padding: 5px;
@@ -39,15 +78,33 @@
     align-items: center;
 }
 
-#musiques h2 {
-    color: #ffffff;
-    font-size: 2em;
-    text-align: center;
+
+#musiquesAlbum h2 {
+    color: #ffffff; 
+    font-size: 1.2em;
+    white-space: normal;
+}
+
+
+#musiquesPlaylist h2 {
+    color: #ffffff; 
+    font-size: 1.2em;
+    white-space: normal;
 }
 
 #note {
     display: flex;
     flex-direction: row;
+    max-width: 300px;
+}
+
+#musique > #note {
+    justify-content: space-between;
+}
+
+#inputPlaylistAlbum{
+    max-width: 156px;
+    margin-top: 20px;
 }
 
 #musiques #note {
@@ -62,4 +119,37 @@
 #ajout_note.hover,
 #ajout_note.active {
     color: gold;
+}
+
+#imgMusiqueAlbum{
+    height: 50px;
+    width: auto;
+}
+
+
+#bottomPage{
+    padding-bottom: 80px;
+}
+
+
+input:hover {
+    opacity: 0.8;
+}
+
+#inputPlaylistAlbum{
+    display: flex;
+    justify-content: space-between;
+}
+
+label {
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+label i.material-icons {
+    font-size: 25px;
+}
+
+label:hover{
+    opacity: 0.8;
 }
