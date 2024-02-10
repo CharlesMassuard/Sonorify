@@ -80,12 +80,9 @@ $data = new DataBase();
         <div id="genres" class="sections_accueil">
             <?php 
             $genres = $data->getGenres();
+            $genres = Factory::createGenres($genres);
             foreach ($genres as $genre) {
-                echo '<a class="a_accueil" href= "">';
-                echo '<div class="a_content">';
-                echo '<h3>'.$genre['nom_genre'].'</h3>';
-                echo '</div>';
-                echo '</a>';
+                $genre->render();
             }
             ?>
         </div>

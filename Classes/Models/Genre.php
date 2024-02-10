@@ -7,7 +7,18 @@
     class Genre implements RenderInterface {
         private $id_genre;
         private $nom_genre;
-        private $genres_similaires;
+        public function __construct(int $id_genre, string $nom_genre){
+            $this->id_genre = $id_genre;
+            $this->nom_genre = $nom_genre;
+        }
+
+        public function render(){
+            echo '<a class="a_accueil" href= "genre.php?id='.$this->id_genre.'">';
+            echo '<div class="a_content">';
+            echo '<h3>'.$this->nom_genre.'</h3>';
+            echo '</div>';
+            echo '</a>';
+        }
 
         // reste
     }
