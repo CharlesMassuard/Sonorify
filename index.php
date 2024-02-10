@@ -23,12 +23,11 @@ session_start();
     <script src="./static/js/accueil.js" defer></script>
     <script src="./static/js/playlist.js" defer></script>
 </head>
-<?php #include 'player.php'; ?> 
 <body>
     <?php include 'aside.php'; ?>
     <?php include 'header.php'; ?>
     <main>
-        <script src="./static/js/spa.js" defer></script>
+        <script src="./static/js/spa.js" type="module" defer></script>
         <?php 
         if (!isset($_SESSION['page'])) {
             include 'accueil.php';

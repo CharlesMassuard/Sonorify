@@ -54,12 +54,12 @@
                         }
                         echo '</div>';
                         echo '<div id="inputPlaylistAlbum">';
-                        echo '<form action="jouerPlaylist.php?id_playlist='.$id_playlist.'&aleatoire=false" method="post">';
+                        echo '<form id="PlayPlaylist" action="jouerPlaylist.php?id_playlist='.$id_playlist.'&aleatoire=false" method="post">';
                         echo '<input type="submit" id="jouerPlaylist" name="jouerPlaylist" style="display: none;">';
                         echo '<label for="jouerPlaylist"  title="Lire la playlist"><i class="material-icons">play_arrow</i></label>';
                         echo '</form>';
 
-                        echo '<form action="jouerPlaylist.php?id_playlist='.$id_playlist.'&aleatoire=true" method="post">';
+                        echo '<form id="PlayPlaylist" action="jouerPlaylist.php?id_playlist='.$id_playlist.'&aleatoire=true" method="post">';
                         echo '<input type="submit" id="jouerPlaylistAleatoire" name="jouerPlaylistAleatoire" style="display: none;">';
                         echo '<label for="jouerPlaylistAleatoire"  title="Lire la playlist aléatoirement"><i class="material-icons">shuffle</i></label>';
                         echo '</form>';

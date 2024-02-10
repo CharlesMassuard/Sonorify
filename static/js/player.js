@@ -3,9 +3,6 @@ import { playVisualize } from "./audioVisualizer.js";
 
 var sound;
 var playlist = [
-    "https://audio.jukehost.co.uk/2BNwH5heGwPsQ3lOHhMfgBA9Pm5mAxow",
-    "https://audio.jukehost.co.uk/RJZlOinQcXyxi48c9eKKmiZavmIdQhqi",
-    "https://audio.jukehost.co.uk/RfYql1AahtejVIK4vl8iRLZ4SSln3huB",
 ];
 
 var playlistDetails = ["TheFatRat - Unity", "TheFatRat - Monody", "TheFatRat - Fly Away"];
@@ -88,6 +85,7 @@ export function playPlaylist() {
         if (sound) {
             sound.unload();
         }
+        console.log(playlist);
         if (currentTrackIndex < playlist.length) {
             sound = new Howl({
                 src: [playlist[currentTrackIndex]],

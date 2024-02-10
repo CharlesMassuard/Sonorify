@@ -47,26 +47,34 @@ function loadScripts(scripts) {
     scripts.forEach(src => {
         const script = document.createElement('script');
         script.src = "./static/js/"+src;
+        script.type = "module";
         main.appendChild(script);
     });
 }
-document.querySelectorAll('form').forEach(form => {
+import { addToPlaylist } from './player.js';
+import { playPlaylist } from './player.js';
+document.querySelectorAll('#PlayPlaylist').forEach(form => {
     form.addEventListener('submit', (event) => {
-        console.log('submit');
         event.preventDefault();
-        let formData = new FormData(form);
         fetch(form.action, {
-            method: form.method,
-            body: formData
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'data=' + encodeURIComponent(event.target.value),
         })
-        .then(response => response.text())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Erreur HTTP, statut = " + response.status);
+            }
+            return response.text();
+        })
         .then(data => {
-            document.querySelector('main').innerHTML = data;
-            loadScripts(['spa.js', 'aside.js', 'playlist.js']);
+            for (let info of JSON.parse(data)){
+                addToPlaylist(info['id_musique'], info['nomMusique'], info['cover'], info['nomGroupe'], info['nomAlbum'], info['urlMusique']);
+            }
+            playPlaylist();
         })
-        .catch(error => {
-            console.log(error);
-        });
+        .catch(error => console.error(error));
     });
 } );
-console.log(document.querySelectorAll('form'));
