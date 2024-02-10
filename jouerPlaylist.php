@@ -46,7 +46,7 @@
         "musiques" => $render_musiques,
         "firstTrack" => $id_first ?? 0,
     ];
-    print_r(json_encode($musiques));
+    print_r(json_encode($render_musiques));
     // echo "<script type='module' src='static/js/player.js'></script>";
     // echo "<script type='module'>";
     // echo "import { playPlaylist } from './static/js/player.js';";
