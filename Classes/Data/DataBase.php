@@ -172,7 +172,7 @@
             }
         }
         public function getAlbums(){
-            $albums = $this->file_db->query('SELECT * from ALBUM');
+            $albums = $this->file_db->query('SELECT * from ALBUM natural join GROUPE');
             return $albums->fetchAll();
         }
         public function getAlbum($id){
@@ -216,15 +216,16 @@
             return $playlist->fetchAll();
         }
         public function getMusiqueRecente(){
-            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural left join MUSIQUE_NOTE GROUP BY id_musique order by note desc LIMIT 15');
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural join GROUPE natural left join MUSIQUE_NOTE GROUP BY id_musique order by note desc LIMIT 15');
             return $musiques->fetchAll();
         }
         public function getMusiqueRecemmentEcoutee(){
-            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join MUSIQUE_HISTORIQUE order by date_lecture desc');
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join GROUPE natural join MUSIQUE_HISTORIQUE order by date_lecture desc');
             return $musiques->fetchAll();
         }
         public function getGroupes(){
-            return $this->file_db->query('SELECT * from GROUPE');
+            $groupes = $this->file_db->query('SELECT * from GROUPE');
+            return $groupes->fetchAll();
         }
 
         public function getUser($login,$mdp){
@@ -297,12 +298,16 @@
             }
         }
         public function getPlaylistsTrieesParNote(){
-            $playlists = $this->file_db->query('SELECT * from PLAYLIST natural left join PLAYLIST_NOTE group by id_playlist order by avg(note) desc');
+            $playlists = $this->file_db->query('SELECT * from PLAYLIST natural join PLAYLIST_MUSIQUE natural join MUSIQUE natural join ALBUM natural left join PLAYLIST_NOTE group by id_playlist order by avg(note) desc');
             return $playlists->fetchAll();
         }
         public function getPlaylistsByUser($id){
             $playlists = $this->file_db->query('SELECT *, AVG(note) moyenne_note from PLAYLIST natural left join PLAYLIST_NOTE where id_auteur='.$id .' group by id_playlist');
-            return $playlists->fetchAll();
+            if ($playlists){
+                return $playlists->fetchAll();
+            } else {
+                return null;
+            }
         }
         public function getPlaylistsFavorisByUser($id){
             $playlists = $this->file_db->query('SELECT * from PLAYLIST natural join PLAYLIST_FAVORIS where id_utilisateur='.$id);
