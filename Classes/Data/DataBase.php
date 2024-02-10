@@ -261,6 +261,10 @@
             $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join PLAYLIST_MUSIQUE where id_playlist='.$id);
             return $musiques->fetchAll();
         }
+        public function getMusiquesPlaylistAleatoire($id){
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join PLAYLIST_MUSIQUE where id_playlist='.$id.' ORDER BY RANDOM()');
+            return $musiques->fetchAll();
+        }
         public function getMusiques(){
             $musiques = $this->file_db->query('SELECT * from MUSIQUE');
             return $musiques->fetchAll();

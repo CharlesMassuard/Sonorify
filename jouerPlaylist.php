@@ -5,7 +5,12 @@
     $aleatoire = filter_var($_GET['aleatoire'], FILTER_VALIDATE_BOOLEAN);
     require_once 'Classes/Data/DataBase.php'; 
     $data = new Data\DataBase();
+
+    if($aleatoire){
+        $musiques = $data->getMusiquesPlaylistAleatoire($id_playlist);
+    } else {
     $musiques = $data->getMusiquesPlaylist($id_playlist);
+    }
     // print_r($musiques);
     // echo "<script type='module'>";
     // echo "import { clearPlaylist } from './static/js/player.js';";
@@ -42,10 +47,6 @@
     // echo "<script type='module' src='static/js/player.js'></script>";
     // echo "<script type='module'>";
     // echo "import { playPlaylist } from './static/js/player.js';";
-    // if($aleatoire){
-    //     echo "import { aleatoire } from './static/js/player.js';";
-    //     echo "aleatoire();";
-    // }
     // echo "playPlaylist();";
     // echo "</script>";
     // header('Location: playlist.php?id='.$id_playlist);
