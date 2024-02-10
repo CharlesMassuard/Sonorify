@@ -1,3 +1,4 @@
+import { addToPlaylist, playPlaylist , clearPlaylist } from './player.js';
 document.querySelectorAll('#Playlist').forEach(element => {
     element.addEventListener('click', (event) => {
         event.preventDefault();
@@ -35,7 +36,7 @@ function loadPage(element) {
     .then(data => {
         document.querySelector('main').innerHTML = data;
         // history.pushState({page: element.href}, '', element.href);
-        loadScripts(['spa.js', 'aside.js', 'playlist.js']);     
+        return loadScripts(['spa.js', 'aside.js', 'playlist.js']);     
     })
     .catch(error => {
         console.log(error);
@@ -43,19 +44,13 @@ function loadPage(element) {
 }
 
 function loadScripts(scripts) {
-    let main = document.querySelector('main');
-    scripts.forEach(src => {
-        const script = document.createElement('script');
-        script.src = "./static/js/"+src;
-        script.type = "module";
-        main.appendChild(script);
-    });
+    let promises = scripts.map(script => import('/static/js/' + script + '?t=' + Date.now()));
+    return Promise.all(promises)
 }
-import { addToPlaylist } from './player.js';
-import { playPlaylist } from './player.js';
 document.querySelectorAll('#PlayPlaylist').forEach(form => {
     form.addEventListener('submit', (event) => {
         event.preventDefault();
+        clearPlaylist();
         fetch(form.action, {
             method: 'POST',
             headers: {
@@ -75,6 +70,8 @@ document.querySelectorAll('#PlayPlaylist').forEach(form => {
             }
             playPlaylist();
         })
-        .catch(error => console.error(error));
-    });
+        .catch(error => console.error(error));  
+        loadScripts(['spa.js', 'aside.js', 'playlist.js']);  
+    }); 
 } );
+console.log('playlist.js');
