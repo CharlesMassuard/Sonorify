@@ -28,8 +28,15 @@ document.querySelectorAll('#Profil').forEach(element => {
         loadPage(element);
     });
 } );
+document.querySelectorAll('#jouerMusique').forEach(element => {
+    element.addEventListener('click', (event) => {
+        event.preventDefault();
+        loadPage(element);
+    });
+} );
 
 function loadPage(element) {
+    window.scrollTo(0, 0);
     fetch(element.href)
     .then(response => response.text())
     .then(data => {

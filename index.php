@@ -37,5 +37,6 @@ session_start();
         }
         ?>
     </main>
+    <?php include 'player.php'; ?>
 </body>
 </html>
