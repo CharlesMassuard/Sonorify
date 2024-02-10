@@ -90,12 +90,9 @@ $data = new DataBase();
         <div id="groupes" class="sections_accueil">
             <?php 
             $groupes = $data->getGroupes();
+            $groupes = Factory::createGroupes($groupes);
             foreach ($groupes as $groupe) {
-                echo '<a class="a_accueil" href= "">';
-                echo '<div class="a_content">';
-                echo '<h3>'.$groupe['nom_groupe'].'</h3>';
-                echo '</div>';
-                echo '</a>';
+                $groupe->render();
             }
             ?>
         </div>

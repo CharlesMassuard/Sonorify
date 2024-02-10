@@ -1,5 +1,5 @@
 <?php
-    use Models\{Album, Musique, Genre};
+    use Models\{Album, Musique, Genre, Playlist, Groupe};
     class Factory{
         public static function createAlbums(Array $data): Array{
             $listeAlbums = [];
@@ -21,6 +21,20 @@
                 array_push($listeGenres, new Genre($genre["id_genre"], $genre["nom_genre"]));
             }
             return $listeGenres;
+        }
+        public static function createPlaylists(Array $data): Array{
+            $listePlaylists = [];
+            foreach($data as $playlist){
+                array_push($listePlaylists, new Playlist($playlist["id_playlist"], $playlist["nom_playlist"], $playlist["note"]));
+            }
+            return $listePlaylists;
+        }
+        public static function createGroupes(Array $data): Array{
+            $listeGroupes = [];
+            foreach($data as $groupe){
+                array_push($listeGroupes, new Groupe($groupe["id_groupe"], $groupe["nom_groupe"], $groupe["description_groupe"], $groupe["image_groupe"]));
+            }
+            return $listeGroupes;
         }
     }
 ?>
