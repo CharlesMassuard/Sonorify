@@ -28,15 +28,8 @@ document.querySelectorAll('#Profil').forEach(element => {
         loadPage(element);
     });
 } );
-document.querySelectorAll('#jouerMusique').forEach(element => {
-    element.addEventListener('click', (event) => {
-        event.preventDefault();
-        loadPage(element);
-    });
-} );
 
 function loadPage(element) {
-    window.scrollTo(0, 0);
     fetch(element.href)
     .then(response => response.text())
     .then(data => {
@@ -57,23 +50,23 @@ function loadScripts(scripts) {
         main.appendChild(script);
     });
 }
-document.querySelector('form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Empêche le rechargement de la page
-    console.log(event.target);
-    // Récupère les données du formulaire
-    var formData = new FormData(event.target);
-    console.log(formData);
-    // Envoie les données du formulaire à votre serveur
-    fetch('submit_form.php', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.text())
-    .then(data => {
-        // Met à jour la page avec les données retournées par le serveur
-        document.querySelector('main').innerHTML = data;
-    })
-    .catch(error => {
-        console.log(error);
+document.querySelectorAll('form').forEach(form => {
+    form.addEventListener('submit', (event) => {
+        console.log('submit');
+        event.preventDefault();
+        let formData = new FormData(form);
+        fetch(form.action, {
+            method: form.method,
+            body: formData
+        })
+        .then(response => response.text())
+        .then(data => {
+            document.querySelector('main').innerHTML = data;
+            loadScripts(['spa.js', 'aside.js', 'playlist.js']);
+        })
+        .catch(error => {
+            console.log(error);
+        });
     });
-});
+} );
+console.log(document.querySelectorAll('form'));

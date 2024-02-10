@@ -1,10 +1,3 @@
-<!doctype html>
-<html>
-    <head>
-        <title>Sonorify</title>
-        <link rel="icon" type="image/x-icon" href="./ressources/images/logo.png">
-    </head>
-</html>
 <?php
     include 'player.php';
     $id_playlist = $_GET['id_playlist'] ?? 1;
