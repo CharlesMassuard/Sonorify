@@ -1,5 +1,4 @@
 <?php
-    include 'player.php';
     $id_playlist = $_GET['id_playlist'] ?? 1;
     $aleatoire = $_GET['aleatoire'] ?? false;
     $musiqueStart = $_GET['musiqueStart'] ?? false;
