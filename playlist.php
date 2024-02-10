@@ -124,7 +124,10 @@
                     echo '<label for="addFavoriteMusique"  title="Ajouter aux favoris"><i class="material-icons">favorite</i></label>';
                     echo '</form>';
                     if ($_SESSION  && $playlist['id_auteur'] == $_SESSION['user']['id_utilisateur']){
-                        echo '<a href="supprimerMusiquePlaylist.php?id='.$musique['id_musique'].'&id_playlist='.$id_playlist.'">Supprimer</a>';
+                        echo '<form action="supprimerMusiquePlaylist.php?id='.$musique['id_musique'].'&id_playlist='.$id_playlist.' method="post">';
+                        echo '<input type="submit" id="deleteMusiquePlaylist" name="deleteMusiquePlaylist" style="display: none;">';
+                        echo '<label for="deleteMusiquePlaylist"  title="Supprimer de la playlist"><i class="material-icons">delete</i></label>';
+                        echo '</form>';
                     }
                     echo '<p>'.$musique['duree'].'</p>';
                     echo '</div>';
