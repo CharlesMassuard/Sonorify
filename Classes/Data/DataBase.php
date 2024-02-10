@@ -202,7 +202,8 @@
             return $this->file_db->query('SELECT * from ARTISTE where id_artiste='.$id);
         }
         public function getGenresById($id){
-            return $this->file_db->query('SELECT * from GENRE where id_genre='.$id);
+            $genres = $this->file_db->query('SELECT * from GENRE where id_genre='.$id);
+            return $genres->fetch();
         }
         public function getAlbumsArtistesByIdAlbum($id){
             $groupe = $this->file_db->query('SELECT nom_groupe from GROUPE natural join ALBUM where id_album='.$id);
@@ -336,6 +337,10 @@
         public function getMusique($id){
             $musique = $this->file_db->query('SELECT * from MUSIQUE where id_musique='.$id);
             return $musique->fetch();
+        }
+        public function getMusiquesByGenre($id){
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural join GROUPE natural join GENRE where id_genre='.$id);
+            return $musiques->fetchAll();
         }
         public function insertUser($pseudo, $password, $nom, $prenom, $email, $ddn){
             $insert="INSERT INTO UTILISATEUR (login_utilisateur, password_utilisateur, nom_utilisateur, prenom_utilisateur, email_utilisateur, ddn_utilisateur, id_role) VALUES (:pseudo, :pswd, :nom, :prenom, :email, :ddn, 1)";

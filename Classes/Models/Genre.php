@@ -15,7 +15,7 @@
         }
 
         public function render(){
-            echo '<a class="a_accueil" href= "genre.php?id='.$this->id_genre.'">';
+            echo '<a class="a_accueil" id="Genre" href= "genre.php?id='.$this->id_genre.'">';
             echo '<div class="a_content">';
             echo '<img src="./ressources/images/'.$this->image_genre.'">';
             echo '<h3>'.$this->nom_genre.'</h3>';
