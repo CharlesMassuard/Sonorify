@@ -85,7 +85,6 @@ export function playPlaylist() {
         if (sound) {
             sound.unload();
         }
-        console.log(playlist);
         if (currentTrackIndex < playlist.length) {
             sound = new Howl({
                 src: [playlist[currentTrackIndex]],
