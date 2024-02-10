@@ -63,6 +63,8 @@ function loadPage(element) {
     .then(response => response.text())
     .then(data => {
         document.querySelector('main').innerHTML = data;
+        let searchResult = document.querySelector("#search_result");
+        searchResult.innerHTML = '';
         // history.pushState({page: element.href}, '', element.href);
         return loadScripts(['spa.js', 'aside.js', 'playlist.js']);     
     })
@@ -71,7 +73,7 @@ function loadPage(element) {
     });
 }
 
-function loadScripts(scripts) {
+export function loadScripts(scripts) {
     let promises = scripts.map(script => import('/static/js/' + script + '?t=' + Date.now()));
     return Promise.all(promises)
 }

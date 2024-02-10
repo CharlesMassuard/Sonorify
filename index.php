@@ -22,6 +22,7 @@ session_start();
     <script src="./static/js/index.js" defer></script>
     <script src="./static/js/accueil.js" defer></script>
     <script src="./static/js/playlist.js" defer></script>
+    <script type="module" src="./static/js/header.js" defer></script>
 </head>
 <body>
     <?php include 'aside.php'; ?>

@@ -1,5 +1,4 @@
 var detailsSection = document.getElementById('detailsSection');
-
 window.addEventListener('scroll', function() {
     let searchContainer = document.getElementById('search');
     let header = document.getElementById('trueHeader');
@@ -20,6 +19,7 @@ var searchBar = document.getElementById('search');
 document.addEventListener('DOMContentLoaded', function() {
     var stock = [];
     searchBar.addEventListener('input', function(e) {
+        console.log("A");
         if (e.target.value == "" || e.target.value.length < 3 ) {
             searchBar.style.borderRadius = "10px";
             let searchResult = document.querySelector("#search_result");
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 while (searchResult.firstChild) {
                     searchResult.removeChild(searchResult.firstChild);
                 }
-
+                let res;
                 if (JSON.parse(data)['playlists'] != undefined) {
                     for (res of JSON.parse(data)['playlists']) {
                         var a = document.createElement("a");
@@ -64,6 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         div.appendChild(textDiv);
                         a.appendChild(div);
                         a.setAttribute("href", "playlist.php?id=" + res['id_playlist']);
+                        a.setAttribute("id", "Playlist");
                         document.querySelector("#search_result").appendChild(a);
                         
                         div.style.display = "flex";
@@ -122,8 +123,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         div.appendChild(textDiv);
                         a.appendChild(div);
                         a.setAttribute("href", "album.php?id=" + res['id_album']);
+                        a.setAttribute("id", "Album");
                         document.querySelector("#search_result").appendChild(a);
-                        
                         div.style.display = "flex";
                         div.style.alignItems = "center"; // Aligner verticalement au centre
                         div.style.width = "100%";
@@ -152,7 +153,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         a.appendChild(div);
                         a.setAttribute("href", "genre.php?id=" + res['id_genre']);
                         document.querySelector("#search_result").appendChild(a);
-                        
                         div.style.display = "flex";
                         div.style.alignItems = "center"; // Aligner verticalement au centre
                         div.style.width = "100%";
@@ -181,7 +181,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         a.setAttribute("href", "jouerMusique.php?id_musique=" + res['id_musique']);
                         a.setAttribute("id", "PlayMusique");
                         document.querySelector("#search_result").appendChild(a);
-                    
                         // Apply CSS styles
                         div.style.display = "flex";
                         div.style.alignItems = "center"; // Aligner verticalement au centre
@@ -193,6 +192,8 @@ document.addEventListener('DOMContentLoaded', function() {
             .catch((error) => {
                 console.error('Error:', error);
             });
+            return loadScripts(['spa.js']);
         }
     });
 });
+import { loadScripts } from './spa.js';
