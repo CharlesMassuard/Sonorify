@@ -212,6 +212,18 @@
         public function getAlbumsArtistesByIdArtiste($id){
             return $this->file_db->query('SELECT * from ALBUM_ARTISTE where id_artiste='.$id);
         } 
+        public function getMusiquesByGroupe($id){
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural join GROUPE where id_groupe='.$id);
+            return $musiques->fetchAll();
+        }
+        public function getAlbumsByGroupe($id){
+            $albums = $this->file_db->query('SELECT * from ALBUM natural join GROUPE where id_groupe='.$id);
+            return $albums->fetchAll();
+        }
+        public function getArtistesByGroupe($id){
+            $artistes = $this->file_db->query('SELECT * from ARTISTE natural join GROUPE_ARTISTE where id_groupe='.$id);
+            return $artistes->fetchAll();
+        }
         public function getPlaylists(){
             $playlist = $this->file_db->query('SELECT * from PLAYLIST');
             return $playlist->fetchAll();
@@ -228,7 +240,10 @@
             $groupes = $this->file_db->query('SELECT * from GROUPE');
             return $groupes->fetchAll();
         }
-
+        public function getGroupeById($id){
+            $groupe = $this->file_db->query('SELECT * from GROUPE where id_groupe='.$id);
+            return $groupe->fetch();
+        }
         public function getUser($login,$mdp){
             return $this->file_db->query('SELECT * from UTILISATEUR where login_utilisateur="'.$login.'" and password_utilisateur="'.$mdp.'"');
         }

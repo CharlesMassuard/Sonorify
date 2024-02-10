@@ -23,6 +23,12 @@ document.querySelectorAll('#Genre').forEach(element => {
         loadPage(element);
     });
 } );
+document.querySelectorAll('#Groupe').forEach(element => {
+    element.addEventListener('click', (event) => {
+        event.preventDefault();
+        loadPage(element);
+    });
+} );
 document.querySelectorAll('#ajout_note').forEach(element => {
     element.addEventListener('click', (event) => {
         event.preventDefault();
