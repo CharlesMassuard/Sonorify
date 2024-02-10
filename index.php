@@ -48,16 +48,10 @@ $data = new DataBase();
                     echo '<h2>Musiques Recemment Ecoutées</h2>';
                 }
             }
+            $musiques = Factory::createMusiques($musiques);
             echo '<div id="musiques" class="sections_accueil">';
             foreach ($musiques as $musique) {
-                echo "<a class='a_accueil' href='jouerMusique.php?id_musique={$musique['id_musique']}'>";
-                echo '<div class="a_content">';
-                $album = $data->getAlbumByMusique($musique['id_musique']);
-                echo '<img src="./ressources/images/'.$album['image_album'].'">';
-                echo '<h3>'.$musique['nom_musique'].'</h3>';
-                echo '<p class="infos_supp">'.$data->getNomGroupe($musique['id_groupe'])['nom_groupe'].'</p>';
-                echo '</div>';
-                echo '</a>';
+                $musique->render();
             }
             echo '</div>';
         ?>
@@ -65,14 +59,9 @@ $data = new DataBase();
         <div id="playlist" class="sections_accueil">
             <?php 
             $playlists = $data->getPlaylistsTrieesParNote();
+            $playlists = Factory::createPlaylists($playlists);
             foreach ($playlists as $playlist) {
-                echo '<a class="a_accueil" href= "playlist.php?id='.$playlist['id_playlist'].'">';
-                echo '<div class="a_content">';
-                $image = $data->getMusiquesAlbumsByPlaylist($playlist['id_playlist'])['image_album'] ?? 'default.jpg';
-                echo '<img src="./ressources/images/'.$image.'">';
-                echo '<h3>'.$playlist['nom_playlist'].'</h3>';
-                echo '</div>';
-                echo '</a>';
+                $playlist->render();
             }
             ?>
         </div>
@@ -80,15 +69,9 @@ $data = new DataBase();
         <div id="albums" class="sections_accueil">
             <?php 
             $albums = $data->getAlbums();
+            $albums = Factory::createAlbums($albums);
             foreach ($albums as $album) {
-
-                echo '<a class="a_accueil" href= "album.php?id='.$album['id_album'].'">';
-                echo '<div class="a_content">';
-                echo '<img src="./ressources/images/'.$album['image_album'].'">';
-                echo '<h3>'.$album['titre'].'</h3>';
-                echo '<p class="infos_supp">'.$data->getNomGroupe($album['id_groupe'])['nom_groupe'].'</p>';
-                echo '</div>';
-                echo '</a>';
+                $album->render();
             }
             ?>
         </div>
@@ -96,13 +79,9 @@ $data = new DataBase();
         <div id="genres" class="sections_accueil">
             <?php 
             $genres = $data->getGenres();
+            $genres = Factory::createGenres($genres);
             foreach ($genres as $genre) {
-                echo '<a class="a_accueil" href= "">';
-                echo '<div class="a_content">';
-                echo '<img src="./ressources/images/'.$genre['image_genre'].'">';
-                echo '<h3>'.$genre['nom_genre'].'</h3>';
-                echo '</div>';
-                echo '</a>';
+                $genre->render();
             }
             ?>
         </div>
@@ -110,13 +89,9 @@ $data = new DataBase();
         <div id="groupes" class="sections_accueil">
             <?php 
             $groupes = $data->getGroupes();
+            $groupes = Factory::createGroupes($groupes);
             foreach ($groupes as $groupe) {
-                echo '<a class="a_accueil" href= "">';
-                echo '<div class="a_content">';
-                echo '<img src="./ressources/images/'.$groupe['image_groupe'].'">';
-                echo '<h3>'.$groupe['nom_groupe'].'</h3>';
-                echo '</div>';
-                echo '</a>';
+                $groupe->render();
             }
             ?>
         </div>
