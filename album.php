@@ -1,6 +1,8 @@
 
 <?php 
-    session_start();
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
     $id_album = $_GET['id'] ?? 1;
     require_once 'Classes/Data/DataBase.php';
     $data = new Data\DataBase();

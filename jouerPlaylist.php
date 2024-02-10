@@ -35,7 +35,7 @@
         if($musiqueStart != false && $musiqueStart == $id_musique){
             echo "setFirstTrack('$i');";
         }
-        echo "addToPlaylist('$nomMusique', '$cover', '$nomGroupe', '$nomAlbum', '$urlMusique');";
+        echo "addToPlaylist('$id_musique', '$nomMusique', '$cover', '$nomGroupe', '$nomAlbum', '$urlMusique');";
         echo "</script>";
     }
     echo "<script type='module' src='static/js/player.js'></script>";

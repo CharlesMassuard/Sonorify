@@ -21,7 +21,7 @@
     echo "<script type='module'>";
     echo "import { lireUneMusique } from './static/js/player.js';";
     echo "import { playPlaylist } from './static/js/player.js';";
-    echo "lireUneMusique('$nomMusique', '$cover', '$nomGroupe', '$nomAlbum', '$urlMusique');";
+    echo "lireUneMusique('$id_musique', '$nomMusique', '$cover', '$nomGroupe', '$nomAlbum', '$urlMusique');";
     echo "</script>";
     // header('Location: index.php');
 ?>

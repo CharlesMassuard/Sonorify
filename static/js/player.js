@@ -28,6 +28,11 @@ var progressVolume = document.getElementById('progressVolume');
 var sliderVolume = document.getElementById('volumeSlider');
 var arrowUp = document.getElementById('arrowUp');
 var visualizerButton = document.getElementById("visualizerButton");
+var plusDetails = document.getElementById('moreMusic');
+var optionsMusic = document.getElementById('optionsMusic');
+var addMusiquePlaylist = document.getElementById('playlistButton');
+var dialogPlaylist = document.getElementById('dialogPlaylist');
+var buttonAddMusicToPlaylist = document.getElementById('addToPlaylist');
 
 var currentTime = document.getElementById('currentTime');
 var circle_progress = document.getElementById('circle_progress');
@@ -52,17 +57,17 @@ var repeat = 0;
 var pause = false;
 var currentTime;
 
-export function lireUneMusique(nom, cover, nomGroupe, nomAlbum, url) {
+export function lireUneMusique(id_musique, nom, cover, nomGroupe, nomAlbum, url) {
     playlist = [];
     playlist.push(url);
     playlistDetails = [];
-    playlistDetails.push([nom, cover, nomGroupe, nomAlbum]);
+    playlistDetails.push([nom, cover, nomGroupe, nomAlbum, id_musique]);
     playPlaylist();
 };
 
-export function addToPlaylist(nom, cover, nomGroupe, nomAlbum, url) {
+export function addToPlaylist(id_musique, nom, cover, nomGroupe, nomAlbum, url) {
     playlist.push(url);
-    playlistDetails.push([nom, cover, nomGroupe, nomAlbum]);
+    playlistDetails.push([nom, cover, nomGroupe, nomAlbum, id_musique]);
 };
 
 export function clearPlaylist() {
@@ -408,3 +413,47 @@ nextButton.addEventListener('click', function () {
     }
     playPlaylist();
 });
+
+moreMusic.addEventListener('click', function (event) {
+    optionsMusic.style.display = 'flex';
+    event.stopPropagation(); // Prevent this click from triggering the document click event below
+});
+
+document.addEventListener('click', function () {
+    optionsMusic.style.display = 'none';
+});
+
+addMusiquePlaylist.addEventListener('click', function () {
+    dialogPlaylist.style.display = 'block';
+});
+
+var idPlaylist;
+
+$('#addToPlaylist').click(function() {
+    idPlaylist = $(this).data('id-playlist');
+    // Now you can use idPlaylist in your AJAX request
+});
+
+buttonAddMusicToPlaylist.addEventListener('click', function () {
+    dialogPlaylist.style.display = 'none';
+    $.ajax({
+        url: '../../Classes/Data/DataBase.php', // the location of your PHP file
+        type: 'post', // the HTTP method you want to use
+        data: {
+            'function_name': 'insertMusiquePlaylist', // the name of the PHP function you want to call
+            'id_playlist': idPlaylist,
+            'id_musique': playlistDetails[currentTrackIndex][4], // any data you want to pass to the PHP function
+        },
+        success: function(response) {
+            // this function will be called when the AJAX request is successful
+            // 'response' will contain whatever the PHP function outputs
+            console.log(response);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            // this function will be called if the AJAX request fails
+            console.log(textStatus, errorThrown);
+        }
+    });
+});
+
+
