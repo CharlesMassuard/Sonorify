@@ -55,14 +55,9 @@ $data = new DataBase();
         <div id="playlist" class="sections_accueil">
             <?php 
             $playlists = $data->getPlaylistsTrieesParNote();
+            $playlists = Factory::createPlaylists($playlists);
             foreach ($playlists as $playlist) {
-                echo '<a class="a_accueil" href= "playlist.php?id='.$playlist['id_playlist'].'">';
-                echo '<div class="a_content">';
-                $image = $data->getMusiquesAlbumsByPlaylist($playlist['id_playlist'])['image_album'] ?? 'default.jpg';
-                echo '<img src="./ressources/images/'.$image.'">';
-                echo '<h3>'.$playlist['nom_playlist'].'</h3>';
-                echo '</div>';
-                echo '</a>';
+                $playlist->render();
             }
             ?>
         </div>
