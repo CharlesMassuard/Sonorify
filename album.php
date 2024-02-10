@@ -61,12 +61,12 @@
                     }
                     echo '</div>';
                     echo '<div id="inputPlaylistAlbum">';
-                    echo '<form action="jouerAlbum.php?id_album='.$album["id_album"].'&aleatoire=false" method="post">';
+                    echo '<form id="PlayAlbum" action="jouerAlbum.php?id_album='.$album["id_album"].'&aleatoire=false" method="post">';
                     echo '<input type="submit" id="jouerAlbum" name="jouerAlbum" style="display: none;">';
                     echo '<label for="jouerAlbum"  title="Lire l\'album"><i class="material-icons">play_arrow</i></label>';
                     echo '</form>';
 
-                    echo '<form action="jouerAlbum.php?id_album='.$album["id_album"].'&aleatoire=true" method="post">';
+                    echo '<form id="PlayAlbum" action="jouerAlbum.php?id_album='.$album["id_album"].'&aleatoire=true" method="post">';
                     echo '<input type="submit" id="jouerAlbumAleatoire" name="jouerAlbumAleatoire" style="display: none;">';
                     echo '<label for="jouerAlbumAleatoire"  title="Lire l\'album aléatoirement"><i class="material-icons">shuffle</i></label>';
                     echo '</form>';

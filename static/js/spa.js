@@ -74,4 +74,31 @@ document.querySelectorAll('#PlayPlaylist').forEach(form => {
         loadScripts(['spa.js', 'aside.js', 'playlist.js']);  
     }); 
 } );
+document.querySelectorAll('#PlayAlbum').forEach(form => {
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        clearPlaylist();
+        fetch(form.action, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'data=' + encodeURIComponent(event.target.value),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Erreur HTTP, statut = " + response.status);
+            }
+            return response.text();
+        })
+        .then(data => {
+            for (let info of JSON.parse(data)){
+                addToPlaylist(info['id_musique'], info['nomMusique'], info['cover'], info['nomGroupe'], info['nomAlbum'], info['urlMusique']);
+            }
+            playPlaylist();
+        })
+        .catch(error => console.error(error));  
+        loadScripts(['spa.js', 'aside.js', 'playlist.js']);  
+    }); 
+} );
 console.log('playlist.js');
