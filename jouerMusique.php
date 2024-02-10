@@ -13,12 +13,18 @@
         $cover = $album['image_album'];
         $nomGroupe = $data->getNomGroupe($musiqueDetails['id_groupe'])['nom_groupe'];
         $urlMusique = $musiqueDetails['url_musique'];
-        echo "<script type='module' src='static/js/player.js'></script>";
-        echo "<script type='module'>";
-        echo "import { lireUneMusique } from './static/js/player.js';";
-        echo "import { playPlaylist } from './static/js/player.js';";
-        echo "lireUneMusique('$id_musique', '$nomMusique', '$cover', '$nomGroupe', '$nomAlbum', '$urlMusique');";
-        echo "</script>";
+        $render_musique = [];
+        $render_musique['id_musique'] = $id_musique;
+        $render_musique['nom_musique'] = $nomMusique;
+        $render_musique['cover'] = $cover;
+        $render_musique['nom_groupe'] = $nomGroupe;
+        $render_musique['nom_album'] = $nomAlbum;
+        $render_musique['urlMusique'] = $urlMusique;
+        print_r(json_encode($render_musique));
+        // echo "<script type='module' src='static/js/player.js'></script>";
+        // echo "<script type='module'>";
+        // echo "import { lireUneMusique } from './static/js/player.js';";
+        // echo "import { playPlaylist } from './static/js/player.js';";
+        // echo "lireUneMusique('$id_musique', '$nomMusique', '$cover', '$nomGroupe', '$nomAlbum', '$urlMusique');";
+        // echo "</script>";
     ?>
-
-    <h1> Jouer une musique </h1>

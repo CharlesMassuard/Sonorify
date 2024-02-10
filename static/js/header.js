@@ -179,6 +179,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         div.appendChild(textDiv);
                         a.appendChild(div);
                         a.setAttribute("href", "jouerMusique.php?id_musique=" + res['id_musique']);
+                        a.setAttribute("id", "PlayMusique");
                         document.querySelector("#search_result").appendChild(a);
                     
                         // Apply CSS styles

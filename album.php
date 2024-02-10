@@ -91,7 +91,7 @@
                 foreach ($musiques as $musique) {
                     echo '<div id="musique">';
                     echo '<img id="imgMusiqueAlbum" src="./ressources/images/'.$album['image_album'].'">';
-                    echo '<a href= "jouerAlbum.php?id_album='.$album["id_album"].'&aleatoire=false&musiqueStart='.$musique["id_musique"].'" method="post">';
+                    echo '<a id="PlayMusiqueAlbum" href= "jouerAlbum.php?id_album='.$album["id_album"].'&aleatoire=false&musiqueStart='.$musique["id_musique"].'" method="post">';
                     echo '<h2>'.$musique['nom_musique'].'</h2>';
                     echo '</a>';
                     echo '<a href="groupe.php?id='.$musique['id_groupe'].'">'.$data->getGroupe($musique['id_groupe'])['nom_groupe'].'</a>';

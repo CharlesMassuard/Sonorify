@@ -1,4 +1,4 @@
-import { addToPlaylist, playPlaylist , clearPlaylist } from './player.js';
+import { addToPlaylist, playPlaylist , clearPlaylist, lireUneMusique } from './player.js';
 document.querySelectorAll('#Playlist').forEach(element => {
     element.addEventListener('click', (event) => {
         event.preventDefault();
@@ -28,6 +28,34 @@ document.querySelectorAll('#Profil').forEach(element => {
         event.preventDefault();
         loadPage(element);
     });
+} );
+document.querySelectorAll('#PlayMusique').forEach(element => {
+    element.addEventListener('click', (event) => {
+        event.preventDefault();
+        fetch(element.href, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'data=' + encodeURIComponent(event.target.value),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Erreur HTTP, statut = " + response.status);
+            }
+            return response.text();
+        })
+        .then(data => {
+            console.log(data);
+            let info = JSON.parse(data);
+            console.log(info['id_musique']);
+            clearPlaylist();
+            lireUneMusique(info['id_musique'], info['nomMusique'], info['cover'], info['nomGroupe'], info['nomAlbum'], info['urlMusique']);
+        })
+        .catch(error => console.error(error));  
+        loadScripts(['spa.js', 'aside.js', 'playlist.js']);  
+    }
+    );
 } );
 
 function loadPage(element) {

@@ -5,7 +5,6 @@
     $aleatoire = filter_var($_GET['aleatoire'], FILTER_VALIDATE_BOOLEAN);
     require_once 'Classes/Data/DataBase.php'; 
     $data = new Data\DataBase();
-
     if($aleatoire){
         $musiques = $data->getMusiquesPlaylistAleatoire($id_playlist);
     } else {
