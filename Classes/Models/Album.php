@@ -22,7 +22,7 @@
         }
 
         public function render(){
-            echo '<a class="a_accueil" href= "album.php?id='.$this->id_album.'">';
+            echo '<a class="a_accueil" href= "album.php?id='.$this->id_album.'" id="Album">';
             echo '<div class="a_content">';
             echo '<img src="./ressources/images/'.$this->image_album.'">';
             echo '<h3>'.$this->titre.'</h3>';

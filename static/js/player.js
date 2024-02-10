@@ -3,12 +3,9 @@ import { playVisualize } from "./audioVisualizer.js";
 
 var sound;
 var playlist = [
-    "https://audio.jukehost.co.uk/2BNwH5heGwPsQ3lOHhMfgBA9Pm5mAxow",
-    "https://audio.jukehost.co.uk/RJZlOinQcXyxi48c9eKKmiZavmIdQhqi",
-    "https://audio.jukehost.co.uk/RfYql1AahtejVIK4vl8iRLZ4SSln3huB",
 ];
 
-var playlistDetails = [];
+var playlistDetails = ["TheFatRat - Unity", "TheFatRat - Monody", "TheFatRat - Fly Away"];
 
 var titlePage = document.querySelector('title');
 
@@ -434,26 +431,26 @@ $('#addToPlaylist').click(function() {
     // Now you can use idPlaylist in your AJAX request
 });
 
-buttonAddMusicToPlaylist.addEventListener('click', function () {
-    dialogPlaylist.style.display = 'none';
-    $.ajax({
-        url: '../../Classes/Data/DataBase.php', // the location of your PHP file
-        type: 'post', // the HTTP method you want to use
-        data: {
-            'function_name': 'insertMusiquePlaylist', // the name of the PHP function you want to call
-            'id_playlist': idPlaylist,
-            'id_musique': playlistDetails[currentTrackIndex][4], // any data you want to pass to the PHP function
-        },
-        success: function(response) {
-            // this function will be called when the AJAX request is successful
-            // 'response' will contain whatever the PHP function outputs
-            console.log(response);
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-            // this function will be called if the AJAX request fails
-            console.log(textStatus, errorThrown);
-        }
-    });
-});
+// buttonAddMusicToPlaylist.addEventListener('click', function () {
+//     dialogPlaylist.style.display = 'none';
+//     $.ajax({
+//         url: '../../Classes/Data/DataBase.php', // the location of your PHP file
+//         type: 'post', // the HTTP method you want to use
+//         data: {
+//             'function_name': 'insertMusiquePlaylist', // the name of the PHP function you want to call
+//             'id_playlist': idPlaylist,
+//             'id_musique': playlistDetails[currentTrackIndex][4], // any data you want to pass to the PHP function
+//         },
+//         success: function(response) {
+//             // this function will be called when the AJAX request is successful
+//             // 'response' will contain whatever the PHP function outputs
+//             console.log(response);
+//         },
+//         error: function(jqXHR, textStatus, errorThrown) {
+//             // this function will be called if the AJAX request fails
+//             console.log(textStatus, errorThrown);
+//         }
+//     });
+// });
 
 

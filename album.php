@@ -4,6 +4,7 @@
         session_start();
     }
     $id_album = $_GET['id'] ?? 1;
+    $_SESSION['page'] = 'album.php?id='.$id_album;
     require_once 'Classes/Data/DataBase.php';
     $data = new Data\DataBase();
     $album = $data->getAlbum($id_album);
@@ -11,20 +12,7 @@
     $nbrMusiques = count($musiques);
     $groupe = $data->getAlbumsArtistesByIdAlbum($album['id_album']);
 ?>
-<!doctype>
-<html>
-<head>
-    <title><?php echo $groupe['nom_groupe']?> - <?php echo $album['titre']?></title>
-    <link rel="icon" type="image/x-icon" href="./ressources/images/logo.png">
-    <link rel="stylesheet" href="./static/css/playlist.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="./static/js/playlist.js" defer></script>
-</head>
-<body>
-    <?php include 'aside.php'; ?>
-    <?php include 'player.php'; ?>
-    <main>
-        <?php include 'header.php'; ?>
+
         <div id="playlistAlbum">
             <div id="playlist">
                 <img id="imgPlaylistAlbum" src="./ressources/images/<?php echo $album["image_album"]?>">
@@ -73,12 +61,12 @@
                     }
                     echo '</div>';
                     echo '<div id="inputPlaylistAlbum">';
-                    echo '<form action="jouerAlbum.php?id_album='.$album["id_album"].'&aleatoire=false" method="post">';
+                    echo '<form id="PlayAlbum" action="jouerAlbum.php?id_album='.$album["id_album"].'&aleatoire=false" method="post">';
                     echo '<input type="submit" id="jouerAlbum" name="jouerAlbum" style="display: none;">';
                     echo '<label for="jouerAlbum"  title="Lire l\'album"><i class="material-icons">play_arrow</i></label>';
                     echo '</form>';
 
-                    echo '<form action="jouerAlbum.php?id_album='.$album["id_album"].'&aleatoire=true" method="post">';
+                    echo '<form id="PlayAlbum" action="jouerAlbum.php?id_album='.$album["id_album"].'&aleatoire=true" method="post">';
                     echo '<input type="submit" id="jouerAlbumAleatoire" name="jouerAlbumAleatoire" style="display: none;">';
                     echo '<label for="jouerAlbumAleatoire"  title="Lire l\'album aléatoirement"><i class="material-icons">shuffle</i></label>';
                     echo '</form>';
@@ -103,7 +91,7 @@
                 foreach ($musiques as $musique) {
                     echo '<div id="musique">';
                     echo '<img id="imgMusiqueAlbum" src="./ressources/images/'.$album['image_album'].'">';
-                    echo '<a href= "jouerAlbum.php?id_album='.$album["id_album"].'&aleatoire=false&musiqueStart='.$musique["id_musique"].'" method="post">';
+                    echo '<a id="PlayAlbumMusique" href= "jouerAlbum.php?id_album='.$album["id_album"].'&aleatoire=false&musiqueStart='.$musique["id_musique"].'" method="post">';
                     echo '<h2>'.$musique['nom_musique'].'</h2>';
                     echo '</a>';
                     echo '<a href="groupe.php?id='.$musique['id_groupe'].'">'.$data->getGroupe($musique['id_groupe'])['nom_groupe'].'</a>';
@@ -125,6 +113,3 @@
             </div>
         </div>
         <div id="bottomPage" class="sections_accueil"></div>
-    </main>
-</body>
-</html>

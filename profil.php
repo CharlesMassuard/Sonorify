@@ -6,31 +6,13 @@ if ($_SESSION['user'] == null) {
     header('Location: login.php');
 }
 
-require_once 'Data/DataBase.php';
+require_once 'Classes/Data/DataBase.php';
 $data = new Data\DataBase();
 
 // Autoload
 require 'Classes/Autoloader.php';
 Autoloader::register();
 ?>
-
-<!doctype html>
-<html>
-<head>
-    <title>PHP'O SONG</title>
-    <link rel="stylesheet" href="./static/css/index.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="./static/js/index.js" defer></script>
-    <script src="./static/js/accueil.js" defer></script>
-</head>
-<?php 
-    // if ($_SESSION['user'] == null) {
-    //     header('Location: login.php');
-    // }
-?>
-<body>
-    <?php include 'header.php'; ?>
-    <main>
         <div id="profil">
             <h2>Profil</h2>
             <p><?php echo "Nom : " . $_SESSION['user']['nom_utilisateur'] ?></p>
@@ -44,7 +26,7 @@ Autoloader::register();
             <?php 
             $playlists = $data->getPlaylistsByUser($_SESSION['user']['id_utilisateur']);
             foreach ($playlists as $playlist) {
-                echo '<a href= "playlist.php?id='.$playlist['id_playlist'].'">';
+                echo '<a href= "playlist.php?id='.$playlist['id_playlist'].'" id="Playlist">';
                 $image = $data->getMusiquesAlbumsByPlaylist($playlist['id_playlist'])['image_album'] ?? 'default.jpg';
                 echo '<img src="./ressources/images/'.$image.'">';
                 echo '<h3>'.$playlist['nom_playlist'].'</h3>';
@@ -62,7 +44,7 @@ Autoloader::register();
             <?php 
             $playlists = $data->getPlaylistsFavorisByUser($_SESSION['user']['id_utilisateur']);
             foreach ($playlists as $playlist) {
-                echo '<a href= "playlist.php?id='.$playlist['id_playlist'].'">';
+                echo '<a href= "playlist.php?id='.$playlist['id_playlist'].'" id="Playlist">';
                 $image = $data->getMusiquesAlbumsByPlaylist($playlist['id_playlist'])['image_album'] ?? 'default.jpg';
                 echo '<img src="./ressources/images/'.$image.'">';
                 echo '<h3>'.$playlist['nom_playlist'].'</h3>';
@@ -99,6 +81,3 @@ Autoloader::register();
             }
             ?>
         </div>
-    </main>
-</body>
-</html>

@@ -3,11 +3,9 @@ declare(strict_types=1);
 session_start();
 
 // Autoload
-require 'Classes/Autoloader.php';
-Autoloader::register();
+// require 'Classes/Autoloader.php';
+// Autoloader::register();
 
-use Data\DataBase;
-$data = new DataBase();
 ?>
 
 <!doctype html>
@@ -16,86 +14,29 @@ $data = new DataBase();
     <title>Sonorify</title>
     <link rel="icon" type="image/x-icon" href="./ressources/images/logo.png">
     <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="stylesheet" href="./static/css/aside.css">
+    <link rel="stylesheet" href="./static/css/header.css">
+    <link rel="stylesheet" href="./static/css/player.css">
+    <link rel="stylesheet" href="./static/css/playlist.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="./static/js/index.js" defer></script>
     <script src="./static/js/accueil.js" defer></script>
+    <script src="./static/js/playlist.js" defer></script>
+    <script type="module" src="./static/js/header.js" defer></script>
 </head>
-<?php include 'player.php'; ?>
 <body>
     <?php include 'aside.php'; ?>
+    <?php include 'header.php'; ?>
     <main>
-        <?php include 'header.php'; ?>
-        <div id="titre">
-            <?php
-                if (!isset($_SESSION['user'])) {
-                    echo '<h1> Bienvenue </h1>';
-                } else {
-                    echo '<h1> Bienvenue '.$_SESSION['user']['prenom_utilisateur'].'</h1>';
-                }
-            ?>
-        </div>
-        
-        <?php
-            if (!isset($_SESSION['user'])) {
-                echo '<h2>Musiques</h2>';
-                $musiques = $data->getMusiqueRecente();
-            } else {
-                $musiques = $data->getMusiqueRecemmentEcoutee();
-                if(count($musiques) == 0) {
-                    $musiques = $data->getMusiqueRecente();
-                    echo '<h2>Musiques</h2>';
-                } else {
-                    echo '<h2>Musiques Recemment Ecoutées</h2>';
-                }
-            }
-            $musiques = Factory::createMusiques($musiques);
-            echo '<div id="musiques" class="sections_accueil">';
-            foreach ($musiques as $musique) {
-                $musique->render();
-            }
-            echo '</div>';
+        <script src="./static/js/spa.js" type="module" defer></script>
+        <?php 
+        if (!isset($_SESSION['page'])) {
+            include 'accueil.php';
+        } else {
+            include $_SESSION['page'];
+        }
         ?>
-        <h2>Playlists</h2>
-        <div id="playlist" class="sections_accueil">
-            <?php 
-            $playlists = $data->getPlaylistsTrieesParNote();
-            $playlists = Factory::createPlaylists($playlists);
-            foreach ($playlists as $playlist) {
-                $playlist->render();
-            }
-            ?>
-        </div>
-        <h2>Albums</h2>
-        <div id="albums" class="sections_accueil">
-            <?php 
-            $albums = $data->getAlbums();
-            $albums = Factory::createAlbums($albums);
-            foreach ($albums as $album) {
-                $album->render();
-            }
-            ?>
-        </div>
-        <h2>Genres</h2>
-        <div id="genres" class="sections_accueil">
-            <?php 
-            $genres = $data->getGenres();
-            $genres = Factory::createGenres($genres);
-            foreach ($genres as $genre) {
-                $genre->render();
-            }
-            ?>
-        </div>
-        <h2>Groupes et Artistes</h2>
-        <div id="groupes" class="sections_accueil">
-            <?php 
-            $groupes = $data->getGroupes();
-            $groupes = Factory::createGroupes($groupes);
-            foreach ($groupes as $groupe) {
-                $groupe->render();
-            }
-            ?>
-        </div>
-        <div id="bottomPage" class="sections_accueil"></div>
     </main>
+    <?php include 'player.php'; ?>
 </body>
 </html>

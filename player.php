@@ -64,32 +64,5 @@
         </div>
     <!-- <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="1"> -->
     </div>
-    <div id="dialogPlaylist" class="dialogPlaylist">
-        <div class="top-bar">
-            <div class="headline">Enregistrer dans une playlist</div>
-            <button class="close-icon" aria-label="Fermer">
-            </button>
-        </div>
-        <div class="scrollable-content">
-            <div id="playlists" class="playlists">
-                <?php 
-                    $playlists = $data->getPlaylistsByUser($_SESSION['user']['id_utilisateur']);
-                    foreach ($playlists as $playlist) {
-                        echo '<div class="playlist">';
-                        $image = $data->getMusiquesAlbumsByPlaylist($playlist['id_playlist'])['image_album'] ?? 'default.jpg';
-                        echo '<img id="imgAddToPlaylist" src="./ressources/images/'.$image.'">';
-                        echo '<div class="playlist-infos">';
-                        echo '<h3>'.$playlist['nom_playlist'].'</h3>';
-                        echo '</div>';
-                        echo '<button id="addToPlaylist" data-id-playlist="'.$playlist["id_playlist"].'"title="Ajouter à la playlist"><i class="material-icons">add</i></button>';
-                        echo '</div>';
-                    }
-                ?>
-            </div>
-        </div>
-        <div class="actions">
-            <button class="new-playlist-button">Nouvelle playlist</button>
-        </div>
-    </div>
 </div>
 </html>

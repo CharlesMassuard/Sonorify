@@ -202,7 +202,8 @@
             return $this->file_db->query('SELECT * from ARTISTE where id_artiste='.$id);
         }
         public function getGenresById($id){
-            return $this->file_db->query('SELECT * from GENRE where id_genre='.$id);
+            $genres = $this->file_db->query('SELECT * from GENRE where id_genre='.$id);
+            return $genres->fetch();
         }
         public function getAlbumsArtistesByIdAlbum($id){
             $groupe = $this->file_db->query('SELECT nom_groupe from GROUPE natural join ALBUM where id_album='.$id);
@@ -211,6 +212,18 @@
         public function getAlbumsArtistesByIdArtiste($id){
             return $this->file_db->query('SELECT * from ALBUM_ARTISTE where id_artiste='.$id);
         } 
+        public function getMusiquesByGroupe($id){
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural join GROUPE where id_groupe='.$id);
+            return $musiques->fetchAll();
+        }
+        public function getAlbumsByGroupe($id){
+            $albums = $this->file_db->query('SELECT * from ALBUM natural join GROUPE where id_groupe='.$id);
+            return $albums->fetchAll();
+        }
+        public function getArtistesByGroupe($id){
+            $artistes = $this->file_db->query('SELECT * from ARTISTE natural join GROUPE_ARTISTE where id_groupe='.$id);
+            return $artistes->fetchAll();
+        }
         public function getPlaylists(){
             $playlist = $this->file_db->query('SELECT * from PLAYLIST');
             return $playlist->fetchAll();
@@ -227,7 +240,10 @@
             $groupes = $this->file_db->query('SELECT * from GROUPE');
             return $groupes->fetchAll();
         }
-
+        public function getGroupeById($id){
+            $groupe = $this->file_db->query('SELECT * from GROUPE where id_groupe='.$id);
+            return $groupe->fetch();
+        }
         public function getUser($login,$mdp){
             return $this->file_db->query('SELECT * from UTILISATEUR where login_utilisateur="'.$login.'" and password_utilisateur="'.$mdp.'"');
         }
@@ -259,6 +275,10 @@
         }
         public function getMusiquesPlaylist($id){
             $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join PLAYLIST_MUSIQUE where id_playlist='.$id);
+            return $musiques->fetchAll();
+        }
+        public function getMusiquesPlaylistAleatoire($id){
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join PLAYLIST_MUSIQUE where id_playlist='.$id.' ORDER BY RANDOM()');
             return $musiques->fetchAll();
         }
         public function getMusiques(){
@@ -298,7 +318,7 @@
             }
         }
         public function getPlaylistsTrieesParNote(){
-            $playlists = $this->file_db->query('SELECT * from PLAYLIST natural join PLAYLIST_MUSIQUE natural join MUSIQUE natural join ALBUM natural left join PLAYLIST_NOTE group by id_playlist order by avg(note) desc');
+            $playlists = $this->file_db->query('SELECT * from PLAYLIST natural join PLAYLIST_MUSIQUE natural join MUSIQUE natural join ALBUM natural left join PLAYLIST_NOTE where public=1 group by id_playlist order by avg(note) desc');
             return $playlists->fetchAll();
         }
         public function getPlaylistsByUser($id){
@@ -332,6 +352,10 @@
         public function getMusique($id){
             $musique = $this->file_db->query('SELECT * from MUSIQUE where id_musique='.$id);
             return $musique->fetch();
+        }
+        public function getMusiquesByGenre($id){
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural join GROUPE natural join GENRE where id_genre='.$id);
+            return $musiques->fetchAll();
         }
         public function insertUser($pseudo, $password, $nom, $prenom, $email, $ddn){
             $insert="INSERT INTO UTILISATEUR (login_utilisateur, password_utilisateur, nom_utilisateur, prenom_utilisateur, email_utilisateur, ddn_utilisateur, id_role) VALUES (:pseudo, :pswd, :nom, :prenom, :email, :ddn, 1)";
@@ -404,11 +428,19 @@
         }
         public function isFavorisPlaylist($id_playlist,$id_utilisateur){
             $favoris = $this->file_db->query('SELECT * from PLAYLIST_FAVORIS where id_playlist='.$id_playlist.' and id_utilisateur='.$id_utilisateur);
-            return $favoris->fetch();
+            if ($favoris->fetch()){
+                return true;
+            } else {
+                return false;
+            }
         }
         public function isFavorisAlbum($id_album,$id_utilisateur){
             $favoris = $this->file_db->query('SELECT * from ALBUM_FAVORIS where id_album='.$id_album.' and id_utilisateur='.$id_utilisateur);
-            return $favoris->fetch();
+            if ($favoris->fetch()){
+                return true;
+            } else {
+                return false;
+            }
         }
         public function getMusiquesByIdGroupe($id){
             $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural join GROUPE natural left join MUSIQUE_NOTE where id_groupe='.$id.' GROUP BY id_musique order by note desc LIMIT 2');
