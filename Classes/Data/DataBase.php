@@ -20,6 +20,7 @@
                 nom_groupe TEXT,
                 image_groupe TEXT,
                 description_groupe TEXT)");
+
             $this->file_db->exec("CREATE TABLE IF NOT EXISTS ALBUM ( 
                 id_album INTEGER PRIMARY KEY AUTOINCREMENT,
                 titre TEXT,
@@ -27,22 +28,28 @@
                 id_groupe INTEGER,
                 dateSortie DATE,
                 FOREIGN KEY (id_groupe) REFERENCES GROUPE(id_groupe))");
+
             $this->file_db->exec("CREATE TABLE IF NOT EXISTS ARTISTE ( 
                 id_artiste INTEGER PRIMARY KEY AUTOINCREMENT,
                 pseudo_artiste TEXT,
                 image_artiste TEXT)");
+
             $this->file_db->exec("CREATE TABLE IF NOT EXISTS GROUPE_ARTISTE (
                 id_groupe INTEGER,
                 id_artiste INTEGER,
                 PRIMARY KEY (id_groupe, id_artiste),
                 FOREIGN KEY (id_groupe) REFERENCES GROUPE(id_groupe),
                 FOREIGN KEY (id_artiste) REFERENCES ARTISTE(id_artiste))");
+
             $this->file_db->exec("CREATE TABLE IF NOT EXISTS GENRE (
                 id_genre INTEGER PRIMARY KEY AUTOINCREMENT,
-                nom_genre TEXT UNIQUE)");
+                nom_genre TEXT UNIQUE,
+                image_genre TEXT)");
+
             $this->file_db->exec("CREATE TABLE IF NOT EXISTS ROLE (
                 id_role INTEGER PRIMARY KEY AUTOINCREMENT,
                 nom_role TEXT UNIQUE)");
+
             $this->file_db->exec("CREATE TABLE IF NOT EXISTS UTILISATEUR ( 
                 id_utilisateur INTEGER PRIMARY KEY AUTOINCREMENT,
                 login_utilisateur TEXT,
@@ -54,6 +61,7 @@
                 image_utilisateur TEXT,
                 id_role INTEGER,
                 FOREIGN KEY (id_role) REFERENCES ROLE(id_role))");
+
             $this->file_db->exec("CREATE TABLE IF NOT EXISTS ALBUM_NOTE (
                 id_album INTEGER,
                 id_utilisateur INTEGER,
@@ -61,6 +69,7 @@
                 PRIMARY KEY (id_album, id_utilisateur),
                 FOREIGN KEY (id_album) REFERENCES ALBUM(id_album),
                 FOREIGN KEY (id_utilisateur) REFERENCES UTILISATEUR(id_utilisateur))");
+
             $this->file_db->exec("CREATE TABLE IF NOT EXISTS GENRE_SIMILAIRE (
                 id_genre INTEGER,
                 id_genre_similaire INTEGER,
@@ -76,6 +85,7 @@
                 id_auteur INTEGER,
                 FOREIGN KEY (id_auteur) REFERENCES UTILISATEUR(id_utilisateur)
                 )");
+
             $this->file_db->exec("CREATE TABLE IF NOT EXISTS MUSIQUE (
                 id_musique INTEGER PRIMARY KEY AUTOINCREMENT,
                 nom_musique TEXT,
@@ -83,16 +93,19 @@
                 id_groupe INTEGER,
                 id_album INTEGER,
                 id_genre INTEGER,
+                url_musique TEXT,
                 FOREIGN KEY (id_groupe) REFERENCES GROUPE(id_groupe),
                 FOREIGN KEY (id_genre) REFERENCES GENRE(id_genre),
                 FOREIGN KEY (id_album) REFERENCES ALBUM(id_album)
                 )");
+
             $this->file_db->exec("CREATE TABLE IF NOT EXISTS PLAYLIST_MUSIQUE (
                 id_playlist INTEGER,
                 id_musique INTEGER,
                 PRIMARY KEY (id_playlist, id_musique),
                 FOREIGN KEY (id_playlist) REFERENCES PLAYLIST(id_playlist),
                 FOREIGN KEY (id_musique) REFERENCES MUSIQUE(id_musique))");
+
             $this->file_db->exec("CREATE TABLE IF NOT EXISTS PLAYLIST_NOTE (
                 id_playlist INTEGER,
                 id_utilisateur INTEGER,
@@ -100,24 +113,43 @@
                 PRIMARY KEY (id_playlist, id_utilisateur),
                 FOREIGN KEY (id_playlist) REFERENCES PLAYLIST(id_playlist),
                 FOREIGN KEY (id_utilisateur) REFERENCES UTILISATEUR(id_utilisateur))");
+
             $this->file_db->exec("CREATE TABLE IF NOT EXISTS PLAYLIST_FAVORIS (
                 id_playlist INTEGER,
                 id_utilisateur INTEGER,
                 PRIMARY KEY (id_playlist, id_utilisateur),
                 FOREIGN KEY (id_playlist) REFERENCES PLAYLIST(id_playlist),
                 FOREIGN KEY (id_utilisateur) REFERENCES UTILISATEUR(id_utilisateur))");
+
+            $this->file_db->exec("CREATE TABLE IF NOT EXISTS ALBUM_FAVORIS (
+                id_album INTEGER,
+                id_utilisateur INTEGER,
+                PRIMARY KEY (id_album, id_utilisateur),
+                FOREIGN KEY (id_album) REFERENCES ALBUM(id_album),
+                FOREIGN KEY (id_utilisateur) REFERENCES UTILISATEUR(id_utilisateur))");
+
             $this->file_db->exec("CREATE TABLE IF NOT EXISTS MUSIQUE_FAVORIS (
                 id_musique INTEGER,
                 id_utilisateur INTEGER,
                 PRIMARY KEY (id_musique, id_utilisateur),
                 FOREIGN KEY (id_musique) REFERENCES MUSIQUE(id_musique),
                 FOREIGN KEY (id_utilisateur) REFERENCES UTILISATEUR(id_utilisateur))");
+
+            $this->file_db->exec("CREATE TABLE IF NOT EXISTS MUSIQUE_NOTE (
+                id_musique INTEGER,
+                id_utilisateur INTEGER,
+                note INTEGER,
+                PRIMARY KEY (id_musique, id_utilisateur),
+                FOREIGN KEY (id_musique) REFERENCES MUSIQUE(id_musique),
+                FOREIGN KEY (id_utilisateur) REFERENCES UTILISATEUR(id_utilisateur))");
+
             $this->file_db->exec("CREATE TABLE IF NOT EXISTS GROUPE_FAVORIS (
                 id_groupe INTEGER,
                 id_utilisateur INTEGER,
                 PRIMARY KEY (id_groupe, id_utilisateur),
                 FOREIGN KEY (id_groupe) REFERENCES GROUPE(id_groupe),
                 FOREIGN KEY (id_utilisateur) REFERENCES UTILISATEUR(id_utilisateur))");
+
             $this->file_db->exec("CREATE TABLE IF NOT EXISTS MUSIQUE_HISTORIQUE (
                 id_musique INTEGER,
                 id_utilisateur INTEGER,
@@ -173,7 +205,8 @@
             return $this->file_db->query('SELECT * from GENRE where id_genre='.$id);
         }
         public function getAlbumsArtistesByIdAlbum($id){
-            return $this->file_db->query('SELECT * from ALBUM_ARTISTE where id_album='.$id);
+            $groupe = $this->file_db->query('SELECT nom_groupe from GROUPE natural join ALBUM where id_album='.$id);
+            return $groupe->fetch();
         }
         public function getAlbumsArtistesByIdArtiste($id){
             return $this->file_db->query('SELECT * from ALBUM_ARTISTE where id_artiste='.$id);
@@ -183,7 +216,7 @@
             return $playlist->fetchAll();
         }
         public function getMusiqueRecente(){
-            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM order by dateSortie desc');
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural left join MUSIQUE_NOTE GROUP BY id_musique order by note desc LIMIT 15');
             return $musiques->fetchAll();
         }
         public function getMusiqueRecemmentEcoutee(){
@@ -199,7 +232,7 @@
         }
 
         public function getAlbumsByIdGroupe($id){
-            $albums = $this->file_db->query('SELECT * from ALBUM where id_groupe='.$id);
+            $albums = $this->file_db->query('SELECT * from ALBUM natural join GROUPE  where id_groupe='.$id.' LIMIT 2');
             if ($albums){
                 return $albums->fetchAll();
             } else {
@@ -211,7 +244,7 @@
             return $genres->fetchAll();
         }
         public function getAlbumsByName($nom){
-            $albums = $this->file_db->query('SELECT * from ALBUM where titre LIKE "%'.$nom.'%"');
+            $albums = $this->file_db->query('SELECT * from ALBUM natural join GROUPE where titre LIKE "%'.$nom.'%"');
             return $albums->fetchAll();
         }
         public function getPlaylistsByName($nom){
@@ -282,6 +315,18 @@
         public function getGroupesFavorisByUser($id){
             $groupes = $this->file_db->query('SELECT * from GROUPE natural join GROUPE_FAVORIS where id_utilisateur='.$id);
             return $groupes->fetchAll();
+        }
+        public function getAlbumByMusique($id){
+            $album = $this->file_db->query('SELECT * from ALBUM natural join MUSIQUE where id_musique='.$id);
+            return $album->fetch();
+        }
+        public function getMusiquesByName($nom){
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural join GROUPE where nom_musique LIKE "%'.$nom.'%"');
+            return $musiques->fetchAll();
+        }
+        public function getMusique($id){
+            $musique = $this->file_db->query('SELECT * from MUSIQUE where id_musique='.$id);
+            return $musique->fetch();
         }
         public function insertUser($pseudo, $password, $nom, $prenom, $email, $ddn){
             $insert="INSERT INTO UTILISATEUR (login_utilisateur, password_utilisateur, nom_utilisateur, prenom_utilisateur, email_utilisateur, ddn_utilisateur, id_role) VALUES (:pseudo, :pswd, :nom, :prenom, :email, :ddn, 1)";
@@ -355,6 +400,35 @@
         public function isFavorisPlaylist($id_playlist,$id_utilisateur){
             $favoris = $this->file_db->query('SELECT * from PLAYLIST_FAVORIS where id_playlist='.$id_playlist.' and id_utilisateur='.$id_utilisateur);
             return $favoris->fetch();
+        }
+        public function isFavorisAlbum($id_album,$id_utilisateur){
+            $favoris = $this->file_db->query('SELECT * from ALBUM_FAVORIS where id_album='.$id_album.' and id_utilisateur='.$id_utilisateur);
+            return $favoris->fetch();
+        }
+        public function getMusiquesByIdGroupe($id){
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural join GROUPE natural left join MUSIQUE_NOTE where id_groupe='.$id.' GROUP BY id_musique order by note desc LIMIT 2');
+            return $musiques->fetchAll();
+        }
+        public function getMusiquesByIdAlbum($id){
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural join GROUPE natural left join MUSIQUE_NOTE where id_album='.$id.' GROUP BY id_musique order by note desc LIMIT 2');
+            return $musiques->fetchAll();
+        }
+        public function getMusiquesByIdPlaylist($id){
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join PLAYLIST_MUSIQUE natural left join ALBUM natural join GROUPE natural join MUSiQUE_NOTE where id_playlist='.$id.' GROUP BY id_musique order by note desc LIMIT 2');
+            return $musiques->fetchAll();
+        }
+        public function getMusiquesByIdGenre($id){
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural join GROUPE natural left join MUSIQUE_NOTE where id_genre='.$id.' GROUP BY id_musique order by note desc LIMIT 2');
+            return $musiques->fetchAll();
+        }
+    }
+
+    $db = new DataBase();
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if (isset($_POST['function_name']) && $_POST['function_name'] == 'insertMusiquePlaylist') {
+            $id_playlist = $_POST['id_playlist'];
+            $id_musique = $_POST['id_musique'];
+            $db->insertMusiquePlaylist($id_musique, $id_playlist);
         }
     }
 ?>

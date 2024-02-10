@@ -2,12 +2,12 @@
 <html>
 <head>
     <link rel="stylesheet" href="./static/css/aside.css">
-    <script src="./static/js/asside.js" defer></script>
+    <!-- <script src="./static/js/aside.js" defer></script> -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
     <aside>
-        <header id="headerAsside">
+        <header id="headerAside">
             <div class="hamburger-menu">
                 <input id="menu__toggle" type="checkbox" />
                 <label id="hamburger" class="menu__btn" for="menu__toggle">

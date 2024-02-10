@@ -24,7 +24,7 @@ buttonActiverAside.addEventListener("click", function() {
         logo.style.opacity = "0";
         hamburgerButton.style.left = "35px";
         for(var i = 0; i < menuItems.length; i++) {
-            menuItems[i].style.marginLeft = "-35px";
+            menuItems[i].style.marginLeft = "-35px";    
         }
         isActived = false;
     } else {

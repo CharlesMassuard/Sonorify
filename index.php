@@ -20,9 +20,9 @@ $data = new DataBase();
     <script src="./static/js/index.js" defer></script>
     <script src="./static/js/accueil.js" defer></script>
 </head>
+<?php include 'player.php'; ?>
 <body>
     <?php include 'aside.php'; ?>
-    <?php include 'bigPlayer.php'; ?>
     <main>
         <?php include 'header.php'; ?>
         <div id="titre">
@@ -40,9 +40,13 @@ $data = new DataBase();
                 echo '<h2>Musiques</h2>';
                 $musiques = $data->getMusiqueRecente();
             } else {
-                echo '<h2>Vos Musiques Récentes</h2>';
                 $musiques = $data->getMusiqueRecemmentEcoutee();
-
+                if(count($musiques) == 0) {
+                    $musiques = $data->getMusiqueRecente();
+                    echo '<h2>Musiques</h2>';
+                } else {
+                    echo '<h2>Musiques Recemment Ecoutées</h2>';
+                }
             }
             $musiques = Factory::createMusiques($musiques);
             echo '<div id="musiques" class="sections_accueil">';
@@ -81,7 +85,7 @@ $data = new DataBase();
             }
             ?>
         </div>
-        <h2>Groupes</h2>
+        <h2>Groupes et Artistes</h2>
         <div id="groupes" class="sections_accueil">
             <?php 
             $groupes = $data->getGroupes();
@@ -94,5 +98,4 @@ $data = new DataBase();
         <div id="bottomPage" class="sections_accueil"></div>
     </main>
 </body>
-<?php include 'player.php'; ?>
 </html>
