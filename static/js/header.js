@@ -19,7 +19,6 @@ var searchBar = document.getElementById('search');
 document.addEventListener('DOMContentLoaded', function() {
     var stock = [];
     searchBar.addEventListener('input', function(e) {
-        console.log("A");
         if (e.target.value == "" || e.target.value.length < 3 ) {
             searchBar.style.borderRadius = "10px";
             let searchResult = document.querySelector("#search_result");

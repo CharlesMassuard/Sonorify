@@ -60,7 +60,6 @@ export function lireUneMusique(id_musique, nom, cover, nomGroupe, nomAlbum, url)
     playlistDetails = [];
     playlistDetails.push([nom, cover, nomGroupe, nomAlbum, id_musique]);
     playPlaylist();
-    console.log("t");
 };
 
 export function addToPlaylist(id_musique, nom, cover, nomGroupe, nomAlbum, url) {
