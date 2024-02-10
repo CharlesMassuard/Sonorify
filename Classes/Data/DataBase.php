@@ -425,12 +425,10 @@
 
     $db = new DataBase();
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        if ($_POST['function_name'] == 'insertMusiquePlaylist') {
+        if (isset($_POST['function_name']) && $_POST['function_name'] == 'insertMusiquePlaylist') {
             $id_playlist = $_POST['id_playlist'];
             $id_musique = $_POST['id_musique'];
-            // Assuming $db is your database object
             $db->insertMusiquePlaylist($id_musique, $id_playlist);
-            echo "Music added to playlist";
         }
     }
 ?>
