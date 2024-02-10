@@ -87,7 +87,7 @@
                     echo '<div id="musique">';
                     $album = $data->getAlbumByMusique($musique['id_musique']);
                     echo '<img id="imgMusiqueAlbum" src="./ressources/images/'.$album["image_album"].'">';
-                    echo '<a href= "jouerPlaylist.php?id_playlist='.$id_playlist.'&aleatoire=false&musiqueStart='.$musique["id_musique"].'" method="post">';
+                    echo '<a href= "jouerPlaylist.php?id_playlist='.$id_playlist.'&aleatoire=false&musiqueStart='.$musique["id_musique"].'" id="PlayPlaylistMusique">';
                     echo '<h2>'.$musique['nom_musique'].'</h2>';
                     echo '</a>';
                     echo '<a href="groupe.php?id='.$musique['id_groupe'].'">'.$data->getGroupe($musique['id_groupe'])['nom_groupe'].'</a>';

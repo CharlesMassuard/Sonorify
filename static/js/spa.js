@@ -1,4 +1,4 @@
-import { addToPlaylist, playPlaylist , clearPlaylist, lireUneMusique } from './player.js';
+import { addToPlaylist, playPlaylist , clearPlaylist, lireUneMusique, setFirstTrack } from './player.js';
 document.querySelectorAll('#Playlist').forEach(element => {
     element.addEventListener('click', (event) => {
         event.preventDefault();
@@ -32,6 +32,7 @@ document.querySelectorAll('#Profil').forEach(element => {
 document.querySelectorAll('#PlayMusique').forEach(element => {
     element.addEventListener('click', (event) => {
         event.preventDefault();
+        clearPlaylist();
         fetch(element.href, {
             method: 'POST',
             headers: {
@@ -46,11 +47,39 @@ document.querySelectorAll('#PlayMusique').forEach(element => {
             return response.text();
         })
         .then(data => {
-            console.log(data);
             let info = JSON.parse(data);
-            console.log(info['id_musique']);
             clearPlaylist();
             lireUneMusique(info['id_musique'], info['nomMusique'], info['cover'], info['nomGroupe'], info['nomAlbum'], info['urlMusique']);
+        })
+        .catch(error => console.error(error));  
+        loadScripts(['spa.js', 'aside.js', 'playlist.js']);  
+    }
+    );
+} );
+document.querySelectorAll('#PlayPlaylistMusique').forEach(element => {
+    element.addEventListener('click', (event) => {
+        event.preventDefault();
+        clearPlaylist();
+        fetch(element.href, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'data=' + encodeURIComponent(event.target.value),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Erreur HTTP, statut = " + response.status);
+            }
+            return response.text();
+        })
+        .then(data => {
+            data = JSON.parse(data);
+            setFirstTrack(data['firstTrack']);
+            for (let info of data['musiques']){
+                addToPlaylist(info['id_musique'], info['nomMusique'], info['cover'], info['nomGroupe'], info['nomAlbum'], info['urlMusique']);
+            }
+            playPlaylist();
         })
         .catch(error => console.error(error));  
         loadScripts(['spa.js', 'aside.js', 'playlist.js']);  
@@ -122,9 +151,11 @@ document.querySelectorAll('#PlayAlbum').forEach(form => {
             return response.text();
         })
         .then(data => {
-            for (let info of JSON.parse(data)){
+            data = JSON.parse(data);
+            for (let info of data['musiques']){
                 addToPlaylist(info['id_musique'], info['nomMusique'], info['cover'], info['nomGroupe'], info['nomAlbum'], info['urlMusique']);
             }
+            setFirstTrack(data['firstTrack']);
             playPlaylist();
         })
         .catch(error => console.error(error));  
