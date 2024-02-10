@@ -63,7 +63,7 @@
                         echo '<input type="submit" id="jouerPlaylistAleatoire" name="jouerPlaylistAleatoire" style="display: none;">';
                         echo '<label for="jouerPlaylistAleatoire"  title="Lire la playlist aléatoirement"><i class="material-icons">shuffle</i></label>';
                         echo '</form>';
-                        if ($_SESSION  && is_array($_SESSION) && $data->isFavorisPlaylist($id_playlist, $_SESSION['user']['id_utilisateur']) ?? false){
+                        if ($_SESSION  && isset($_SESSION['user']) && $data->isFavorisPlaylist($id_playlist, $_SESSION['user']['id_utilisateur']) ?? false){
                             echo '<form action="supprimerFavoritePlaylist.php?id='.$id_playlist.'" method="post">';
                             echo '<input type="submit" id="favAlbum" name="deleteFavoriteAlbum" style="display: none;">';
                             echo '<label for="deleteFavoriteAlbum"  title="Supprimer des favoris"><i class="material-icons">favorite</i></label>';
