@@ -404,11 +404,19 @@
         }
         public function isFavorisPlaylist($id_playlist,$id_utilisateur){
             $favoris = $this->file_db->query('SELECT * from PLAYLIST_FAVORIS where id_playlist='.$id_playlist.' and id_utilisateur='.$id_utilisateur);
-            return $favoris->fetch();
+            if ($favoris->fetch()){
+                return true;
+            } else {
+                return false;
+            }
         }
         public function isFavorisAlbum($id_album,$id_utilisateur){
             $favoris = $this->file_db->query('SELECT * from ALBUM_FAVORIS where id_album='.$id_album.' and id_utilisateur='.$id_utilisateur);
-            return $favoris->fetch();
+            if ($favoris->fetch()){
+                return true;
+            } else {
+                return false;
+            }
         }
         public function getMusiquesByIdGroupe($id){
             $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural join GROUPE natural left join MUSIQUE_NOTE where id_groupe='.$id.' GROUP BY id_musique order by note desc LIMIT 2');

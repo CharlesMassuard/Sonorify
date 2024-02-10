@@ -4,6 +4,7 @@
         session_start();
     }
     $id_album = $_GET['id'] ?? 1;
+    $_SESSION['page'] = 'album.php?id='.$id_album;
     require_once 'Classes/Data/DataBase.php';
     $data = new Data\DataBase();
     $album = $data->getAlbum($id_album);
@@ -11,20 +12,7 @@
     $nbrMusiques = count($musiques);
     $groupe = $data->getAlbumsArtistesByIdAlbum($album['id_album']);
 ?>
-<!doctype>
-<html>
-<head>
-    <title><?php echo $groupe['nom_groupe']?> - <?php echo $album['titre']?></title>
-    <link rel="icon" type="image/x-icon" href="./ressources/images/logo.png">
-    <link rel="stylesheet" href="./static/css/playlist.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="./static/js/playlist.js" defer></script>
-</head>
-<body>
-    <?php include 'aside.php'; ?>
-    <?php include 'player.php'; ?>
-    <main>
-        <?php include 'header.php'; ?>
+
         <div id="playlistAlbum">
             <div id="playlist">
                 <img id="imgPlaylistAlbum" src="./ressources/images/<?php echo $album["image_album"]?>">
@@ -125,6 +113,3 @@
             </div>
         </div>
         <div id="bottomPage" class="sections_accueil"></div>
-    </main>
-</body>
-</html>

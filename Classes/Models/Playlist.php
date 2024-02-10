@@ -17,7 +17,7 @@
             $this->image_playlist = $image_playlist;
         }
         public function render(){
-            echo '<a class="a_accueil" href= "playlist.php?id='.$this->id_playlist.'">';
+            echo '<a class="a_accueil" id="Playlist" href="playlist.php?id='.$this->id_playlist.'">';
             echo '<div class="a_content">';
             echo '<img src="./ressources/images/'.$this->image_playlist.'">';
             echo '<h3>'.$this->nom_playlist.'</h3>';

@@ -14,7 +14,7 @@
         static function autoload($fqcn){
             if ($fqcn == "Data\\PDO") return;
             $path = str_replace('\\', '/', $fqcn);
-            require 'Classes/' . $path . '.php';
+            require './Classes/' . $path . '.php';
         }
     }
 ?>
