@@ -10,7 +10,7 @@
     $genre = $data->getGenresById($id_genre);
     $musiques = $data->getMusiquesByGenre($id_genre);
     $musiques = Factory::createMusiques($musiques);
-    echo '<h2>'.$genre['nom_genre'].'</h2>';
+    echo '<h1>'.$genre['nom_genre'].'</h1>';
     foreach ($musiques as $musique) {
         $musique->render();
     }
