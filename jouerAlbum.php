@@ -29,7 +29,7 @@
         // echo "import { addToPlaylist } from './static/js/player.js';";
         // echo "import { setFirstTrack } from './static/js/player.js';";
         if($musiqueStart != false && $musiqueStart == $id_musique){
-            // echo "setFirstTrack('$i');";
+            $id_first = $i;
         }
         // echo "addToPlaylist('$id_musique', '$nomMusique', '$cover', '$nomGroupe', '$nomAlbum', '$urlMusique');";
         // echo "</script>";
@@ -41,7 +41,11 @@
         $render_musiques[$i]['nom_album'] = $nomAlbum;
         $render_musiques[$i]['urlMusique'] = $urlMusique;
     }
-    print_r(json_encode($render_musiques));
+    $musiques = [
+        "musiques" => $render_musiques,
+        "firstTrack" => $id_first ?? 0,
+    ];
+    print_r(json_encode($musiques));
     // echo "<script type='module' src='static/js/player.js'></script>";
     // echo "<script type='module'>";
     // echo "import { playPlaylist } from './static/js/player.js';";

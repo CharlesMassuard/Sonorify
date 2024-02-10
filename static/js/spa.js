@@ -86,6 +86,37 @@ document.querySelectorAll('#PlayPlaylistMusique').forEach(element => {
     }
     );
 } );
+document.querySelectorAll('#PlayAlbumMusique').forEach(element => {
+    element.addEventListener('click', (event) => {
+        event.preventDefault();
+        clearPlaylist();
+        fetch(element.href, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'data=' + encodeURIComponent(event.target.value),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Erreur HTTP, statut = " + response.status);
+            }
+            return response.text();
+        })
+        .then(data => {
+            data = JSON.parse(data);
+            setFirstTrack(data['firstTrack']);
+            for (let info of data['musiques']){
+                addToPlaylist(info['id_musique'], info['nomMusique'], info['cover'], info['nomGroupe'], info['nomAlbum'], info['urlMusique']);
+            }
+            playPlaylist();
+        }
+        )
+        .catch(error => console.error(error));
+        loadScripts(['spa.js', 'aside.js', 'playlist.js']);
+    }
+    );
+} );
 
 function loadPage(element) {
     fetch(element.href)
@@ -155,7 +186,6 @@ document.querySelectorAll('#PlayAlbum').forEach(form => {
             for (let info of data['musiques']){
                 addToPlaylist(info['id_musique'], info['nomMusique'], info['cover'], info['nomGroupe'], info['nomAlbum'], info['urlMusique']);
             }
-            setFirstTrack(data['firstTrack']);
             playPlaylist();
         })
         .catch(error => console.error(error));  
