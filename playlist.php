@@ -94,15 +94,6 @@
             </div>
             <div id="musiquesPlaylist">
                 <?php
-                echo '<form action="ajouterMusiquePlaylist.php?id='.$id_playlist.'" method="post">';
-                echo '<input id="barre_ajout" type="text" name="nom_musique" list="allMusiques">';
-                echo '<input type="submit" value="Ajouter la Musique">';
-                echo '</form>';
-                echo '<datalist id="allMusiques">';
-                foreach ($data->getMusiquesPlaylist($playlist['id_auteur']) as $musique) {
-                    echo '<option value="'.$musique['nom_musique'].'">';
-                }
-                echo '</datalist>';
 
                 foreach ($musiques as $musique) {
                     echo '<div id="musique">';
