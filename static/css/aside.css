@@ -12,6 +12,10 @@ aside {
     z-index: 9999;
 }
 
+main {
+    z-index: 10000;
+}
+
 #logo{
     position: relative;
     height: 45px;
