@@ -233,7 +233,7 @@
             return $musiques->fetchAll();
         }
         public function getMusiqueRecemmentEcoutee(){
-            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join GROUPE natural join MUSIQUE_HISTORIQUE order by date_lecture desc');
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE  natural join ALBUM natural join GROUPE natural join MUSIQUE_HISTORIQUE order by date_lecture desc');
             return $musiques->fetchAll();
         }
         public function getGroupes(){
@@ -409,6 +409,22 @@
                 $stmt->bindParam(':id_playlist',$id_playlist);
                 $stmt->bindParam(':id_utilisateur',$id_utilisateur);
                 $stmt->bindParam(':note',$note);
+                $stmt->execute();
+            }
+        }
+        public function insertEcoute($id_musique,$id_utilisateur){
+            $total = $this->file_db->query('SELECT * from MUSIQUE_HISTORIQUE where id_utilisateur='.$id_utilisateur)->rowCount();
+            if ($total > 9){
+                $update = "UPDATE MUSIQUE_HISTORIQUE SET date_lecture = DATE(), id_musique=:id_musique where id_utilisateur=:id_utilisateur and date_lecture = (SELECT date_lecture from MUSIQUE_HISTORIQUE where id_utilisateur=:id_utilisateur order by date_lecture asc LIMIT 1)";
+                $stmt=$this->file_db->prepare($update);
+                $stmt->bindParam(':id_utilisateur',$id_utilisateur);
+                $stmt->bindParam(':id_musique',$id_musique);
+                $stmt->execute();
+            } else {
+                $insert="INSERT INTO MUSIQUE_HISTORIQUE (id_musique, id_utilisateur, date_lecture) VALUES (:id_musique, :id_utilisateur, DATE())";
+                $stmt=$this->file_db->prepare($insert);
+                $stmt->bindParam(':id_musique',$id_musique);
+                $stmt->bindParam(':id_utilisateur',$id_utilisateur);
                 $stmt->execute();
             }
         }

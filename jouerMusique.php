@@ -21,6 +21,9 @@
         $render_musique['nom_album'] = $nomAlbum;
         $render_musique['urlMusique'] = $urlMusique;
         print_r(json_encode($render_musique));
+        if (!($_SESSION['user'] == null)) {
+            $data->insertEcoute($id_musique, $_SESSION['user']['id_utilisateur']);
+        } 
         // echo "<script type='module' src='static/js/player.js'></script>";
         // echo "<script type='module'>";
         // echo "import { lireUneMusique } from './static/js/player.js';";
