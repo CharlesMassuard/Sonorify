@@ -25,7 +25,7 @@
         public static function createPlaylists(Array $data): Array{
             $listePlaylists = [];
             foreach($data as $playlist){
-                array_push($listePlaylists, new Playlist($playlist["id_playlist"], $playlist["nom_playlist"], $playlist["image_album"]));
+                array_push($listePlaylists, new Playlist($playlist));
             }
             return $listePlaylists;
         }
