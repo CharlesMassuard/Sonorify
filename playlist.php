@@ -98,9 +98,9 @@
                         echo '</a>';
                     }
                     echo '</div>';
-                    echo '<form action="votre_page.php" method="post">';
+                    echo '<form id="Favoris" action="ajouterFavorisMusique.php?id='.$musique['id_musique'].'" method="post">';
                     echo '<input type="submit" id="favMusique" name="addFavoriteMusique" style="display: none;">';
-                    echo '<label for="addFavoriteMusique"  title="Ajouter aux favoris"><i class="material-icons" id="Fav">favorite</i></label>';
+                    echo '<label for="favMusique"  title="Ajouter aux favoris"><i class="material-icons" id="Fav">favorite</i></label>';
                     echo '</form>';
                     if ($_SESSION  && isset($_SESSION['user']) && $playlist['id_auteur'] == $_SESSION['user']['id_utilisateur']){
                         echo '<form action="supprimerMusiquePlaylist.php?id_musique='.$musique['id_musique'].'&id_playlist='.$id_playlist.'" method="post">';

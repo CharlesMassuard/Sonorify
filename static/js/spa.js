@@ -224,7 +224,9 @@ document.querySelectorAll('#Favoris').forEach(form => {
         })
         .then(response => response.text())
         .then(data => {
-            document.querySelector('main').innerHTML = data;
+            if (data) {
+                document.querySelector('main').innerHTML = data;
+            }
             let searchResult = document.querySelector("#search_result");
             searchResult.innerHTML = '';
             return loadScripts(['spa.js', 'aside.js', 'playlist.js']);   
@@ -234,4 +236,3 @@ document.querySelectorAll('#Favoris').forEach(form => {
         });
     });
 });
-console.log(document.querySelectorAll('#Favoris'));
