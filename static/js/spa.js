@@ -207,3 +207,31 @@ document.querySelectorAll('#PlayAlbum').forEach(form => {
         .catch(error => console.error(error));  
     }); 
 } );
+
+document.querySelectorAll('#Favoris').forEach(form => {
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        // Obtenir l'action du formulaire
+        let action = event.target.action;
+
+        // Créer un nouvel objet FormData à partir du formulaire
+        let formData = new FormData(event.target);
+
+        // Utiliser fetch pour envoyer les données du formulaire à l'action du formulaire
+        fetch(action, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(data => {
+            document.querySelector('main').innerHTML = data;
+            let searchResult = document.querySelector("#search_result");
+            searchResult.innerHTML = '';
+            return loadScripts(['spa.js', 'aside.js', 'playlist.js']);   
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    });
+});
+console.log(document.querySelectorAll('#Favoris'));
