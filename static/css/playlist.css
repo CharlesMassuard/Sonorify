@@ -154,3 +154,19 @@ label i.material-icons {
 label:hover{
     opacity: 0.8;
 }
+
+#Fav:hover{
+    color: #aa0000;
+}
+
+#Fav{
+    color: #ffffff;
+}
+
+#UnFav{
+    color: #aa0000;
+}
+
+#UnFav:hover{
+    color: #aaaaaa;
+}

@@ -64,14 +64,14 @@
                         echo '<label for="jouerPlaylistAleatoire"  title="Lire la playlist aléatoirement"><i class="material-icons">shuffle</i></label>';
                         echo '</form>';
                         if ($_SESSION  && isset($_SESSION['user']) && $data->isFavorisPlaylist($id_playlist, $_SESSION['user']['id_utilisateur']) ?? false){
-                            echo '<form action="supprimerFavorisPlaylist.php?id='.$id_playlist.'" method="post">';
+                            echo '<form id="Favoris" action="supprimerFavorisPlaylist.php?id='.$id_playlist.'" method="post">';
                             echo '<input type="submit" id="favAlbum" name="deleteFavoriteAlbum" style="display: none;">';
-                            echo '<label for="deleteFavoriteAlbum"  title="Supprimer des favoris"><i class="material-icons">favorite</i></label>';
+                            echo '<label for="favAlbum"  title="Supprimer des favoris"><i class="material-icons" id="UnFav">favorite</i></label>';
                             echo '</form>';
                         } else {
-                            echo '<form action="ajouterFavorisPlaylist.php?id='.$id_playlist.'" method="post">';
+                            echo '<form id="Favoris" action="ajouterFavorisPlaylist.php?id='.$id_playlist.'" method="post">';
                             echo '<input type="submit" id="favAlbum" name="addFavoriteAlbum" style="display: none;">';
-                            echo '<label for="addFavoriteAlbum"  title="Ajouter aux favoris"><i class="material-icons">favorite</i></label>';
+                            echo '<label for="favAlbum"  title="Ajouter aux favoris"><i class="material-icons" id="Fav">favorite</i></label>';
                             echo '</form>';
                         }
                         echo '</div>';
@@ -100,7 +100,7 @@
                     echo '</div>';
                     echo '<form action="votre_page.php" method="post">';
                     echo '<input type="submit" id="favMusique" name="addFavoriteMusique" style="display: none;">';
-                    echo '<label for="addFavoriteMusique"  title="Ajouter aux favoris"><i class="material-icons">favorite</i></label>';
+                    echo '<label for="addFavoriteMusique"  title="Ajouter aux favoris"><i class="material-icons" id="Fav">favorite</i></label>';
                     echo '</form>';
                     if ($_SESSION  && isset($_SESSION['user']) && $playlist['id_auteur'] == $_SESSION['user']['id_utilisateur']){
                         echo '<form action="supprimerMusiquePlaylist.php?id_musique='.$musique['id_musique'].'&id_playlist='.$id_playlist.'" method="post">';
