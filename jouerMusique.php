@@ -3,7 +3,6 @@
             session_start();
         }
         $id_musique = $_GET['id'] ?? 1;
-        $_SESSION['page'] = 'jouerMusique.php?id='.$id_musique;
         require_once 'Classes/Data/DataBase.php'; 
         $data = new Data\DataBase();
         $musiqueDetails = $data->getMusique($id_musique);
