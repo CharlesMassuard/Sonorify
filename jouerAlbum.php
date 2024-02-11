@@ -18,7 +18,7 @@
     for ($i=0; $i < count($musiques); $i++) { 
         $id_musique = $musiques[$i]['id_musique'];
         $musiqueDetails = $data->getMusique($id_musique);
-        $nomMusique = addslashes($musiqueDetails['nom_musique']);
+        $nomMusique = $musiqueDetails['nom_musique'];
         $album = $data->getAlbumByMusique($id_musique);
         $nomAlbum = $album['titre'];
         $cover = $album['image_album'];

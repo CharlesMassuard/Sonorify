@@ -7,7 +7,7 @@
         require_once 'Classes/Data/DataBase.php'; 
         $data = new Data\DataBase();
         $musiqueDetails = $data->getMusique($id_musique);
-        $nomMusique = addslashes($musiqueDetails['nom_musique']);
+        $nomMusique = $musiqueDetails['nom_musique'];
         $album = $data->getAlbumByMusique($id_musique);
         $nomAlbum = $album['titre'];
         $cover = $album['image_album'];
