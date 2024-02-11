@@ -1,46 +1,18 @@
 import { addToPlaylist, playPlaylist , clearPlaylist, lireUneMusique, setFirstTrack } from './player.js';
-document.querySelectorAll('#Playlist').forEach(element => {
-    element.addEventListener('click', (event) => {
-        event.preventDefault();
-        loadPage(element);
-    });
-} );
-document.querySelectorAll('#Accueil').forEach(element => {
-    element.addEventListener('click', (event) => {
-        event.preventDefault();
-        loadPage(element);
-    });
-});
-document.querySelectorAll('#Album').forEach(element => {
-    element.addEventListener('click', (event) => {
-        event.preventDefault();
-        loadPage(element);
+const ids = ['Playlist', 'Accueil', 'Album', 'Genre', 'Groupe', 'ajout_note', 'Profil'];
+
+const clickHandler = (event) => {
+    event.preventDefault();
+    loadPage(event.currentTarget);
+};
+
+ids.forEach(id => {
+    const elements = document.querySelectorAll(`#${id}`);
+    elements.forEach(element => {
+        element.removeEventListener('click', clickHandler);
+        element.addEventListener('click', clickHandler);
     });
 });
-document.querySelectorAll('#Genre').forEach(element => {
-    element.addEventListener('click', (event) => {
-        event.preventDefault();
-        loadPage(element);
-    });
-} );
-document.querySelectorAll('#Groupe').forEach(element => {
-    element.addEventListener('click', (event) => {
-        event.preventDefault();
-        loadPage(element);
-    });
-} );
-document.querySelectorAll('#ajout_note').forEach(element => {
-    element.addEventListener('click', (event) => {
-        event.preventDefault();
-        loadPage(element);
-    });
-} );
-document.querySelectorAll('#Profil').forEach(element => {
-    element.addEventListener('click', (event) => {
-        event.preventDefault();
-        loadPage(element);
-    });
-} );
 document.querySelectorAll('#PlayMusique').forEach(element => {
     element.addEventListener('click', (event) => {
         event.preventDefault();
@@ -211,13 +183,10 @@ document.querySelectorAll('#PlayAlbum').forEach(form => {
 document.querySelectorAll('#Favoris').forEach(form => {
     form.addEventListener('submit', (event) => {
         event.preventDefault();
-        // Obtenir l'action du formulaire
         let action = event.target.action;
 
-        // Créer un nouvel objet FormData à partir du formulaire
         let formData = new FormData(event.target);
 
-        // Utiliser fetch pour envoyer les données du formulaire à l'action du formulaire
         fetch(action, {
             method: 'POST',
             body: formData
@@ -226,10 +195,10 @@ document.querySelectorAll('#Favoris').forEach(form => {
         .then(data => {
             if (data) {
                 document.querySelector('main').innerHTML = data;
+                let searchResult = document.querySelector("#search_result");
+                searchResult.innerHTML = '';
+                return loadScripts(['spa.js', 'aside.js', 'playlist.js']);   
             }
-            let searchResult = document.querySelector("#search_result");
-            searchResult.innerHTML = '';
-            return loadScripts(['spa.js', 'aside.js', 'playlist.js']);   
         })
         .catch(error => {
             console.log(error);
