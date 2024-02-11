@@ -361,6 +361,10 @@
             $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural join GROUPE natural join GENRE where id_genre='.$id);
             return $musiques->fetchAll();
         }
+        public function getGenresSimilar($id){
+            $genres = $this->file_db->query('SELECT * from GENRE_SIMILAIRE natural join GENRE where id_genre_similaire='.$id);
+            return $genres->fetchAll();
+        }
         public function insertUser($pseudo, $password, $nom, $prenom, $email, $ddn){
             $insert="INSERT INTO UTILISATEUR (login_utilisateur, password_utilisateur, nom_utilisateur, prenom_utilisateur, email_utilisateur, ddn_utilisateur, id_role) VALUES (:pseudo, :pswd, :nom, :prenom, :email, :ddn, 1)";
             $stmt=$this->file_db->prepare($insert);
