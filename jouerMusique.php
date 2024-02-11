@@ -2,12 +2,12 @@
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
-        $id_musique = $_GET['id_musique'] ?? 1;
-        $_SESSION['page'] = 'jouerMusique.php?id_musique='.$id_musique;
+        $id_musique = $_GET['id'] ?? 1;
+        $_SESSION['page'] = 'jouerMusique.php?id='.$id_musique;
         require_once 'Classes/Data/DataBase.php'; 
         $data = new Data\DataBase();
         $musiqueDetails = $data->getMusique($id_musique);
-        $nomMusique = addslashes($musiqueDetails['nom_musique']);
+        $nomMusique = $musiqueDetails['nom_musique'];
         $album = $data->getAlbumByMusique($id_musique);
         $nomAlbum = $album['titre'];
         $cover = $album['image_album'];
@@ -21,6 +21,9 @@
         $render_musique['nom_album'] = $nomAlbum;
         $render_musique['urlMusique'] = $urlMusique;
         print_r(json_encode($render_musique));
+        if (isset($_SESSION['user'])) {
+            $data->insertEcoute($id_musique, $_SESSION['user']['id_utilisateur']);
+        } 
         // echo "<script type='module' src='static/js/player.js'></script>";
         // echo "<script type='module'>";
         // echo "import { lireUneMusique } from './static/js/player.js';";

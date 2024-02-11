@@ -233,7 +233,7 @@
             return $musiques->fetchAll();
         }
         public function getMusiqueRecemmentEcoutee(){
-            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join GROUPE natural join MUSIQUE_HISTORIQUE order by date_lecture desc');
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE  natural join ALBUM natural join GROUPE natural join MUSIQUE_HISTORIQUE order by date_lecture desc');
             return $musiques->fetchAll();
         }
         public function getGroupes(){
@@ -299,7 +299,11 @@
         }
         public function getUtilisateur($id){
             $utilisateur = $this->file_db->query('SELECT * from UTILISATEUR where id_utilisateur='.$id);
-            return $utilisateur->fetch();
+            if ($utilisateur){
+                return $utilisateur->fetch();
+            } else {
+                return null;
+            }
         }
         public function getMusiquesAlbum($id){
             $musique = $this->file_db->query('SELECT * from MUSIQUE where id_album='.$id);
@@ -322,7 +326,7 @@
             return $playlists->fetchAll();
         }
         public function getPlaylistsByUser($id){
-            $playlists = $this->file_db->query('SELECT *, AVG(note) moyenne_note from PLAYLIST natural left join PLAYLIST_NOTE where id_auteur='.$id .' group by id_playlist');
+            $playlists = $this->file_db->query('SELECT *, AVG(note) moyenne_note from PLAYLIST  natural join PLAYLIST_MUSIQUE natural join MUSIQUE natural join ALBUM natural left join PLAYLIST_NOTE where id_auteur='.$id .' group by id_playlist');
             if ($playlists){
                 return $playlists->fetchAll();
             } else {
@@ -330,16 +334,20 @@
             }
         }
         public function getPlaylistsFavorisByUser($id){
-            $playlists = $this->file_db->query('SELECT * from PLAYLIST natural join PLAYLIST_FAVORIS where id_utilisateur='.$id);
+            $playlists = $this->file_db->query('SELECT * from PLAYLIST natural join PLAYLIST_FAVORIS natural join PLAYLIST_MUSIQUE natural join MUSIQUE natural join ALBUM  where id_utilisateur="'.$id.'"group by id_playlist');
             return $playlists->fetchAll();
         }
         public function getMusiquesFavorisByUser($id){
-            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join MUSIQUE_FAVORIS where id_utilisateur='.$id);
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join GROUPE natural join ALBUM natural join MUSIQUE_FAVORIS where id_utilisateur='.$id);
             return $musiques->fetchAll();
         }
         public function getGroupesFavorisByUser($id){
             $groupes = $this->file_db->query('SELECT * from GROUPE natural join GROUPE_FAVORIS where id_utilisateur='.$id);
             return $groupes->fetchAll();
+        }
+        public function getAlbumsFavorisByUser($id){
+            $albums = $this->file_db->query('SELECT * from ALBUM natural join GROUPE natural join ALBUM_FAVORIS where id_utilisateur='.$id);
+            return $albums->fetchAll();
         }
         public function getAlbumByMusique($id){
             $album = $this->file_db->query('SELECT * from ALBUM natural join MUSIQUE where id_musique='.$id);
@@ -356,6 +364,14 @@
         public function getMusiquesByGenre($id){
             $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural join GROUPE natural join GENRE where id_genre='.$id);
             return $musiques->fetchAll();
+        }
+        public function getGenresSimilaire($id){
+            $genres = $this->file_db->query('SELECT * from GENRE_SIMILAIRE natural join GENRE where id_genre_similaire='.$id);
+            return $genres->fetchAll();
+        }
+        public function getNoteMusique( $id_musique, $id_utilisateur){
+            $note = $this->file_db->query('SELECT * from MUSIQUE_NOTE where id_musique='.$id_musique.' and id_utilisateur='.$id_utilisateur);
+            return $note->fetch();
         }
         public function insertUser($pseudo, $password, $nom, $prenom, $email, $ddn){
             $insert="INSERT INTO UTILISATEUR (login_utilisateur, password_utilisateur, nom_utilisateur, prenom_utilisateur, email_utilisateur, ddn_utilisateur, id_role) VALUES (:pseudo, :pswd, :nom, :prenom, :email, :ddn, 1)";
@@ -375,10 +391,24 @@
             $stmt->bindParam(':id_utilisateur',$id_utilisateur);
             $stmt->execute();
         }
+        public function insertFavorisAlbum($id_album,$id_utilisateur){
+            $insert="INSERT INTO ALBUM_FAVORIS (id_album, id_utilisateur) VALUES (:id_album, :id_utilisateur)";
+            $stmt=$this->file_db->prepare($insert);
+            $stmt->bindParam(':id_album',$id_album);
+            $stmt->bindParam(':id_utilisateur',$id_utilisateur);
+            $stmt->execute();
+        }
         public function insertFavoriteGroupe($id_groupe,$id_utilisateur){
             $insert="INSERT INTO GROUPE_FAVORIS (id_groupe, id_utilisateur) VALUES (:id_groupe, :id_utilisateur)";
             $stmt=$this->file_db->prepare($insert);
             $stmt->bindParam(':id_groupe',$id_groupe);
+            $stmt->bindParam(':id_utilisateur',$id_utilisateur);
+            $stmt->execute();
+        }
+        public function insertFavorisMusique($id_musique,$id_utilisateur){
+            $insert="INSERT INTO MUSIQUE_FAVORIS (id_musique, id_utilisateur) VALUES (:id_musique, :id_utilisateur)";
+            $stmt=$this->file_db->prepare($insert);
+            $stmt->bindParam(':id_musique',$id_musique);
             $stmt->bindParam(':id_utilisateur',$id_utilisateur);
             $stmt->execute();
         }
@@ -412,6 +442,50 @@
                 $stmt->execute();
             }
         }
+        public function insertEcoute($id_musique,$id_utilisateur){
+            $total = $this->file_db->query('SELECT * from MUSIQUE_HISTORIQUE where id_utilisateur='.$id_utilisateur);
+            if ($total ) {
+                $total = $total->rowCount();
+            } else {
+                return;
+            }
+            if ($total > 9){
+                $update = "UPDATE MUSIQUE_HISTORIQUE SET date_lecture = DATE(), id_musique=:id_musique where id_utilisateur=:id_utilisateur and date_lecture = (SELECT date_lecture from MUSIQUE_HISTORIQUE where id_utilisateur=:id_utilisateur order by date_lecture asc LIMIT 1)";
+                $stmt=$this->file_db->prepare($update);
+                $stmt->bindParam(':id_utilisateur',$id_utilisateur);
+                $stmt->bindParam(':id_musique',$id_musique);
+                $stmt->execute();
+            } else {
+                $insert="INSERT INTO MUSIQUE_HISTORIQUE (id_musique, id_utilisateur, date_lecture) VALUES (:id_musique, :id_utilisateur, DATE())";
+                $stmt=$this->file_db->prepare($insert);
+                $stmt->bindParam(':id_musique',$id_musique);
+                $stmt->bindParam(':id_utilisateur',$id_utilisateur);
+                $stmt->execute();
+            }
+        }
+        public function insertNoteMusique($id_musique,$id_utilisateur,$note){
+            if ($note > 5){
+                $note = 5;
+            }
+            if ($note < 1){
+                $note = 1;
+            }
+            if ($this->file_db->query('SELECT * from MUSIQUE_NOTE where id_musique='.$id_musique.' and id_utilisateur='.$id_utilisateur)->fetch()){
+                $update="UPDATE MUSIQUE_NOTE SET note=:note where id_musique=:id_musique and id_utilisateur=:id_utilisateur";
+                $stmt=$this->file_db->prepare($update);
+                $stmt->bindParam(':id_musique',$id_musique);
+                $stmt->bindParam(':id_utilisateur',$id_utilisateur);
+                $stmt->bindParam(':note',$note);
+                $stmt->execute();
+            } else {
+                $insert="INSERT INTO MUSIQUE_NOTE (id_musique, id_utilisateur, note) VALUES (:id_musique, :id_utilisateur, :note)";
+                $stmt=$this->file_db->prepare($insert);
+                $stmt->bindParam(':id_musique',$id_musique);
+                $stmt->bindParam(':id_utilisateur',$id_utilisateur);
+                $stmt->bindParam(':note',$note);
+                $stmt->execute();
+            }
+        }
         public function deleteMusiquePlaylist($id_musique,$id_playlist){
             $delete="DELETE FROM PLAYLIST_MUSIQUE WHERE id_playlist=:id_playlist and id_musique=:id_musique";
             $stmt=$this->file_db->prepare($delete);
@@ -426,6 +500,13 @@
             $stmt->bindParam(':id_utilisateur',$id_utilisateur);
             $stmt->execute();
         }
+        public function deleteFavorisAlbum($id_album,$id_utilisateur){
+            $delete="DELETE FROM ALBUM_FAVORIS WHERE id_album=:id_album and id_utilisateur=:id_utilisateur";
+            $stmt=$this->file_db->prepare($delete);
+            $stmt->bindParam(':id_album',$id_album);
+            $stmt->bindParam(':id_utilisateur',$id_utilisateur);
+            $stmt->execute();
+        }
         public function isFavorisPlaylist($id_playlist,$id_utilisateur){
             $favoris = $this->file_db->query('SELECT * from PLAYLIST_FAVORIS where id_playlist='.$id_playlist.' and id_utilisateur='.$id_utilisateur);
             if ($favoris->fetch()){
@@ -434,8 +515,31 @@
                 return false;
             }
         }
+        public function deleteFavorisMusique($id_musique,$id_utilisateur){
+            $delete="DELETE FROM MUSIQUE_FAVORIS WHERE id_musique=:id_musique and id_utilisateur=:id_utilisateur";
+            $stmt=$this->file_db->prepare($delete);
+            $stmt->bindParam(':id_musique',$id_musique);
+            $stmt->bindParam(':id_utilisateur',$id_utilisateur);
+            $stmt->execute();
+        }
         public function isFavorisAlbum($id_album,$id_utilisateur){
             $favoris = $this->file_db->query('SELECT * from ALBUM_FAVORIS where id_album='.$id_album.' and id_utilisateur='.$id_utilisateur);
+            if ($favoris->fetch()){
+                return true;
+            } else {
+                return false;
+            }
+        }
+        public function isFavorisMusique($id_musique,$id_utilisateur){
+            $favoris = $this->file_db->query('SELECT * from MUSIQUE_FAVORIS where id_musique='.$id_musique.' and id_utilisateur='.$id_utilisateur);
+            if ($favoris->fetch()){
+                return true;
+            } else {
+                return false;
+            }
+        }
+        public function isMusiqueNotee($id_musique,$id_utilisateur){
+            $favoris = $this->file_db->query('SELECT * from MUSIQUE_NOTE where id_musique='.$id_musique.' and id_utilisateur='.$id_utilisateur);
             if ($favoris->fetch()){
                 return true;
             } else {

@@ -1,144 +1,148 @@
 import { addToPlaylist, playPlaylist , clearPlaylist, lireUneMusique, setFirstTrack } from './player.js';
-document.querySelectorAll('#Playlist').forEach(element => {
-    element.addEventListener('click', (event) => {
-        event.preventDefault();
-        loadPage(element);
+const ids = ['Playlist', 'Accueil', 'Album', 'Genre', 'Groupe', 'ajout_note', 'Profil'];
+
+const clickHandler = (event) => {
+    event.preventDefault();
+    loadPage(event.currentTarget);
+};
+function init() {
+    ids.forEach(id => {
+        const elements = document.querySelectorAll(`#${id}`);
+        elements.forEach(element => {
+            element.removeEventListener('click', clickHandler);
+            element.addEventListener('click', clickHandler);
+        });
     });
-} );
-document.querySelectorAll('#Accueil').forEach(element => {
-    element.addEventListener('click', (event) => {
-        event.preventDefault();
-        loadPage(element);
+
+    document.querySelectorAll('#PlayMusique').forEach(element => {
+        element.removeEventListener('click', playMusicHandler);
+        element.addEventListener('click', playMusicHandler);
     });
-});
-document.querySelectorAll('#Album').forEach(element => {
-    element.addEventListener('click', (event) => {
-        event.preventDefault();
-        loadPage(element);
+
+    document.querySelectorAll('#PlayPlaylistMusique').forEach(element => {
+        element.removeEventListener('click', playPlaylistMusicHandler);
+        element.addEventListener('click', playPlaylistMusicHandler);
     });
-});
-document.querySelectorAll('#Genre').forEach(element => {
-    element.addEventListener('click', (event) => {
-        event.preventDefault();
-        loadPage(element);
+
+    document.querySelectorAll('#PlayAlbumMusique').forEach(element => {
+        element.removeEventListener('click', playAlbumMusicHandler);
+        element.addEventListener('click', playAlbumMusicHandler);
     });
-} );
-document.querySelectorAll('#Groupe').forEach(element => {
-    element.addEventListener('click', (event) => {
-        event.preventDefault();
-        loadPage(element);
+
+    document.querySelectorAll('#PlayPlaylist').forEach(form => {
+        form.removeEventListener('submit', playPlaylistHandler);
+        form.addEventListener('submit', playPlaylistHandler);
     });
-} );
-document.querySelectorAll('#ajout_note').forEach(element => {
-    element.addEventListener('click', (event) => {
-        event.preventDefault();
-        loadPage(element);
+
+    document.querySelectorAll('#PlayAlbum').forEach(form => {
+        form.removeEventListener('submit', playAlbumHandler);
+        form.addEventListener('submit', playAlbumHandler);
     });
-} );
-document.querySelectorAll('#Profil').forEach(element => {
-    element.addEventListener('click', (event) => {
-        event.preventDefault();
-        loadPage(element);
+
+    document.querySelectorAll('#Favoris').forEach(form => {
+        form.removeEventListener('submit', favorisHandler);
+        form.addEventListener('submit', favorisHandler);
     });
-} );
-document.querySelectorAll('#PlayMusique').forEach(element => {
-    element.addEventListener('click', (event) => {
-        event.preventDefault();
-        clearPlaylist();
-        fetch(element.href, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: 'data=' + encodeURIComponent(event.target.value),
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Erreur HTTP, statut = " + response.status);
-            }
-            return response.text();
-        })
-        .then(data => {
-            let info = JSON.parse(data);
-            clearPlaylist();
-            lireUneMusique(info['id_musique'], info['nomMusique'], info['cover'], info['nomGroupe'], info['nomAlbum'], info['urlMusique']);
-        })
-        .catch(error => console.error(error));  
-        loadScripts(['spa.js', 'aside.js', 'playlist.js']);  
-    }
-    );
-} );
-document.querySelectorAll('#PlayPlaylistMusique').forEach(element => {
-    element.addEventListener('click', (event) => {
-        event.preventDefault();
-        clearPlaylist();
-        fetch(element.href, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: 'data=' + encodeURIComponent(event.target.value),
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Erreur HTTP, statut = " + response.status);
-            }
-            return response.text();
-        })
-        .then(data => {
-            data = JSON.parse(data);
-            setFirstTrack(data['firstTrack']);
-            for (let info of data['musiques']){
-                addToPlaylist(info['id_musique'], info['nomMusique'], info['cover'], info['nomGroupe'], info['nomAlbum'], info['urlMusique']);
-            }
-            playPlaylist();
-        })
-        .catch(error => console.error(error));  
-        loadScripts(['spa.js', 'aside.js', 'playlist.js']);  
-    }
-    );
-} );
-document.querySelectorAll('#PlayAlbumMusique').forEach(element => {
-    element.addEventListener('click', (event) => {
-        event.preventDefault();
-        clearPlaylist();
-        fetch(element.href, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: 'data=' + encodeURIComponent(event.target.value),
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Erreur HTTP, statut = " + response.status);
-            }
-            return response.text();
-        })
-        .then(data => {
-            data = JSON.parse(data);
-            setFirstTrack(data['firstTrack']);
-            for (let info of data['musiques']){
-                addToPlaylist(info['id_musique'], info['nomMusique'], info['cover'], info['nomGroupe'], info['nomAlbum'], info['urlMusique']);
-            }
-            playPlaylist();
+    console.log('init');
+}
+
+const playMusicHandler = (event) => {
+    event.preventDefault();
+    const element = event.target;
+    clearPlaylist();
+    fetch(element.href, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: 'data=' + encodeURIComponent(event.target.value),
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Erreur HTTP, statut = " + response.status);
         }
-        )
-        .catch(error => console.error(error));
-        loadScripts(['spa.js', 'aside.js', 'playlist.js']);
+        return response.text();
+    })
+    .then(data => {
+        let info = JSON.parse(data);
+        clearPlaylist();
+        lireUneMusique(info['id_musique'], info['nom_musique'], info['cover'], info['nom_groupe'], info['nom_album'], info['urlMusique']);
+    })
+    .catch(error => console.error(error));  
     }
-    );
-} );
+
+const playPlaylistMusicHandler = (event) => {
+    event.preventDefault();
+    const element = event.target;
+    clearPlaylist();
+    fetch(element.href, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: 'data=' + encodeURIComponent(event.target.value),
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Erreur HTTP, statut = " + response.status);
+        }
+        return response.text();
+    })
+    .then(data => {
+        data = JSON.parse(data);
+        setFirstTrack(data['firstTrack']);
+        for (let info of data['musiques']){
+            addToPlaylist(info['id_musique'], info['nom_musique'], info['cover'], info['nom_groupe'], info['nom_album'], info['urlMusique']);
+        }
+        playPlaylist();
+    })
+    .catch(error => console.error(error));  
+}
+
+const playAlbumMusicHandler = (event) => {
+    event.preventDefault();
+    const element = event.target;
+    clearPlaylist();
+    fetch(element.href, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: 'data=' + encodeURIComponent(event.target.value),
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Erreur HTTP, statut = " + response.status);
+        }
+        return response.text();
+    })
+    .then(data => {
+        data = JSON.parse(data);
+        setFirstTrack(data['firstTrack']);
+        for (let info of data['musiques']){
+            addToPlaylist(info['id_musique'], info['nom_musique'], info['cover'], info['nom_groupe'], info['nom_album'], info['urlMusique']);
+        }
+        playPlaylist();
+    }
+    )
+    .catch(error => console.error(error));
+}
+
+window.addEventListener('popstate', (event) => {
+    loadPage(document.querySelector('#Accueil'));
+});
 
 function loadPage(element) {
+    window.scrollTo(0, 0);
+    history.pushState({page: element.href}, '', element.href);
     fetch(element.href)
     .then(response => response.text())
     .then(data => {
         document.querySelector('main').innerHTML = data;
         let searchResult = document.querySelector("#search_result");
         searchResult.innerHTML = '';
-        // history.pushState({page: element.href}, '', element.href);
-        return loadScripts(['spa.js', 'aside.js', 'playlist.js']);     
+        init()
+        return loadScripts(['playlist.js']); 
     })
     .catch(error => {
         console.log(error);
@@ -149,58 +153,82 @@ export function loadScripts(scripts) {
     let promises = scripts.map(script => import('/static/js/' + script + '?t=' + Date.now()));
     return Promise.all(promises)
 }
-document.querySelectorAll('#PlayPlaylist').forEach(form => {
-    form.addEventListener('submit', (event) => {
-        event.preventDefault();
-        clearPlaylist();
-        fetch(form.action, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: 'data=' + encodeURIComponent(event.target.value),
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Erreur HTTP, statut = " + response.status);
-            }
-            return response.text();
-        })
-        .then(data => {
-            for (let info of JSON.parse(data)){
-                addToPlaylist(info['id_musique'], info['nomMusique'], info['cover'], info['nomGroupe'], info['nomAlbum'], info['urlMusique']);
-            }
-            playPlaylist();
-        })
-        .catch(error => console.error(error));  
-        loadScripts(['spa.js', 'aside.js', 'playlist.js']);  
-    }); 
-} );
-document.querySelectorAll('#PlayAlbum').forEach(form => {
-    form.addEventListener('submit', (event) => {
-        event.preventDefault();
-        clearPlaylist();
-        fetch(form.action, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: 'data=' + encodeURIComponent(event.target.value),
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Erreur HTTP, statut = " + response.status);
-            }
-            return response.text();
-        })
-        .then(data => {
-            data = JSON.parse(data);
-            for (let info of data['musiques']){
-                addToPlaylist(info['id_musique'], info['nomMusique'], info['cover'], info['nomGroupe'], info['nomAlbum'], info['urlMusique']);
-            }
-            playPlaylist();
-        })
-        .catch(error => console.error(error));  
-        loadScripts(['spa.js', 'aside.js', 'playlist.js']);  
-    }); 
-} );
+const playPlaylistHandler = (event) => {
+    event.preventDefault();
+    const element = event.target;
+    clearPlaylist();
+    fetch(form.action, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: 'data=' + encodeURIComponent(event.target.value),
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Erreur HTTP, statut = " + response.status);
+        }
+        return response.text();
+    })
+    .then(data => {
+        data = JSON.parse(data);
+        setFirstTrack(0);
+        for (let info of data["musiques"]){
+            addToPlaylist(info['id_musique'], info['nom_musique'], info['cover'], info['nom_groupe'], info['nom_album'], info['urlMusique']);
+        }
+        playPlaylist();
+    })
+    .catch(error => console.error(error));  
+}
+const playAlbumHandler = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    clearPlaylist();
+    fetch(form.action, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: 'data=' + encodeURIComponent(event.target.value),
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Erreur HTTP, statut = " + response.status);
+        }
+        return response.text();
+    })
+    .then(data => {
+        data = JSON.parse(data);
+        setFirstTrack(0);
+        for (let info of data['musiques']){
+            addToPlaylist(info['id_musique'], info['nom_musique'], info['cover'], info['nom_groupe'], info['nom_album'], info['urlMusique']);
+        }
+        playPlaylist();
+    })
+    .catch(error => console.error(error));  
+};
+
+const favorisHandler = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    let action = event.target.action;
+    let formData = new FormData(event.target);
+    fetch(action, {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+        if (data) {
+            document.querySelector('main').innerHTML = data;
+        let searchResult = document.querySelector("#search_result");
+        searchResult.innerHTML = '';
+        init()
+        return loadScripts(['playlist.js']); 
+        }
+    })
+    .catch(error => {
+        console.log(error);
+    });
+}
+window.addEventListener('DOMContentLoaded', init);

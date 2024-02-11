@@ -15,6 +15,7 @@ var progress = document.getElementById('progress');
 var header = document.getElementById('trueHeader');
 
 var player = document.getElementById('customPlayer');
+var etailsSection = document.getElementById('detailsSection');
 var playButton = document.getElementById('playButton');
 var previousButton = document.getElementById('prevButton');
 var nextButton = document.getElementById('nextButton');
@@ -78,11 +79,14 @@ export function setFirstTrack(index) {
 
 
 export function playPlaylist() {
+    if(player.style.display === 'none' || player.style.display === '') {
+        player.style.display = 'flex';
+    }
     // Fonction récursive pour jouer la playlist
     function playNextTrack() {
         // Libérer les ressources de la piste audio précédente
         if (sound) {
-            sound.unload();
+            sound.unload()
         }
         if (currentTrackIndex < playlist.length) {
             sound = new Howl({
@@ -206,8 +210,8 @@ function play(suite_playlist = false) {
     if(!suite_playlist) {
         if (!in_play && !pause) {
             sound.play();
-            loadFichier(sound);
-            playVisualize();
+            // loadFichier(sound);
+            // playVisualize();
             in_play = true;
             buttonIconPlay.textContent = 'pause';
             buttonIconPlay.setAttribute('title', 'Pause');
@@ -226,8 +230,8 @@ function play(suite_playlist = false) {
         }
     } else {
         sound.play();
-        loadFichier(sound);
-        playVisualize();
+        // loadFichier(sound);
+        // playVisualize();
         in_play = true;
         buttonIconPlay.textContent = 'pause';
         buttonIconPlay.setAttribute('title', 'Pause');
@@ -311,8 +315,7 @@ var volumeButtonI = document.querySelector('#volumeButton i.material-icons');
 var volumeButton = document.getElementById('volumeButton');
 
 function toggleSection() {
-    var section = document.getElementById('detailsSection');
-    if (section.style.display === 'none' || section.style.display === '') {
+    if (detailsSection.style.display === 'none' || detailsSection.style.display === '') {
         showDetailsSection();
     } else {
         hideDetailsSection();
@@ -321,7 +324,6 @@ function toggleSection() {
 
 // Fonction pour afficher la section
 function showDetailsSection() {
-    var detailsSection = document.getElementById('detailsSection');
     detailsSection.style.transition = 'transform 0.3s ease';
     detailsSection.style.display = 'block'; // Afficher la section
     header.style.borderBottom = '1px solid rgba(61, 61, 61, 0.8)';
@@ -332,7 +334,6 @@ function showDetailsSection() {
 
 // Fonction pour masquer la section
 function hideDetailsSection() {
-    var detailsSection = document.getElementById('detailsSection');
     detailsSection.style.transition = 'transform 0.3s ease';
     detailsSection.style.transform = 'translateY(0)'; // Faire descendre la section
     setTimeout(function () {

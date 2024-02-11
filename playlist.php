@@ -1,8 +1,8 @@
 
 <?php 
     session_start();
-    $_SESSION['page'] = 'playlist.php';
     $id_playlist = $_GET['id'] ?? 1;
+    $_SESSION['page'] = 'playlist.php?id='.$id_playlist;
     require_once 'Classes/Data/DataBase.php';
     $data = new Data\DataBase();
     $playlist = $data->getPlaylist($id_playlist);
@@ -11,7 +11,7 @@
 ?>
         <div id="playlistAlbum">
             <div id="playlist">
-                <?php $image = $data->getMusiquesAlbumsByPlaylist($playlist['id_playlist'])['image_album'] ?? 'default.jpg'; ?>
+                <?php $image = $data->getMusiquesAlbumsByPlaylist($id_playlist)['image_album'] ?? 'default.jpg'; ?>
                 <img id="imgPlaylistAlbum" src="./ressources/images/<?php echo $image; ?>">
                 <div id="playlistDetails">
                     <h1><?php echo $playlist['nom_playlist']; ?></h1>
@@ -64,14 +64,14 @@
                         echo '<label for="jouerPlaylistAleatoire"  title="Lire la playlist aléatoirement"><i class="material-icons">shuffle</i></label>';
                         echo '</form>';
                         if ($_SESSION  && isset($_SESSION['user']) && $data->isFavorisPlaylist($id_playlist, $_SESSION['user']['id_utilisateur']) ?? false){
-                            echo '<form action="supprimerFavorisPlaylist.php?id='.$id_playlist.'" method="post">';
+                            echo '<form id="Favoris" action="supprimerFavorisPlaylist.php?id='.$id_playlist.'" method="post">';
                             echo '<input type="submit" id="favAlbum" name="deleteFavoriteAlbum" style="display: none;">';
-                            echo '<label for="deleteFavoriteAlbum"  title="Supprimer des favoris"><i class="material-icons">favorite</i></label>';
+                            echo '<label for="favAlbum"  title="Supprimer des favoris"><i class="material-icons" id="UnFav">favorite</i></label>';
                             echo '</form>';
                         } else {
-                            echo '<form action="ajouterFavorisPlaylist.php?id='.$id_playlist.'" method="post">';
+                            echo '<form id="Favoris" action="ajouterFavorisPlaylist.php?id='.$id_playlist.'" method="post">';
                             echo '<input type="submit" id="favAlbum" name="addFavoriteAlbum" style="display: none;">';
-                            echo '<label for="addFavoriteAlbum"  title="Ajouter aux favoris"><i class="material-icons">favorite</i></label>';
+                            echo '<label for="favAlbum"  title="Ajouter aux favoris"><i class="material-icons" id="Fav">favorite</i></label>';
                             echo '</form>';
                         }
                         echo '</div>';
@@ -93,16 +93,29 @@
                     echo '<a href="groupe.php?id='.$musique['id_groupe'].'">'.$data->getGroupe($musique['id_groupe'])['nom_groupe'].'</a>';
                     echo '<div id="note">';
                     for ($i=0; $i < 5; $i++) { 
-                        echo '<a id="ajout_note" href="ajouterNotePlaylist.php?id='.$musique['id_musique'].'&note='.($i+1).'">';
+                        echo '<a id="ajout_note" href="ajouterNoteMusique.php?id='.$musique['id_musique'].'&note='.($i+1).'">';
                         echo '<i class="material-icons">star</i>';
                         echo '</a>';
                     }
                     echo '</div>';
-                    echo '<form action="votre_page.php" method="post">';
-                    echo '<input type="submit" id="favMusique" name="addFavoriteMusique" style="display: none;">';
-                    echo '<label for="addFavoriteMusique"  title="Ajouter aux favoris"><i class="material-icons">favorite</i></label>';
-                    echo '</form>';
-                    if ($_SESSION  && $playlist['id_auteur'] == $_SESSION['user']['id_utilisateur']){
+                    if (isset($_SESSION['user']) && $data->isMusiqueNotee($musique['id_musique'], $_SESSION['user']['id_utilisateur']) ?? false){
+                        $note = $data->getNoteMusique($musique['id_musique'], $_SESSION['user']['id_utilisateur'])['note'];
+                        echo '<p>'.$note.'/5</p>';
+                    } else {
+                        echo '<p>0/5</p>';
+                    }
+                    if (isset($_SESSION['user']) && $data->isFavorisMusique($musique['id_musique'], $_SESSION['user']['id_utilisateur']) ?? false){
+                        echo '<form id="Favoris" action="supprimerFavorisMusique.php?id='.$musique['id_musique'].'" method="post">';
+                        echo '<input type="submit" id="favMusique'.$musique['id_musique'].'" name="deleteFavoriteMusique" style="display: none;">';
+                        echo '<label for="favMusique'.$musique['id_musique'].'"  title="Supprimer des favoris"><i class="material-icons" id="UnFav">favorite</i></label>';
+                        echo '</form>';
+                        } else {
+                        echo '<form id="Favoris" action="ajouterFavorisMusique.php?id='.$musique['id_musique'].'" method="post">';
+                        echo '<input type="submit" id="favMusique'.$musique['id_musique'].'" name="addFavoriteMusique" style="display: none;">';
+                        echo '<label for="favMusique'.$musique['id_musique'].'"  title="Ajouter aux favoris"><i class="material-icons" id="Fav">favorite</i></label>';
+                        echo '</form>';
+                    }
+                    if ($_SESSION  && isset($_SESSION['user']) && $playlist['id_auteur'] == $_SESSION['user']['id_utilisateur']){
                         echo '<form action="supprimerMusiquePlaylist.php?id_musique='.$musique['id_musique'].'&id_playlist='.$id_playlist.'" method="post">';
                         echo '<input type="submit" id="deleteMusiquePlaylist" name="deleteMusiquePlaylist" style="display: none;">';
                         echo '<label for="deleteMusiquePlaylist"  title="Supprimer de la playlist" onclick="return confirm(\'Êtes-vous sûr de vouloir supprimer cette musique de la playlist ?\')"><i class="material-icons">delete</i></label>';

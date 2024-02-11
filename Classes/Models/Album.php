@@ -5,6 +5,7 @@
     use Interfaces\MusicPlayerInterface;
     use Interfaces\RenderInterface;
     
+    #[\AllowDynamicProperties]
     class Album implements MusicPlayerInterface, RenderInterface {
         private $id_album;
         private $titre;
