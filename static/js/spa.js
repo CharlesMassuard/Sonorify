@@ -43,12 +43,11 @@ function init() {
         form.removeEventListener('submit', favorisHandler);
         form.addEventListener('submit', favorisHandler);
     });
-    console.log('init');
 }
 
 const playMusicHandler = (event) => {
     event.preventDefault();
-    const element = event.target;
+    const element = event.currentTarget;
     clearPlaylist();
     fetch(element.href, {
         method: 'POST',
@@ -155,7 +154,7 @@ export function loadScripts(scripts) {
 }
 const playPlaylistHandler = (event) => {
     event.preventDefault();
-    const element = event.target;
+    const form = event.target;
     clearPlaylist();
     fetch(form.action, {
         method: 'POST',
