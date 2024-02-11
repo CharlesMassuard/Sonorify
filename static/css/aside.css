@@ -2,7 +2,7 @@ aside {
     position: fixed; /* Fixe l'élément à une position spécifique */
     left: 0; /* Positionne l'élément à gauche de l'écran */
     top: 0; /* Positionne l'élément en haut de l'écran */
-    height: calc(100% - 90px); /* Fait en sorte que l'élément prenne toute la hauteur de l'écran */
+    height: 100%; /* Fait en sorte que l'élément prenne toute la hauteur de l'écran */
     width: 100px; /* Définit la largeur de l'élément */
     overflow-y: auto; /* Ajoute une barre de défilement si le contenu dépasse la hauteur */
     background-color: black;
