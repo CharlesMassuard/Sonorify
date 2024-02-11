@@ -82,7 +82,7 @@ export function playPlaylist() {
     function playNextTrack() {
         // Libérer les ressources de la piste audio précédente
         if (sound) {
-            sound.unload();
+            sound.unload()
         }
         if (currentTrackIndex < playlist.length) {
             sound = new Howl({
@@ -206,8 +206,8 @@ function play(suite_playlist = false) {
     if(!suite_playlist) {
         if (!in_play && !pause) {
             sound.play();
-            loadFichier(sound);
-            playVisualize();
+            // loadFichier(sound);
+            // playVisualize();
             in_play = true;
             buttonIconPlay.textContent = 'pause';
             buttonIconPlay.setAttribute('title', 'Pause');
@@ -226,8 +226,8 @@ function play(suite_playlist = false) {
         }
     } else {
         sound.play();
-        loadFichier(sound);
-        playVisualize();
+        // loadFichier(sound);
+        // playVisualize();
         in_play = true;
         buttonIconPlay.textContent = 'pause';
         buttonIconPlay.setAttribute('title', 'Pause');

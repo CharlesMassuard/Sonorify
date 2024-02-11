@@ -64,7 +64,6 @@ document.querySelectorAll('#PlayMusique').forEach(element => {
             lireUneMusique(info['id_musique'], info['nom_musique'], info['cover'], info['nom_groupe'], info['nom_album'], info['urlMusique']);
         })
         .catch(error => console.error(error));  
-        loadScripts(['spa.js', 'aside.js', 'playlist.js']);  
     }
     );
 } );
@@ -94,7 +93,6 @@ document.querySelectorAll('#PlayPlaylistMusique').forEach(element => {
             playPlaylist();
         })
         .catch(error => console.error(error));  
-        loadScripts(['spa.js', 'aside.js', 'playlist.js']);  
     }
     );
 } );
@@ -125,7 +123,6 @@ document.querySelectorAll('#PlayAlbumMusique').forEach(element => {
         }
         )
         .catch(error => console.error(error));
-        loadScripts(['spa.js', 'aside.js', 'playlist.js']);
     }
     );
 } );
@@ -169,13 +166,13 @@ document.querySelectorAll('#PlayPlaylist').forEach(form => {
         })
         .then(data => {
             data = JSON.parse(data);
+            setFirstTrack(0);
             for (let info of data["musiques"]){
                 addToPlaylist(info['id_musique'], info['nom_musique'], info['cover'], info['nom_groupe'], info['nom_album'], info['urlMusique']);
             }
             playPlaylist();
         })
         .catch(error => console.error(error));  
-        loadScripts(['spa.js', 'aside.js', 'playlist.js']);  
     }); 
 } );
 document.querySelectorAll('#PlayAlbum').forEach(form => {
@@ -197,12 +194,12 @@ document.querySelectorAll('#PlayAlbum').forEach(form => {
         })
         .then(data => {
             data = JSON.parse(data);
+            setFirstTrack(0);
             for (let info of data['musiques']){
                 addToPlaylist(info['id_musique'], info['nom_musique'], info['cover'], info['nom_groupe'], info['nom_album'], info['urlMusique']);
             }
             playPlaylist();
         })
         .catch(error => console.error(error));  
-        loadScripts(['spa.js', 'aside.js', 'playlist.js']);  
     }); 
 } );
