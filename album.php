@@ -106,7 +106,7 @@
                         $note = $data->getNoteMusique($musique['id_musique'], $_SESSION['user']['id_utilisateur'])['note'];
                         echo '<p>'.$note.'/5</p>';
                     } else {
-                        echo '<p></p>';
+                        echo '<p>0/5</p>';
                     }
                     if (isset($_SESSION['user']) && $data->isFavorisMusique($musique['id_musique'], $_SESSION['user']['id_utilisateur']) ?? false){
                         echo '<form id="Favoris" action="supprimerFavorisMusique.php?id='.$musique['id_musique'].'" method="post">';
