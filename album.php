@@ -97,11 +97,17 @@
                     echo '<a href="groupe.php?id='.$musique['id_groupe'].'">'.$data->getGroupe($musique['id_groupe'])['nom_groupe'].'</a>';
                     echo '<div id="note">';
                     for ($i=0; $i < 5; $i++) { 
-                        echo '<a id="ajout_note" href="ajouterNotePlaylist.php?id='.$musique['id_musique'].'&note='.($i+1).'">';
+                        echo '<a id="ajout_note" href="ajouterNoteMusique.php?id='.$musique['id_musique'].'&note='.($i+1).'">';
                         echo '<i class="material-icons">star</i>';
                         echo '</a>';
                     }
                     echo '</div>';
+                    if (isset($_SESSION['user']) && $data->isMusiqueNotee($musique['id_musique'], $_SESSION['user']['id_utilisateur']) ?? false){
+                        $note = $data->getNoteMusique($musique['id_musique'], $_SESSION['user']['id_utilisateur'])['note'];
+                        echo '<p>'.$note.'/5</p>';
+                    } else {
+                        echo '<p></p>';
+                    }
                     if (isset($_SESSION['user']) && $data->isFavorisMusique($musique['id_musique'], $_SESSION['user']['id_utilisateur']) ?? false){
                         echo '<form id="Favoris" action="supprimerFavorisMusique.php?id='.$musique['id_musique'].'" method="post">';
                         echo '<input type="submit" id="favMusique'.$musique['id_musique'].'" name="deleteFavoriteMusique" style="display: none;">';
