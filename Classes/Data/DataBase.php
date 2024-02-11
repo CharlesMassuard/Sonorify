@@ -365,7 +365,7 @@
             $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural join GROUPE natural join GENRE where id_genre='.$id);
             return $musiques->fetchAll();
         }
-        public function getGenresSimilar($id){
+        public function getGenresSimilaire($id){
             $genres = $this->file_db->query('SELECT * from GENRE_SIMILAIRE natural join GENRE where id_genre_similaire='.$id);
             return $genres->fetchAll();
         }

@@ -13,7 +13,7 @@
     echo '<h1>'.$genre['nom_genre'].'</h1>';
     echo "<div class='sections_accueil'>";
     echo '<h2>Genres similaires :</h2>';
-    $genres = $data->getGenresSimilar($id_genre);
+    $genres = $data->getGenresSimilaire($id_genre);
     $genres = Factory::createGenres($genres);
     foreach ($genres as $genre) {
         $genre->render();
