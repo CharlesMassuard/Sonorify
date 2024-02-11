@@ -70,7 +70,7 @@
                     echo '<input type="submit" id="jouerAlbumAleatoire" name="jouerAlbumAleatoire" style="display: none;">';
                     echo '<label for="jouerAlbumAleatoire"  title="Lire l\'album aléatoirement"><i class="material-icons">shuffle</i></label>';
                     echo '</form>';
-                    if ($_SESSION  && is_array($_SESSION) && $data->isFavorisAlbum($id_album, $_SESSION['user']['id_utilisateur']) ?? false){
+                    if ($_SESSION  && isset($_SESSION['user']) && is_array($_SESSION) && $data->isFavorisAlbum($id_album, $_SESSION['user']['id_utilisateur']) ?? false){
                         echo '<form action="votre_page.php" method="post">';
                         echo '<input type="submit" id="favAlbum" name="deleteFavoriteAlbum" style="display: none;">';
                         echo '<label for="deleteFavoriteAlbum"  title="Supprimer des favoris"><i class="material-icons">favorite</i></label>';
