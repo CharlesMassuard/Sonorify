@@ -81,7 +81,6 @@ export function setFirstTrack(index) {
 export function playPlaylist() {
     if(player.style.display === 'none' || player.style.display === '') {
         player.style.display = 'flex';
-        detailsSection.style.display = 'block';
     }
     // Fonction récursive pour jouer la playlist
     function playNextTrack() {
