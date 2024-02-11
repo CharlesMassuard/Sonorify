@@ -61,7 +61,7 @@ document.querySelectorAll('#PlayMusique').forEach(element => {
         .then(data => {
             let info = JSON.parse(data);
             clearPlaylist();
-            lireUneMusique(info['id_musique'], info['nomMusique'], info['cover'], info['nomGroupe'], info['nomAlbum'], info['urlMusique']);
+            lireUneMusique(info['id_musique'], info['nom_musique'], info['cover'], info['nom_groupe'], info['nom_album'], info['urlMusique']);
         })
         .catch(error => console.error(error));  
         loadScripts(['spa.js', 'aside.js', 'playlist.js']);  
@@ -89,7 +89,7 @@ document.querySelectorAll('#PlayPlaylistMusique').forEach(element => {
             data = JSON.parse(data);
             setFirstTrack(data['firstTrack']);
             for (let info of data['musiques']){
-                addToPlaylist(info['id_musique'], info['nomMusique'], info['cover'], info['nomGroupe'], info['nomAlbum'], info['urlMusique']);
+                addToPlaylist(info['id_musique'], info['nom_musique'], info['cover'], info['nom_groupe'], info['nom_album'], info['urlMusique']);
             }
             playPlaylist();
         })
@@ -119,7 +119,7 @@ document.querySelectorAll('#PlayAlbumMusique').forEach(element => {
             data = JSON.parse(data);
             setFirstTrack(data['firstTrack']);
             for (let info of data['musiques']){
-                addToPlaylist(info['id_musique'], info['nomMusique'], info['cover'], info['nomGroupe'], info['nomAlbum'], info['urlMusique']);
+                addToPlaylist(info['id_musique'], info['nom_musique'], info['cover'], info['nom_groupe'], info['nom_album'], info['urlMusique']);
             }
             playPlaylist();
         }
@@ -131,6 +131,7 @@ document.querySelectorAll('#PlayAlbumMusique').forEach(element => {
 } );
 
 function loadPage(element) {
+    window.scrollTo(0, 0);
     fetch(element.href)
     .then(response => response.text())
     .then(data => {
@@ -167,8 +168,9 @@ document.querySelectorAll('#PlayPlaylist').forEach(form => {
             return response.text();
         })
         .then(data => {
-            for (let info of JSON.parse(data)){
-                addToPlaylist(info['id_musique'], info['nomMusique'], info['cover'], info['nomGroupe'], info['nomAlbum'], info['urlMusique']);
+            data = JSON.parse(data);
+            for (let info of data["musiques"]){
+                addToPlaylist(info['id_musique'], info['nom_musique'], info['cover'], info['nom_groupe'], info['nom_album'], info['urlMusique']);
             }
             playPlaylist();
         })
@@ -196,7 +198,7 @@ document.querySelectorAll('#PlayAlbum').forEach(form => {
         .then(data => {
             data = JSON.parse(data);
             for (let info of data['musiques']){
-                addToPlaylist(info['id_musique'], info['nomMusique'], info['cover'], info['nomGroupe'], info['nomAlbum'], info['urlMusique']);
+                addToPlaylist(info['id_musique'], info['nom_musique'], info['cover'], info['nom_groupe'], info['nom_album'], info['urlMusique']);
             }
             playPlaylist();
         })
