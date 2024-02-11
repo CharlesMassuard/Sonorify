@@ -71,14 +71,14 @@
                     echo '<label for="jouerAlbumAleatoire"  title="Lire l\'album aléatoirement"><i class="material-icons">shuffle</i></label>';
                     echo '</form>';
                     if ($_SESSION  && isset($_SESSION['user']) && is_array($_SESSION) && $data->isFavorisAlbum($id_album, $_SESSION['user']['id_utilisateur']) ?? false){
-                        echo '<form action="votre_page.php" method="post">';
+                        echo '<form id="Favoris" action="supprimerFavorisAlbum.php?id='.$id_album.'" method="post">';
                         echo '<input type="submit" id="favAlbum" name="deleteFavoriteAlbum" style="display: none;">';
-                        echo '<label for="deleteFavoriteAlbum"  title="Supprimer des favoris"><i class="material-icons">favorite</i></label>';
+                        echo '<label for="favAlbum"  title="Supprimer des favoris"><i class="material-icons" id="UnFav">favorite</i></label>';
                         echo '</form>';
                     } else {
-                        echo '<form action="votre_page.php" method="post">';
+                        echo '<form id="Favoris" action="ajouterFavorisAlbum.php?id='.$id_album.'" method="post">';
                         echo '<input type="submit" id="favAlbum" name="addFavoriteAlbum" style="display: none;">';
-                        echo '<label for="addFavoriteAlbum"  title="Ajouter aux favoris"><i class="material-icons">favorite</i></label>';
+                        echo '<label for="favAlbum"  title="Ajouter aux favoris"><i class="material-icons" id="Fav">favorite</i></label>';
                         echo '</form>';
                     }
                     echo '</div>';
@@ -102,9 +102,9 @@
                         echo '</a>';
                     }
                     echo '</div>';
-                    echo '<form action="votre_page.php" method="post">';
+                    echo '<form id="Favoris" action="ajouterFavorisMusique.php?id='.$musique['id_musique'].'" method="post">';
                     echo '<input type="submit" id="favMusique" name="addFavoriteMusique" style="display: none;">';
-                    echo '<label for="addFavoriteMusique"  title="Ajouter aux favoris"><i class="material-icons">favorite</i></label>';
+                    echo '<label for="favMusique"  title="Ajouter aux favoris"><i class="material-icons" id="Fav">favorite</i></label>';
                     echo '</form>';
                     echo '<p>'.$musique['duree'].'</p>';
                     echo '</div>';

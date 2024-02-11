@@ -334,12 +334,16 @@
             return $playlists->fetchAll();
         }
         public function getMusiquesFavorisByUser($id){
-            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join MUSIQUE_FAVORIS where id_utilisateur='.$id);
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join GROUPE natural join ALBUM natural join MUSIQUE_FAVORIS where id_utilisateur='.$id);
             return $musiques->fetchAll();
         }
         public function getGroupesFavorisByUser($id){
             $groupes = $this->file_db->query('SELECT * from GROUPE natural join GROUPE_FAVORIS where id_utilisateur='.$id);
             return $groupes->fetchAll();
+        }
+        public function getAlbumsFavorisByUser($id){
+            $albums = $this->file_db->query('SELECT * from ALBUM natural join GROUPE natural join ALBUM_FAVORIS where id_utilisateur='.$id);
+            return $albums->fetchAll();
         }
         public function getAlbumByMusique($id){
             $album = $this->file_db->query('SELECT * from ALBUM natural join MUSIQUE where id_musique='.$id);
@@ -375,10 +379,24 @@
             $stmt->bindParam(':id_utilisateur',$id_utilisateur);
             $stmt->execute();
         }
+        public function insertFavorisAlbum($id_album,$id_utilisateur){
+            $insert="INSERT INTO ALBUM_FAVORIS (id_album, id_utilisateur) VALUES (:id_album, :id_utilisateur)";
+            $stmt=$this->file_db->prepare($insert);
+            $stmt->bindParam(':id_album',$id_album);
+            $stmt->bindParam(':id_utilisateur',$id_utilisateur);
+            $stmt->execute();
+        }
         public function insertFavoriteGroupe($id_groupe,$id_utilisateur){
             $insert="INSERT INTO GROUPE_FAVORIS (id_groupe, id_utilisateur) VALUES (:id_groupe, :id_utilisateur)";
             $stmt=$this->file_db->prepare($insert);
             $stmt->bindParam(':id_groupe',$id_groupe);
+            $stmt->bindParam(':id_utilisateur',$id_utilisateur);
+            $stmt->execute();
+        }
+        public function insertFavorisMusique($id_musique,$id_utilisateur){
+            $insert="INSERT INTO MUSIQUE_FAVORIS (id_musique, id_utilisateur) VALUES (:id_musique, :id_utilisateur)";
+            $stmt=$this->file_db->prepare($insert);
+            $stmt->bindParam(':id_musique',$id_musique);
             $stmt->bindParam(':id_utilisateur',$id_utilisateur);
             $stmt->execute();
         }
@@ -439,6 +457,13 @@
             $delete="DELETE FROM PLAYLIST_FAVORIS WHERE id_playlist=:id_playlist and id_utilisateur=:id_utilisateur";
             $stmt=$this->file_db->prepare($delete);
             $stmt->bindParam(':id_playlist',$id_playlist);
+            $stmt->bindParam(':id_utilisateur',$id_utilisateur);
+            $stmt->execute();
+        }
+        public function deleteFavorisAlbum($id_album,$id_utilisateur){
+            $delete="DELETE FROM ALBUM_FAVORIS WHERE id_album=:id_album and id_utilisateur=:id_utilisateur";
+            $stmt=$this->file_db->prepare($delete);
+            $stmt->bindParam(':id_album',$id_album);
             $stmt->bindParam(':id_utilisateur',$id_utilisateur);
             $stmt->execute();
         }
