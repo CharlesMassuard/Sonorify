@@ -17,7 +17,7 @@
             <div id="playlist">
                 <img id="imgPlaylistAlbum" src="./ressources/images/<?php echo $album["image_album"]?>">
                 <div id="playlistDetails">
-                    <h2><?php echo $album['titre'] ?></h2>
+                    <h1><?php echo $album['titre'] ?></h1>
                     <?php  
                         $dateSortie = substr($album["dateSortie"], -4);
                         echo '<p> Album  • '.$groupe['nom_groupe'].' • '.$dateSortie.'</p>';

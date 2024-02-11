@@ -15,6 +15,7 @@
 
 #playlistDetails h1 {
     margin-top: 0; /* Supprime la marge supérieure du titre */
+    margin-left: 0;
 }
 
 
