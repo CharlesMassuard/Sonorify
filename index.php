@@ -30,6 +30,7 @@ session_start();
     <main>
         <script src="./static/js/spa.js" type="module" defer></script>
         <?php 
+        $_SESSION['page'] = null;
         if (!isset($_SESSION['page'])) {
             include 'accueil.php';
         } else {

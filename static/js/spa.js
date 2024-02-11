@@ -127,15 +127,19 @@ document.querySelectorAll('#PlayAlbumMusique').forEach(element => {
     );
 } );
 
+window.addEventListener('popstate', (event) => {
+    loadPage(document.querySelector('#Accueil'));
+});
+
 function loadPage(element) {
     window.scrollTo(0, 0);
+    history.pushState({page: element.href}, '', element.href);
     fetch(element.href)
     .then(response => response.text())
     .then(data => {
         document.querySelector('main').innerHTML = data;
         let searchResult = document.querySelector("#search_result");
         searchResult.innerHTML = '';
-        // history.pushState({page: element.href}, '', element.href);
         return loadScripts(['spa.js', 'aside.js', 'playlist.js']);     
     })
     .catch(error => {
