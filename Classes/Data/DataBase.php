@@ -322,7 +322,7 @@
             return $playlists->fetchAll();
         }
         public function getPlaylistsByUser($id){
-            $playlists = $this->file_db->query('SELECT *, AVG(note) moyenne_note from PLAYLIST natural left join PLAYLIST_NOTE where id_auteur='.$id .' group by id_playlist');
+            $playlists = $this->file_db->query('SELECT *, AVG(note) moyenne_note from PLAYLIST  natural join PLAYLIST_MUSIQUE natural join MUSIQUE natural join ALBUM natural left join PLAYLIST_NOTE where id_auteur='.$id .' group by id_playlist');
             if ($playlists){
                 return $playlists->fetchAll();
             } else {
@@ -330,7 +330,7 @@
             }
         }
         public function getPlaylistsFavorisByUser($id){
-            $playlists = $this->file_db->query('SELECT * from PLAYLIST natural join PLAYLIST_FAVORIS where id_utilisateur='.$id);
+            $playlists = $this->file_db->query('SELECT * from PLAYLIST natural join PLAYLIST_FAVORIS natural join PLAYLIST_MUSIQUE natural join MUSIQUE natural join ALBUM  where id_utilisateur="'.$id.'"group by id_playlist');
             return $playlists->fetchAll();
         }
         public function getMusiquesFavorisByUser($id){

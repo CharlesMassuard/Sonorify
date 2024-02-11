@@ -25,17 +25,9 @@ Autoloader::register();
             <h2>Vos Playlists :</h2>
             <?php 
             $playlists = $data->getPlaylistsByUser($_SESSION['user']['id_utilisateur']);
+            $playlists = Factory::createPlaylists($playlists);
             foreach ($playlists as $playlist) {
-                echo '<a href= "playlist.php?id='.$playlist['id_playlist'].'" id="Playlist">';
-                $image = $data->getMusiquesAlbumsByPlaylist($playlist['id_playlist'])['image_album'] ?? 'default.jpg';
-                echo '<img src="./ressources/images/'.$image.'">';
-                echo '<h3>'.$playlist['nom_playlist'].'</h3>';
-                echo '<p class="infos_supp">'.$playlist['description_playlist'].'</p>';
-                $statut = $playlist['public'] ? "Publique" : "Privée";
-                echo '<p class="infos_supp">'.$statut.'</p>';
-                $note = $playlist['moyenne_note'] ?? "0";
-                echo '<p class="infos_supp">Note : '.$note .'</p>';
-                echo '</a>';
+                $playlist->renderPersonnal();
             }
             ?>
         </div>
@@ -43,13 +35,9 @@ Autoloader::register();
             <h2>Vos Playlists favorites :</h2>
             <?php 
             $playlists = $data->getPlaylistsFavorisByUser($_SESSION['user']['id_utilisateur']);
+            $playlists = Factory::createPlaylists($playlists);
             foreach ($playlists as $playlist) {
-                echo '<a href= "playlist.php?id='.$playlist['id_playlist'].'" id="Playlist">';
-                $image = $data->getMusiquesAlbumsByPlaylist($playlist['id_playlist'])['image_album'] ?? 'default.jpg';
-                echo '<img src="./ressources/images/'.$image.'">';
-                echo '<h3>'.$playlist['nom_playlist'].'</h3>';
-                echo '<p class="infos_supp">'.$playlist['description_playlist'].'</p>';
-                echo '</a>';
+                $playlist->render();
             }
             ?>
         </div>
