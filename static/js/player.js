@@ -93,6 +93,11 @@ export function playPlaylist() {
                 src: [playlist[currentTrackIndex]],
                 format: ['mp3']
             });
+            if(isMute){
+                sound.volume(0);
+            } else {
+                sound.volume(sliderVolume.value);
+            }
             // Définir l'événement onend seulement si sound est défini
             sound.on('end', function () {
                 if(repeat != 2) {

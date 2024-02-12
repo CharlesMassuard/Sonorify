@@ -20,10 +20,7 @@
     ?>
 </div>
 <?php
-    if (!isset($_SESSION['user'])) {
-        echo '<h2>Musiques</h2>';
-        $musiques = $data->getMusiqueRecente();
-    } else {
+    if (isset($_SESSION['user']) && count($data->getMusiqueRecemmentEcoutee())>=4) {
         $musiques = $data->getMusiqueRecemmentEcoutee();
         if(count($musiques) == 0) {
             $musiques = $data->getMusiqueRecente();
@@ -31,6 +28,9 @@
         } else {
             echo '<h2>Musiques Recemment Ecoutées</h2>';
         }
+    } else {
+        echo '<h2>Musiques</h2>';
+        $musiques = $data->getMusiqueRecente();       
     }
     $musiques = Factory::createMusiques($musiques);
     echo '<div id="musiques" class="sections_accueil">';
