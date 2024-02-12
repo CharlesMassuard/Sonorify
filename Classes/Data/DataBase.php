@@ -373,6 +373,22 @@
             $note = $this->file_db->query('SELECT * from MUSIQUE_NOTE where id_musique='.$id_musique.' and id_utilisateur='.$id_utilisateur);
             return $note->fetch();
         }
+        public function getMusiquesByIdGroupe($id){
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural join GROUPE natural left join MUSIQUE_NOTE where id_groupe='.$id.' GROUP BY id_musique order by note desc LIMIT 2');
+            return $musiques->fetchAll();
+        }
+        public function getMusiquesByIdAlbum($id){
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural join GROUPE natural left join MUSIQUE_NOTE where id_album='.$id.' GROUP BY id_musique order by note desc LIMIT 2');
+            return $musiques->fetchAll();
+        }
+        public function getMusiquesByIdPlaylist($id){
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join PLAYLIST_MUSIQUE natural left join ALBUM natural join GROUPE natural join MUSiQUE_NOTE where id_playlist='.$id.' GROUP BY id_musique order by note desc LIMIT 2');
+            return $musiques->fetchAll();
+        }
+        public function getMusiquesByIdGenre($id){
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural join GROUPE natural left join MUSIQUE_NOTE where id_genre='.$id.' GROUP BY id_musique order by note desc LIMIT 2');
+            return $musiques->fetchAll();
+        }
         public function insertUser($pseudo, $password, $nom, $prenom, $email, $ddn){
             $insert="INSERT INTO UTILISATEUR (login_utilisateur, password_utilisateur, nom_utilisateur, prenom_utilisateur, email_utilisateur, ddn_utilisateur, id_role) VALUES (:pseudo, :pswd, :nom, :prenom, :email, :ddn, 1)";
             $stmt=$this->file_db->prepare($insert);
@@ -552,22 +568,6 @@
             } else {
                 return false;
             }
-        }
-        public function getMusiquesByIdGroupe($id){
-            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural join GROUPE natural left join MUSIQUE_NOTE where id_groupe='.$id.' GROUP BY id_musique order by note desc LIMIT 2');
-            return $musiques->fetchAll();
-        }
-        public function getMusiquesByIdAlbum($id){
-            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural join GROUPE natural left join MUSIQUE_NOTE where id_album='.$id.' GROUP BY id_musique order by note desc LIMIT 2');
-            return $musiques->fetchAll();
-        }
-        public function getMusiquesByIdPlaylist($id){
-            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join PLAYLIST_MUSIQUE natural left join ALBUM natural join GROUPE natural join MUSiQUE_NOTE where id_playlist='.$id.' GROUP BY id_musique order by note desc LIMIT 2');
-            return $musiques->fetchAll();
-        }
-        public function getMusiquesByIdGenre($id){
-            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural join GROUPE natural left join MUSIQUE_NOTE where id_genre='.$id.' GROUP BY id_musique order by note desc LIMIT 2');
-            return $musiques->fetchAll();
         }
     }
 
