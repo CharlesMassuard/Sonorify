@@ -5,7 +5,7 @@ const clickHandler = (event) => {
     event.preventDefault();
     loadPage(event.currentTarget);
 };
-function init() {
+export function init() {
     ids.forEach(id => {
         const elements = document.querySelectorAll(`#${id}`);
         elements.forEach(element => {
@@ -72,7 +72,7 @@ const playMusicHandler = (event) => {
 
 const playPlaylistMusicHandler = (event) => {
     event.preventDefault();
-    const element = event.target;
+    const element = event.currentTarget;
     clearPlaylist();
     fetch(element.href, {
         method: 'POST',
@@ -100,7 +100,7 @@ const playPlaylistMusicHandler = (event) => {
 
 const playAlbumMusicHandler = (event) => {
     event.preventDefault();
-    const element = event.target;
+    const element = event.currentTarget;
     clearPlaylist();
     fetch(element.href, {
         method: 'POST',
@@ -154,7 +154,7 @@ export function loadScripts(scripts) {
 }
 const playPlaylistHandler = (event) => {
     event.preventDefault();
-    const form = event.target;
+    const form = event.currentTarget;
     clearPlaylist();
     fetch(form.action, {
         method: 'POST',
@@ -181,7 +181,7 @@ const playPlaylistHandler = (event) => {
 }
 const playAlbumHandler = (event) => {
     event.preventDefault();
-    const form = event.target;
+    const form = event.currentTarget;
     clearPlaylist();
     fetch(form.action, {
         method: 'POST',
