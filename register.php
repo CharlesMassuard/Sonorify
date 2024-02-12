@@ -68,6 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             <input type="date" name="dateNaissance" id="dateNaissance" required>
             <input type="submit" value="Créer mon compte!">
         </form>
+        <a href="login.php" id="to_login">Déjà inscrit ?</a>
     </main>
 </body>
 </html>

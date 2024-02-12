@@ -43,6 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             <input type="password" name="mdp" id="mdp" placeholder="Mot-De-Passe" required>
             <input type="submit" value="Login">
         </form>
+        <a href="register.php" id="to_register">Pas encore inscrit ?</a>
     </main>
 </body>
 </html>
