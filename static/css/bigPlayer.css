@@ -12,7 +12,14 @@
     margin-left: 101px; /* Pour que le contenu ne soit pas caché sous l'aside */
 }
 
+#coverBigPlayer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 #bigCover{
     height: 80%;
     width: auto;
+    margin-left: 50px;
 }

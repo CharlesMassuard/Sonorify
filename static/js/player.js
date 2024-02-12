@@ -15,7 +15,7 @@ var progress = document.getElementById('progress');
 var header = document.getElementById('trueHeader');
 
 var player = document.getElementById('customPlayer');
-var etailsSection = document.getElementById('detailsSection');
+var detailsSection = document.getElementById('detailsSection');
 var playButton = document.getElementById('playButton');
 var previousButton = document.getElementById('prevButton');
 var nextButton = document.getElementById('nextButton');
@@ -325,7 +325,7 @@ function toggleSection() {
 // Fonction pour afficher la section
 function showDetailsSection() {
     detailsSection.style.transition = 'transform 0.3s ease';
-    detailsSection.style.display = 'block'; // Afficher la section
+    detailsSection.style.display = 'flex'; // Afficher la section
     header.style.borderBottom = '1px solid rgba(61, 61, 61, 0.8)';
     setTimeout(function () {
         detailsSection.style.transform = 'translateY(-100%)'; // Faire monter la section
