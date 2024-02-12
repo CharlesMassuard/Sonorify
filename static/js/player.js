@@ -75,10 +75,11 @@ export function addToPlaylist(id_musique, nom, cover, nomGroupe, nomAlbum, url) 
     playlist.push(url);
     playlistDetails.push([nom, cover, nomGroupe, nomAlbum, id_musique]);
     console.log(id_musique);
-    musiquesASuivre.innerHTML += "<li><a href='jouerMusique.php?id="+id_musique+"' id=PlayMusique>TEST</a></li>";
+    musiquesASuivre.innerHTML += "<li><a href='jouerMusique.php?id="+id_musique+"' id=PlayMusique>"+nom+"</a></li>";
 };
 
 export function clearPlaylist() {
+    musiquesASuivre.innerHTML = "";
     playlist = [];
     playlistDetails = [];
 };

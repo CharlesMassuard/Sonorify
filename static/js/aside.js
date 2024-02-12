@@ -55,8 +55,6 @@ accueil.addEventListener("click", function() {
     }, 300); // Attendre la fin de la transition avant de masquer la section
     if (arrowUpI.classList.contains('rotate_arrow')) {
         arrowUp.style.opacity = 0.5;
-    } else {    
-        arrowUp.style.opacity = 1;
+        arrowUpI.classList.toggle('rotate_arrow');
     }
-    arrowUpI.classList.toggle('rotate_arrow');
 });
