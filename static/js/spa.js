@@ -66,6 +66,8 @@ const playMusicHandler = (event) => {
         let info = JSON.parse(data);
         clearPlaylist();
         lireUneMusique(info['id_musique'], info['nom_musique'], info['cover'], info['nom_groupe'], info['nom_album'], info['urlMusique']);
+        let searchResult = document.querySelector("#search_result");
+        searchResult.innerHTML = '';
     })
     .catch(error => console.error(error));  
     }

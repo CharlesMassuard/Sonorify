@@ -196,4 +196,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+
+import { playPlaylist } from './player.js';
 import { init } from './spa.js';
