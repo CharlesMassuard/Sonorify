@@ -31,6 +31,8 @@ var optionsMusic = document.getElementById('optionsMusic');
 var addMusiquePlaylist = document.getElementById('playlistButton');
 var dialogPlaylist = document.getElementById('dialogPlaylist');
 var buttonAddMusicToPlaylist = document.getElementById('addToPlaylist');
+var musiquesASuivre = document.getElementById('musiquesASuivre');
+
 
 var currentTime = document.getElementById('currentTime');
 var circle_progress = document.getElementById('circle_progress');
@@ -45,6 +47,12 @@ var title = document.getElementById('title');
 var cover = document.getElementById('cover');
 var artiste = document.getElementById('nomArtiste');
 var album = document.getElementById('nomAlbum');
+
+//BIG PLAYER
+
+var bigCover = document.getElementById('bigCover');
+
+//
 
 let timeoutId;
 var in_play = false;
@@ -66,6 +74,8 @@ export function lireUneMusique(id_musique, nom, cover, nomGroupe, nomAlbum, url)
 export function addToPlaylist(id_musique, nom, cover, nomGroupe, nomAlbum, url) {
     playlist.push(url);
     playlistDetails.push([nom, cover, nomGroupe, nomAlbum, id_musique]);
+    console.log(id_musique);
+    musiquesASuivre.innerHTML += "<li><a href='jouerMusique.php?id="+id_musique+"' id=PlayMusique>TEST</a></li>";
 };
 
 export function clearPlaylist() {
@@ -104,6 +114,7 @@ export function playPlaylist() {
             title.textContent = playlistDetails[currentTrackIndex][0];
             
             cover.src = "../../ressources/images/"+playlistDetails[currentTrackIndex][1];
+            bigCover.src = "../../ressources/images/"+playlistDetails[currentTrackIndex][1];
             artiste.textContent = playlistDetails[currentTrackIndex][2];
             album.textContent = playlistDetails[currentTrackIndex][3];
             play(true);
