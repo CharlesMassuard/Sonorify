@@ -49,27 +49,35 @@
     }
     ?>
 </div>
+<div class="sections">
 <h2>Albums</h2>
+<a href="creerAlbum.php">Créer</a>
 <div id="albums" class="sections_accueil">
     <?php 
-    $albums = $data->getAlbums();
+    $albums = $data->getAlbumsTrieesParNote();
     $albums = Factory::createAlbums($albums);
     foreach ($albums as $album) {
         $album->render();
     }
     ?>
 </div>
+</div>
+<div class="sections">
 <h2>Genres</h2>
+<a href="creerGenre.php">Créer</a>
 <div id="genres" class="sections_accueil">
     <?php 
     $genres = $data->getGenres();
     $genres = Factory::createGenres($genres);
     foreach ($genres as $genre) {
         $genre->render();
-    }
+    } 
     ?>
 </div>
+</div>
+<div class="sections">
 <h2>Groupes et Artistes</h2>
+<a href="creerMusique">Créer</a>
 <div id="groupes" class="sections_accueil">
     <?php 
     $groupes = $data->getGroupes();
@@ -78,5 +86,6 @@
         $groupe->render();
     }
     ?>
+</div>
 </div>
 <div id="bottomPage" class="sections_accueil"></div>
