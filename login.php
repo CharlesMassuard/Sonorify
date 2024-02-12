@@ -27,14 +27,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         echo "<strong>Identifiant ou mot de passe incorrect</strong>";
     }
 } ?>
-<!doctype>
-<html>
-<head>
-    <title>PHP'oSong</title>
-    <link rel="stylesheet" href="./static/css/login.css">
-</head>
-<body>
-    <main>
         <h1>PHP'oSong</h1>
         <form action="login.php" method="post">
             <label for="username">Identifiant</label>
@@ -45,5 +37,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         </form>
         <a href="register.php" id="to_register">Pas encore inscrit ?</a>
     </main>
-</body>
-</html>

@@ -3,11 +3,9 @@ declare(strict_types=1);
 session_start();
 
 // Autoload
-require 'Classes/Autoloader.php';
-Autoloader::register();
+// require 'Classes/Autoloader.php';
+// Autoloader::register();
 
-use Data\DataBase;
-$data = new DataBase();
 ?>
 
 <!doctype html>
@@ -16,102 +14,29 @@ $data = new DataBase();
     <title>Sonorify</title>
     <link rel="icon" type="image/x-icon" href="./ressources/images/logo.png">
     <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="stylesheet" href="./static/css/aside.css">
+    <link rel="stylesheet" href="./static/css/header.css">
+    <link rel="stylesheet" href="./static/css/player.css">
+    <link rel="stylesheet" href="./static/css/playlist.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="./static/js/index.js" defer></script>
     <script src="./static/js/accueil.js" defer></script>
+    <script src="./static/js/playlist.js" defer></script>
+    <script type="module" src="./static/js/header.js" defer></script>
 </head>
 <body>
     <?php include 'aside.php'; ?>
-    <?php include 'bigPlayer.php'; ?>
+    <?php include 'header.php'; ?>
     <main>
-        <?php include 'header.php'; ?>
-        <div id="titre">
-            <?php
-                if (!isset($_SESSION['user'])) {
-                    echo '<h1> Bienvenue </h1>';
-                } else {
-                    echo '<h1> Bienvenue '.$_SESSION['user']['prenom_utilisateur'].',</h1>';
-                }
-            ?>
-        </div>
-        
-        <?php
-            if (!isset($_SESSION['user'])) {
-                echo '<div id="musiques">';
-                echo '<h2>Musiques</h2>';
-                $musiques = $data->getMusiqueRecente();
-                foreach ($musiques as $musique) {
-                    echo '<a href= "">';
-                    echo '<h3>'.$musique['nom_musique'].'</h3>';
-                    echo '<p class="infos_supp">'.$data->getNomGroupe($musique['id_groupe'])['nom_groupe'].'</p>';
-                    echo '</a>';
-                }
-                echo '</div>';
-            } else {
-                echo '<div id="musiques">';
-                echo '<h2>Vos Musiques Récentes</h2>';
-                $musiques = $data->getMusiqueRecemmentEcoutee();
-                foreach ($musiques as $musique) {
-                    echo '<a href= "">';
-                    echo '<h3>'.$musique['titre'].'</h3>';
-                    echo '<p class="infos_supp">'.$data->getNomGroupe($musique['id_groupe'])['nom_groupe'].'</p>';
-                    echo '</a>';
-                }
-                echo '</div>';
-            }
+        <script src="./static/js/spa.js" type="module" defer></script>
+        <?php 
+        $_SESSION['page'] = null;
+        if (!isset($_SESSION['page'])) {
+            include 'accueil.php';
+        } else {
+            include $_SESSION['page'];
+        }
         ?>
-        <div id="playlist" class="sections_accueil">
-            <h2>Playlists</h2>
-            <?php 
-            $playlists = $data->getPlaylistsTrieesParNote();
-            foreach ($playlists as $playlist) {
-                echo '<a class="a_accueil" href= "playlist.php?id='.$playlist['id_playlist'].'">';
-                $image = $data->getMusiquesAlbumsByPlaylist($playlist['id_playlist'])['image_album'] ?? 'default.jpg';
-                echo '<img src="./ressources/images/'.$image.'">';
-                echo '<h3>'.$playlist['nom_playlist'].'</h3>';
-                echo '<p class="infos_supp">'.$playlist['description_playlist'].'</p>';
-                echo '</a>';
-            }
-            ?>
-        </div>
-        <div id="albums" class="sections_accueil">
-            <h2>Albums</h2>
-            <?php 
-            $albums = $data->getAlbums();
-            foreach ($albums as $album) {
-                echo '<a class="a_accueil" href= "">';
-                echo '<img src="./ressources/images/'.$album['image_album'].'">';
-                echo '<h3>'.$album['titre'].'</h3>';
-                echo '<p class="infos_supp">'.$data->getNomGroupe($album['id_groupe'])['nom_groupe'].'</p>';
-                echo '</a>';
-
-            }
-            ?>
-        </div>
-        <div id="genres" class="sections_accueil">
-            <h2>Genres</h2>
-            <?php 
-            $genres = $data->getGenres();
-            foreach ($genres as $genre) {
-                echo '<a class="a_accueil" href= "">';
-                echo '<h3>'.$genre['nom_genre'].'</h3>';
-                echo '</a>';
-            }
-            ?>
-        </div>
-        <div id="groupes" class="sections_accueil">
-            <h2>Groupes</h2>
-            <?php 
-            $groupes = $data->getGroupes();
-            foreach ($groupes as $groupe) {
-                echo '<a class="a_accueil" href= "">';
-                echo '<h3>'.$groupe['nom_groupe'].'</h3>';
-                echo '<p class="infos_supp">'.$groupe['description_groupe'].'</p>';
-                echo '</a>';
-            }
-            ?>
-        </div>
-        <div id="circle"></div> <!-- Cercle qui suit le pointeur de la souris -->
     </main>
     <?php include 'player.php'; ?>
 </body>

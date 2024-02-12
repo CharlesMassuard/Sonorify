@@ -6,31 +6,13 @@ if ($_SESSION['user'] == null) {
     header('Location: login.php');
 }
 
-require_once 'Data/DataBase.php';
+require_once 'Classes/Data/DataBase.php';
 $data = new Data\DataBase();
 
 // Autoload
 require 'Classes/Autoloader.php';
 Autoloader::register();
 ?>
-
-<!doctype html>
-<html>
-<head>
-    <title>PHP'O SONG</title>
-    <link rel="stylesheet" href="./static/css/index.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="./static/js/index.js" defer></script>
-    <script src="./static/js/accueil.js" defer></script>
-</head>
-<?php 
-    // if ($_SESSION['user'] == null) {
-    //     header('Location: login.php');
-    // }
-?>
-<body>
-    <?php include 'header.php'; ?>
-    <main>
         <div id="profil">
             <h2>Profil</h2>
             <p><?php echo "Nom : " . $_SESSION['user']['nom_utilisateur'] ?></p>
@@ -43,17 +25,9 @@ Autoloader::register();
             <h2>Vos Playlists :</h2>
             <?php 
             $playlists = $data->getPlaylistsByUser($_SESSION['user']['id_utilisateur']);
+            $playlists = Factory::createPlaylists($playlists);
             foreach ($playlists as $playlist) {
-                echo '<a href= "playlist.php?id='.$playlist['id_playlist'].'">';
-                $image = $data->getMusiquesAlbumsByPlaylist($playlist['id_playlist'])['image_album'] ?? 'default.jpg';
-                echo '<img src="./ressources/images/'.$image.'">';
-                echo '<h3>'.$playlist['nom_playlist'].'</h3>';
-                echo '<p class="infos_supp">'.$playlist['description_playlist'].'</p>';
-                $statut = $playlist['public'] ? "Publique" : "Privée";
-                echo '<p class="infos_supp">'.$statut.'</p>';
-                $note = $playlist['moyenne_note'] ?? "0";
-                echo '<p class="infos_supp">Note : '.$note .'</p>';
-                echo '</a>';
+                $playlist->renderPersonnal();
             }
             ?>
         </div>
@@ -61,13 +35,9 @@ Autoloader::register();
             <h2>Vos Playlists favorites :</h2>
             <?php 
             $playlists = $data->getPlaylistsFavorisByUser($_SESSION['user']['id_utilisateur']);
+            $playlists = Factory::createPlaylists($playlists);
             foreach ($playlists as $playlist) {
-                echo '<a href= "playlist.php?id='.$playlist['id_playlist'].'">';
-                $image = $data->getMusiquesAlbumsByPlaylist($playlist['id_playlist'])['image_album'] ?? 'default.jpg';
-                echo '<img src="./ressources/images/'.$image.'">';
-                echo '<h3>'.$playlist['nom_playlist'].'</h3>';
-                echo '<p class="infos_supp">'.$playlist['description_playlist'].'</p>';
-                echo '</a>';
+                $playlist->render();
             }
             ?>
         </div>
@@ -75,13 +45,19 @@ Autoloader::register();
             <h2>Vos Musiques favorites :</h2>
             <?php 
             $musiques = $data->getMusiquesFavorisByUser($_SESSION['user']['id_utilisateur']);
+            $musiques = Factory::createMusiques($musiques);
             foreach ($musiques as $musique) {
-                echo '<a href= "musique.php?id='.$musique['id_musique'].'">';
-                $image = $data->getMusiquesAlbumsByPlaylist($musique['id_musique'])['image_album'] ?? 'default.jpg';
-                echo '<img src="./ressources/images/'.$image.'">';
-                echo '<h3>'.$musique['nom_musique'].'</h3>';
-                echo '<p class="infos_supp">'.$data->getNomGroupe($musique['id_groupe'])['nom_groupe'].'</p>';
-                echo '</a>';
+                $musique->render();
+            }
+            ?>
+        </div>
+        <div id="albums" class="sections_accueil">
+            <h2>Vos Albums favoris :</h2>
+            <?php 
+            $albums = $data->getAlbumsFavorisByUser($_SESSION['user']['id_utilisateur']);
+            $albums = Factory::createAlbums($albums);
+            foreach ($albums as $album) {
+                $album->render();
             }
             ?>
         </div>
@@ -99,6 +75,3 @@ Autoloader::register();
             }
             ?>
         </div>
-    </main>
-</body>
-</html>

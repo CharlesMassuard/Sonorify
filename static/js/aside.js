@@ -1,6 +1,7 @@
 var buttonActiverAside = document.getElementById("menu__toggle");
 var aside = document.querySelector("aside");
 var main = document.querySelector("main");
+var header = document.getElementById("trueHeader");
 var logo = document.getElementById("logo");
 var details = document.getElementById("detailsSection");
 var hamburgerButton = document.getElementById("hamburger");
@@ -10,6 +11,7 @@ var isActived = false;
 buttonActiverAside.addEventListener("click", function() {
 
     aside.style.transition = "width 0.3s";
+    header.style.transition = "margin-left 0.3s";
     main.style.transition = "margin-left 0.3s";
     details.style.transition = "margin-left 0.3s";
     logo.style.transition = "opacity 0.3s";
@@ -20,16 +22,18 @@ buttonActiverAside.addEventListener("click", function() {
     if(isActived) {
         aside.style.width = "100px";
         main.style.marginLeft = "100px";
+        header.style.marginLeft = "100px";
         details.style.marginLeft = "101px";
         logo.style.opacity = "0";
         hamburgerButton.style.left = "35px";
         for(var i = 0; i < menuItems.length; i++) {
-            menuItems[i].style.marginLeft = "-35px";
+            menuItems[i].style.marginLeft = "-35px";    
         }
         isActived = false;
     } else {
         aside.style.width = "200px";
         main.style.marginLeft = "200px";
+        header.style.marginLeft = "200px";
         details.style.marginLeft = "201px";
         hamburgerButton.style.left = "20px";
         logo.style.opacity = "1";
