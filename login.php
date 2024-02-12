@@ -24,16 +24,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         header('Location: index.php');
     }
     else {
-        echo "<strong>Identifiant ou mot de passe incorrect</strong>";
+        echo "<strong class='warning'>Identifiant ou mot de passe incorrect</strong>";
     }
 } ?>
-        <h1>PHP'oSong</h1>
-        <form action="login.php" method="post">
-            <label for="username">Identifiant</label>
-            <input type="text" name="identifiant" id="identifiant" placeholder="Identifiant" required>
-            <label for="mdp">Mot-De-Passe</label>
-            <input type="password" name="mdp" id="mdp" placeholder="Mot-De-Passe" required>
-            <input type="submit" value="Login">
+<head>
+    <title>Sonorify</title>
+    <link rel="stylesheet" href="./static/css/login.css">
+</head>
+<body>
+    <main id="main-content">
+        <img src="./ressources/images/grandLogo.png" alt="logo" class="logo">
+        <form action="login.php" method="post" id="login-form">
+            <label for="username" class="form-label">Identifiant</label>
+            <input type="text" name="identifiant" id="identifiant" class="form-input" placeholder="Identifiant" required>
+            <label for="mdp" class="form-label">Mot-De-Passe</label>
+            <input type="password" name="mdp" id="mdp" class="form-input" placeholder="Mot-De-Passe" required>
+            <div class="button-container">
+                <input type="submit" class="submit-button" value="Login">
+            </div>
         </form>
-        <a href="register.php" id="to_register">Pas encore inscrit ?</a>
+        <a href="register.php" id="to_register" class="register-link">Pas encore inscrit ?</a>
     </main>
+</body>
