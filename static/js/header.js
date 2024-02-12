@@ -151,6 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         div.appendChild(textDiv);
                         a.appendChild(div);
                         a.setAttribute("href", "genre.php?id=" + res['id_genre']);
+                        a.setAttribute("id", "Genre");
                         document.querySelector("#search_result").appendChild(a);
                         div.style.display = "flex";
                         div.style.alignItems = "center"; // Aligner verticalement au centre
@@ -177,7 +178,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         div.appendChild(img);
                         div.appendChild(textDiv);
                         a.appendChild(div);
-                        a.setAttribute("href", "jouerMusique.php?id_musique=" + res['id_musique']);
+                        a.setAttribute("href", "jouerMusique.php?id=" + res['id_musique']);
                         a.setAttribute("id", "PlayMusique");
                         document.querySelector("#search_result").appendChild(a);
                         // Apply CSS styles
@@ -187,12 +188,12 @@ document.addEventListener('DOMContentLoaded', function() {
                         img.style.marginRight = "10px"; // Ajouter une marge à l'image
                     }
                 }
+                init();
             })
             .catch((error) => {
                 console.error('Error:', error);
             });
-            return loadScripts(['spa.js']);
         }
     });
 });
-import { loadScripts } from './spa.js';
+import { init } from './spa.js';
