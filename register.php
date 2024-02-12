@@ -43,32 +43,54 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 <!doctype>
 <html>
 <head>
-    <title>PHP'oSong</title>
+    <title>Sonorify</title>
     <link rel="stylesheet" href="./static/css/register.css">
 </head>
 <body>
-    <main>
-        <h1>PHP'oSong</h1>
-        <form action="register.php" method="post">
-            <p> Vos identifiants </p>
-            <label for="username">Pseudonyme</label>
-            <input type="text" name="registerId" id="registerId" placeholder="Identifiant" required>
-            <label for="mdp">Mot de passe</label>
-            <input type="password" name="registerPw" id="registerPw" placeholder="Mot-De-Passe" required>
-            <label for="mdpConfirm">Confirmer votre mot de passe</label>
-            <input type="password" name="registerPwConfirm" id="registerPwConfirm" placeholder="Mot-De-Passe" required>
-            <p> Vos coordonnées </p>
-            <label for="nom">Nom</label>
-            <input type="text" name="nom" id="nom" required>
-            <label for="prenom">Prénom</label>
-            <input type="text" name="prenom" id="prenom" required>
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email" required>
-            <label for="dateNaissance">Date de naissance</label>
-            <input type="date" name="dateNaissance" id="dateNaissance" required>
-            <input type="submit" value="Créer mon compte!">
-        </form>
-        <a href="login.php" id="to_login">Déjà inscrit ?</a>
-    </main>
+<main id="main-content">
+    <div class="header">
+    <img src="./ressources/images/grandLogo.png" alt="logo" class="logo">
+    </div>
+    <form action="register.php" method="post" id="registration-form">
+    <h2 class="section-title"> Vos identifiants </h2>
+    <div class="section1">
+        <div>
+            <label for="username" class="form-label">Pseudonyme</label>
+            <input type="text" name="registerId" id="registerId" class="form-input" placeholder="Identifiant" required>
+        </div>
+        <div>
+            <label for="mdp" class="form-label">Mot de passe</label>
+            <input type="password" name="registerPw" id="registerPw" class="form-input" placeholder="Mot-De-Passe" required>
+        </div>
+        <div>
+            <label for="mdpConfirm" class="form-label">Confirmer votre mot de passe</label>
+            <input type="password" name="registerPwConfirm" id="registerPwConfirm" class="form-input" placeholder="Mot-De-Passe" required>
+        </div>
+    </div>
+    <h2 class="section-title"> Vos coordonnées </h2>
+        <div class="section2">
+        <div>
+            <label for="nom" class="form-label">Nom</label>
+            <input type="text" name="nom" id="nom" class="form-input" required>
+        </div>
+        <div>
+            <label for="prenom" class="form-label">Prénom</label>
+            <input type="text" name="prenom" id="prenom" class="form-input" required>
+        </div>
+        <div>
+            <label for="email" class="form-label">Email</label>
+            <input type="email" name="email" id="email" class="form-input" required>
+        </div>
+        <div>
+            <label for="dateNaissance" class="form-label">Date de naissance</label>
+            <input type="date" name="dateNaissance" id="dateNaissance" class="form-input" required>
+        </div>
+        <div>
+            <input type="submit" value="Créer mon compte!" class="submit-button">
+        </div>
+    </div>
+    </form>
+    <a href="login.php" id="to_login" class="login-link">Déjà inscrit ?</a>
+</main>
 </body>
 </html>
