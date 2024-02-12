@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     }
     else{
-        echo "<strong>Les mots de passe ne correspondent pas</strong>";
+        echo "<strong class='warning'>Les mots de passe ne correspondent pas</strong>";
     }
     
 } ?>
@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     <div class="section1">
         <div>
             <label for="username" class="form-label">Pseudonyme</label>
-            <input type="text" name="registerId" id="registerId" class="form-input" placeholder="Identifiant" required>
+            <input type="text" name="registerId" id="registerId" class="form-input" placeholder="Pseudonyme" required>
         </div>
         <div>
             <label for="mdp" class="form-label">Mot de passe</label>
@@ -70,27 +70,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     <h2 class="section-title"> Vos coordonnées </h2>
         <div class="section2">
         <div>
-            <label for="nom" class="form-label">Nom</label>
-            <input type="text" name="nom" id="nom" class="form-input" required>
+            <label for="prenom" class="form-label">Prénom</label>
+            <input type="text" name="prenom" id="prenom" class="form-input" placeholder="Prénom" required>
         </div>
         <div>
-            <label for="prenom" class="form-label">Prénom</label>
-            <input type="text" name="prenom" id="prenom" class="form-input" required>
+            <label for="nom" class="form-label">Nom</label>
+            <input type="text" name="nom" id="nom" class="form-input" placeholder="Nom" required>
         </div>
         <div>
             <label for="email" class="form-label">Email</label>
-            <input type="email" name="email" id="email" class="form-input" required>
+            <input type="email" name="email" id="email" class="form-input" placeholder="Email" required>
         </div>
         <div>
             <label for="dateNaissance" class="form-label">Date de naissance</label>
             <input type="date" name="dateNaissance" id="dateNaissance" class="form-input" required>
         </div>
-        <div>
-            <input type="submit" value="Créer mon compte!" class="submit-button">
-        </div>
+        <div class="button-container">
+        <a href="login.php" id="to_login" class="login-link">Déjà inscrit ?</a>
+        <input type="submit" value="Créer mon compte!" class="submit-button">
+    </div>
     </div>
     </form>
-    <a href="login.php" id="to_login" class="login-link">Déjà inscrit ?</a>
 </main>
 </body>
 </html>

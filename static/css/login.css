@@ -14,7 +14,7 @@ html, body {
     align-items: center;
     border: 2px solid #fff;
     background-color: #333;
-    border-radius: 10px;
+    border-radius: 15px;
     padding: 30px;
 }
 
@@ -82,8 +82,8 @@ html, body {
     left: 0;
     width: 99%;
     padding: 10px;
-    background-color: #b3273a; /* Red background */
-    color: white; /* White text */
-    text-align: center; /* Centered text */
-    z-index: 1000; /* Ensure it's above other elements */
+    background-color: #b3273a;
+    color: white;
+    text-align: center;
+    z-index: 1000;
 }
