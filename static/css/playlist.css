@@ -118,7 +118,7 @@
 }
 
 #ajout_note.hover,
-#ajout_note.active {
+#ajout_note.active{
     color: gold;
 }
 
@@ -126,7 +126,6 @@
     height: 50px;
     width: auto;
 }
-
 
 #bottomPage{
     padding-bottom: 80px;
