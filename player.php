@@ -25,6 +25,7 @@
     
 </head>
 <?php include 'bigPlayer.php'; ?>
+<?php include 'audioVisualizer.php'; ?>
 <div id="customPlayer">
     <div id="progressBar">
         <div id="progress">

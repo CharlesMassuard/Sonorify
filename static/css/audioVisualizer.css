@@ -13,7 +13,6 @@ audio {
   left: 10px;
   bottom: -10px;
   opacity: 0;
-  width: calc(100% - 20px);
 }
 
 audio.active{
@@ -24,14 +23,11 @@ audio.active{
   width: 0.1px;
     height: 0.1px;
     opacity: 0;
-    overflow: hidden;
-    position: absolute;
     z-index: 1;
 }
 
 label.file{
   display: inline-block;
-  position: absolute;
   left: 50%;
   top: 50%;
   transform: translate3d(-50%, -50%, 0);

@@ -68,6 +68,7 @@ function playVisualize() {
     try{
         document.getElementById('out').appendChild(renderer.domElement);
     } catch(e) {
+        console.log(e);
     }
 
     window.addEventListener('resize', onWindowResize, false);
@@ -75,7 +76,6 @@ function playVisualize() {
     render();
 
     function render() {
-        console
         analyser.getByteFrequencyData(dataArray);
 
         var lowerHalfArray = dataArray.slice(0, (dataArray.length/2) - 1);
