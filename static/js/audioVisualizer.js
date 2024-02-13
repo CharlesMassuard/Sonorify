@@ -1,14 +1,26 @@
 var noise = new SimplexNoise();
+var visualizerRunning = false;
 
 var audio;
 var analyser;
 
 function loadFichier(fichier) {
-    audio = fichier;
-    analyser = Howler.ctx.createAnalyser();
+    if (!visualizerRunning) { // Vérifier si aucun visualiseur n'est en cours d'exécution
+        audio = fichier;
+        analyser = Howler.ctx.createAnalyser();
+    }
+}
+
+function reset () {
+    document.getElementById('out').innerHTML = '';
 }
 
 function playVisualize() {
+    if(visualizerRunning){
+        document.getElementById('out').innerHTML = '';
+        cancelAnimationFrame(render);
+    }
+    visualizerRunning = true;
     if(window.location.pathname === '/audioVisualizer.php') {
         modeVisualizer();
     }
@@ -190,3 +202,4 @@ function modeVisualizer() {
 
 export { loadFichier };
 export { playVisualize };
+export { reset };

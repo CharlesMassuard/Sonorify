@@ -1,5 +1,6 @@
 import { loadFichier } from "./audioVisualizer.js";
 import { playVisualize } from "./audioVisualizer.js";
+import {reset } from "./audioVisualizer.js";
 import { init } from "./spa.js";
 
 var sound;
@@ -26,7 +27,7 @@ var aleatoireButton = document.getElementById('shuffleButton');
 var progressVolume = document.getElementById('progressVolume');
 var sliderVolume = document.getElementById('volumeSlider');
 var arrowUp = document.getElementById('arrowUp');
-var visualizerButton = document.getElementById("visualizerButton");
+var visualizerButton = document.getElementById("audioVisualizer");
 var plusDetails = document.getElementById('moreMusic');
 var optionsMusic = document.getElementById('optionsMusic');
 var addMusiquePlaylist = document.getElementById('playlistButton');
@@ -117,6 +118,7 @@ export function setFirstTrack(index) {
 
 
 export function playPlaylist() {
+    reset();
     if(player.style.display === 'none' || player.style.display === '') {
         player.style.display = 'flex';
     }
@@ -142,6 +144,7 @@ export function playPlaylist() {
                     currentTrackIndex++;
                     playNextTrack(); // Appeler la fonction pour jouer la piste suivante
                 }
+                reset();
             });
             titlePage.textContent = playlistDetails[currentTrackIndex][0] + " - " + playlistDetails[currentTrackIndex][2];
             title.textContent = playlistDetails[currentTrackIndex][0];
@@ -255,8 +258,6 @@ function play(suite_playlist = false) {
     if(!suite_playlist) {
         if (!in_play && !pause) {
             sound.play();
-            loadFichier(sound);
-            playVisualize();
             in_play = true;
             buttonIconPlay.textContent = 'pause';
             buttonIconPlay.setAttribute('title', 'Pause');
@@ -275,8 +276,6 @@ function play(suite_playlist = false) {
         }
     } else {
         sound.play();
-        loadFichier(sound);
-        playVisualize();
         in_play = true;
         buttonIconPlay.textContent = 'pause';
         buttonIconPlay.setAttribute('title', 'Pause');
@@ -446,6 +445,11 @@ previousButton.addEventListener('click', function () {
     } else {
         sound.seek(0);
     }
+});
+
+visualizerButton.addEventListener('click', function () {
+    loadFichier(sound);
+    playVisualize();
 });
 
 nextButton.addEventListener('click', function () {
