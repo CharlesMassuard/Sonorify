@@ -76,7 +76,8 @@ function playVisualize() {
 
     try{
         let elem = document.getElementById('out');
-
+        let header = document.getElementById('trueHeader'); 
+        header.style.borderBottom = '1px solid rgba(61, 61, 61, 0.8)';
         if (elem.requestFullscreen) {
         elem.requestFullscreen();
         } else if (elem.mozRequestFullScreen) { /* Firefox */
