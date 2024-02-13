@@ -21,9 +21,6 @@ function playVisualize() {
         cancelAnimationFrame(render);
     }
     visualizerRunning = true;
-    if(window.location.pathname === '/audioVisualizer.php') {
-        modeVisualizer();
-    }
     Howler.masterGain.connect(analyser);
     analyser.fftSize = 512;
     var bufferLength = analyser.frequencyBinCount;
@@ -78,13 +75,24 @@ function playVisualize() {
     scene.add(group);
 
     try{
-        document.getElementById('out').appendChild(renderer.domElement);
+        let elem = document.getElementById('out');
+
+        if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+        } else if (elem.mozRequestFullScreen) { /* Firefox */
+        elem.mozRequestFullScreen();
+        } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+        elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) { /* IE/Edge */
+        elem.msRequestFullscreen();
+        }
+
+        elem.appendChild(renderer.domElement);
     } catch(e) {
         console.log(e);
     }
 
     window.addEventListener('resize', onWindowResize, false);
-
     render();
 
     function render() {
@@ -171,9 +179,6 @@ function playVisualize() {
         return arr.reduce(function(a, b){ return Math.max(a, b); })
     }
 
-var player = document.getElementById('customPlayer');
-player.style.transition = 'opacity 0.5s ease';
-
 function modeVisualizer() {
     document.body.requestFullscreen();
     player.style.opacity = 0;
@@ -200,6 +205,12 @@ function modeVisualizer() {
     });
 }
 
+function deleteVisualizer() {
+    visualizerRunning = false;
+    document.getElementById('out').innerHTML = '';
+}
+
 export { loadFichier };
 export { playVisualize };
 export { reset };
+export { deleteVisualizer };
