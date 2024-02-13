@@ -1,5 +1,5 @@
 import { addToPlaylist, playPlaylist , clearPlaylist, lireUneMusique, setFirstTrack } from './player.js';
-const ids = ['Playlist', 'Accueil', 'Album', 'Genre', 'Groupe', 'ajout_note', 'Profil'];
+const ids = ['Playlist', 'Accueil', 'Album', 'Genre', 'Groupe', 'ajout_note', 'Profil', 'audioVisualizer'];
 
 const clickHandler = (event) => {
     event.preventDefault();
@@ -65,7 +65,7 @@ const playMusicHandler = (event) => {
     .then(data => {
         let info = JSON.parse(data);
         clearPlaylist();
-        lireUneMusique(info['id_musique'], info['nom_musique'], info['cover'], info['nom_groupe'], info['nom_album'], info['duree'], info['urlMusique']);
+        lireUneMusique(info['id_musique'], info['nom_musique'], info['cover'], info['nom_groupe'], info['nom_album'], info['urlMusique']);
         let searchResult = document.querySelector("#search_result");
         searchResult.innerHTML = '';
     })
@@ -93,7 +93,7 @@ const playPlaylistMusicHandler = (event) => {
         data = JSON.parse(data);
         setFirstTrack(data['firstTrack']);
         for (let info of data['musiques']){
-            addToPlaylist(info['id_musique'], info['nom_musique'], info['cover'], info['nom_groupe'], info['nom_album'], info['duree'], info['urlMusique']);
+            addToPlaylist(info['id_musique'], info['nom_musique'], info['cover'], info['nom_groupe'], info['nom_album'], info['urlMusique']);
         }
         playPlaylist();
     })
@@ -121,7 +121,7 @@ const playAlbumMusicHandler = (event) => {
         data = JSON.parse(data);
         setFirstTrack(data['firstTrack']);
         for (let info of data['musiques']){
-            addToPlaylist(info['id_musique'], info['nom_musique'], info['cover'], info['nom_groupe'], info['nom_album'], info['duree'], info['urlMusique']);
+            addToPlaylist(info['id_musique'], info['nom_musique'], info['cover'], info['nom_groupe'], info['nom_album'], info['urlMusique']);
         }
         playPlaylist();
     }
@@ -175,7 +175,7 @@ const playPlaylistHandler = (event) => {
         data = JSON.parse(data);
         setFirstTrack(0);
         for (let info of data["musiques"]){
-            addToPlaylist(info['id_musique'], info['nom_musique'], info['cover'], info['nom_groupe'], info['nom_album'], info['duree'], info['urlMusique']);
+            addToPlaylist(info['id_musique'], info['nom_musique'], info['cover'], info['nom_groupe'], info['nom_album'], info['urlMusique']);
         }
         playPlaylist();
     })
@@ -202,9 +202,7 @@ const playAlbumHandler = (event) => {
         data = JSON.parse(data);
         setFirstTrack(0);
         for (let info of data['musiques']){
-            console.log(info);
-            console.log(info['duree']);
-            addToPlaylist(info['id_musique'], info['nom_musique'], info['cover'], info['nom_groupe'], info['nom_album'], info['duree'], info['urlMusique']);
+            addToPlaylist(info['id_musique'], info['nom_musique'], info['cover'], info['nom_groupe'], info['nom_album'], info['urlMusique']);
         }
         playPlaylist();
     })
@@ -234,4 +232,5 @@ const favorisHandler = (event) => {
         console.log(error);
     });
 }
+
 window.addEventListener('DOMContentLoaded', init);

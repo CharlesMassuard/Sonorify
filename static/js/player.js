@@ -66,24 +66,24 @@ var repeat = 0;
 var pause = false;
 var currentTime;
 
-export function lireUneMusique(id_musique, nom, cover, nomGroupe, nomAlbum, duree, url) {
+export function lireUneMusique(id_musique, nom, cover, nomGroupe, nomAlbum, url) {
     playlist = [];
     playlist.push(url);
     playlistDetails = [];
-    playlistDetails.push([nom, cover, nomGroupe, nomAlbum, id_musique, duree]);
-    addToListeLecture(id_musique, nom, cover, nomGroupe, nomAlbum, duree, url);
+    playlistDetails.push([nom, cover, nomGroupe, nomAlbum, id_musique]);
+    addToListeLecture(id_musique, nom, cover, nomGroupe, nomAlbum, url);
     playPlaylist();
 };
 
-export function addToPlaylist(id_musique, nom, cover, nomGroupe, nomAlbum, duree, url) {
+export function addToPlaylist(id_musique, nom, cover, nomGroupe, nomAlbum, url) {
     playlist.push(url);
-    playlistDetails.push([nom, cover, nomGroupe, nomAlbum, id_musique, duree]);
-    addToListeLecture(id_musique, nom, cover, nomGroupe, nomAlbum, duree, url);
+    playlistDetails.push([nom, cover, nomGroupe, nomAlbum, id_musique]);
+    addToListeLecture(id_musique, nom, cover, nomGroupe, nomAlbum, url);
 };
 
-export function addToListeLecture(id_musique, nom, cover, nomGroupe, nomAlbum, duree, url) {
+export function addToListeLecture(id_musique, nom, cover, nomGroupe, nomAlbum, url) {
     musiquesASuivre.innerHTML += "<li id='oneMusicListeLecture'>"+
-    "<a href='jouerMusique.php?id="+id_musique+"' id=PlayMusiqueListeLecture>"+
+    "<a href='jouerMusique.php?id="+id_musique+"' id=PlayMusique>"+
         "<div class='flexContainerListeLecture'>" +
             "<div id='coverBigPlayer'>" +
                 "<img class='imgListeLecture' src='../../ressources/images/"+cover+"' alt='cover'>" +
@@ -91,7 +91,6 @@ export function addToListeLecture(id_musique, nom, cover, nomGroupe, nomAlbum, d
             "<div id='infoListeLecture'>" +
                 "<h4 id='titleListe'>"+nom+"</h4>" +
                 "<p id='artisteListe'>"+nomGroupe+" • "+nomAlbum+"</p>" +
-                "<p id='dureeListe'>"+duree+"</p>" +
             "</div>" +
         "</div>" +
     "</a></li>";
@@ -256,8 +255,8 @@ function play(suite_playlist = false) {
     if(!suite_playlist) {
         if (!in_play && !pause) {
             sound.play();
-            // loadFichier(sound);
-            // playVisualize();
+            loadFichier(sound);
+            playVisualize();
             in_play = true;
             buttonIconPlay.textContent = 'pause';
             buttonIconPlay.setAttribute('title', 'Pause');
@@ -276,8 +275,8 @@ function play(suite_playlist = false) {
         }
     } else {
         sound.play();
-        // loadFichier(sound);
-        // playVisualize();
+        loadFichier(sound);
+        playVisualize();
         in_play = true;
         buttonIconPlay.textContent = 'pause';
         buttonIconPlay.setAttribute('title', 'Pause');
@@ -432,10 +431,6 @@ sliderVolume.addEventListener('change', function () {
 
 arrowUp.addEventListener('click', function () {
     toggleSection();
-});
-
-visualizerButton.addEventListener('click', function () {
-    window.location.href = "../../audioVisualizer.php";
 });
 
 previousButton.addEventListener('click', function () {
