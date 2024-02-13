@@ -135,6 +135,17 @@
     opacity: 0.5;
 }
 
+.controls2 > a > i{
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 30px;
+    margin: 0 10px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    opacity: 0.5;
+}
+
 .controls2 i {
     font-size: 30px; /* Augmenter la taille de l'icône */
 }
