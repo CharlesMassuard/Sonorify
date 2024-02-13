@@ -50,7 +50,6 @@
     list-style: none;
     white-space: nowrap;
     font-family: 'Luminari', sans-serif;
-    font-weight: bold;
     margin: 0;
     padding: 0;
     width: auto;
@@ -77,19 +76,38 @@
     border: none;
 }
 
-#infoListeLecture{
+.flexContainerListeLecture {
     display: flex;
-    flex-wrap: nowrap;
+    align-items: center;
+    width: auto;
 }
 
-#titleListe{
-    font-size: 20px;
-    margin-left: 10px;
-    margin-left: 20px;
+#coverBigPlayer {
+    margin-right: 10px;
 }
 
-.imgListeLecture{
+.imgListeLecture {
     width: 50px;
     height: auto;
-    margin-left: 10px;
+    margin-bottom: 10px;
 }
+
+#infoListeLecture {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+    margin-right: 100px;
+}
+
+#titleListe {
+    font-size: 20px;
+    margin: 0; /* Ajout d'une marge nulle pour éviter les marges par défaut */
+    font-weight: bold;
+    margin-left: -1px;
+}
+
+#artisteListe {
+    margin: 0; /* Ajout d'une marge nulle pour éviter les marges par défaut */
+}
+

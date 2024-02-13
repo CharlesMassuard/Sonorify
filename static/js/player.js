@@ -66,31 +66,38 @@ var repeat = 0;
 var pause = false;
 var currentTime;
 
-export function lireUneMusique(id_musique, nom, cover, nomGroupe, nomAlbum, url) {
+export function lireUneMusique(id_musique, nom, cover, nomGroupe, nomAlbum, duree, url) {
     playlist = [];
     playlist.push(url);
     playlistDetails = [];
-    playlistDetails.push([nom, cover, nomGroupe, nomAlbum, id_musique]);
+    playlistDetails.push([nom, cover, nomGroupe, nomAlbum, id_musique, duree]);
+    addToListeLecture(id_musique, nom, cover, nomGroupe, nomAlbum, duree, url);
     playPlaylist();
 };
 
-export function addToPlaylist(id_musique, nom, cover, nomGroupe, nomAlbum, url) {
+export function addToPlaylist(id_musique, nom, cover, nomGroupe, nomAlbum, duree, url) {
     playlist.push(url);
-    playlistDetails.push([nom, cover, nomGroupe, nomAlbum, id_musique]);
-    addToListeLecture(id_musique, nom, cover, nomGroupe, nomAlbum, url);
+    playlistDetails.push([nom, cover, nomGroupe, nomAlbum, id_musique, duree]);
+    addToListeLecture(id_musique, nom, cover, nomGroupe, nomAlbum, duree, url);
 };
 
-export function addToListeLecture(id_musique, nom, cover, nomGroupe, nomAlbum, url) {
+export function addToListeLecture(id_musique, nom, cover, nomGroupe, nomAlbum, duree, url) {
     musiquesASuivre.innerHTML += "<li id='oneMusicListeLecture'>"+
     "<a href='jouerMusique.php?id="+id_musique+"' id=PlayMusiqueListeLecture>"+
-        "<img class='imgListeLecture' src='../../ressources/images/"+cover+"' alt='cover'/>"+
-        "<div id='infoListeLecture'>"+
-            "<h4 id='titleListe'>"+nom+"</h4>"+
-            "<p id='artisteListe'>"+nomGroupe+" • "+nomAlbum+"</p>"+
-        "</div>"
+        "<div class='flexContainerListeLecture'>" +
+            "<div id='coverBigPlayer'>" +
+                "<img class='imgListeLecture' src='../../ressources/images/"+cover+"' alt='cover'>" +
+            "</div>" +
+            "<div id='infoListeLecture'>" +
+                "<h4 id='titleListe'>"+nom+"</h4>" +
+                "<p id='artisteListe'>"+nomGroupe+" • "+nomAlbum+"</p>" +
+                "<p id='dureeListe'>"+duree+"</p>" +
+            "</div>" +
+        "</div>" +
     "</a></li>";
     init();
 }
+
 
 function refreshListeLecture() {
     musiquesASuivre.innerHTML = "";

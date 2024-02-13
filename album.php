@@ -98,7 +98,7 @@
             <datalist id="musiques">
             <?php
             $musiques_accessible = $data->getMusiquesNonAlbum($id_album);
-            foreach ($all_musiques as $musique) {
+            foreach ($musiques_accessible as $musique) {
                 echo '<option value="'.$musique['nom_musique'].'">';
             }
             ?>

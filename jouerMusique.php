@@ -15,6 +15,7 @@
         $render_musique = [];
         $render_musique['id_musique'] = $id_musique;
         $render_musique['nom_musique'] = $nomMusique;
+        $render_musique['duree'] = $musiqueDetails['duree'];
         $render_musique['cover'] = $cover;
         $render_musique['nom_groupe'] = $nomGroupe;
         $render_musique['nom_album'] = $nomAlbum;
