@@ -37,7 +37,7 @@ function playVisualize() {
 
     var planeGeometry = new THREE.PlaneGeometry(800, 800, 20, 20);
     var planeMaterial = new THREE.MeshLambertMaterial({
-        color: 0x6904ce,
+        color: 0x07484f,
         side: THREE.DoubleSide,
         wireframe: true
     });
@@ -54,7 +54,7 @@ function playVisualize() {
 
     var icosahedronGeometry = new THREE.IcosahedronGeometry(10, 4);
     var lambertMaterial = new THREE.MeshLambertMaterial({
-        color: 0xff00ee,
+        color: 0x0e6c76,
         wireframe: true
     });
 
@@ -75,18 +75,13 @@ function playVisualize() {
     scene.add(group);
 
     try{
-        let elem = document.getElementById('out');
-        let header = document.getElementById('trueHeader'); 
-        header.style.borderBottom = '1px solid rgba(61, 61, 61, 0.8)';
-        if (elem.requestFullscreen) {
+        let aside = document.querySelector('aside');
+        let header = document.getElementById('trueHeader');
+        aside.style.display = 'none';
+        header.style.display = 'none';
+        document.body.requestFullscreen();
+        var elem = document.getElementById('out');
         elem.requestFullscreen();
-        } else if (elem.mozRequestFullScreen) { /* Firefox */
-        elem.mozRequestFullScreen();
-        } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
-        elem.webkitRequestFullscreen();
-        } else if (elem.msRequestFullscreen) { /* IE/Edge */
-        elem.msRequestFullscreen();
-        }
 
         elem.appendChild(renderer.domElement);
     } catch(e) {

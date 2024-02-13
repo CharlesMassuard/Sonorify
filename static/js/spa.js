@@ -236,3 +236,12 @@ const favorisHandler = (event) => {
 }
 
 window.addEventListener('DOMContentLoaded', init);
+
+document.addEventListener('fullscreenchange', function() {
+    if (!document.fullscreenElement) {
+        let aside = document.querySelector('aside');
+        let header = document.getElementById('trueHeader');
+        aside.style.display = 'flex';
+        header.style.display = 'block';
+    }
+});
