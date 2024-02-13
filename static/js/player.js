@@ -1,5 +1,6 @@
 import { loadFichier } from "./audioVisualizer.js";
 import { playVisualize } from "./audioVisualizer.js";
+import { init } from "./spa.js";
 
 var sound;
 var playlist = [
@@ -43,6 +44,8 @@ var aleatoireButtonI = document.querySelector('#shuffleButton i.material-icons')
 var arrowUpI = document.querySelector('#arrowUp i.material-icons');
 var visualizerButtonI = document.querySelector('#visualizerButton i.material-icons');
 
+var inLecture = null;
+
 var title = document.getElementById('title');
 var cover = document.getElementById('cover');
 var artiste = document.getElementById('nomArtiste');
@@ -74,9 +77,27 @@ export function lireUneMusique(id_musique, nom, cover, nomGroupe, nomAlbum, url)
 export function addToPlaylist(id_musique, nom, cover, nomGroupe, nomAlbum, url) {
     playlist.push(url);
     playlistDetails.push([nom, cover, nomGroupe, nomAlbum, id_musique]);
-    console.log(id_musique);
-    musiquesASuivre.innerHTML += "<li><a href='jouerMusique.php?id="+id_musique+"' id=PlayMusique>"+nom+"</a></li>";
+    addToListeLecture(id_musique, nom, cover, nomGroupe, nomAlbum, url);
 };
+
+export function addToListeLecture(id_musique, nom, cover, nomGroupe, nomAlbum, url) {
+    musiquesASuivre.innerHTML += "<li id='oneMusicListeLecture'>"+
+    "<a href='jouerMusique.php?id="+id_musique+"' id=PlayMusiqueListeLecture>"+
+        "<img class='imgListeLecture' src='../../ressources/images/"+cover+"' alt='cover'/>"+
+        "<div id='infoListeLecture'>"+
+            "<h4 id='titleListe'>"+nom+"</h4>"+
+            "<p id='artisteListe'>"+nomGroupe+" • "+nomAlbum+"</p>"+
+        "</div>"
+    "</a></li>";
+    init();
+}
+
+function refreshListeLecture() {
+    musiquesASuivre.innerHTML = "";
+    for(let i = 0; i < playlistDetails.length; i++) {
+        addToListeLecture(playlistDetails[i][4], playlistDetails[i][0], playlistDetails[i][1], playlistDetails[i][2], playlistDetails[i][3], playlist[i]);
+    }
+}
 
 export function clearPlaylist() {
     musiquesASuivre.innerHTML = "";
@@ -119,6 +140,7 @@ export function playPlaylist() {
             titlePage.textContent = playlistDetails[currentTrackIndex][0] + " - " + playlistDetails[currentTrackIndex][2];
             title.textContent = playlistDetails[currentTrackIndex][0];
             
+            inLecture = playlistDetails[currentTrackIndex][0];
             cover.src = "../../ressources/images/"+playlistDetails[currentTrackIndex][1];
             bigCover.src = "../../ressources/images/"+playlistDetails[currentTrackIndex][1];
             artiste.textContent = playlistDetails[currentTrackIndex][2];
@@ -302,6 +324,12 @@ export function aleatoire() {
         [playlist[i], playlist[j]] = [playlist[j], playlist[i]];
         [playlistDetails[i], playlistDetails[j]] = [playlistDetails[j], playlistDetails[i]];
     }
+    for(let i = 0; i < playlist.length; i++) {
+        if(playlistDetails[i][0] == inLecture) {
+            currentTrackIndex = i;
+        }
+    }
+    refreshListeLecture();
 }
 
 aleatoireButton.addEventListener('click', function () {
