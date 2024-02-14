@@ -82,10 +82,10 @@ export function addToPlaylist(id_musique, nom, cover, nomGroupe, nomAlbum, url) 
     addToListeLecture(id_musique, nom, cover, nomGroupe, nomAlbum, url);
 };
 
-export function addToListeLecture(id_musique, nom, cover, nomGroupe, nomAlbum, url) {
+export function addToListeLecture(id_musique, nom, cover, nomGroupe, nomAlbum, url, index) {
     if(inLecture == id_musique) {
         musiquesASuivre.innerHTML += "<li  class='musicEnLecture' id='oneMusicListeLecture'>"+
-                                    "<a href='jouerMusique.php?id="+id_musique+"' id=PlayMusique>"+
+                                    "<a href='jouerIndex.php?id="+id_musique+"&index="+index+"' id=changeTrack>"+
                                         "<div class='flexContainerListeLecture'>" +
                                             "<div id='coverBigPlayer'>" +
                                                 "<img class='imgListeLecture' src='../../ressources/images/"+cover+"' alt='cover'>" +
@@ -108,7 +108,7 @@ export function addToListeLecture(id_musique, nom, cover, nomGroupe, nomAlbum, u
         }
     } else {
         musiquesASuivre.innerHTML += "<li id='oneMusicListeLecture'>"+
-                                    "<a href='jouerMusique.php?id="+id_musique+"' id=PlayMusique>"+
+                                    "<a href='jouerIndex.php?id="+id_musique+"&index="+index+"' id=changeTrack>"+
                                         "<div class='flexContainerListeLecture'>" +
                                             "<div id='coverBigPlayer'>" +
                                                 "<img class='imgListeLecture' src='../../ressources/images/"+cover+"' alt='cover'>" +
@@ -127,7 +127,7 @@ export function addToListeLecture(id_musique, nom, cover, nomGroupe, nomAlbum, u
 function refreshListeLecture() {
     musiquesASuivre.innerHTML = "";
     for(let i = 0; i < playlistDetails.length; i++) {
-        addToListeLecture(playlistDetails[i][4], playlistDetails[i][0], playlistDetails[i][1], playlistDetails[i][2], playlistDetails[i][3], playlist[i]);
+        addToListeLecture(playlistDetails[i][4], playlistDetails[i][0], playlistDetails[i][1], playlistDetails[i][2], playlistDetails[i][3], playlist[i], i);
     }
 }
 
@@ -350,16 +350,25 @@ repeatButton.addEventListener('click', function () {
 });
 
 export function aleatoire() {
+    // Sauvegardez la musique en cours de lecture et ses détails
+    let currentTrack = playlist[currentTrackIndex];
+    let currentTrackDetails = playlistDetails[currentTrackIndex];
+
+    // Retirez la musique en cours de lecture de la playlist et des détails de la playlist
+    playlist.splice(currentTrackIndex, 1);
+    playlistDetails.splice(currentTrackIndex, 1);
+
+    // Mélangez le reste de la playlist et des détails de la playlist
     for (let i = playlist.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [playlist[i], playlist[j]] = [playlist[j], playlist[i]];
         [playlistDetails[i], playlistDetails[j]] = [playlistDetails[j], playlistDetails[i]];
     }
-    for(let i = 0; i < playlist.length; i++) {
-        if(playlistDetails[i][0] == inLecture) {
-            currentTrackIndex = i;
-        }
-    }
+
+    // Remettez la musique en cours de lecture à son index original dans la playlist et les détails de la playlist
+    playlist.splice(currentTrackIndex, 0, currentTrack);
+    playlistDetails.splice(currentTrackIndex, 0, currentTrackDetails);
+
     refreshListeLecture();
 }
 

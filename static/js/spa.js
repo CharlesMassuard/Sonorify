@@ -1,6 +1,6 @@
 import { addToPlaylist, playPlaylist , clearPlaylist, lireUneMusique, setFirstTrack } from './player.js';
 import { deleteVisualizer } from './audioVisualizer.js';
-const ids = ['Playlist', 'Accueil', 'Album', 'Genre', 'Groupe', 'ajout_note', 'Profil', 'audioVisualizer'];
+const ids = ['Playlist', 'Accueil', 'Album', 'Genre', 'Groupe', 'ajout_note', 'Profil', 'audioVisualizer', 'changeTrack'];
 
 const clickHandler = (event) => {
     event.preventDefault();
@@ -45,7 +45,36 @@ export function init() {
         form.removeEventListener('submit', favorisHandler);
         form.addEventListener('submit', favorisHandler);
     });
+
+    document.querySelectorAll('#changeTrack').forEach(element => {
+        element.removeEventListener('click', changeTrackHandler);
+        element.addEventListener('click', changeTrackHandler);
+    });
 }
+
+const changeTrackHandler = (event) => {
+    event.preventDefault();
+    const element = event.currentTarget;
+    clearPlaylist();
+    fetch(element.href, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: 'data=' + encodeURIComponent(event.target.value),
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Erreur HTTP, statut = " + response.status);
+        }
+        return response.text();
+    })
+    .then(data => {
+        let info = JSON.parse(data);
+        setFirstTrack(info['index']);
+    })
+    .catch(error => console.error(error));  
+    }
 
 const playMusicHandler = (event) => {
     event.preventDefault();
