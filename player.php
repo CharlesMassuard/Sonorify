@@ -42,13 +42,15 @@
                 <h4 id="title">Finale</h4>
                 <div class="infos_supplementaires"><a title="Voir l'artiste" class="infos_music" href="artiste" id="nomArtiste"></a>&nbsp; • &nbsp;<a title="Voir l'album" class="infos_music" href="album" id="nomAlbum"></a></div>
             </div>
-            <div id="dropUpMusic">
-                <button id="moreMusic" title="Plus d'options"><i class="material-icons">more_vert</i></button>
-                <div id="optionsMusic">
-                    <button id="likeButton" title="Ajouter aux favoris"><i class="material-icons">favorite_border</i></button>
-                    <button id="playlistButton" title="Ajouter à une playlist"><i class="material-icons">playlist_add</i></button>
+            <?php if (isset($_SESSION['user'])){ ?>
+                <div id="dropUpMusic">
+                    <button id="moreMusic" title="Plus d'options"><i class="material-icons">more_vert</i></button>
+                    <div id="optionsMusic">
+                        <button id="likeButton" title="Ajouter aux favoris"><i class="material-icons">favorite_border</i></button>
+                        <button id="playlistButton" title="Ajouter à une playlist"><i class="material-icons">playlist_add</i></button>
+                    </div>
                 </div>
-            </div>
+            <?php } ?>
         </div>
         <div class="controls2">
             <div id="progressVolume">

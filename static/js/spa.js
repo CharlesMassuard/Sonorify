@@ -272,3 +272,19 @@ document.addEventListener('fullscreenchange', function() {
         header.style.display = 'block';
     }
 });
+
+window.addEventListener('keydown', (event) => {
+    if (event.key === 'F5') {
+        event.preventDefault();
+        loadPage(document.querySelector('#Accueil'));
+        detailsSection.style.transition = 'transform 0.3s ease';
+        detailsSection.style.transform = 'translateY(0)'; // Faire descendre la section
+        setTimeout(function () {
+            detailsSection.style.display = 'none'; // Masquer la section après la transition
+        }, 300); // Attendre la fin de la transition avant de masquer la section
+        if (arrowUpI.classList.contains('rotate_arrow')) {
+            arrowUp.style.opacity = 0.5;
+            arrowUpI.classList.toggle('rotate_arrow');
+        }
+    }
+});
