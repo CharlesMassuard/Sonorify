@@ -447,10 +447,10 @@ previousButton.addEventListener('click', function () {
     }
 });
 
-visualizerButton.addEventListener('click', function () {
-    loadFichier(sound);
-    playVisualize();
-});
+// visualizerButton.addEventListener('click', function () {
+//     loadFichier(sound);
+//     playVisualize();
+// });
 
 nextButton.addEventListener('click', function () {
     pause = false;

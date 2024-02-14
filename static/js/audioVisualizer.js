@@ -80,10 +80,11 @@ function playVisualize() {
         aside.style.display = 'none';
         header.style.display = 'none';
         document.body.requestFullscreen();
+        document.body.style.overflow = 'hidden';
         var elem = document.getElementById('out');
         elem.requestFullscreen();
-
         elem.appendChild(renderer.domElement);
+        modeVisualizer();
     } catch(e) {
         console.log(e);
     }
@@ -175,13 +176,14 @@ function playVisualize() {
         return arr.reduce(function(a, b){ return Math.max(a, b); })
     }
 
-function modeVisualizer() {
-    document.body.requestFullscreen();
-    player.style.opacity = 0;
-    
-    var page = document.querySelector('body');
+var player = document.getElementById('customPlayer');
 
-    page.addEventListener('mouseenter', function() {
+function modeVisualizer() {
+    player.style.transition = 'opacity 0.5s ease';
+
+    player.style.opacity = 0;
+
+    document.body.addEventListener('mouseenter', function() {
         player.style.opacity = 1;
     });
 
@@ -196,7 +198,7 @@ function modeVisualizer() {
         }, 5000);
     });
 
-    page.addEventListener('mouseleave', function() {
+    document.body.addEventListener('mouseleave', function() {
         player.style.opacity = 0;
     });
 }
@@ -204,6 +206,21 @@ function modeVisualizer() {
 function deleteVisualizer() {
     visualizerRunning = false;
     document.getElementById('out').innerHTML = '';
+    document.body.style.overflow = 'auto';
+    player.style.opacity = 1;
+
+    document.body.addEventListener('mouseenter', function() {
+        player.style.opacity = 1;
+    });
+
+
+    document.addEventListener('mousemove', function() {
+        player.style.opacity = 1;
+    });
+
+    document.body.addEventListener('mouseleave', function() {
+        player.style.opacity = 1;
+    });
 }
 
 export { loadFichier };

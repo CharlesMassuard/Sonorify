@@ -60,7 +60,7 @@
             <button id="volumeButton" title="Désactiver le son"><i class="material-icons">volume_up</i></button>
             <button id="repeatButton" title="Activer la répétition"><i class="material-icons">repeat</i></button>
             <button id="shuffleButton" title="Lecture aléatoire"><i class="material-icons">shuffle</i></button>
-            <a href= "audioVisualizer.php" id="audioVisualizer"><i class="material-icons">equalizer</i></a>
+            <!-- <a href= "audioVisualizer.php" title="Afficher le visualisateur audio" id="audioVisualizer"><i class="material-icons">equalizer</i></a> -->
             <button id="arrowUp" title="Afficher les détails"><i class="material-icons">arrow_drop_up</i></button>        
         </div>
     <!-- <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="1"> -->
