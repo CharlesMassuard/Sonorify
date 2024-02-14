@@ -91,6 +91,7 @@ export function addToListeLecture(id_musique, nom, cover, nomGroupe, nomAlbum, u
                                                 "<h4 id='titleListe'>"+nom+"</h4>" +
                                                 "<p id='artisteListe'>"+nomGroupe+" • "+nomAlbum+"</p>" +
                                             "</div>" +
+                                            "<img src='../../ressources/images/sound.gif' alt='wave' id='wave'>" +
                                         "</div>" +
                                     "</a></li>";
         // Sélectionnez l'élément en cours de lecture
