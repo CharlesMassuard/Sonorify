@@ -163,7 +163,6 @@ window.addEventListener('popstate', (event) => {
 });
 
 function loadPage(element) {
-    window.scrollTo(0, 0);
     history.pushState({page: element.href}, '', element.href);
     fetch(element.href)
     .then(response => response.text())
@@ -172,6 +171,7 @@ function loadPage(element) {
         let searchResult = document.querySelector("#search_result");
         searchResult.innerHTML = '';
         init()
+        window.scrollTo(0, 0);
         return loadScripts(['playlist.js']); 
     })
     .catch(error => {
