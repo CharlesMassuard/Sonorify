@@ -8,6 +8,8 @@ var hamburgerButton = document.getElementById("hamburger");
 var menuItems = document.querySelectorAll(".menu__item");
 var isActived = false;
 var accueil = document.getElementById("Accueil");
+var profil = document.getElementById("Profil");
+var bibliotheque = document.getElementById("Bibliothèque");
 var detailsSection = document.getElementById("detailsSection");
 var arrowUpI = document.querySelector('#arrowUp i.material-icons');
 
@@ -48,6 +50,30 @@ buttonActiverAside.addEventListener("click", function() {
 });
 
 accueil.addEventListener("click", function() {
+    detailsSection.style.transition = 'transform 0.3s ease';
+    detailsSection.style.transform = 'translateY(0)'; // Faire descendre la section
+    setTimeout(function () {
+        detailsSection.style.display = 'none'; // Masquer la section après la transition
+    }, 300); // Attendre la fin de la transition avant de masquer la section
+    if (arrowUpI.classList.contains('rotate_arrow')) {
+        arrowUp.style.opacity = 0.5;
+        arrowUpI.classList.toggle('rotate_arrow');
+    }
+});
+
+profil.addEventListener("click", function() {
+    detailsSection.style.transition = 'transform 0.3s ease';
+    detailsSection.style.transform = 'translateY(0)'; // Faire descendre la section
+    setTimeout(function () {
+        detailsSection.style.display = 'none'; // Masquer la section après la transition
+    }, 300); // Attendre la fin de la transition avant de masquer la section
+    if (arrowUpI.classList.contains('rotate_arrow')) {
+        arrowUp.style.opacity = 0.5;
+        arrowUpI.classList.toggle('rotate_arrow');
+    }
+});
+
+bibliotheque.addEventListener("click", function() {
     detailsSection.style.transition = 'transform 0.3s ease';
     detailsSection.style.transform = 'translateY(0)'; // Faire descendre la section
     setTimeout(function () {
