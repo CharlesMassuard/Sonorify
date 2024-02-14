@@ -662,6 +662,17 @@
             $stmt->bindParam(':id_auteur',$id_auteur);
             $stmt->execute();
         }
+        public function creerMusique($nom, $duree, $id_groupe, $id_album, $id_genre, $url){
+            $insert="INSERT INTO MUSIQUE (nom_musique, duree, id_groupe, id_album, id_genre, url_musique) VALUES (:nom, :duree, :id_groupe, :id_album, :id_genre, :url)";
+            $stmt=$this->file_db->prepare($insert);
+            $stmt->bindParam(':nom',$nom);
+            $stmt->bindParam(':duree',$duree);
+            $stmt->bindParam(':id_groupe',$id_groupe);
+            $stmt->bindParam(':id_album',$id_album);
+            $stmt->bindParam(':id_genre',$id_genre);
+            $stmt->bindParam(':url',$url);
+            $stmt->execute();
+        }
     }
 
     $db = new DataBase();

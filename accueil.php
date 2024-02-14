@@ -40,6 +40,7 @@
     echo '</div>';
 ?>
 <h2>Playlists</h2>
+<a href="creerPlaylist.php">Créer</a>
 <div id="playlist" class="sections_accueil">
     <?php 
     $playlists = $data->getPlaylistsTrieesParNote();
