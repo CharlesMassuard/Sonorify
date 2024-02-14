@@ -1,5 +1,5 @@
 import { addToPlaylist, playPlaylist , clearPlaylist, lireUneMusique, setFirstTrack } from './player.js';
-const ids = ['Playlist', 'Accueil', 'Album', 'Genre', 'Groupe', 'ajout_note', 'Profil', 'audioVisualizer', 'changeTrack'];
+const ids = ['Playlist', 'Accueil', 'Album', 'Genre', 'Groupe', 'ajout_note', 'Profil'];
 
 const clickHandler = (event) => {
     event.preventDefault();
