@@ -1,4 +1,6 @@
 <?php
+    namespace Data;
+
     class Provider{
         public $path;
 
@@ -34,11 +36,7 @@
                 $albums[] = $currentAlbum;
             }
         
-            print_r($albums);
             return $albums;
         }
     }
-
-$provider = new Provider('./ressources/extrait.yml');
-$provider->getData();
 ?>
