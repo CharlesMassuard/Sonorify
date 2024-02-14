@@ -321,6 +321,7 @@
 }
 
 
+
 @media (max-width: 950px) { /* Change la disposition lorsque l'écran est de 600px ou moins */
     .infos {
         justify-content: space-around; /* Distribue l'espace autour des éléments pour éviter la superposition */

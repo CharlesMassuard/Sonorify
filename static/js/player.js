@@ -507,6 +507,72 @@ addMusiquePlaylist.addEventListener('click', function () {
     dialogPlaylist.style.display = 'block';
 });
 
+// Créez une nouvelle balise de style
+var style = document.createElement('style');
+
+// Ajoutez les règles CSS à la balise de style
+style.innerHTML = `
+#progressBar {
+    background-size: 200% 200%;
+    background-image: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+    animation: gradient 5s ease infinite;
+}
+
+#title, .infos_supplementaires{
+    background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient 5s linear infinite;
+}
+
+#progress {
+    height: 100%;
+    width: 0;
+    transition: width 0.2s ease;
+    background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet) repeat;
+    background-size: 50% 100%;
+    animation: gradient 5s linear infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 100% 0%;
+    }
+    50% {
+        background-position: 0% 100%;
+    }
+    100% {
+        background-position: 100% 0%;
+    }
+}`;
+
+
+
+let typedWord = '';
+const targetWord = 'awesome';
+let animation = false;
+
+window.addEventListener('keydown', function(event) {
+    typedWord += event.key;
+
+    // Si le mot tapé est plus long que le mot cible, enlevez le premier caractère
+    if (typedWord.length > targetWord.length) {
+        typedWord = typedWord.substring(1);
+    }
+
+    // Vérifiez si le mot tapé correspond au mot cible
+    if (typedWord === targetWord) {
+        if (animation) {
+            document.head.removeChild(style);
+            animation = false;
+        } else {
+            document.head.appendChild(style);
+            animation = true;
+        }
+    }
+});
+
 var idPlaylist;
 
 $('#addToPlaylist').click(function() {
