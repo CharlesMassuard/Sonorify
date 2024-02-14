@@ -96,6 +96,16 @@ export function addToListeLecture(id_musique, nom, cover, nomGroupe, nomAlbum, u
                                             "</div>" +
                                         "</div>" +
                                     "</a></li>";
+        // Sélectionnez l'élément en cours de lecture
+        let elementEnLecture = document.querySelector('.musicEnLecture');
+
+        if(elementEnLecture !== null) {
+            // Obtenez la position de l'élément en cours de lecture par rapport à la fenêtre
+            let rect = elementEnLecture.getBoundingClientRect();
+            if(rect.bottom >= window.innerHeight / 2) {
+                elementEnLecture.scrollIntoView({ behavior: 'smooth'});
+            }
+        }
     } else {
         musiquesASuivre.innerHTML += "<li id='oneMusicListeLecture'>"+
                                     "<a href='jouerMusique.php?id="+id_musique+"' id=PlayMusique>"+
