@@ -1,7 +1,7 @@
 <?php 
     namespace Data;
 
-    require __DIR__ . '/../Autoloader.php';
+    require_once __DIR__ . '/../Autoloader.php';
     \Autoloader::register();
     
     use Data\Provider;

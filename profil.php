@@ -10,7 +10,7 @@ require_once 'Classes/Data/DataBase.php';
 $data = new Data\DataBase();
 
 // Autoload
-require 'Classes/Autoloader.php';
+require_once 'Classes/Autoloader.php';
 Autoloader::register();
 ?>
         <div id="profil">

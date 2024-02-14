@@ -3,7 +3,7 @@
     require_once 'Classes/Data/DataBase.php';
     $data = new Data\DataBase();
 
-    require 'Classes/Autoloader.php';
+    require_once 'Classes/Autoloader.php';
     Autoloader::register();
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
