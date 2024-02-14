@@ -77,7 +77,7 @@
 </div>
 <div class="sections">
 <h2>Groupes et Artistes</h2>
-<a href="creerMusique">Créer</a>
+<a href="creerGroupe.php">Créer</a>
 <div id="groupes" class="sections_accueil">
     <?php 
     $groupes = $data->getGroupes();

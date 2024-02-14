@@ -645,11 +645,12 @@
             $stmt->bindParam(':image',$image);
             $stmt->execute();
         }
-        public function creerGroupe($nom, $description){
-            $insert="INSERT INTO GROUPE (nom_groupe, description_groupe) VALUES (:nom, :description)";
+        public function creerGroupe($nom, $description, $image){
+            $insert="INSERT INTO GROUPE (nom_groupe, description_groupe, image_groupe) VALUES (:nom, :description, :image)";
             $stmt=$this->file_db->prepare($insert);
             $stmt->bindParam(':nom',$nom);
             $stmt->bindParam(':description',$description);
+            $stmt->bindParam(':image',$image);
             $stmt->execute();
         }
         public function creerPlaylist($nom, $description, $public, $id_auteur){
