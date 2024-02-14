@@ -26,7 +26,6 @@ main {
     padding: 10px;
     margin: 10px;
     flex-wrap: wrap;
-    margin-bottom: 60px;
     overflow-x: hidden;
     white-space: nowrap;
 }
@@ -53,6 +52,7 @@ h2{
     flex-basis: 100%;
     margin: 20px;
     color: white;
+    margin-bottom: -20px;
     font-size: 40px;
 }
 h3 {
@@ -88,6 +88,18 @@ h3 {
 .a_content {
     display: flex;
     flex-direction: column;
+}
+
+#context-menu {
+    background: #2c2c2c;
+    padding: 10px;
+    z-index: 50;
+    top: 0;
+    left: 0;
+}
+
+#optionsAccueil{
+    list-style: none;
 }
 
 

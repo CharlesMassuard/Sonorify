@@ -31,6 +31,13 @@
             echo '<p class="infos_supp">'.$this->nom_groupe.'</p>';
             echo '</div>';
             echo '</a>';
+            echo '<div id="context-menu" style="display: none; position: absolute;">';
+            echo '<ul id="optionsAccueil">';
+            echo '<li>Option 1</li>';
+            echo '<li>Option 2</li>';
+            echo '<li>Option 3</li>';
+            echo '</ul>';
+            echo '</div>';
         }
 
         public function play(){

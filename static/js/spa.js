@@ -288,3 +288,19 @@ window.addEventListener('keydown', (event) => {
         }
     }
 });
+
+$(document).ready(function() {
+    $(document).on('contextmenu', '.a_accueil', function(event) {
+        event.preventDefault();
+        $('#context-menu').css({
+            top: event.pageY,
+            left: event.pageX
+        }).show();
+    });
+
+    $(document).on('click', function(event) {
+        if (!$(event.target).closest('#context-menu').length) {
+            $('#context-menu').hide();
+        }
+    });
+});
