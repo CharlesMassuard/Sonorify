@@ -26,11 +26,6 @@
     align-items: center;
     justify-content: flex-start;
     width: 99%;
-    overflow-y: scroll;
-}
-
-#aSuivre::-webkit-scrollbar {
-    display: none;
 }
 
 #listeLectureTitre{
@@ -38,6 +33,8 @@
     max-height: 50px;
     margin: 0;
     padding: 0;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 #bigCover{
@@ -53,6 +50,11 @@
     margin: 0;
     padding: 0;
     width: auto;
+    overflow-y: scroll;
+}
+
+#musiquesASuivre::-webkit-scrollbar {
+    display: none;
 }
 
 #PlayMusiqueListeLecture{
@@ -98,6 +100,7 @@
     justify-content: center;
     flex-grow: 1;
     margin-right: 100px;
+    margin-top: -10px;
 }
 
 #titleListe {
