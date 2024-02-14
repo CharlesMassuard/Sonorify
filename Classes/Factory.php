@@ -11,7 +11,8 @@
         public static function createMusiques(Array $data): Array{
             $listeMusiques = [];
             foreach($data as $musique){
-                array_push($listeMusiques, new Musique($musique["id_musique"], $musique["nom_musique"], $musique["duree"], $musique["nom_groupe"], $musique["id_album"], $musique["id_genre"], $musique["image_album"]));
+                $duree = $musique["duree"]?? "00:00";
+                array_push($listeMusiques, new Musique($musique["id_musique"], $musique["nom_musique"], $duree, $musique["nom_groupe"], $musique["id_album"], $musique["id_genre"], $musique["image_album"]));
             }
             return $listeMusiques;
         }

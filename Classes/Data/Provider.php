@@ -36,7 +36,7 @@
                 $albums[] = $currentAlbum;
             }
         
-            return $albums;
+            return $albums;                                                                                                                                                                                    
         }
     }
 ?>
