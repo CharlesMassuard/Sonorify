@@ -140,7 +140,6 @@ export function setFirstTrack(index) {
 
 
 export function playPlaylist() {
-    reset();
     if(player.style.display === 'none' || player.style.display === '') {
         player.style.display = 'flex';
     }
@@ -166,7 +165,6 @@ export function playPlaylist() {
                     currentTrackIndex++;
                     playNextTrack(); // Appeler la fonction pour jouer la piste suivante
                 }
-                reset();
             });
             titlePage.textContent = playlistDetails[currentTrackIndex][0] + " - " + playlistDetails[currentTrackIndex][2];
             title.textContent = playlistDetails[currentTrackIndex][0];
