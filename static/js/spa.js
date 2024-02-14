@@ -1,5 +1,4 @@
 import { addToPlaylist, playPlaylist , clearPlaylist, lireUneMusique, setFirstTrack } from './player.js';
-import { deleteVisualizer } from './audioVisualizer.js';
 const ids = ['Playlist', 'Accueil', 'Album', 'Genre', 'Groupe', 'ajout_note', 'Profil', 'audioVisualizer', 'changeTrack'];
 
 const clickHandler = (event) => {
@@ -7,7 +6,6 @@ const clickHandler = (event) => {
     loadPage(event.currentTarget);
 };
 export function init() {
-    deleteVisualizer();
     ids.forEach(id => {
         const elements = document.querySelectorAll(`#${id}`);
         elements.forEach(element => {
@@ -72,6 +70,7 @@ const changeTrackHandler = (event) => {
     .then(data => {
         let info = JSON.parse(data);
         setFirstTrack(info['index']);
+        playPlaylist();
     })
     .catch(error => console.error(error));  
     }

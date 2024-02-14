@@ -1,6 +1,3 @@
-import { loadFichier } from "./audioVisualizer.js";
-import { playVisualize } from "./audioVisualizer.js";
-import {reset } from "./audioVisualizer.js";
 import { init } from "./spa.js";
 
 var sound;

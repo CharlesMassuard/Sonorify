@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="fr" >
 <head>
   <meta charset="UTF-8">
@@ -10,7 +10,6 @@
         <div id="content">
             <div id="out"></div>
         </div>
-        <!-- partial -->
         <script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/84/three.min.js'></script>
         <script src='https://cdn.rawgit.com/mrdoob/three.js/master/examples/js/controls/OrbitControls.js'></script>
         <script src='https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.3/dat.gui.min.js'></script>
@@ -18,3 +17,4 @@
         <script  type="module" src="./static/js/audioVisualizer.js"></script>
 </body>
 </html>
+  -->
