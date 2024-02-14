@@ -74,6 +74,10 @@
     position: relative;
 }
 
+#oneMusicListeLecture:hover {
+    background-color: rgba(56, 56, 56, 0.2);
+}
+
 #oneMusicListeLecture:last-child {
     border: none;
 }
