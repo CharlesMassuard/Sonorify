@@ -53,7 +53,6 @@ export function init() {
 const changeTrackHandler = (event) => {
     event.preventDefault();
     const element = event.currentTarget;
-    clearPlaylist();
     fetch(element.href, {
         method: 'POST',
         headers: {
