@@ -83,18 +83,33 @@ export function addToPlaylist(id_musique, nom, cover, nomGroupe, nomAlbum, url) 
 };
 
 export function addToListeLecture(id_musique, nom, cover, nomGroupe, nomAlbum, url) {
-    musiquesASuivre.innerHTML += "<li id='oneMusicListeLecture'>"+
-    "<a href='jouerMusique.php?id="+id_musique+"' id=PlayMusique>"+
-        "<div class='flexContainerListeLecture'>" +
-            "<div id='coverBigPlayer'>" +
-                "<img class='imgListeLecture' src='../../ressources/images/"+cover+"' alt='cover'>" +
-            "</div>" +
-            "<div id='infoListeLecture'>" +
-                "<h4 id='titleListe'>"+nom+"</h4>" +
-                "<p id='artisteListe'>"+nomGroupe+" • "+nomAlbum+"</p>" +
-            "</div>" +
-        "</div>" +
-    "</a></li>";
+    if(inLecture == id_musique) {
+        musiquesASuivre.innerHTML += "<li  class='musicEnLecture' id='oneMusicListeLecture'>"+
+                                    "<a href='jouerMusique.php?id="+id_musique+"' id=PlayMusique>"+
+                                        "<div class='flexContainerListeLecture'>" +
+                                            "<div id='coverBigPlayer'>" +
+                                                "<img class='imgListeLecture' src='../../ressources/images/"+cover+"' alt='cover'>" +
+                                            "</div>" +
+                                            "<div id='infoListeLecture'>" +
+                                                "<h4 id='titleListe'>"+nom+"</h4>" +
+                                                "<p id='artisteListe'>"+nomGroupe+" • "+nomAlbum+"</p>" +
+                                            "</div>" +
+                                        "</div>" +
+                                    "</a></li>";
+    } else {
+        musiquesASuivre.innerHTML += "<li id='oneMusicListeLecture'>"+
+                                    "<a href='jouerMusique.php?id="+id_musique+"' id=PlayMusique>"+
+                                        "<div class='flexContainerListeLecture'>" +
+                                            "<div id='coverBigPlayer'>" +
+                                                "<img class='imgListeLecture' src='../../ressources/images/"+cover+"' alt='cover'>" +
+                                            "</div>" +
+                                            "<div id='infoListeLecture'>" +
+                                                "<h4 id='titleListe'>"+nom+"</h4>" +
+                                                "<p id='artisteListe'>"+nomGroupe+" • "+nomAlbum+"</p>" +
+                                            "</div>" +
+                                        "</div>" +
+                                    "</a></li>";
+    }
     init();
 }
 
@@ -149,11 +164,12 @@ export function playPlaylist() {
             titlePage.textContent = playlistDetails[currentTrackIndex][0] + " - " + playlistDetails[currentTrackIndex][2];
             title.textContent = playlistDetails[currentTrackIndex][0];
             
-            inLecture = playlistDetails[currentTrackIndex][0];
+            inLecture = playlistDetails[currentTrackIndex][4];
             cover.src = "../../ressources/images/"+playlistDetails[currentTrackIndex][1];
             bigCover.src = "../../ressources/images/"+playlistDetails[currentTrackIndex][1];
             artiste.textContent = playlistDetails[currentTrackIndex][2];
             album.textContent = playlistDetails[currentTrackIndex][3];
+            refreshListeLecture();
             play(true);
             sound.on('play', function () {
                 setInterval(updateProgressBar, 100);

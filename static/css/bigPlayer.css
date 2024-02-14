@@ -40,7 +40,7 @@
 #bigCover{
     height: 80%;
     width: auto;
-    margin-left: 50px;
+    margin-left: 150px;
 }
 
 #musiquesASuivre{
@@ -51,6 +51,7 @@
     padding: 0;
     width: auto;
     overflow-y: scroll;
+    min-width: 70%;
 }
 
 #musiquesASuivre::-webkit-scrollbar {
@@ -67,8 +68,6 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    margin-top: 10px;
-    margin-bottom: 10px;
     width: 100%;
     flex-wrap: nowrap;
     border-bottom: 1px solid rgb(56, 56, 56);
@@ -84,14 +83,13 @@
     width: auto;
 }
 
-#coverBigPlayer {
-    margin-right: 10px;
-}
 
 .imgListeLecture {
     width: 50px;
     height: auto;
     margin-bottom: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
 }
 
 #infoListeLecture {
@@ -99,8 +97,8 @@
     flex-direction: column;
     justify-content: center;
     flex-grow: 1;
-    margin-right: 100px;
-    margin-top: -10px;
+    margin-left: 20px;
+    margin-right: 10px;
 }
 
 #titleListe {
@@ -112,5 +110,9 @@
 
 #artisteListe {
     margin: 0; /* Ajout d'une marge nulle pour éviter les marges par défaut */
+}
+
+.musicEnLecture{
+    background-color: rgb(56, 56, 56);
 }
 
