@@ -93,6 +93,21 @@
     white-space: normal;
 }
 
+#musiquesAlbum h2:hover {
+    color: #ffffff; 
+    font-size: 1.2em;
+    white-space: normal;
+    opacity: 0.8;
+}
+
+
+#musiquesPlaylist h2:hover {
+    color: #ffffff; 
+    font-size: 1.2em;
+    white-space: normal;
+    opacity: 0.8;
+}
+
 #note {
     display: flex;
     flex-direction: row;
