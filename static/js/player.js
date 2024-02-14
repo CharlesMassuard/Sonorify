@@ -174,7 +174,9 @@ export function playPlaylist() {
             cover.src = "../../ressources/images/"+playlistDetails[currentTrackIndex][1];
             bigCover.src = "../../ressources/images/"+playlistDetails[currentTrackIndex][1];
             artiste.textContent = playlistDetails[currentTrackIndex][2];
+            artiste.setAttribute('href', 'artiste.php?id='+playlistDetails[currentTrackIndex][2]);
             album.textContent = playlistDetails[currentTrackIndex][3];
+            album.setAttribute('href', 'album.php?id='+playlistDetails[currentTrackIndex][3]);
             refreshListeLecture();
             play(true);
             sound.on('play', function () {
@@ -376,8 +378,10 @@ aleatoireButton.addEventListener('click', function () {
 arrowUp.addEventListener('click', function () {
     if (arrowUpI.classList.contains('rotate_arrow')) {
         arrowUp.style.opacity = 0.5;
+        arrowUp.setAttribute('title', 'Afficher les détails');
     } else {
         arrowUp.style.opacity = 1;
+        arrowUp.setAttribute('title', 'Masquer les détails');
     }
     arrowUpI.classList.toggle('rotate_arrow');
 });

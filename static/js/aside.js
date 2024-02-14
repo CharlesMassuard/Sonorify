@@ -11,6 +11,7 @@ var accueil = document.getElementById("Accueil");
 var profil = document.getElementById("Profil");
 var bibliotheque = document.getElementById("Bibliothèque");
 var detailsSection = document.getElementById("detailsSection");
+var arrowUp = document.querySelector('#arrowUp');
 var arrowUpI = document.querySelector('#arrowUp i.material-icons');
 
 buttonActiverAside.addEventListener("click", function() {
@@ -58,6 +59,7 @@ accueil.addEventListener("click", function() {
     if (arrowUpI.classList.contains('rotate_arrow')) {
         arrowUp.style.opacity = 0.5;
         arrowUpI.classList.toggle('rotate_arrow');
+        arrowUp.setAttribute('title', 'Afficher les détails');
     }
 });
 
@@ -70,6 +72,7 @@ profil.addEventListener("click", function() {
     if (arrowUpI.classList.contains('rotate_arrow')) {
         arrowUp.style.opacity = 0.5;
         arrowUpI.classList.toggle('rotate_arrow');
+        arrowUp.setAttribute('title', 'Afficher les détails');
     }
 });
 
@@ -82,5 +85,6 @@ bibliotheque.addEventListener("click", function() {
     if (arrowUpI.classList.contains('rotate_arrow')) {
         arrowUp.style.opacity = 0.5;
         arrowUpI.classList.toggle('rotate_arrow');
+        arrowUp.setAttribute('title', 'Afficher les détails');
     }
 });
