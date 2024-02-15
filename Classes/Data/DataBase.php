@@ -694,7 +694,7 @@
                 $stmt->execute([$id_groupe, $id_artiste]);
                 
                 // Insert into ALBUM table
-                creerAlbum($album['title'], $album['releaseYear'], $id_groupe, $album['img']);
+                $this->creerAlbum($album['title'], $album['releaseYear'], $id_groupe, $album['img']);
         
                 // Get the id of the album we just inserted
                 $id_album = $this->file_db->lastInsertId();
