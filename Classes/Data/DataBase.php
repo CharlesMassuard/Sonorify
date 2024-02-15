@@ -17,7 +17,7 @@
         
             if ($isNewDb) {
                 $this->createTable();
-                //$this->executeSqlFile(__DIR__ . '/insert_php.sql');
+                $this->executeSqlFile(__DIR__ . '/insert_php.sql');
                 $Provider = new Provider('./ressources/extrait.yml');
                 $data = $Provider->getData();
                 $this->insertDataProvider($data);
