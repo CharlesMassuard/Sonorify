@@ -4,7 +4,8 @@ INSERT INTO GROUPE (nom_groupe, image_groupe, description_groupe) VALUES
     ("Tagada Jones", "groupes_artistes/tagadajones.jpg", "TagadaJones"),
     ("Hans Zimmer", "groupes_artistes/hanszimmer.jpg", "Hans Zimmer"),
     ("Avicii", "groupes_artistes/avicii.jpg", "Avicii"),
-    ("Red Hot Chili Peppers", "groupes_artistes/redhotchilipeppers.jpg", "Red Hot Chili Peppers");
+    ("Red Hot Chili Peppers", "groupes_artistes/redhotchilipeppers.jpg", "Red Hot Chili Peppers"),
+    ("Les Fatals Picards", "groupes_artistes/lesfatalspicards.jpg", "Les Fatals Picards");
 
 INSERT INTO ALBUM (titre, image_album, id_groupe, dateSortie) VALUES
     ("Plaisir Risque Dépendance", "Cover/PRD.jpg", 1, "20-10-2023"),
@@ -20,7 +21,9 @@ INSERT INTO ALBUM (titre, image_album, id_groupe, dateSortie) VALUES
     ("I'm with You", "Cover/imwithyou.jpg", 6, "29-08-2011"),
     ("The Getaway", "Cover/thegetaway.jpg", 6, "17-06-2016"),
     ("One Hot Minute", "Cover/onehotminute.jpg", 6, "12-09-1995"),
-    ("Return of the Dream Canteen", "Cover/returnofthedreamcanteen.jpg", 6, "14-10-2022");
+    ("Return of the Dream Canteen", "Cover/returnofthedreamcanteen.jpg", 6, "14-10-2022"),
+    ("Stories", "Cover/stories.jpg", 5, "02-10-2015"),
+    ("Pamplemousse mécanique", "Cover/pamplemoussemecanique.jpg", 7, "19-02-2007");
 
 INSERT INTO ARTISTE (pseudo_artiste, image_artiste) VALUES
     ("Adèle Castillon", "groupes_artistes/adele_castillon.jpg");
@@ -145,6 +148,37 @@ INSERT INTO MUSIQUE (nom_musique, duree, id_groupe, id_album, id_genre, url_musi
     ("Always On The Run", "4:55", 5, 5, 14, "https://audio.jukehost.co.uk/btF0L8NOxf9fwkkmayOzx8hZUDSeUGCp"),
     ("All You Need Is Love", "6:21", 5, 5, 14, "https://audio.jukehost.co.uk/BeJoa8XkXyxvKzmu5eDKQ2PIK4e53P1l"),
     ("Canyions", "7:29", 5, 5, 14, "https://audio.jukehost.co.uk/c1CZ44zrkIV36tMoo3BslXQfBv5d3eEB"),
+    -- INTERSTELLAR
+    ("Dreaming of the Crash", "3:55", 4, 6, 6, "https://audio.jukehost.co.uk/bGKgaIUNJp2QfNdZrkmHFXW1UXZbbPjH"),
+    ("Cornfield Chase", "2:06", 4, 6, 6, "https://audio.jukehost.co.uk/H1iysiW7TjJF6dOHwJNomBdDYgDw8MKf"),
+    ("Dust", "5:41", 4, 6, 6, "https://audio.jukehost.co.uk/bv0jehuL5Kjj97xaapgMEXbAmog8yISi"),
+    ("Day One (Interstellar Theme)", "3:19", 4, 6, 6, "https://audio.jukehost.co.uk/Yqy9bWKUqLrvXTacMvFjZephGjwOGXjD"),
+    ("Stay", "6:52", 4, 6, 6, "https://audio.jukehost.co.uk/PIaeNo0ZAmcrxf6kjVVvakbkGtM7OYYl"),
+    ("Message from Home", "1:40", 4, 6, 6, "https://audio.jukehost.co.uk/jaaGOCCugxCYq0NL86ARXJ6JkosHMI3b"),
+    ("The Wormhole", "1:30", 4, 6, 6, "https://audio.jukehost.co.uk/5O6VfjK9qpi7kKe11CWGwzEbqswcZiNy"),
+    ("Mountains", "3:39", 4, 6, 6, "https://audio.jukehost.co.uk/2YVw5lqxA2JyNCIleRkEDmyzUoPsHSnH"),
+    ("Afraid of Time", "2:32", 4, 6, 6, "https://audio.jukehost.co.uk/d5m7GSkxfU16o9kSKsCvHggsxHnFzsLH"),
+    ("A Place Among the Stars", "3:27", 4, 6, 6, "https://audio.jukehost.co.uk/FBor1EIkWYfkFAe4lOeEorb0UMwdlPvv"),
+    ("Running Out", "1:57", 4, 6, 6, "https://audio.jukehost.co.uk/5p0ao6qSZp3DaKlzZF2W3WxhcfDi3Lyg"),
+    ("I'm Going Home", "5:48", 4, 6, 6, "https://audio.jukehost.co.uk/48ANg1vhBj5UgMCHL5TmABy9ncQkmXkz"),
+    ("Coward", "8:26", 4, 6, 6, "https://audio.jukehost.co.uk/6nnELmNoePLrVaqXUXG2aGeDJw7BOGlG"),
+    ("Detach", "6:42", 4, 6, 6, "https://audio.jukehost.co.uk/c7Zk2t6lgKfBrqTH41WzTuU8tmTBQhku"),
+    ("S.T.A.Y.", "6:23", 4, 6, 6, "https://audio.jukehost.co.uk/sbC5IrWWRvc1Id1I21lXj26TZci5Qf0K"),
+    ("Where We're Going", "7:41", 4, 6, 6, "https://audio.jukehost.co.uk/dq5jYgWCTnK2wjt5FVOGUmVv1AcbSMnJ"),
+    ("Atmospheric Entry", "1:40", 4, 6, 6, "https://audio.jukehost.co.uk/1vK8zb4smkO2KlHhSdITPTGRbvHjntTK"),
+    ("Day One (Original Demo)", "3:49", 4, 6, 6, "https://audio.jukehost.co.uk/p9yqFyHxBsaKx4KPeuPOeccByYWFKUHZ"),  
+    ("Day One Dark", "6:57", 4, 6, 6, "https://audio.jukehost.co.uk/mcJj9Dc1ID2s8DztZcRj7lmifFmXBE92"),
+    ("First Step", "1:47", 4, 6, 6, "https://audio.jukehost.co.uk/u5njSL0y971jXVsiFhwCE2LU8fjTiXCF"),
+    ("Flying Drone", "1:53", 4, 6, 6, "https://audio.jukehost.co.uk/qTGypduKFrwchAhjNmElMInyR6RMGYD7"),
+    ("Imperfect Lock", "6:54", 4, 6, 6, "https://audio.jukehost.co.uk/QcpJ4iXiMdXbDen81m4zGG8JKuPETGSF"),
+    ("Murph", "11:20", 4, 6, 6, "https://audio.jukehost.co.uk/gcsUVDmPrTxuVQlrJ6RvXsJa40uGk8Cj"),
+    ("No Need to Come Back", "4:32", 4, 6, 6, "https://audio.jukehost.co.uk/4xoWCYWvrAFeEy0IuoyO68nTOZjftgid"),
+    ("No Time for Caution", "4:06", 4, 6, 6, "https://audio.jukehost.co.uk/RXdJUGvbynCR9HPK5tp5WwmM1MXNB0rH"),
+    ("Organ Variation", "4:51", 4, 6, 6, "https://audio.jukehost.co.uk/RXdJUGvbynCR9HPK5tp5WwmM1MXNB0rH"),
+    ("Tick-Tock", "8:18", 4, 6, 6, "https://audio.jukehost.co.uk/ugfxo5a672ckCpnuCjtDnfPMGTICf9je"),
+    ("What Happens Now?", "2:26", 4, 6, 6, "https://audio.jukehost.co.uk/vHjcJZYoZrvZRPVZi7SgCzZf4FbMNpDK"),  
+    ("Where We're Going", "7:41", 4, 6, 6, "https://audio.jukehost.co.uk/dq5jYgWCTnK2wjt5FVOGUmVv1AcbSMnJ"),
+    ("Who's They?", "7:17", 4, 6, 6, "https://audio.jukehost.co.uk/BW52aJ31eoCQpD0I8vBIAaKf7jyOhTuT"),
     -- UNLIMITED LOVE
     ("Aquatic Mouth Dance", "4:20", 6, 7, 9, "https://audio.jukehost.co.uk/VoBk79QacqeUaRwus0pGaickcAsbbQzV"),
     ("Bastards of Light", "3:38", 6, 7, 9, "https://audio.jukehost.co.uk/2NqlQBF69jYGa7DHE6k6SHFJdjhw6cJd"),
@@ -281,8 +315,42 @@ INSERT INTO MUSIQUE (nom_musique, duree, id_groupe, id_album, id_genre, url_musi
     ("La La La La La La La La", "3:57", 6, 14, 9, "https://audio.jukehost.co.uk/RKZxTKkV5RtlTaMb5ze1SGIzBqCYdBzR"),
     ("My Cigarette", "4:24", 6, 14, 9, "https://audio.jukehost.co.uk/auij0tJhjH9witu7taJt67OOi8WPuyY8"),
     ("Peace and Love", "4:03", 6, 14, 9, "https://audio.jukehost.co.uk/cnjWooTpEbi0cigelPEIZttg7kitkQZ2"),
-    ("Reach Out", "4:11", 6, 14, 9, "https://audio.jukehost.co.uk/IdXenIWHq5yp37XXJp1U0R5hV1UvZxjN");
-    
+    ("Reach Out", "4:11", 6, 14, 9, "https://audio.jukehost.co.uk/IdXenIWHq5yp37XXJp1U0R5hV1UvZxjN"),
+    -- STORIES
+    ("Waiting for Love", "3:50", 5, 15, 7, "https://audio.jukehost.co.uk/dizYkSpmas5kjm43EfqDN28xbCYZKHpc"),
+    ("Talk to Myself", "3:55", 5, 15, 7, "https://audio.jukehost.co.uk/ncYOBjw4OtFS6yGLzxGlyieOxkLqqVop"),
+    ("Touch Me", "3:06", 5, 15, 7, "https://audio.jukehost.co.uk/h43lcAZTw2Ka9qPhToGiUnns8wZblH2b"),
+    ("Ten More Days", "4:05", 5, 15, 7, "https://audio.jukehost.co.uk/jpcx44ZmGO2oWarnS99ZPOdjck2a34vM"),
+    ("For a Better Day", "3:26", 5, 15, 7, "https://audio.jukehost.co.uk/nsZdnDpyXXl44EfH4NROaJaiACIaHmGE"),
+    ("Broken Arrows", "3:52", 5, 15, 7, "https://audio.jukehost.co.uk/Fq4ggJRdvG4gVheL2R9reMwOtZlpmwXk"),
+    ("True Believer", "4:48", 5, 15, 7, "https://audio.jukehost.co.uk/Tq8C1IpJ0QJivkyZDG1jnwAjHuXKX14j"),
+    ("City Lights", "6:28", 5, 15, 7, "https://audio.jukehost.co.uk/aEsBnxeQcVwx5jmG74ZuzC6SPjhijtgg"),
+    ("Pure Grinding", "2:52", 5, 15, 7, "https://audio.jukehost.co.uk/HrNKUAm32oF6xQCoHzoXl1uECH0mNIKM"),
+    ("Sunset Jesus", "4:24", 5, 15, 7, "https://audio.jukehost.co.uk/V8SGrjvaAjFuj7MOz4OCyrbb8eLjumtm"),
+    ("Can't Catch Me", "3:59", 5, 15, 7, "https://audio.jukehost.co.uk/DfLstSWLrvlobXsVp8IWcgyGlDS8Z6OR"),
+    ("Somewhere in Stockholm", "3:22", 5, 15, 7, "https://audio.jukehost.co.uk/KWTaoM2pEukHRAtP4C60q7vJYPU81fp2"),
+    ("Trouble", "2:51", 5, 15, 7, "https://audio.jukehost.co.uk/GOsMgehSAnRj8VHRXvVhRoBDLGieVchn"),
+    ("Gonna Love Ya", "3:35", 5, 15, 7, "https://audio.jukehost.co.uk/dgsnI8toQXeQZZjTvH2yYEphcPN7Y4W0"),
+    -- PAMPLEMOUSSE MECANIQUE
+    ("Au mariage de Kevin et ma soeur", "3:09", 7, 16, 1, "https://audio.jukehost.co.uk/m08dVsfEUBlPnXLtrRDxjhuDDttbPfBy"),
+    ("Bernard Lavilliers", "2:57", 7, 16, 1, "https://audio.jukehost.co.uk/53vaYF61i5dSn7rHJDU5eHxMqedEfWwi"),
+    ("Commandante", "3:03", 7, 16, 1, "https://audio.jukehost.co.uk/8Pzz8qv8yaoJMVbToPMqW4A2US5BRAJ9"),
+    ("Cure toujours", "2:52", 7, 16, 1, "https://audio.jukehost.co.uk/BVUM1MOqVyUMr22RSxeOogOId7ZcfhAB"),
+    ("Djembé Man", "4:05", 7, 16, 1, "https://audio.jukehost.co.uk/7l10adZTtLpFvtK5wi45rS81jJuENoag"),
+    ("Et puis merde je vote à droite!", "3:05", 7, 16, 1, "https://audio.jukehost.co.uk/5tg6iHB1SJZQC7vlf2844CVoM7SmUNMK"),
+    ("Française des jeux", "3:23", 7, 16, 1, "https://audio.jukehost.co.uk/0JciFHa7cbCf4CyKcWcReFLrSSWs1Kzd"),
+    ("Je viens d'ici", "2:51", 7, 16, 1, "https://audio.jukehost.co.uk/PdWX83tXZ66Nb9FW5XewJuPNgIQpm49L"),
+    ("L'Amour à la française", "2:42", 7, 16, 1, "https://audio.jukehost.co.uk/t7D397YX0o7ITrZ1vN2LL0yu10BvmLOq"),
+    ("La Sécurité de l'emploi", "3:19", 7, 16, 1, "https://audio.jukehost.co.uk/PuuoTHeLwL4GCmu6kSHcx7bdVzNGNkBh"),
+    ("Les Dictateurs", "3:44", 7, 16, 1, "https://audio.jukehost.co.uk/Uippba5OVgIxyJSOXh6VAMXFy0S3awJQ"),
+    ("Moi je vis chez Amélie Poulain", "3:05", 7, 16, 1, "https://audio.jukehost.co.uk/bwKpBnPesq2bkBQ5lVP2B2jUHErvwlEK"),
+    ("Mon père était tellement de gauche", "3:21", 7, 16, 1, "https://audio.jukehost.co.uk/qxfIvOMbuKG2A44bYqIXWO9g4F5IQRWd"),
+    ("Monter le pantalon", "2:37", 7, 16, 1, "https://audio.jukehost.co.uk/hHKjtym7uKXRPZWuVas1LNHKAhNhewJf"),
+    ("On se demandait (Où sont les pistes introuvales ?)", "27:35", 7, 16, 1, "https://audio.jukehost.co.uk/sup8qjwB5xWD7f3Epwi73ZoKphQPbe7o"),
+    ("Partenair particulier", "2:43", 7, 16, 1, "https://audio.jukehost.co.uk/RXi0DejfnowKCNR4eRq3FrAyurAMxjLk"),
+    ("Seul et célibataire", "3:02", 7, 16, 1, "https://audio.jukehost.co.uk/y0izRBl8W8087BxvZvCN7PCjUCBx15JS");
+
+
 INSERT INTO MUSIQUE_NOTE (id_musique, id_utilisateur, note) VALUES
     (64, 1, 4),
     (1, 3, 5),
