@@ -13,6 +13,7 @@ var progressBar = document.getElementById('progressBar');
 var progress = document.getElementById('progress');
 var header = document.getElementById('trueHeader');
 
+var nbrMusiquesListeLecture = document.getElementById('nbrMusiquesListeLecture');
 var player = document.getElementById('customPlayer');
 var detailsSection = document.getElementById('detailsSection');
 var playButton = document.getElementById('playButton');
@@ -169,7 +170,10 @@ export function playPlaylist() {
             });
             titlePage.textContent = playlistDetails[currentTrackIndex][0] + " - " + playlistDetails[currentTrackIndex][2];
             title.textContent = playlistDetails[currentTrackIndex][0];
-            
+            let taillePlaylist = playlistDetails.length;
+            if(taillePlaylist > 1) {
+                nbrMusiquesListeLecture.textContent = taillePlaylist + " titres";
+            }
             inLecture = playlistDetails[currentTrackIndex][4];
             cover.src = "../../ressources/images/"+playlistDetails[currentTrackIndex][1];
             bigCover.src = "../../ressources/images/"+playlistDetails[currentTrackIndex][1];
