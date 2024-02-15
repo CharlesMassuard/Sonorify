@@ -582,33 +582,33 @@ window.addEventListener('keydown', function(event) {
     }
 });
 
-var idPlaylist;
+// var idPlaylist;
 
-$('#addToPlaylist').click(function() {
-    idPlaylist = $(this).data('id-playlist');
-    // Now you can use idPlaylist in your AJAX request
-});
+// $('#addToPlaylist').click(function() {
+//     idPlaylist = $(this).data('id-playlist');
+//     // Now you can use idPlaylist in your AJAX request
+// });
 
-buttonAddMusicToPlaylist.addEventListener('click', function () {
-    dialogPlaylist.style.display = 'none';
-    $.ajax({
-        url: '../../Classes/Data/DataBase.php', // the location of your PHP file
-        type: 'post', // the HTTP method you want to use
-        data: {
-            'function_name': 'insertMusiquePlaylist', // the name of the PHP function you want to call
-            'id_playlist': idPlaylist,
-            'id_musique': playlistDetails[currentTrackIndex][4], // any data you want to pass to the PHP function
-        },
-        success: function(response) {
-            // this function will be called when the AJAX request is successful
-            // 'response' will contain whatever the PHP function outputs
-            console.log(response);
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-            // this function will be called if the AJAX request fails
-            console.log(textStatus, errorThrown);
-        }
-    });
-});
+// buttonAddMusicToPlaylist.addEventListener('click', function () {
+//     dialogPlaylist.style.display = 'none';
+//     $.ajax({
+//         url: '../../Classes/Data/DataBase.php', // the location of your PHP file
+//         type: 'post', // the HTTP method you want to use
+//         data: {
+//             'function_name': 'insertMusiquePlaylist', // the name of the PHP function you want to call
+//             'id_playlist': idPlaylist,
+//             'id_musique': playlistDetails[currentTrackIndex][4], // any data you want to pass to the PHP function
+//         },
+//         success: function(response) {
+//             // this function will be called when the AJAX request is successful
+//             // 'response' will contain whatever the PHP function outputs
+//             console.log(response);
+//         },
+//         error: function(jqXHR, textStatus, errorThrown) {
+//             // this function will be called if the AJAX request fails
+//             console.log(textStatus, errorThrown);
+//         }
+//     });
+// });
 
 
