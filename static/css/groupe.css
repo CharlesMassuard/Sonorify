@@ -1,0 +1,64 @@
+#headerGroupe {
+    display: flex;
+    margin-top: 30px;
+}
+
+#infosGroupe {
+    margin-left: 20px;
+}
+
+#imgGroupe {
+    height: 200px;
+    width: auto;
+    border-radius: 5px;
+    margin-left: 100px;
+}
+
+#descGroupe {
+    max-width: 500px;
+    margin-top: -10px;
+}
+
+#infosGroupe h1 {
+    margin-top: 0; /* Supprime la marge supérieure du titre */
+    margin-left: 0;
+}
+
+#inputGroupe{
+    max-width: 156px;
+    margin-top: 20px;
+}
+
+#inputGroupe .material-icons{
+    color: white;
+    font-size: 50px;
+}
+
+#sections_groupes {
+    margin-top: 50px;
+    margin-left: 80px;
+}
+
+#titleMusiquesGroupe{
+    display: flex;
+}
+
+#voirPlus{
+    position: relative;
+    background-color: rgb(0, 0, 0);
+    border: 1px solid white;
+    border-radius: 15px;
+    height: 40px;
+    color: white;
+    font-size: 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    width: 10%;
+    white-space: nowrap;
+    margin-top: 50px;
+    margin-right: 120px;
+}
+
+#voirPlus:hover{
+    opacity: 0.5;
+}

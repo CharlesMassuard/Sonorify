@@ -8,32 +8,60 @@
     require 'Classes/Autoloader.php';
     Autoloader::register();
     $groupe = $data->getGroupeById($id_groupe);
-    $musiques = $data->getMusiquesByGroupe($id_groupe);
+    $musiques = $data->getMusiquesAleatoireByGroupe($id_groupe);
     $musiques = Factory::createMusiques($musiques);
-    $albums = $data->getAlbumsByGroupe($id_groupe);
+    $albums = $data->getAlbumsAleatoireByGroupe($id_groupe);
     $albums = Factory::createAlbums($albums);
     $artistes = $data->getArtistesByGroupe($id_groupe);
     $artistes = Factory::createArtistes($artistes);
-    echo '<h1>'.$groupe['nom_groupe'].'</h1>';
-    echo '<div>';
-    echo '<img src="./ressources/images/'.$groupe['image_groupe'].'">';
-    echo '<p>'.$groupe['description_groupe'].'</p>';
-    echo '</div>';
-    echo '<h2>Artistes</h2>';
-    echo '<div id="artistes" class="sections_accueil">';
-    foreach ($artistes as $artiste) {
-        $artiste->render();
-    }
-    echo '</div>';
-    echo '<h2>Albums</h2>';
-    echo '<div id="albums" class="sections_accueil">';
-    foreach ($albums as $album) {
-        $album->render();
-    }
-    echo '<h2>Musiques</h2>';
-    echo '<div id="musiques" class="sections_accueil">';
-    foreach ($musiques as $musique) {
-        $musique->render();
-    }
-    echo '</div>';
 ?>
+
+<header>
+    <link rel="stylesheet" href="./static/css/groupe.css">
+</header>
+
+<div id="headerGroupe">
+    <img id="imgGroupe" src="./ressources/images/<?php echo $groupe['image_groupe']?>">
+    <div id="infosGroupe">
+        <h1><?php echo $groupe['nom_groupe'] ?></h1>
+        <p id="descGroupe"><?php echo $groupe['description_groupe'] ?></p>
+        <?php
+        echo '<div id="inputGroupe">';
+        echo '<form id="playGroupe" action="jouerGroupe.php?id_groupe='.$id_groupe.' method="post">';
+        echo '<input type="submit" id="jouerGroupe" name="jouerGroupe" style="display: none;">';
+        echo '<label for="jouerGroupe"  title="Ecouter le groupe"><i class="material-icons">play_arrow</i></label>';
+        echo '</form>';
+        echo '</div>';
+        ?>
+    </div>
+</div>
+
+<div id="sections_groupes">
+    <div id="musiquesGroupe">
+        <div id="titleMusiquesGroupe">
+            <h1>Musiques</h1>
+            <button id="voirPlus" title="Voir toutes les musiques">Voir plus</button>
+        </div>
+        <div id="listeMusiquesGroupe">
+            <?php
+            foreach ($musiques as $musique) {
+                echo $musique -> render();
+            }
+            ?>
+        </div>
+    </div>
+
+    <div id="albumsGroupe">
+        <div id="titleMusiquesGroupe">
+            <h1>Albums</h1>
+            <button id="voirPlus" title="Voir toutes les musiques">Voir plus</button>
+        </div>
+        <div id="listeMusiquesGroupe">
+            <?php
+            foreach ($albums as $album) {
+                echo $album -> render();
+            }
+            ?>
+        </div>
+    </div>
+</div>
