@@ -18,7 +18,6 @@ session_start();
     <link rel="stylesheet" href="./static/css/header.css">
     <link rel="stylesheet" href="./static/css/player.css">
     <link rel="stylesheet" href="./static/css/playlist.css">
-    <link rel="stylesheet" href="./static/css/audioVisualizer.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="./static/js/index.js" defer></script>
     <script src="./static/js/accueil.js" defer></script>
