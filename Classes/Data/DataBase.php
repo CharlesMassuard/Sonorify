@@ -89,7 +89,7 @@
             $this->file_db->exec("CREATE TABLE IF NOT EXISTS MUSIQUE (
                 id_musique INTEGER PRIMARY KEY AUTOINCREMENT,
                 nom_musique TEXT,
-                duree TIME,
+                duree TEXT,
                 id_groupe INTEGER,
                 id_album INTEGER,
                 id_genre INTEGER,

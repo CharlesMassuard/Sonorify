@@ -6,13 +6,130 @@
     left: 0;
     width: 100%;
     background-color: rgb(0, 0, 0);
+    font-family: 'Luminari', sans-serif;
     z-index: 999;
     overflow: hidden;
     transform: translateY(0);
     margin-left: 101px; /* Pour que le contenu ne soit pas caché sous l'aside */
+
+}
+
+#coverBigPlayer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#aSuivre {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 99%;
+}
+
+#listeLectureTitre{
+    text-align: center;
+    max-height: 50px;
+    margin: 0;
+    padding: 0;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 #bigCover{
     height: 80%;
     width: auto;
+    margin-left: 150px;
 }
+
+#musiquesASuivre{
+    list-style: none;
+    white-space: nowrap;
+    font-family: 'Luminari', sans-serif;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    overflow-y: scroll;
+    min-width: 70%;
+}
+
+#musiquesASuivre::-webkit-scrollbar {
+    display: none;
+}
+
+#PlayMusiqueListeLecture{
+    width: auto;
+    display: flex;
+    align-items: start;
+}
+
+#oneMusicListeLecture {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    flex-wrap: nowrap;
+    border-bottom: 1px solid rgb(56, 56, 56);
+    position: relative;
+}
+
+#oneMusicListeLecture:not(.musicEnLecture):hover {
+    background-color: rgba(56, 56, 56, 0.2);
+}
+
+#oneMusicListeLecture:last-child {
+    border: none;
+}
+
+.flexContainerListeLecture {
+    display: flex;
+    align-items: center;
+    width: auto;
+}
+
+
+.imgListeLecture {
+    width: 50px;
+    height: auto;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+#infoListeLecture {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+    margin-left: 20px;
+    margin-right: 10px;
+}
+
+#titleListe {
+    font-size: 20px;
+    margin: 0; /* Ajout d'une marge nulle pour éviter les marges par défaut */
+    font-weight: bold;
+    margin-left: -1px;
+}
+
+#artisteListe {
+    margin: 0; /* Ajout d'une marge nulle pour éviter les marges par défaut */
+}
+
+.musicEnLecture{
+    background-color: rgb(56, 56, 56);
+}
+
+    
+#wave{
+    width: 40px;
+    height: auto;
+    position: absolute;
+    right: 0;
+    margin-right: 40px;
+}
+
+
+
+

@@ -41,7 +41,7 @@
                         } else {
                             $dureeTotale = sprintf("%02dh %02dm %02ds", $heures, $minutes, $secondes);
                         }
-                        if($nbrMusiques == 1){
+                        if($nbrMusiques <= 1){
                             echo $nbrMusiques." Titre • ".$dureeTotale . "</p>";
                         } else {
                             echo $nbrMusiques." Titres • ".$dureeTotale . "</p>";
