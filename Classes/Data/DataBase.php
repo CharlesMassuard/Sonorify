@@ -674,6 +674,7 @@
         public function insertDataProvider($data){
             foreach ($data as $album) {
                 $index_musique = 0;
+
                 // Insert into GROUPE table
                 $stmt = $this->file_db->prepare('INSERT INTO GROUPE (nom_groupe, image_groupe, description_groupe) VALUES (?, ?, ?)');
                 $stmt->execute([$album['by'], $album['img']??"", $album['description']??""]);
@@ -691,10 +692,9 @@
                 // Insert into GROUPE_ARTISTE table
                 $stmt = $this->file_db->prepare('INSERT INTO GROUPE_ARTISTE (id_groupe, id_artiste) VALUES (?, ?)');
                 $stmt->execute([$id_groupe, $id_artiste]);
-        
+                
                 // Insert into ALBUM table
-                $stmt = $this->file_db->prepare('INSERT INTO ALBUM (titre, image_album, id_groupe, dateSortie) VALUES (?, ?, ?, ?)');
-                $stmt->execute([$album['title'], $album['img'], $id_groupe, $album['releaseYear']]);
+                creerAlbum($album['title'], $album['releaseYear'], $id_groupe, $album['img']);
         
                 // Get the id of the album we just inserted
                 $id_album = $this->file_db->lastInsertId();
