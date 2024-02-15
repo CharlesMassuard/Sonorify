@@ -610,6 +610,7 @@
                 // Insert into GENRE table
                 foreach ($album['genre'] as $genre) {
                     if($genre != null){
+                        $genre[0] = strtoupper($genre[0]);
                         $index_musique += 1;
 
                         $stmt = $this->file_db->prepare('INSERT OR IGNORE INTO GENRE (nom_genre) VALUES (?)');
