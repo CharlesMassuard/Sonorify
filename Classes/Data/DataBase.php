@@ -583,15 +583,15 @@
             foreach ($data as $album) {
                 $index_musique = 0;
                 // Insert into GROUPE table
-                $stmt = $this->file_db->prepare('INSERT INTO GROUPE (nom_groupe, image_groupe) VALUES (?, ?)');
-                $stmt->execute([$album['by'], $album['img']]);
+                $stmt = $this->file_db->prepare('INSERT INTO GROUPE (nom_groupe, image_groupe, description_groupe) VALUES (?, ?, ?)');
+                $stmt->execute([$album['by'], $album['img']??"", $album['description']??""]);
         
                 // Get the id of the group we just inserted
                 $id_groupe = $this->file_db->lastInsertId();
 
                 // Insert into ARTISTE table
                 $stmt = $this->file_db->prepare('INSERT INTO ARTISTE (pseudo_artiste, image_artiste) VALUES (?, ?)');
-                $stmt->execute([$album['by'], $album['img']]);
+                $stmt->execute([$album['by'], $album['img']??""]);
 
                 // Get the id of the artist we just inserted
                 $id_artiste = $this->file_db->lastInsertId();
@@ -620,8 +620,8 @@
                         $id_genre = $this->file_db->lastInsertId();
             
                         // Insert into MUSIQUE table
-                        $stmt = $this->file_db->prepare('INSERT INTO MUSIQUE (nom_musique, id_groupe, id_album, id_genre) VALUES (?, ?, ?, ?)');
-                        $stmt->execute(['Musique de '.$album['title']." ".$index_musique, $id_groupe, $id_album, $id_genre]);
+                        $stmt = $this->file_db->prepare('INSERT INTO MUSIQUE (nom_musique, id_groupe, id_album, id_genre, url_musique) VALUES (?, ?, ?, ?, ?)');
+                        $stmt->execute(['Musique de '.$album['title']." ".$index_musique, $id_groupe, $id_album, $id_genre, ""]);
                     }
                 }
             }
