@@ -33,10 +33,17 @@
         echo '<input type="submit" id="jouerGroupe" name="jouerGroupe" style="display: none;">';
         echo '<label for="jouerGroupe"  title="Ecouter le groupe"><i class="material-icons">play_arrow</i></label>';
         echo '</form>';
-        echo '<form id="addFavoriteGroupe" action="jouerGroupe.php?id_groupe='.$id_groupe.' method="post">';
-        echo '<input type="submit" id="favoriteGroupe" name="jouerGroupe" style="display: none;">';
-        echo '<label for="favoriteGroupe"  title="Ajouter aux favoris"><i class="material-icons" id="Fav">favorite_border</i></label>';
-        echo '</form>';
+        // if ($_SESSION  && isset($_SESSION['user']) && is_array($_SESSION) && $data->isFavorisAlbum($id_album, $_SESSION['user']['id_utilisateur']) ?? false){
+        //     echo '<form id="FavorisGroupe" action="supprimerFavorisGroupe.php?id='.$id_album.'" method="post">';
+        //     echo '<input type="submit" id="favAlbum" name="deleteFavoriteAlbum" style="display: none;">';
+        //     echo '<label for="favAlbum"  title="Supprimer des favoris"><i class="material-icons" id="UnFav">favorite</i></label>';
+        //     echo '</form>';
+        // } else {
+        //     echo '<form id="Favoris" action="ajouterFavorisAlbum.php?id='.$id_album.'" method="post">';
+        //     echo '<input type="submit" id="favAlbum" name="addFavoriteAlbum" style="display: none;">';
+        //     echo '<label for="favAlbum"  title="Ajouter aux favoris"><i class="material-icons" id="Fav">favorite_border</i></label>';
+        //     echo '</form>';
+        // }
         echo '</div>';
         ?>
     </div>
@@ -75,3 +82,4 @@
         </div>
     </div>
 </div>
+<div id="bottomPage" class="sections_accueil"></div>
