@@ -317,6 +317,7 @@ playButton.addEventListener('click', function () {
 
 player.addEventListener('mouseleave', function () {
     progressVolume.style.opacity = 0;
+    progressVolume.style.pointerEvents = 'none';
 });
 
 repeatButton.addEventListener('click', function () {
@@ -440,6 +441,7 @@ function changeVolume(volume){
 volumeButton.addEventListener('mouseenter', function() {
     progressVolume.style.transition = 'opacity 0.4s ease';
     progressVolume.style.opacity = 1;
+    progressVolume.style.pointerEvents = 'all';
 });
 
 volumeButton.addEventListener('click', function() {
