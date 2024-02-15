@@ -89,7 +89,7 @@
             $this->file_db->exec("CREATE TABLE IF NOT EXISTS MUSIQUE (
                 id_musique INTEGER PRIMARY KEY AUTOINCREMENT,
                 nom_musique TEXT,
-                duree TIME,
+                duree TEXT,
                 id_groupe INTEGER,
                 id_album INTEGER,
                 id_genre INTEGER,
@@ -393,6 +393,22 @@
             $note = $this->file_db->query('SELECT * from MUSIQUE_NOTE where id_musique='.$id_musique.' and id_utilisateur='.$id_utilisateur);
             return $note->fetch();
         }
+        public function getMusiquesByIdGroupe($id){
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural join GROUPE natural left join MUSIQUE_NOTE where id_groupe='.$id.' GROUP BY id_musique order by note desc LIMIT 2');
+            return $musiques->fetchAll();
+        }
+        public function getMusiquesByIdAlbum($id){
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural join GROUPE natural left join MUSIQUE_NOTE where id_album='.$id.' GROUP BY id_musique order by note desc LIMIT 2');
+            return $musiques->fetchAll();
+        }
+        public function getMusiquesByIdPlaylist($id){
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join PLAYLIST_MUSIQUE natural left join ALBUM natural join GROUPE natural join MUSiQUE_NOTE where id_playlist='.$id.' GROUP BY id_musique order by note desc LIMIT 2');
+            return $musiques->fetchAll();
+        }
+        public function getMusiquesByIdGenre($id){
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural join GROUPE natural left join MUSIQUE_NOTE where id_genre='.$id.' GROUP BY id_musique order by note desc LIMIT 2');
+            return $musiques->fetchAll();
+        }
         public function getNoteAlbum( $id_album, $id_utilisateur){
             $note = $this->file_db->query('SELECT * from ALBUM_NOTE where id_album='.$id_album.' and id_utilisateur='.$id_utilisateur);
             return $note->fetch();
@@ -630,22 +646,6 @@
             } else {
                 return false;
             }
-        }
-        public function getMusiquesByIdGroupe($id){
-            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural join GROUPE natural left join MUSIQUE_NOTE where id_groupe='.$id.' GROUP BY id_musique order by note desc LIMIT 2');
-            return $musiques->fetchAll();
-        }
-        public function getMusiquesByIdAlbum($id){
-            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural join GROUPE natural left join MUSIQUE_NOTE where id_album='.$id.' GROUP BY id_musique order by note desc LIMIT 2');
-            return $musiques->fetchAll();
-        }
-        public function getMusiquesByIdPlaylist($id){
-            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join PLAYLIST_MUSIQUE natural left join ALBUM natural join GROUPE natural join MUSiQUE_NOTE where id_playlist='.$id.' GROUP BY id_musique order by note desc LIMIT 2');
-            return $musiques->fetchAll();
-        }
-        public function getMusiquesByIdGenre($id){
-            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural join GROUPE natural left join MUSIQUE_NOTE where id_genre='.$id.' GROUP BY id_musique order by note desc LIMIT 2');
-            return $musiques->fetchAll();
         }
         public function creerAlbum($titre, $date_sortie, $id_groupe, $image){
             $insert="INSERT INTO ALBUM (titre, dateSortie, id_groupe, image_album) VALUES (:titre, :date_sortie, :id_groupe, :image)";

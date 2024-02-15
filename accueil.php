@@ -55,7 +55,12 @@
 </div>
 <div class="sections">
 <h2>Albums</h2>
-<a href="creerAlbum.php" id="Ajouter">Créer</a>
+
+<?php 
+if (isset($_SESSION['user']) && $_SESSION['user']['id_role'] == 2){
+   echo '<a href="creerAlbum.php" id="Ajouter">Créer</a>';
+}
+?>
 <div id="albums" class="sections_accueil">
     <?php 
     $albums = $data->getAlbumsTrieesParNote();
@@ -68,7 +73,11 @@
 </div>
 <div class="sections">
 <h2>Genres</h2>
-<a href="creerGenre.php" id="Ajouter">Créer</a>
+<?php 
+if (isset($_SESSION['user']) && $_SESSION['user']['id_role'] == 2){
+   echo '<a href="creerGenre.php" id="Ajouter">Créer</a>';
+}
+?>
 <div id="genres" class="sections_accueil">
     <?php 
     $genres = $data->getGenres();
@@ -81,7 +90,11 @@
 </div>
 <div class="sections">
 <h2>Groupes et Artistes</h2>
-<a href="creerGroupe.php" id="Ajouter">Créer</a>
+<?php 
+if (isset($_SESSION['user']) && $_SESSION['user']['id_role'] == 2){
+   echo '<a href="creerGroupe.php" id="Ajouter">Créer</a>';
+}
+?>
 <div id="groupes" class="sections_accueil">
     <?php 
     $groupes = $data->getGroupes();

@@ -35,6 +35,7 @@
         $render_musiques[] = [];
         $render_musiques[$i]['id_musique'] = $id_musique;
         $render_musiques[$i]['nom_musique'] = $nomMusique;
+        $render_musique[$i]['duree'] = $musiqueDetails['duree'];
         $render_musiques[$i]['cover'] = $cover;
         $render_musiques[$i]['nom_groupe'] = $nomGroupe;
         $render_musiques[$i]['nom_album'] = $nomAlbum;

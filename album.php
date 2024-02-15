@@ -47,7 +47,7 @@
             } else {
                 $dureeTotale = sprintf("%02dh %02dm %02ds", $heures, $minutes, $secondes);
             }
-            if($nbrMusiques == 1){
+            if($nbrMusiques <= 1){
                 echo $nbrMusiques." Titre • ".$dureeTotale . "</p>";
             } else {
                 echo $nbrMusiques." Titres • ".$dureeTotale . "</p>";
@@ -98,7 +98,7 @@
             <datalist id="musiques">
             <?php
             $musiques_accessible = $data->getMusiquesNonAlbum($id_album);
-            foreach ($all_musiques as $musique) {
+            foreach ($musiques_accessible as $musique) {
                 echo '<option value="'.$musique['nom_musique'].'">';
             }
             ?>
