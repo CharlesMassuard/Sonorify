@@ -20,18 +20,24 @@
 }
 
 #infosGroupe h1 {
-    margin-top: 0; /* Supprime la marge supérieure du titre */
+    margin-top: 0;
     margin-left: 0;
 }
 
 #inputGroupe{
     max-width: 156px;
     margin-top: 20px;
+    display: flex;
 }
 
 #inputGroupe .material-icons{
     color: white;
     font-size: 50px;
+    margin-right: 30px;
+}
+
+#Fav:hover{
+    color: #aa0000;
 }
 
 #sections_groupes {
