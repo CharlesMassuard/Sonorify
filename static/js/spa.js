@@ -1,5 +1,5 @@
 import { addToPlaylist, playPlaylist , clearPlaylist, lireUneMusique, setFirstTrack } from './player.js';
-const ids = ['Playlist', 'Accueil', 'Album', 'Genre', 'Groupe', 'ajout_note', 'Profil'];
+const ids = ['Playlist', 'Accueil', 'Album', 'Genre', 'Groupe', 'ajout_note', 'Profil','Ajouter'];
 
 const clickHandler = (event) => {
     event.preventDefault();
@@ -43,10 +43,68 @@ export function init() {
         form.removeEventListener('submit', favorisHandler);
         form.addEventListener('submit', favorisHandler);
     });
+  
+    document.querySelectorAll('#ajouterMusiquePlaylist').forEach(form => {
+        form.removeEventListener('submit', ajouterHandler);
+        form.addEventListener('submit', ajouterHandler);
+    } );
 
+    document.querySelectorAll('#Supprimer').forEach(form => {
+        form.removeEventListener('submit', supprimerHandler);
+        form.addEventListener('submit', supprimerHandler);
+    } );
+  
     document.querySelectorAll('#changeTrack').forEach(element => {
         element.removeEventListener('click', changeTrackHandler);
         element.addEventListener('click', changeTrackHandler);
+    });
+}
+
+const ajouterHandler = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    let action = event.target.action;
+    let formData = new FormData(event.target);
+    fetch(action, {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+        if (data) {
+            document.querySelector('main').innerHTML = data;
+        let searchResult = document.querySelector("#search_result");
+        searchResult.innerHTML = '';
+        init()
+        return loadScripts(['playlist.js']); 
+        }
+    })
+    .catch(error => {
+        console.log(error);
+    });
+}
+
+const supprimerHandler = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    let action = event.target.action;
+    let formData = new FormData(event.target);
+    fetch(action, {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+        if (data) {
+            document.querySelector('main').innerHTML = data;
+        let searchResult = document.querySelector("#search_result");
+        searchResult.innerHTML = '';
+        init()
+        return loadScripts(['playlist.js']); 
+        }
+    })
+    .catch(error => {
+        console.log(error);
     });
 }
 
@@ -261,7 +319,6 @@ const favorisHandler = (event) => {
         console.log(error);
     });
 }
-
 window.addEventListener('DOMContentLoaded', init);
 
 window.addEventListener('keydown', (event) => {
