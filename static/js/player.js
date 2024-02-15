@@ -222,6 +222,7 @@ if (searchBar !== null) {
     });
 }
 
+
 // METTRE EN PAUSE AVEC SPACE BAR
 document.addEventListener('keydown', function (event) {
     if (event.code === 'Space' && !isUserTyping) {
