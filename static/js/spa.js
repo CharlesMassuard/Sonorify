@@ -43,6 +43,64 @@ function init() {
         form.removeEventListener('submit', favorisHandler);
         form.addEventListener('submit', favorisHandler);
     });
+
+    document.querySelectorAll('#ajouterMusiquePlaylist').forEach(form => {
+        form.removeEventListener('submit', ajouterHandler);
+        form.addEventListener('submit', ajouterHandler);
+    } );
+
+    document.querySelectorAll('#Supprimer').forEach(form => {
+        form.removeEventListener('submit', supprimerHandler);
+        form.addEventListener('submit', supprimerHandler);
+    } );
+}
+
+const ajouterHandler = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    let action = event.target.action;
+    let formData = new FormData(event.target);
+    fetch(action, {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+        if (data) {
+            document.querySelector('main').innerHTML = data;
+        let searchResult = document.querySelector("#search_result");
+        searchResult.innerHTML = '';
+        init()
+        return loadScripts(['playlist.js']); 
+        }
+    })
+    .catch(error => {
+        console.log(error);
+    });
+}
+
+const supprimerHandler = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    let action = event.target.action;
+    let formData = new FormData(event.target);
+    fetch(action, {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+        if (data) {
+            document.querySelector('main').innerHTML = data;
+        let searchResult = document.querySelector("#search_result");
+        searchResult.innerHTML = '';
+        init()
+        return loadScripts(['playlist.js']); 
+        }
+    })
+    .catch(error => {
+        console.log(error);
+    });
 }
 
 const playMusicHandler = (event) => {

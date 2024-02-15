@@ -82,7 +82,18 @@
             </div>
             <div id="musiquesPlaylist">
                 <?php
-
+                if (isset($_SESSION['user']) && $playlist['id_auteur'] == $_SESSION['user']['id_utilisateur']){
+                    echo '<form id="ajouterMusiquePlaylist" action="ajouterMusiquePlaylist.php?id='.$id_playlist.'" method="post">';
+                    echo '<input type="text" id="nomMusiquePlaylist" name="nom_musique" list="musiques" placeholder="Ajouter une musique à la playlist">';
+                    echo '<datalist id="musiques">';
+                    foreach ($data->getMusiques() as $musique) {
+                        echo '<option value="'.$musique['nom_musique'].'">';
+                    }
+                    echo '</datalist>';
+                    echo '<input type="submit" id="addmusique" name="addmusique" style="display: none;">';
+                    echo '<label for="addmusique"  title="Ajouter une musique à la playlist"><i class="material-icons">add</i></label>';
+                    echo '</form>';
+                }
                 foreach ($musiques as $musique) {
                     echo '<div id="musique">';
                     $album = $data->getAlbumByMusique($musique['id_musique']);
@@ -90,7 +101,7 @@
                     echo '<a href= "jouerPlaylist.php?id_playlist='.$id_playlist.'&aleatoire=false&musiqueStart='.$musique["id_musique"].'" id="PlayPlaylistMusique">';
                     echo '<h2>'.$musique['nom_musique'].'</h2>';
                     echo '</a>';
-                    echo '<a href="groupe.php?id='.$musique['id_groupe'].'">'.$data->getGroupe($musique['id_groupe'])['nom_groupe'].'</a>';
+                    echo '<a id="Groupe" href="groupe.php?id='.$musique['id_groupe'].'">'.$data->getGroupe($musique['id_groupe'])['nom_groupe'].'</a>';
                     echo '<div id="note">';
                     for ($i=0; $i < 5; $i++) { 
                         echo '<a id="ajout_note" href="ajouterNoteMusique.php?id='.$musique['id_musique'].'&note='.($i+1).'">';
@@ -116,7 +127,7 @@
                         echo '</form>';
                     }
                     if ($_SESSION  && isset($_SESSION['user']) && $playlist['id_auteur'] == $_SESSION['user']['id_utilisateur']){
-                        echo '<form action="supprimerMusiquePlaylist.php?id_musique='.$musique['id_musique'].'&id_playlist='.$id_playlist.'" method="post">';
+                        echo '<form id="Supprimer" action="supprimerMusiquePlaylist.php?id_musique='.$musique['id_musique'].'&id_playlist='.$id_playlist.'" method="post">';
                         echo '<input type="submit" id="deleteMusiquePlaylist" name="deleteMusiquePlaylist" style="display: none;">';
                         echo '<label for="deleteMusiquePlaylist"  title="Supprimer de la playlist" onclick="return confirm(\'Êtes-vous sûr de vouloir supprimer cette musique de la playlist ?\')"><i class="material-icons">delete</i></label>';
                         echo '</form>';
