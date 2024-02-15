@@ -6,7 +6,13 @@
 </head>
 <body>
     <section id="detailsSection">
-        <img id="bigCover" src="./ressources/images/TerryAllen_Juarez.jpg" alt="cover">
+        <div id="coverBigPlayer">
+            <img id="bigCover" src="" alt="cover">
+        </div>
+        <div id="aSuivre">
+            <h2 id="listeLectureTitre">Liste de lecture</h2>
+            <ul id="musiquesASuivre">     
+            </ul>
     </section>
 </body>
 </html>

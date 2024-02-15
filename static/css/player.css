@@ -25,10 +25,10 @@
 #circle_progress {
     position: absolute;
     left: 0;
-    top: 3%;
+    top: 2.7%;
     transform: translateY(-50%);
-    width: 10px;
-    height: 10px;
+    width: 11px;
+    height: 11px;
     border-radius: 50%;
     background: rgb(14, 108, 118);
 }
@@ -123,6 +123,7 @@
 
 #progressVolume{
     opacity: 0;
+    pointer-events: none;
 }
 
 .controls2 > button {
@@ -134,6 +135,17 @@
     cursor: pointer;
     opacity: 0.5;
 }
+
+.controls2 > a > i{
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 30px;
+    margin: 0 10px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    opacity: 0.5;
+} 
 
 .controls2 i {
     font-size: 30px; /* Augmenter la taille de l'icône */
@@ -308,6 +320,7 @@
     border: none;
     cursor: pointer;
 }
+
 
 
 @media (max-width: 950px) { /* Change la disposition lorsque l'écran est de 600px ou moins */

@@ -19,6 +19,7 @@
         $id_musique = $musiques[$i]['id_musique'];
         $musiqueDetails = $data->getMusique($id_musique);
         $nomMusique = $musiqueDetails['nom_musique'];
+        $duree = $musiqueDetails['duree'];
         $album = $data->getAlbumByMusique($id_musique);
         $nomAlbum = $album['titre'];
         $cover = $album['image_album'];
@@ -35,6 +36,7 @@
         // echo "</script>";
         $render_musiques[] = [];
         $render_musiques[$i]['id_musique'] = $id_musique;
+        $render_musique[$i]['duree'] = $duree;
         $render_musiques[$i]['nom_musique'] = $nomMusique;
         $render_musiques[$i]['cover'] = $cover;
         $render_musiques[$i]['nom_groupe'] = $nomGroupe;

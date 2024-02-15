@@ -26,7 +26,7 @@ main {
     padding: 10px;
     margin: 10px;
     flex-wrap: wrap;
-    margin-bottom: 60px;
+    /* margin-bottom: 20px; */
     overflow-x: hidden;
     white-space: nowrap;
 }
@@ -90,6 +90,18 @@ h3 {
     flex-direction: column;
 }
 
+#context-menu {
+    background: #2c2c2c;
+    padding: 10px;
+    z-index: 50;
+    top: 0;
+    left: 0;
+}
+
+#optionsAccueil{
+    list-style: none;
+}
+
 
 @media screen and (max-width: 800px){
     .a_accueil{
@@ -111,4 +123,18 @@ h3 {
         font-size: 15px;
     }
     
+}
+.sections{
+    display: flex;
+    flex-wrap: wrap;
+}
+.sections h2{
+    flex-basis: 80%;
+    flex-grow: 1;
+}
+.sections a{
+    flex-basis: 10%;
+}
+.sections div{
+    flex-basis: 100%;
 }
