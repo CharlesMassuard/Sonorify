@@ -54,7 +54,7 @@
     <div id="albumsGroupe">
         <div id="titleMusiquesGroupe">
             <h1>Albums</h1>
-            <button id="voirPlus" title="Voir toutes les musiques">Voir plus</button>
+            <button id="voirPlus" title="Voir tous les albums">Voir plus</button>
         </div>
         <div id="listeMusiquesGroupe">
             <?php
