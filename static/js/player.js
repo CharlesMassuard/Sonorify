@@ -24,8 +24,8 @@ var aleatoireButton = document.getElementById('shuffleButton');
 var progressVolume = document.getElementById('progressVolume');
 var sliderVolume = document.getElementById('volumeSlider');
 var arrowUp = document.getElementById('arrowUp');
-var visualizerButton = document.getElementById("audioVisualizer");
-var plusDetails = document.getElementById('moreMusic');
+// var visualizerButton = document.getElementById("audioVisualizer");
+// var plusDetails = document.getElementById('moreMusic');
 var optionsMusic = document.getElementById('optionsMusic');
 var addMusiquePlaylist = document.getElementById('playlistButton');
 var dialogPlaylist = document.getElementById('dialogPlaylist');
@@ -500,18 +500,18 @@ nextButton.addEventListener('click', function () {
     playPlaylist();
 });
 
-moreMusic.addEventListener('click', function (event) {
-    optionsMusic.style.display = 'flex';
-    event.stopPropagation(); // Prevent this click from triggering the document click event below
-});
+// moreMusic.addEventListener('click', function (event) {
+//     optionsMusic.style.display = 'flex';
+//     event.stopPropagation(); // Prevent this click from triggering the document click event below
+// });
 
-document.addEventListener('click', function () {
-    optionsMusic.style.display = 'none';
-});
+// document.addEventListener('click', function () {
+//     optionsMusic.style.display = 'none';
+// });
 
-addMusiquePlaylist.addEventListener('click', function () {
-    dialogPlaylist.style.display = 'block';
-});
+// addMusiquePlaylist.addEventListener('click', function () {
+//     dialogPlaylist.style.display = 'block';
+// });
 
 // Créez une nouvelle balise de style
 var style = document.createElement('style');
