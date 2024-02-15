@@ -397,6 +397,10 @@
             $note = $this->file_db->query('SELECT * from ALBUM_NOTE where id_album='.$id_album.' and id_utilisateur='.$id_utilisateur);
             return $note->fetch();
         }
+        public function getNotePlaylist( $id_playlist, $id_utilisateur){
+            $note = $this->file_db->query('SELECT * from PLAYLIST_NOTE where id_playlist='.$id_playlist.' and id_utilisateur='.$id_utilisateur);
+            return $note->fetch();
+        }
         public function getNoteMoyenneMusique($id_musique){
             $note = $this->file_db->query('SELECT AVG(note) moyenne_note from MUSIQUE_NOTE where id_musique='.$id_musique.' group by id_musique');
             return $note->fetch();
@@ -618,7 +622,14 @@
             } else {
                 return false;
             }
-
+        }
+        public function isPlaylistNotee($id_playlist, $id_utilisateur){
+            $favoris = $this->file_db->query('SELECT * from PLAYLIST_NOTE where id_playlist='.$id_playlist.' and id_utilisateur='.$id_utilisateur);
+            if ($favoris->fetch()){
+                return true;
+            } else {
+                return false;
+            }
         }
         public function getMusiquesByIdGroupe($id){
             $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural join GROUPE natural left join MUSIQUE_NOTE where id_groupe='.$id.' GROUP BY id_musique order by note desc LIMIT 2');

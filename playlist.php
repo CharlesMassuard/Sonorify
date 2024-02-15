@@ -47,8 +47,18 @@
                             echo $nbrMusiques." Titres • ".$dureeTotale . "</p>";
                         }
                         echo '<div id="note">';
+                        if (isset($_SESSION['user']) && $data->isPlaylistNotee($playlist['id_playlist'], $_SESSION['user']['id_utilisateur']) ?? false){
+                            $note = $data->getNotePlaylist($playlist['id_playlist'], $_SESSION['user']['id_utilisateur'])['note'];
+                        } else {
+                            $note = 0;
+                        }
                         for ($i=0; $i < 5; $i++) { 
-                            echo '<a id="ajout_note" href="ajouterNotePlaylist.php?id='.$playlist['id_playlist'].'&note='.($i+1).'">';
+                            
+                            if ($i<$note){
+                                echo '<a id="ajout_note" href="ajouterNotePlaylist.php?id='.$playlist['id_playlist'].'&note='.($i+1).'" class="active">';
+                            } else {
+                                echo '<a id="ajout_note" href="ajouterNotePlaylist.php?id='.$playlist['id_playlist'].'&note='.($i+1).'">';
+                            }
                             echo '<i class="material-icons">star</i>';
                             echo '</a>';
                         }
@@ -71,7 +81,7 @@
                         } else {
                             echo '<form id="Favoris" action="ajouterFavorisPlaylist.php?id='.$id_playlist.'" method="post">';
                             echo '<input type="submit" id="favAlbum" name="addFavoriteAlbum" style="display: none;">';
-                            echo '<label for="favAlbum"  title="Ajouter aux favoris"><i class="material-icons" id="Fav">favorite</i></label>';
+                            echo '<label for="favAlbum"  title="Ajouter aux favoris"><i class="material-icons" id="Fav">favorite_border</i></label>';
                             echo '</form>';
                         }
                         echo '</div>';
@@ -103,8 +113,18 @@
                     echo '</a>';
                     echo '<a id="Groupe" href="groupe.php?id='.$musique['id_groupe'].'">'.$data->getGroupe($musique['id_groupe'])['nom_groupe'].'</a>';
                     echo '<div id="note">';
+
+                    if (isset($_SESSION['user']) && $data->isMusiqueNotee($musique['id_musique'], $_SESSION['user']['id_utilisateur']) ?? false){
+                        $note = $data->getNoteMusique($musique['id_musique'], $_SESSION['user']['id_utilisateur'])['note'];
+                    } else {
+                        $note = 0;
+                    }
                     for ($i=0; $i < 5; $i++) { 
-                        echo '<a id="ajout_note" href="ajouterNoteMusique.php?id='.$musique['id_musique'].'&note='.($i+1).'">';
+                        if ($i<$note){
+                            echo '<a id="ajout_note" href="ajouterNoteMusique.php?id='.$musique['id_musique'].'&note='.($i+1).'" class="active">'; 
+                        } else {
+                            echo '<a id="ajout_note" href="ajouterNoteMusique.php?id='.$musique['id_musique'].'&note='.($i+1).'">';
+                        }
                         echo '<i class="material-icons">star</i>';
                         echo '</a>';
                     }
@@ -123,7 +143,7 @@
                         } else {
                         echo '<form id="Favoris" action="ajouterFavorisMusique.php?id='.$musique['id_musique'].'" method="post">';
                         echo '<input type="submit" id="favMusique'.$musique['id_musique'].'" name="addFavoriteMusique" style="display: none;">';
-                        echo '<label for="favMusique'.$musique['id_musique'].'"  title="Ajouter aux favoris"><i class="material-icons" id="Fav">favorite</i></label>';
+                        echo '<label for="favMusique'.$musique['id_musique'].'"  title="Ajouter aux favoris"><i class="material-icons" id="Fav">favorite_border</i></label>';
                         echo '</form>';
                     }
                     if ($_SESSION  && isset($_SESSION['user']) && $playlist['id_auteur'] == $_SESSION['user']['id_utilisateur']){

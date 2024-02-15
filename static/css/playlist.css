@@ -120,6 +120,7 @@
 #ajout_note.hover,
 #ajout_note.active{
     color: gold;
+    opacity: 0.9;
 }
 
 #imgMusiqueAlbum{
@@ -143,7 +144,6 @@ input:hover {
 
 label {
     cursor: pointer;
-    margin-top: 15px;
 }
 
 label i.material-icons {
