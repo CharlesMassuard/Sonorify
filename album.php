@@ -25,10 +25,10 @@
             $somme = 0;
             foreach ($musiques as $musique) {
                 // Divisez la durée en minutes et secondes
-                list($minutes, $secondes) = explode(':', $musique['duree']);
+                list($minutes, $secondes) = explode(':', $musique['duree']??"00:00");
                 
                 // Convertissez la durée en secondes et ajoutez-la à $somme
-                $somme += $minutes * 60 + $secondes;
+                $somme += (int)$minutes * 60 + (int)$secondes;
             }
             
             // Convertissez $somme en un format de temps approprié
@@ -144,7 +144,11 @@
                 echo '<label for="favMusique'.$musique['id_musique'].'"  title="Ajouter aux favoris"><i class="material-icons" id="Fav">favorite</i></label>';
                 echo '</form>';
             }
-            echo '<p>'.$musique['duree'].'</p>';
+            if($musique['duree'] == ""){
+                echo '<p> 0:00 </p>';
+            } else {
+                echo '<p>'.$musique['duree'].'</p>';
+            }
             echo '</div>';
         }
         ?>
