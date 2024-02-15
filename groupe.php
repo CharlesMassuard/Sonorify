@@ -8,8 +8,10 @@
     require 'Classes/Autoloader.php';
     Autoloader::register();
     $groupe = $data->getGroupeById($id_groupe);
+    $nbMusiques = count($data->getMusiquesByGroupe($id_groupe));
     $musiques = $data->getMusiquesAleatoireByGroupe($id_groupe);
     $musiques = Factory::createMusiques($musiques);
+    $nbAlbums = count($data->getAlbumsByGroupe($id_groupe));
     $albums = $data->getAlbumsAleatoireByGroupe($id_groupe);
     $albums = Factory::createAlbums($albums);
     $artistes = $data->getArtistesByGroupe($id_groupe);
@@ -40,7 +42,9 @@
     <div id="musiquesGroupe">
         <div id="titleMusiquesGroupe">
             <h1>Musiques</h1>
-            <button id="voirPlus" title="Voir toutes les musiques">Voir plus</button>
+            <?php if($nbMusiques > 12) { ?>
+                <button id="voirPlus" title="Voir toutes les musiques">Voir plus</button>
+            <?php } ?>
         </div>
         <div id="listeMusiquesGroupe">
             <?php
@@ -54,7 +58,9 @@
     <div id="albumsGroupe">
         <div id="titleMusiquesGroupe">
             <h1>Albums</h1>
-            <button id="voirPlus" title="Voir tous les albums">Voir plus</button>
+            <?php if($nbAlbums > 12) { ?>
+                <button id="voirPlus" title="Voir tous les albums">Voir plus</button>
+            <?php } ?>
         </div>
         <div id="listeMusiquesGroupe">
             <?php
