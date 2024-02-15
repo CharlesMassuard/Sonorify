@@ -75,7 +75,7 @@
 }
 
 #oneMusicListeLecture:not(.musicEnLecture):hover {
-    background-color: rgba(56, 56, 56, 0.2);
+    background-color: rgba(56, 56, 56, 0.5);
 }
 
 #oneMusicListeLecture:last-child {
