@@ -417,6 +417,14 @@ function showDetailsSection() {
     setTimeout(function () {
         detailsSection.style.transform = 'translateY(-100%)'; // Faire monter la section
     }, 10); // Ajouter un petit délai pour assurer que la transition est appliquée correctement
+    let elementEnLecture = document.querySelector('.musicEnLecture');
+    if(elementEnLecture !== null) {
+        // Obtenez la position de l'élément en cours de lecture par rapport à la fenêtre
+        let rect = elementEnLecture.getBoundingClientRect();
+        if(rect.bottom >= window.innerHeight / 2) {
+            elementEnLecture.scrollIntoView({ behavior: 'smooth'});
+        }
+    }
 }
 
 // Fonction pour masquer la section
