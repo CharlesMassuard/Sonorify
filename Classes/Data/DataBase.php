@@ -338,7 +338,7 @@
             }
         }
         public function getPlaylistsTrieesParNote(){
-            $playlists = $this->file_db->query('SELECT * from PLAYLIST natural join PLAYLIST_MUSIQUE natural join MUSIQUE natural join ALBUM natural left join PLAYLIST_NOTE where public=1 group by id_playlist order by avg(note) desc');
+            $playlists = $this->file_db->query('SELECT * from PLAYLIST natural left join PLAYLIST_MUSIQUE natural left join MUSIQUE natural left join ALBUM natural left join PLAYLIST_NOTE where public=1 group by id_playlist order by avg(note) desc');
             return $playlists->fetchAll();
         }
         public function getAlbumsTrieesParNote(){

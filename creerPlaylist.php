@@ -10,7 +10,12 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $nom_playlist = $_POST['nom_playlist'];
         $description = $_POST['description'];
-        $public = $_POST['public'] ?? 0;
+        $public = $_POST['public'];
+        if ($public == "on"){
+            $public = 1;
+        } else {
+            $public = 0;
+        }
         $user = $_SESSION['user'];
         require_once 'Classes/Data/DataBase.php'; 
         $db = new Data\Database();
