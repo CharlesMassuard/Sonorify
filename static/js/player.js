@@ -95,16 +95,6 @@ export function addToListeLecture(id_musique, nom, cover, nomGroupe, nomAlbum, u
                                             "<img src='../../ressources/images/sound.gif' alt='wave' id='wave'>" +
                                         "</div>" +
                                     "</a></li>";
-        // Sélectionnez l'élément en cours de lecture
-        let elementEnLecture = document.querySelector('.musicEnLecture');
-
-        if(elementEnLecture !== null) {
-            // Obtenez la position de l'élément en cours de lecture par rapport à la fenêtre
-            let rect = elementEnLecture.getBoundingClientRect();
-            if(rect.bottom >= window.innerHeight / 2) {
-                elementEnLecture.scrollIntoView({ behavior: 'smooth'});
-            }
-        }
     } else {
         musiquesASuivre.innerHTML += "<li id='oneMusicListeLecture'>"+
                                     "<a href='jouerIndex.php?id="+id_musique+"&index="+index+"' id=changeTrack>"+
@@ -174,7 +164,17 @@ export function playPlaylist() {
             if(taillePlaylist > 1) {
                 nbrMusiquesListeLecture.textContent = taillePlaylist + " titres";
             }
-            inLecture = playlistDetails[currentTrackIndex][4];
+            // Sélectionnez l'élément en cours de lecture
+            let elementEnLecture = document.querySelector('.musicEnLecture');
+
+            if(elementEnLecture !== null) {
+                // Obtenez la position de l'élément en cours de lecture par rapport à la fenêtre
+                let rect = elementEnLecture.getBoundingClientRect();
+                if(rect.bottom >= window.innerHeight / 2) {
+                    elementEnLecture.scrollIntoView({ behavior: 'smooth'});
+                }
+            }
+                inLecture = playlistDetails[currentTrackIndex][4];
             cover.src = "../../ressources/images/"+playlistDetails[currentTrackIndex][1];
             bigCover.src = "../../ressources/images/"+playlistDetails[currentTrackIndex][1];
             artiste.textContent = playlistDetails[currentTrackIndex][2];
