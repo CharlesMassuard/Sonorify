@@ -53,9 +53,9 @@
     <div id="musiquesGroupe">
         <div id="titleMusiquesGroupe">
             <h1>Musiques</h1>
-            <?php if($nbMusiques > 12) { ?>
-                <button id="voirPlus" title="Voir toutes les musiques">Voir plus</button>
-            <?php } ?>
+            <?php if($nbMusiques > 12) {
+                echo '<a href="album.php?id='.$id_groupe.'" id="voirPlus">Voir plus</a>';
+            } ?>
         </div>
         <div id="listeMusiquesGroupe">
             <?php
@@ -69,9 +69,9 @@
     <div id="albumsGroupe">
         <div id="titleMusiquesGroupe">
             <h1>Albums</h1>
-            <?php if($nbAlbums > 12) { ?>
-                <button id="voirPlus" title="Voir tous les albums">Voir plus</button>
-            <?php } ?>
+            <?php if($nbAlbums > 12) {
+                echo '<a href="album.php?id='.$id_groupe.'" id="voirPlus">Voir plus</a>';
+            } ?>
         </div>
         <div id="listeMusiquesGroupe">
             <?php
