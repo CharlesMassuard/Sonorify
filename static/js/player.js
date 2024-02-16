@@ -13,6 +13,7 @@ var progressBar = document.getElementById('progressBar');
 var progress = document.getElementById('progress');
 var header = document.getElementById('trueHeader');
 
+var nbrMusiquesListeLecture = document.getElementById('nbrMusiquesListeLecture');
 var player = document.getElementById('customPlayer');
 var detailsSection = document.getElementById('detailsSection');
 var playButton = document.getElementById('playButton');
@@ -94,16 +95,6 @@ export function addToListeLecture(id_musique, nom, cover, nomGroupe, nomAlbum, u
                                             "<img src='../../ressources/images/sound.gif' alt='wave' id='wave'>" +
                                         "</div>" +
                                     "</a></li>";
-        // Sélectionnez l'élément en cours de lecture
-        let elementEnLecture = document.querySelector('.musicEnLecture');
-
-        if(elementEnLecture !== null) {
-            // Obtenez la position de l'élément en cours de lecture par rapport à la fenêtre
-            let rect = elementEnLecture.getBoundingClientRect();
-            if(rect.bottom >= window.innerHeight / 2) {
-                elementEnLecture.scrollIntoView({ behavior: 'smooth'});
-            }
-        }
     } else {
         musiquesASuivre.innerHTML += "<li id='oneMusicListeLecture'>"+
                                     "<a href='jouerIndex.php?id="+id_musique+"&index="+index+"' id=changeTrack>"+
@@ -169,8 +160,23 @@ export function playPlaylist() {
             });
             titlePage.textContent = playlistDetails[currentTrackIndex][0] + " - " + playlistDetails[currentTrackIndex][2];
             title.textContent = playlistDetails[currentTrackIndex][0];
-            
-            inLecture = playlistDetails[currentTrackIndex][4];
+            let taillePlaylist = playlistDetails.length;
+            if(taillePlaylist > 1) {
+                nbrMusiquesListeLecture.textContent = taillePlaylist + " titres";
+            } else {
+                nbrMusiquesListeLecture.textContent = "";
+            }
+            // Sélectionnez l'élément en cours de lecture
+            let elementEnLecture = document.querySelector('.musicEnLecture');
+
+            if(elementEnLecture !== null) {
+                // Obtenez la position de l'élément en cours de lecture par rapport à la fenêtre
+                let rect = elementEnLecture.getBoundingClientRect();
+                if(rect.bottom >= window.innerHeight / 2) {
+                    elementEnLecture.scrollIntoView({ behavior: 'smooth'});
+                }
+            }
+                inLecture = playlistDetails[currentTrackIndex][4];
             cover.src = "../../ressources/images/"+playlistDetails[currentTrackIndex][1];
             bigCover.src = "../../ressources/images/"+playlistDetails[currentTrackIndex][1];
             artiste.textContent = playlistDetails[currentTrackIndex][2];
@@ -221,6 +227,7 @@ if (searchBar !== null) {
         isUserTyping = false;
     });
 }
+
 
 // METTRE EN PAUSE AVEC SPACE BAR
 document.addEventListener('keydown', function (event) {
@@ -416,6 +423,14 @@ function showDetailsSection() {
     setTimeout(function () {
         detailsSection.style.transform = 'translateY(-100%)'; // Faire monter la section
     }, 10); // Ajouter un petit délai pour assurer que la transition est appliquée correctement
+    let elementEnLecture = document.querySelector('.musicEnLecture');
+    if(elementEnLecture !== null) {
+        // Obtenez la position de l'élément en cours de lecture par rapport à la fenêtre
+        let rect = elementEnLecture.getBoundingClientRect();
+        if(rect.bottom >= window.innerHeight / 2) {
+            elementEnLecture.scrollIntoView({ behavior: 'smooth'});
+        }
+    }
 }
 
 // Fonction pour masquer la section
