@@ -225,7 +225,7 @@
             return $this->file_db->query('SELECT * from ALBUM_ARTISTE where id_artiste='.$id);
         } 
         public function getMusiquesByGroupe($id){
-            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural join GROUPE where id_groupe='.$id);
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural join GROUPE natural left join MUSIQUE_NOTE where id_groupe='.$id.' GROUP BY id_musique order by note desc');
             return $musiques->fetchAll();
         }
         public function getMusiquesAleatoireByGroupe($id){
