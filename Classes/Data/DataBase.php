@@ -17,7 +17,7 @@
         
             if ($isNewDb) {
                 $this->createTable();
-                $this->executeSqlFile(__DIR__ . '/insert_php.sql');
+                //$this->executeSqlFile(__DIR__ . '/insert_php.sql');
                 $Provider = new Provider('./ressources/extrait.yml');
                 $data = $Provider->getData();
                 $this->insertDataProvider($data);
@@ -744,10 +744,11 @@
             
                         // Insert into MUSIQUE table
                         $stmt = $this->file_db->prepare('INSERT INTO MUSIQUE (nom_musique, id_groupe, id_album, id_genre, url_musique) VALUES (?, ?, ?, ?, ?)');
-                        $stmt->execute(['Musique de '.$album['title']." ".$index_musique, $id_groupe, $id_album, $id_genre, ""]);
+                        $stmt->execute(['Musique de '.$album['by']." ".$index_musique, $id_groupe, $id_album, $id_genre, ""]);
                     }
                 }
             }
+        }
     }
 
     $db = new DataBase();
