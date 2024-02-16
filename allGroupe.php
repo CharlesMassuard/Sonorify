@@ -29,3 +29,4 @@
         }
     ?>
 </div>
+<div id="bottomPage" class="sections_accueil"></div>
