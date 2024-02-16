@@ -163,6 +163,8 @@ export function playPlaylist() {
             let taillePlaylist = playlistDetails.length;
             if(taillePlaylist > 1) {
                 nbrMusiquesListeLecture.textContent = taillePlaylist + " titres";
+            } else {
+                nbrMusiquesListeLecture.textContent = "";
             }
             // Sélectionnez l'élément en cours de lecture
             let elementEnLecture = document.querySelector('.musicEnLecture');
