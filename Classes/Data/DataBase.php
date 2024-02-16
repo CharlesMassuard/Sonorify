@@ -1,5 +1,11 @@
 <?php 
     namespace Data;
+
+    require_once __DIR__ . '/../Autoloader.php';
+    \Autoloader::register();
+    
+    use Data\Provider;
+
     class DataBase{
         private $file_db;
         public function __construct(){
@@ -12,6 +18,9 @@
             if ($isNewDb) {
                 $this->createTable();
                 $this->executeSqlFile(__DIR__ . '/insert_php.sql');
+                $Provider = new Provider('./ressources/extrait.yml');
+                $data = $Provider->getData();
+                $this->insertDataProvider($data);
             }
         }
         private function createTable(){
@@ -692,6 +701,53 @@
             $stmt->bindParam(':url',$url);
             $stmt->execute();
         }
+        
+        public function insertDataProvider($data){
+            foreach ($data as $album) {
+                $index_musique = 0;
+
+                // Insert into GROUPE table
+                $stmt = $this->file_db->prepare('INSERT INTO GROUPE (nom_groupe, image_groupe, description_groupe) VALUES (?, ?, ?)');
+                $stmt->execute([$album['by'], $album['img']??"", $album['description']??""]);
+        
+                // Get the id of the group we just inserted
+                $id_groupe = $this->file_db->lastInsertId();
+
+                // Insert into ARTISTE table
+                $stmt = $this->file_db->prepare('INSERT INTO ARTISTE (pseudo_artiste, image_artiste) VALUES (?, ?)');
+                $stmt->execute([$album['by'], $album['img']??""]);
+
+                // Get the id of the artist we just inserted
+                $id_artiste = $this->file_db->lastInsertId();
+
+                // Insert into GROUPE_ARTISTE table
+                $stmt = $this->file_db->prepare('INSERT INTO GROUPE_ARTISTE (id_groupe, id_artiste) VALUES (?, ?)');
+                $stmt->execute([$id_groupe, $id_artiste]);
+                
+                // Insert into ALBUM table
+                $this->creerAlbum($album['title'], $album['releaseYear'], $id_groupe, $album['img']);
+        
+                // Get the id of the album we just inserted
+                $id_album = $this->file_db->lastInsertId();
+        
+                // Insert into GENRE table
+                foreach ($album['genre'] as $genre) {
+                    if($genre != null){
+                        $genre[0] = strtoupper($genre[0]);
+                        $index_musique += 1;
+
+                        $stmt = $this->file_db->prepare('INSERT OR IGNORE INTO GENRE (nom_genre) VALUES (?)');
+                        $stmt->execute([$genre]);
+            
+                        // Get the id of the genre we just inserted
+                        $id_genre = $this->file_db->lastInsertId();
+            
+                        // Insert into MUSIQUE table
+                        $stmt = $this->file_db->prepare('INSERT INTO MUSIQUE (nom_musique, id_groupe, id_album, id_genre, url_musique) VALUES (?, ?, ?, ?, ?)');
+                        $stmt->execute(['Musique de '.$album['title']." ".$index_musique, $id_groupe, $id_album, $id_genre, ""]);
+                    }
+                }
+            }
     }
 
     $db = new DataBase();
