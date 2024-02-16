@@ -6,7 +6,7 @@
 - MASSUARD Charles
 - HAUDEBOURG Baptiste
   
-## À propos
+## À propos
 
 Cette application web offre un service de joueur de musique en ligne.  
 Vous pouvez écoutez vos albums et musiques préférés ou même faire vos propre playlist. Laissez vous tenter par les meilleurs notés dans l'accueil afin de découvrir de nouveaux talents!  
