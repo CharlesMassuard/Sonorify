@@ -748,6 +748,7 @@
                     }
                 }
             }
+        }
     }
 
     $db = new DataBase();
