@@ -5,7 +5,7 @@
 - LUDMANN Dorian
 - MASSUARD Charles
 - HAUDEBOURG Baptiste
-
+  
 ## À propos
 
 Cette application web offre un service de joueur de musique en ligne.  
