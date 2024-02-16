@@ -11,6 +11,7 @@
         </div>
         <div id="aSuivre">
             <h2 id="listeLectureTitre">Liste de lecture</h2>
+            <p id="nbrMusiquesListeLecture"></p>
             <ul id="musiquesASuivre">     
             </ul>
     </section>

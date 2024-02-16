@@ -1,0 +1,32 @@
+#elementsGroupe{
+    margin-left: 80px;
+}
+
+#retourArriere{
+    position: relative;
+    background-color: rgb(0, 0, 0);
+    border: 1px solid white;
+    border-radius: 15px;
+    height: 40px;
+    color: white;
+    font-size: 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    width: 10%;
+    white-space: nowrap;
+    margin-top: 31px;
+    text-align: center;
+    line-height: 0px;
+    margin-left: 30px;
+}
+
+#retourArriere:hover{
+    opacity: 0.5;
+}
+
+#retourTop {
+    position: fixed; /* Fixed/sticky position */
+    bottom: 20px; /* Place the button at the bottom of the page */
+    right: 30px; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+}

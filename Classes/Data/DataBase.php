@@ -225,11 +225,19 @@
             return $this->file_db->query('SELECT * from ALBUM_ARTISTE where id_artiste='.$id);
         } 
         public function getMusiquesByGroupe($id){
-            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural join GROUPE where id_groupe='.$id);
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural join GROUPE natural left join MUSIQUE_NOTE where id_groupe='.$id.' GROUP BY id_musique order by note desc');
+            return $musiques->fetchAll();
+        }
+        public function getMusiquesAleatoireByGroupe($id){
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join ALBUM natural join GROUPE natural left join MUSIQUE_NOTE where id_groupe='.$id.' ORDER BY note desc LIMIT 12');
             return $musiques->fetchAll();
         }
         public function getAlbumsByGroupe($id){
             $albums = $this->file_db->query('SELECT * from ALBUM natural join GROUPE where id_groupe='.$id);
+            return $albums->fetchAll();
+        }
+        public function getAlbumsAleatoireByGroupe($id){
+            $albums = $this->file_db->query('SELECT * from ALBUM natural join GROUPE natural left join ALBUM_NOTE where id_groupe='.$id.' ORDER BY note desc LIMIT 12');
             return $albums->fetchAll();
         }
         public function getArtistesByGroupe($id){
@@ -290,7 +298,7 @@
             return $musiques->fetchAll();
         }
         public function getMusiquesPlaylistAleatoire($id){
-            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join PLAYLIST_MUSIQUE where id_playlist='.$id.' ORDER BY RANDOM()');
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE natural join PLAYLIST_MUSIQUE natural left join MUSIQUE_NOTE where id_playlist='.$id.' ORDER BY note LIMIT 12');
             return $musiques->fetchAll();
         }
         public function getMusiques(){
