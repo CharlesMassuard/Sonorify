@@ -8,6 +8,8 @@ function rechercheData($data) {
     $groupes = $database->getGroupesByName( $data ?? null);
     $resultats = [];
     $resultats['groupes'] = array_slice($groupes, 0, 4);
+    $albums = array_slice($database->getAlbumsByName($data), 0, 4);
+    $resultats['albums'] = $albums;
     if ($groupes !== null && is_array($groupes) && count($groupes)  == 1){
         $resultats['albums'] = array_slice($database->getAlbumsByIdGroupe($groupes[0]['id_groupe']), 0, 4);
         $musiques = array_slice($database->getMusiquesByName($data), 0, 4);
@@ -17,17 +19,17 @@ function rechercheData($data) {
                 $musiques[] = $musiqueGroupe;
             }
         }
-        // Limit the total number of musics to 4
         $musiques = array_slice($musiques, 0, 4);
+        $resultats['musiques'] = $musiques;
+    } elseif (count($albums) == 1) {
+        $musiques = array_slice($database->getMusiquesByIdAlbum($albums[0]['id_album']), 0, 4);
         $resultats['musiques'] = $musiques;
     } else {
         $playlists = array_slice($database->getPlaylistsByName($data), 0, 4);
         $genres = array_slice($database->getGenresByName($data), 0, 4);
-        $albums = array_slice($database->getAlbumsByName($data), 0, 4);
-        $resultats['albums'] = $albums;
+        $musiques = array_slice($database->getMusiquesByName($data), 0, 4);
         $resultats['playlists'] = $playlists;
         $resultats['genres'] = $genres;
-        $musiques = array_slice($database->getMusiquesByName($data), 0, 4);
         $resultats['musiques'] = $musiques;
     }
     print_r(json_encode($resultats));
