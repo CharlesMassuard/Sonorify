@@ -12,6 +12,10 @@
     public function __construct($id_artiste, $pseudo, $image_artiste){
         $this->id_artiste = $id_artiste;
         $this->pseudo = $pseudo;
+        $imagePath = "./ressources/images/".$image_artiste;
+        if (!file_exists($imagePath)) {
+            $image_artiste = "default.jpg"; // replace with your default image name
+        }
         $this->image_artiste = $image_artiste;
     }
     public function render(){
