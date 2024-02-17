@@ -29,9 +29,11 @@ Autoloader::register();
         </div>
     </div>
     <div id="playlists" class="sections_accueil">
+        $playlists = $data->getPlaylistsByUser($_SESSION['user']['id_utilisateur']);
+        
         <h2>Vos Playlists :</h2>
         <?php 
-        $playlists = $data->getPlaylistsByUser($_SESSION['user']['id_utilisateur']);
+        
         $playlists = Factory::createPlaylists($playlists);
         foreach ($playlists as $playlist) {
             $playlist->renderPersonnal();
