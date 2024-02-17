@@ -1,0 +1,22 @@
+#profil {
+    padding: 20px;
+}
+
+#infos {
+    padding: 0 40px;
+}
+
+#modifProfil {
+    display: inline-block;
+    padding: 10px 20px;
+    text-align: center;
+    background-color: #0E6C76; /* Change this to your preferred color */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#modifProfil:hover {
+    background-color: #0c575f; /* Darker shade for hover effect */
+}
