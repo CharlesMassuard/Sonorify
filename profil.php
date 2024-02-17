@@ -25,6 +25,7 @@ Autoloader::register();
             <p><?php echo "Email : " . $_SESSION['user']['email_utilisateur'] ?></p>
             <p><?php echo "Date de naissance : " . $_SESSION['user']['ddn_utilisateur'] ?></p>
             <a href="modifierProfil.php" id="modifProfil">Modifier le profil</a>
+            <a href="deconnexion.php" id="modifProfil">Deconnexion</a>
         </div>
     </div>
     <div id="playlists" class="sections_accueil">
