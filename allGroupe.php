@@ -6,7 +6,7 @@
     $type = $_GET['type'] ?? 'musique';
     require_once 'Classes/Data/DataBase.php';
     $data = new Data\DataBase();
-    require 'Classes/Autoloader.php';
+    require_once 'Classes/Autoloader.php';
     Autoloader::register();
     $groupe = $data->getGroupeById($id_groupe);
     if($type == 'musique') {

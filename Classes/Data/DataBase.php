@@ -162,7 +162,7 @@
             $this->file_db->exec("CREATE TABLE IF NOT EXISTS MUSIQUE_HISTORIQUE (
                 id_musique INTEGER,
                 id_utilisateur INTEGER,
-                date_lecture DATE,
+                date_lecture DATETIME,
                 PRIMARY KEY (id_musique, id_utilisateur, date_lecture),
                 FOREIGN KEY (id_musique) REFERENCES MUSIQUE(id_musique),
                 FOREIGN KEY (id_utilisateur) REFERENCES UTILISATEUR(id_utilisateur))");
@@ -262,7 +262,7 @@
             return $musiques->fetchAll();
         }
         public function getMusiqueRecemmentEcoutee(){
-            $musiques = $this->file_db->query('SELECT * from MUSIQUE  natural join ALBUM natural join GROUPE natural join MUSIQUE_HISTORIQUE order by date_lecture desc');
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE  natural join ALBUM natural join GROUPE natural join MUSIQUE_HISTORIQUE order by date_lecture desc LIMIT 15');
             return $musiques->fetchAll();
         }
         public function getGroupes(){
@@ -539,19 +539,19 @@
             }
             $estPresent = $this->file_db->query('SELECT * from MUSIQUE_HISTORIQUE where id_musique='.$id_musique.' and id_utilisateur='.$id_utilisateur);
             if ($estPresent->fetch()){
-                $update = "UPDATE MUSIQUE_HISTORIQUE SET date_lecture = DATE() where id_musique=:id_musique and id_utilisateur=:id_utilisateur";
+                $update = "UPDATE MUSIQUE_HISTORIQUE SET date_lecture = DATETIME() where id_musique=:id_musique and id_utilisateur=:id_utilisateur";
                 $stmt=$this->file_db->prepare($update);
                 $stmt->bindParam(':id_musique',$id_musique);
                 $stmt->bindParam(':id_utilisateur',$id_utilisateur);
                 $stmt->execute();
             } else if ($total > 9){
-                $update = "UPDATE MUSIQUE_HISTORIQUE SET date_lecture = DATE(), id_musique=:id_musique where id_utilisateur=:id_utilisateur and date_lecture = (SELECT date_lecture from MUSIQUE_HISTORIQUE where id_utilisateur=:id_utilisateur order by date_lecture asc LIMIT 1)";
+                $update = "UPDATE MUSIQUE_HISTORIQUE SET date_lecture = DATETIME(), id_musique=:id_musique where id_utilisateur=:id_utilisateur and date_lecture = (SELECT date_lecture from MUSIQUE_HISTORIQUE where id_utilisateur=:id_utilisateur order by date_lecture asc LIMIT 1)";
                 $stmt=$this->file_db->prepare($update);
                 $stmt->bindParam(':id_utilisateur',$id_utilisateur);
                 $stmt->bindParam(':id_musique',$id_musique);
                 $stmt->execute();
             } else {
-                $insert="INSERT INTO MUSIQUE_HISTORIQUE (id_musique, id_utilisateur, date_lecture) VALUES (:id_musique, :id_utilisateur, DATE())";
+                $insert="INSERT INTO MUSIQUE_HISTORIQUE (id_musique, id_utilisateur, date_lecture) VALUES (:id_musique, :id_utilisateur, DATETIME())";
                 $stmt=$this->file_db->prepare($insert);
                 $stmt->bindParam(':id_musique',$id_musique);
                 $stmt->bindParam(':id_utilisateur',$id_utilisateur);
