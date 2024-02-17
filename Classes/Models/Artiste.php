@@ -17,7 +17,7 @@
     public function render(){
         echo '<a class="a_accueil" id="Artiste">';
         echo '<div class="a_content">';
-        echo '<img src="./ressources/images/'.$this->image_artiste.'">';
+        echo '<img src="./static/img/'.$this->image_artiste.'">';
         echo '<h3>'.$this->pseudo.'</h3>';
         echo '</div>';
         echo '</a>';

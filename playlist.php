@@ -12,7 +12,7 @@
         <div id="playlistAlbum">
             <div id="playlist">
                 <?php $image = $data->getMusiquesAlbumsByPlaylist($id_playlist)['image_album'] ?? 'default.jpg'; ?>
-                <img id="imgPlaylistAlbum" src="./ressources/images/<?php echo $image; ?>">
+                <img id="imgPlaylistAlbum" src="./static/img/<?php echo $image; ?>">
                 <div id="playlistDetails">
                     <h1><?php echo $playlist['nom_playlist']; ?></h1>
                     <?php 
@@ -107,7 +107,7 @@
                 foreach ($musiques as $musique) {
                     echo '<div id="musique">';
                     $album = $data->getAlbumByMusique($musique['id_musique']);
-                    echo '<img id="imgMusiqueAlbum" src="./ressources/images/'.$album["image_album"].'">';
+                    echo '<img id="imgMusiqueAlbum" src="./static/img/'.$album["image_album"].'">';
                     echo '<a href= "jouerPlaylist.php?id_playlist='.$id_playlist.'&aleatoire=false&musiqueStart='.$musique["id_musique"].'" id="PlayPlaylistMusique">';
                     echo '<h2>'.$musique['nom_musique'].'</h2>';
                     echo '</a>';
