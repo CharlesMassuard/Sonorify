@@ -48,7 +48,10 @@
 ?>
 <div id="titleSectionsAccueil">
 <h2>Playlists</h2>
-<a href="creerPlaylist.php" id="Ajouter">Créer une playlist</a>
+<?php if(isset($_SESSION['user'])){
+    echo '<a href="creerPlaylist.php" id="Ajouter">Créer une playlist</a>';
+}
+?>
 </div>
 <div id="playlist" class="sections_accueil">
     <?php 
