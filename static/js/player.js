@@ -167,16 +167,7 @@ export function playPlaylist() {
                 nbrMusiquesListeLecture.textContent = "";
             }
             // Sélectionnez l'élément en cours de lecture
-            let elementEnLecture = document.querySelector('.musicEnLecture');
-
-            if(elementEnLecture !== null) {
-                // Obtenez la position de l'élément en cours de lecture par rapport à la fenêtre
-                let rect = elementEnLecture.getBoundingClientRect();
-                if(rect.bottom >= window.innerHeight / 2) {
-                    elementEnLecture.scrollIntoView({ behavior: 'smooth'});
-                }
-            }
-                inLecture = playlistDetails[currentTrackIndex][4];
+            inLecture = playlistDetails[currentTrackIndex][4];
             cover.src = "../../ressources/images/"+playlistDetails[currentTrackIndex][1];
             bigCover.src = "../../ressources/images/"+playlistDetails[currentTrackIndex][1];
             artiste.textContent = playlistDetails[currentTrackIndex][2];
@@ -184,6 +175,14 @@ export function playPlaylist() {
             album.textContent = playlistDetails[currentTrackIndex][3];
             album.setAttribute('href', 'album.php?id='+playlistDetails[currentTrackIndex][3]);
             refreshListeLecture();
+            let elementEnLecture = document.querySelector('.musicEnLecture');
+            if(elementEnLecture !== null) {
+                // Obtenir la position de l'élément en cours de lecture par rapport à la fenêtre
+                let rect = elementEnLecture.getBoundingClientRect();
+                if(rect.bottom >= window.innerHeight / 2 || rect.top <= window.innerHeight / 2) {
+                    elementEnLecture.scrollIntoView({ behavior: 'smooth', block: 'center'});
+                }
+            }
             play(true);
             sound.on('play', function () {
                 setInterval(updateProgressBar, 100);
