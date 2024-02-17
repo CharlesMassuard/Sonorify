@@ -14,7 +14,7 @@
 ?>
 <div id="playlistAlbum">
     <div id="playlist">
-        <img id="imgPlaylistAlbum" src="./ressources/images/<?php echo $album["image_album"]?>">
+        <img id="imgPlaylistAlbum" src="./static/img/<?php echo $album["image_album"]?>">
         <div id="playlistDetails">
             <h1><?php echo $album['titre'] ?></h1>
             <?php  
@@ -85,7 +85,7 @@
             } else {
                 echo '<form id="Favoris" action="ajouterFavorisAlbum.php?id='.$id_album.'" method="post">';
                 echo '<input type="submit" id="favAlbum" name="addFavoriteAlbum" style="display: none;">';
-                echo '<label for="favAlbum"  title="Ajouter aux favoris"><i class="material-icons" id="Fav">favorite</i></label>';
+                echo '<label for="favAlbum"  title="Ajouter aux favoris"><i class="material-icons" id="Fav">favorite_border</i></label>';
                 echo '</form>';
             }
             echo '</div>';
@@ -110,7 +110,7 @@
         
         foreach ($musiques as $musique) {
             echo '<div id="musique">';
-            echo '<img id="imgMusiqueAlbum" src="./ressources/images/'.$album['image_album'].'">';
+            echo '<img id="imgMusiqueAlbum" src="./static/img/'.$album['image_album'].'">';
             echo '<a id="PlayAlbumMusique" href= "jouerAlbum.php?id_album='.$album["id_album"].'&aleatoire=false&musiqueStart='.$musique["id_musique"].'" method="post">';
             echo '<h2>'.$musique['nom_musique'].'</h2>';
             echo '</a>';
@@ -141,7 +141,7 @@
                 } else {
                 echo '<form id="Favoris" action="ajouterFavorisMusique.php?id='.$musique['id_musique'].'" method="post">';
                 echo '<input type="submit" id="favMusique'.$musique['id_musique'].'" name="addFavoriteMusique" style="display: none;">';
-                echo '<label for="favMusique'.$musique['id_musique'].'"  title="Ajouter aux favoris"><i class="material-icons" id="Fav">favorite</i></label>';
+                echo '<label for="favMusique'.$musique['id_musique'].'"  title="Ajouter aux favoris"><i class="material-icons" id="Fav">favorite_border</i></label>';
                 echo '</form>';
             }
             echo '<p>'.$musique['duree'].'</p>';

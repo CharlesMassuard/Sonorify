@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 </head>
 <body>
     <main id="main-content">
-        <img src="./ressources/images/grandLogo.png" alt="logo" class="logo">
+        <img src="./static/img/grandLogo.png" alt="logo" class="logo">
         <form action="login.php" method="post" id="login-form">
             <label for="username" class="form-label">Identifiant</label>
             <input type="text" name="identifiant" id="identifiant" class="form-input" placeholder="Identifiant" required>

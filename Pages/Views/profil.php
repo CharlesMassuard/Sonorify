@@ -68,7 +68,7 @@ Autoloader::register();
             foreach ($groupes as $groupe) {
                 echo '<a href= "groupe.php?id='.$groupe['id_groupe'].'">';
                 $image = $data->getAlbumsByGroupe($groupe['id_groupe'])['image_album'] ?? 'default.jpg';
-                echo '<img src="./ressources/images/'.$image.'">';
+                echo '<img src="./static/img/'.$image.'">';
                 echo '<h3>'.$groupe['nom_groupe'].'</h3>';
                 echo '<p class="infos_supp">'.$groupe['description_groupe'].'</p>';
                 echo '</a>';

@@ -12,7 +12,7 @@ session_start();
 <html>
 <head>
     <title>Sonorify</title>
-    <link rel="icon" type="image/x-icon" href="./ressources/images/logo.png">
+    <link rel="icon" type="image/x-icon" href="./static/img/logo.png">
     <link rel="stylesheet" href="./static/css/index.css">
     <link rel="stylesheet" href="./static/css/aside.css">
     <link rel="stylesheet" href="./static/css/header.css">
