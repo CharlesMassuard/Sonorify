@@ -4,7 +4,7 @@
         }
         $id_musique = $_GET['id'] ?? 1;
         $index = $_GET['index'] ?? 0;
-        require_once 'Classes/Data/DataBase.php'; 
+        require_once '../../Classes/Data/DataBase.php'; 
         $data = new Data\DataBase();
         $render_musique = [];
         $render_musique['id_musique'] = $id_musique;

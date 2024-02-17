@@ -13,7 +13,7 @@
                 <label id="hamburger" class="menu__btn" for="menu__toggle">
                     <span></span>
                 </label>
-                <img id="logo" src="./static/img/grandLogo.png" alt="logo">
+                <img id="logo" src="/static/img/grandLogo.png" alt="logo">
                 <ul class="menu__box">
                     <li><a class="menu__item" href="accueil.php" title="Accueil" id="Accueil"><i class="material-icons">home</i><span class="menu__text">Accueil</span></a></li>
                     <li><a class="menu__item" href="profil.php" title="Profil" id ="Profil"><i class="material-icons">explore</i><span class="menu__text">Profil</span></a></li>

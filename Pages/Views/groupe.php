@@ -3,7 +3,7 @@
         session_start();
     }
     $id_groupe = $_GET['id'] ?? 1;
-    require_once 'Classes/Data/DataBase.php';
+    require_once '../../Classes/Data/DataBase.php';
     $data = new Data\DataBase();
     require 'Classes/Autoloader.php';
     Autoloader::register();
@@ -16,7 +16,7 @@
     $artistes = Factory::createArtistes($artistes);
     echo '<h1>'.$groupe['nom_groupe'].'</h1>';
     echo '<div>';
-    echo '<img src="./static/img/'.$groupe['image_groupe'].'">';
+    echo '<img src="/static/img/'.$groupe['image_groupe'].'">';
     echo '<p>'.$groupe['description_groupe'].'</p>';
     echo '</div>';
     echo '<h2>Artistes</h2>';

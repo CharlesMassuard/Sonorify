@@ -15,7 +15,7 @@
         $nom_genre = $_POST['nom_genre'];
         $url = $_POST['url'];
         $user = $_SESSION['user'];
-        require_once 'Classes/Data/DataBase.php'; 
+        require_once '../../Classes/Data/DataBase.php'; 
         $db = new Data\Database();
         $id_groupe = $db->getGroupesByName($nom_groupe)[0]['id_groupe'];
         $id_album = $db->getAlbumsByName($nom_album)[0]['id_album'];

@@ -17,9 +17,9 @@
         }
         
         public function render(){
-            echo '<a class="a_accueil" id="Groupe" href= "groupe.php?id='.$this->id_groupe.'">';
+            echo '<a class="a_accueil" id="Groupe" href= "/Pages/Views/groupe.php?id='.$this->id_groupe.'">';
             echo '<div class="a_content">';
-            echo '<img src="./static/img/'.$this->image_groupe.'">';
+            echo '<img src="/static/img/'.$this->image_groupe.'">';
             echo '<h3>'.$this->nom_groupe.'</h3>';
             echo '</div>';
             echo '</a>';

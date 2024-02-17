@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 <body>
 <main id="main-content">
     <div class="header">
-    <img src="./static/img/grandLogo.png" alt="logo" class="logo">
+    <img src="/static/img/grandLogo.png" alt="logo" class="logo">
     </div>
     <form action="register.php" method="post" id="registration-form">
     <h2 class="section-title"> Vos identifiants </h2>

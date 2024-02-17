@@ -5,7 +5,7 @@
     }
     $id_album = $_GET['id'] ?? 1;
     $_SESSION['page'] = 'album.php?id='.$id_album;
-    require_once 'Classes/Data/DataBase.php';
+    require_once '../../Classes/Data/DataBase.php';
     $data = new Data\DataBase();
     $album = $data->getAlbum($id_album);
     $musiques = $data->getMusiquesAlbum($id_album);
@@ -14,7 +14,7 @@
 ?>
 <div id="playlistAlbum">
     <div id="playlist">
-        <img id="imgPlaylistAlbum" src="./static/img/<?php echo $album["image_album"]?>">
+        <img id="imgPlaylistAlbum" src="/static/img/<?php echo $album["image_album"]?>">
         <div id="playlistDetails">
             <h1><?php echo $album['titre'] ?></h1>
             <?php  
@@ -110,7 +110,7 @@
         
         foreach ($musiques as $musique) {
             echo '<div id="musique">';
-            echo '<img id="imgMusiqueAlbum" src="./static/img/'.$album['image_album'].'">';
+            echo '<img id="imgMusiqueAlbum" src="/static/img/'.$album['image_album'].'">';
             echo '<a id="PlayAlbumMusique" href= "jouerAlbum.php?id_album='.$album["id_album"].'&aleatoire=false&musiqueStart='.$musique["id_musique"].'" method="post">';
             echo '<h2>'.$musique['nom_musique'].'</h2>';
             echo '</a>';

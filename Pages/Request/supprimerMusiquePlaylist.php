@@ -6,7 +6,7 @@
     }
     $id_playlist = $_GET['id_playlist'] ?? 1;
     $id_musique = $_GET['id_musique'] ?? 1;
-    require_once 'Classes/Data/DataBase.php';
+    require_once '../../Classes/Data/DataBase.php';
     $data = new Data\DataBase();
     echo $id_playlist;
     echo $id_musique;

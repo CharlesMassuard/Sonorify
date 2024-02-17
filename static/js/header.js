@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         var img = document.createElement("img");
                         nom.innerHTML = res['nom_playlist'];
                         details.innerHTML = "Playlsit";
-                        img.setAttribute("src", "./static/img/playlist.png");
+                        img.setAttribute("src", "/static/img/playlist.png");
                         nom.style.fontWeight = "bold";
                         nom.style.textAlign = "left";
                         textDiv.appendChild(nom);
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         nom.style.fontWeight = "bold";
                         nom.style.textAlign = "left";
                         details.innerHTML = "Artiste";
-                        img.setAttribute("src", "./static/img/"+ res['image_groupe']);
+                        img.setAttribute("src", "/static/img/"+ res['image_groupe']);
                         img.style.width = "35px";
                         img.style.height = "auto";
                         textDiv.appendChild(nom);
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         var nom = document.createElement("p");
                         var details = document.createElement("p");
                         var img = document.createElement("img");
-                        img.setAttribute("src", "./static/img/"+ res['image_album']);
+                        img.setAttribute("src", "/static/img/"+ res['image_album']);
                         nom.innerHTML = res['titre'];
                         nom.style.fontWeight = "bold";
                         nom.style.textAlign = "left";
@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         var nom = document.createElement("p");
                         var img = document.createElement("img");
                         var details = document.createElement("p");
-                        img.setAttribute("src", "./static/img/"+ res['image_genre']);
+                        img.setAttribute("src", "/static/img/"+ res['image_genre']);
                         nom.innerHTML = res['nom_genre'];
                         nom.style.fontWeight = "bold";
                         nom.style.textAlign = "left";
@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         var nom = document.createElement("p");
                         var details = document.createElement("p");
                         var img = document.createElement("img");
-                        img.setAttribute("src", "./static/img/"+ res['image_album']);
+                        img.setAttribute("src", "/static/img/"+ res['image_album']);
                         nom.innerHTML = res['nom_musique'];
                         nom.style.fontWeight = "bold";
                         nom.style.textAlign = "left";

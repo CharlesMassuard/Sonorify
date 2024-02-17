@@ -7,7 +7,7 @@
         header('Location: login.php');
     } else {
         $id_album = $_GET['id'] ?? 1;
-        require_once 'Classes/Data/DataBase.php';
+        require_once '../../Classes/Data/DataBase.php';
         $data = new Data\DataBase();
         $nom_musique = $_POST['nom_musique'] ?? 'AA';
         $musique = $data->getMusiqueByName($nom_musique);

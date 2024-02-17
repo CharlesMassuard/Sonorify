@@ -1,6 +1,6 @@
 <?php
     require_once 'Classes/Factory.php';
-    require_once 'Classes/Data/DataBase.php';
+    require_once '../../Classes/Data/DataBase.php';
     $data = new Data\DataBase();
 
     require 'Classes/Autoloader.php';
@@ -33,7 +33,7 @@
         $musiques = $data->getMusiqueRecente();       
     }
     if (isset($_SESSION['user']) && $_SESSION['user']['id_role'] == 2) {
-        echo '<a href="creerMusique.php" id="Ajouter">Créer</a>';
+        echo '<a href="/Pages/Views/creerMusique.php" id="Ajouter">Créer</a>';
     }
     $musiques = Factory::createMusiques($musiques);
     echo '<div id="musiques" class="sections_accueil">';
@@ -43,7 +43,7 @@
     echo '</div>';
 ?>
 <h2>Playlists</h2>
-<a href="creerPlaylist.php" id="Ajouter">Créer</a>
+<a href="/Pages/Views/creerPlaylist.php" id="Ajouter">Créer</a>
 <div id="playlist" class="sections_accueil">
     <?php 
     $playlists = $data->getPlaylistsTrieesParNote();
@@ -58,7 +58,7 @@
 
 <?php 
 if (isset($_SESSION['user']) && $_SESSION['user']['id_role'] == 2){
-   echo '<a href="creerAlbum.php" id="Ajouter">Créer</a>';
+   echo '<a href="/Pages/Views/creerAlbum.php" id="Ajouter">Créer</a>';
 }
 ?>
 <div id="albums" class="sections_accueil">
@@ -75,7 +75,7 @@ if (isset($_SESSION['user']) && $_SESSION['user']['id_role'] == 2){
 <h2>Genres</h2>
 <?php 
 if (isset($_SESSION['user']) && $_SESSION['user']['id_role'] == 2){
-   echo '<a href="creerGenre.php" id="Ajouter">Créer</a>';
+   echo '<a href="/Pages/Views/creerGenre.php" id="Ajouter">Créer</a>';
 }
 ?>
 <div id="genres" class="sections_accueil">
@@ -92,7 +92,7 @@ if (isset($_SESSION['user']) && $_SESSION['user']['id_role'] == 2){
 <h2>Groupes et Artistes</h2>
 <?php 
 if (isset($_SESSION['user']) && $_SESSION['user']['id_role'] == 2){
-   echo '<a href="creerGroupe.php" id="Ajouter">Créer</a>';
+   echo '<a href="/Pages/Views/creerGroupe.php" id="Ajouter">Créer</a>';
 }
 ?>
 <div id="groupes" class="sections_accueil">

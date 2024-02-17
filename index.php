@@ -12,7 +12,7 @@ session_start();
 <html>
 <head>
     <title>Sonorify</title>
-    <link rel="icon" type="image/x-icon" href="./static/img/logo.png">
+    <link rel="icon" type="image/x-icon" href="/static/img/logo.png">
     <link rel="stylesheet" href="./static/css/index.css">
     <link rel="stylesheet" href="./static/css/aside.css">
     <link rel="stylesheet" href="./static/css/header.css">
@@ -25,19 +25,19 @@ session_start();
     <script type="module" src="./static/js/header.js" defer></script>
 </head>
 <body>
-    <?php include 'aside.php'; ?>
-    <?php include 'header.php'; ?>
+    <?php include 'Pages/Views/aside.php'; ?>
+    <?php include 'Pages/Views/header.php'; ?>
     <main>
-        <script src="./static/js/spa.js" type="module" defer></script>
+        <script src="/static/js/spa.js" type="module" defer></script>
         <?php 
         $_SESSION['page'] = null;
         if (!isset($_SESSION['page'])) {
-            include 'accueil.php';
+            include 'Pages/Views/accueil.php';
         } else {
             include $_SESSION['page'];
         }
         ?>
     </main>
-    <?php include 'player.php'; ?>
+    <?php include 'Pages/Views/player.php'; ?>
 </body>
 </html>
