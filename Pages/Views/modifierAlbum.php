@@ -23,15 +23,23 @@
     }
 ?>
 
-<form id="Modifier" method="post" action="/Pages/Views/modifierAlbum.php?id=<?php echo $id_album ?>">
+<form id="Modifier" class="Modification" method="post" action="/Pages/Views/modifierAlbum.php?id=<?php echo $id_album ?>">
     <input type="hidden" name="id_album" value="<?php echo $id_album ?>">
+    <div>
     <label for="nom_album">Nom de l'album</label>
     <input type="text" name="nom_album" placeholder="Nom de l'album" value="<?php echo $album['titre'] ?>">
+    </div>
+    <div>
     <label for="date_album">Date de sortie</label>
     <input type="text" name="date_album" placeholder="Date de sortie" value="<?php echo $album['dateSortie'] ?>">
+    </div>
+    <div>
     <label for="image_album">Image de l'album</label>
     <input type="text" name="image_album" placeholder="Image de l'album" value="<?php echo $album['image_album'] ?>">
+    </div>
+    <div>
     <label for="groupe_album">Groupe de l'album</label>
     <input type="text" name="groupe_album" placeholder="Groupe de l'album" value="<?php echo $groupe['nom_groupe'] ?>">
+    </div>
     <input type="submit" value="Modifier">
 </form>

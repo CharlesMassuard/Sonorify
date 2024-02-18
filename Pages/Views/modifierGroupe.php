@@ -20,13 +20,19 @@
     }
 ?>
 
-<form id="Modifier" method="post" action="/Pages/Views/modifierGroupe.php?id=<?php echo $id_groupe ?>">
+<form id="Modifier" class="Modification" method="post" action="/Pages/Views/modifierGroupe.php?id=<?php echo $id_groupe ?>">
     <input type="hidden" name="id_groupe" value="<?php echo $id_groupe ?>">
+    <div>
     <label for="nom_groupe">Nom du groupe</label>
     <input type="text" name="nom_groupe" placeholder="Nom du groupe" value="<?php echo $groupe['nom_groupe'] ?>">
+    </div>
+    <div>
     <label for="image_groupe">Image du groupe</label>
     <input type="text" name="image_groupe" placeholder="Image du groupe" value="<?php echo $groupe['image_groupe'] ?>">
+    </div>
+    <div>
     <label for="description_groupe">Description du groupe</label>
     <input type="text" name="description_groupe" placeholder="Description du groupe" value="<?php echo $groupe['description_groupe'] ?>">
+    </div>
     <input type="submit" value="Modifier">
 </form>
