@@ -88,6 +88,10 @@
                 echo '<label for="favAlbum"  title="Ajouter aux favoris"><i class="material-icons" id="Fav">favorite_border</i></label>';
                 echo '</form>';
             }
+            if (isset($_SESSION) && isset($_SESSION['user']) && $_SESSION['user']['id_role'] == 2){
+                echo '<a id="Album" href="/Pages/Views/modifierAlbum.php?id='.$album["id_album"].'"><i class="material-icons">create</i></a>';
+                echo '<a id="Album" href="/Pages/Request/supprimerAlbum.php?id='.$album["id_album"].'"><i class="material-icons">delete</i></a>';
+            }
             echo '</div>';
             ?>
         </div>

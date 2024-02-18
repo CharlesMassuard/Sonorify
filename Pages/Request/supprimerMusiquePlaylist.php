@@ -1,5 +1,7 @@
 <?php
-    session_start();
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
     if ($_SESSION['user'] == null) {
         $_SESSION['redirect_to'] = $_SERVER['REQUEST_URI'];
         header('Location: /Pages/Views/login.php');

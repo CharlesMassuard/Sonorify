@@ -1,0 +1,15 @@
+.Modification{
+    margin-top: 10%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.Modification div {
+    margin: 10px;
+    padding: 10px;
+    width: 30%;
+    flex-basis: 100%;
+    flex-grow: 1;
+}
+.Modification>input{
+    margin: 10px;
+}

@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             unset($_SESSION['redirect_to']);
             header('Location: ' . $redirect_url);
         }
-        header('Location: index.php');
+        header('Location: /Pages/Views/accueil.php');
     }
     else {
         echo "<strong class='warning'>Identifiant ou mot de passe incorrect</strong>";
