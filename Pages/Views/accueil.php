@@ -57,6 +57,13 @@
 </div>
 <div id="playlist" class="sections_accueil">
     <?php 
+    if(isset($_SESSION['user'])){
+        $playlistUser = $data->getPlaylistsByUser($_SESSION['user']['id_utilisateur']);
+        $playlistUser = Factory::createPlaylists($playlistUser);
+        foreach ($playlistUser as $playlist) {
+            $playlist->render();
+        }
+    }
     $playlists = $data->getPlaylistsTrieesParNote();
     $playlists = Factory::createPlaylists($playlists);
     foreach ($playlists as $playlist) {
@@ -87,11 +94,6 @@ if (isset($_SESSION['user']) && $_SESSION['user']['id_role'] == 2){
 <div class="sections">
 <div id="titleSectionsAccueil">
 <h2>Genres</h2>
-<?php 
-if (isset($_SESSION['user']) && $_SESSION['user']['id_role'] == 2){
-   echo '<a href="/Pages/Views/creerGenre.php" id="Ajouter">Créer un genre</a>';
-}
-?>
 </div>
 <div id="genres" class="sections_accueil">
     <?php 

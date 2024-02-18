@@ -24,7 +24,6 @@ Autoloader::register();
             <p><?php echo "Prénom : " . $_SESSION['user']['prenom_utilisateur'] ?></p>
             <p><?php echo "Email : " . $_SESSION['user']['email_utilisateur'] ?></p>
             <p><?php echo "Date de naissance : " . $_SESSION['user']['ddn_utilisateur'] ?></p>
-            <a href="modifierProfil.php" id="modifProfil">Modifier le profil</a>
             <a href="deconnexion.php" id="modifProfil">Deconnexion</a>
         </div>
     </div>
@@ -68,7 +67,7 @@ Autoloader::register();
         <?php 
             $albums = $data->getAlbumsFavorisByUser($_SESSION['user']['id_utilisateur']);
             if (count($albums) > 0) {
-                echo '<h2>Vos Albums :</h2>';
+                echo '<h2>Vos Albums favoris :</h2>';
                 $albums = Factory::createAlbums($albums);
                 foreach ($albums as $album) {
                     $album->render();
@@ -81,7 +80,7 @@ Autoloader::register();
         <?php
             $groupes = $data->getGroupesFavorisByUser($_SESSION['user']['id_utilisateur']);
             if (count($groupes) > 0) {
-                echo '<h2>Vos Groupes :</h2>';
+                echo '<h2>Vos Groupes favoris :</h2>';
                 $groupes = Factory::createGroupes($groupes);
                 foreach ($groupes as $groupe) {
                     $groupe->render();
