@@ -29,59 +29,64 @@ Autoloader::register();
         </div>
     </div>
     <div id="playlists" class="sections_accueil">
-        $playlists = $data->getPlaylistsByUser($_SESSION['user']['id_utilisateur']);
-        
-        <h2>Vos Playlists :</h2>
-        <?php 
-        
-        $playlists = Factory::createPlaylists($playlists);
-        foreach ($playlists as $playlist) {
-            $playlist->renderPersonnal();
-        }
-        ?>
+        <?php
+            $playlists = $data->getPlaylistsByUser($_SESSION['user']['id_utilisateur']);
+            if (count($playlists) > 0) {
+                echo '<h2>Vos Playlists :</h2>';
+                $playlists = Factory::createPlaylists($playlists);
+                foreach ($playlists as $playlist) {
+                    $playlist->renderPersonnal();
+                }
+            }
+        ?>  
     </div>
     <div id="playlists_favoris" class="sections_accueil">
-        <h2>Vos Playlists favorites :</h2>
         <?php 
-        $playlists = $data->getPlaylistsFavorisByUser($_SESSION['user']['id_utilisateur']);
-        $playlists = Factory::createPlaylists($playlists);
-        foreach ($playlists as $playlist) {
-            $playlist->render();
-        }
+            $playlists = $data->getPlaylistsFavorisByUser($_SESSION['user']['id_utilisateur']);
+            if (count($playlists) > 0) {
+                echo '<h2>Vos Playlists favorites :</h2>';
+                $playlists = Factory::createPlaylists($playlists);
+                foreach ($playlists as $playlist) {
+                    $playlist->renderPersonnal();
+                }
+            }
         ?>
     </div>
     <div id="musiques_favoris" class="sections_accueil">
-        <h2>Vos Musiques favorites :</h2>
         <?php 
-        $musiques = $data->getMusiquesFavorisByUser($_SESSION['user']['id_utilisateur']);
-        $musiques = Factory::createMusiques($musiques);
-        foreach ($musiques as $musique) {
-            $musique->render();
-        }
+            $musiques = $data->getMusiquesFavorisByUser($_SESSION['user']['id_utilisateur']);
+            if (count($musiques) > 0) {
+                echo '<h2>Vos Musiques favorites :</h2>';
+                $musiques = Factory::createMusiques($musiques);
+                foreach ($musiques as $musique) {
+                    $musique->render();
+                }
+            }
         ?>
     </div>
     <div id="albums" class="sections_accueil">
-        <h2>Vos Albums favoris :</h2>
         <?php 
-        $albums = $data->getAlbumsFavorisByUser($_SESSION['user']['id_utilisateur']);
-        $albums = Factory::createAlbums($albums);
-        foreach ($albums as $album) {
-            $album->render();
-        }
+            $albums = $data->getAlbumsFavorisByUser($_SESSION['user']['id_utilisateur']);
+            if (count($albums) > 0) {
+                echo '<h2>Vos Albums :</h2>';
+                $albums = Factory::createAlbums($albums);
+                foreach ($albums as $album) {
+                    $album->render();
+                }
+            }
+
         ?>
     </div>
     <div id="groupes_favoris" class="sections_accueil">
-        <h2>Vos Groupes favoris :</h2>
-        <?php 
-        $groupes = $data->getGroupesFavorisByUser($_SESSION['user']['id_utilisateur']);
-        foreach ($groupes as $groupe) {
-            echo '<a href= "groupe.php?id='.$groupe['id_groupe'].'">';
-            $image = $data->getAlbumsByGroupe($groupe['id_groupe'])['image_album'] ?? 'default.jpg';
-            echo '<img src="./ressources/images/'.$image.'">';
-            echo '<h3>'.$groupe['nom_groupe'].'</h3>';
-            echo '<p class="infos_supp">'.$groupe['description_groupe'].'</p>';
-            echo '</a>';
-        }
+        <?php
+            $groupes = $data->getGroupesFavorisByUser($_SESSION['user']['id_utilisateur']);
+            if (count($groupes) > 0) {
+                echo '<h2>Vos Groupes :</h2>';
+                $groupes = Factory::createGroupes($groupes);
+                foreach ($groupes as $groupe) {
+                    $groupe->render();
+                }
+            }
         ?>
     </div>
 <body>
