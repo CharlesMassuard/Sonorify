@@ -1,5 +1,5 @@
 <?php
-require 'Classes/Autoloader.php';
+require dirname(__FILE__) . '/../../Classes/Autoloader.php';
 Autoloader::register();
 
 use Data\Encrypteur;

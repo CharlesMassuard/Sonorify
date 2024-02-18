@@ -6,11 +6,11 @@ if ($_SESSION['user'] == null) {
     header('Location: login.php');
 }
 
-require_once '../../Classes/Data/DataBase.php';
+require_once dirname(__FILE__) . '/../../Classes/Data/DataBase.php';
 $data = new Data\DataBase();
 
 // Autoload
-require 'Classes/Autoloader.php';
+require dirname(__FILE__) . '/../../Classes/Autoloader.php';
 Autoloader::register();
 ?>
         <div id="profil">

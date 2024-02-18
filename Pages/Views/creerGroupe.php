@@ -12,7 +12,7 @@
         $description = $_POST['description'];
         $image = $_POST['image'];
         $user = $_SESSION['user'];
-        require_once '../../Classes/Data/DataBase.php'; 
+        require_once dirname(__FILE__) . '/../../Classes/Data/DataBase.php'; 
         $db = new Data\Database();
         $db->creerGroupe($nom_groupe, $description, $image);
         $id_groupe = $db->getGroupesByName($nom_groupe)[0]['id_groupe'];

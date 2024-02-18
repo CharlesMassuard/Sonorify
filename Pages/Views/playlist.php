@@ -3,7 +3,7 @@
     session_start();
     $id_playlist = $_GET['id'] ?? 1;
     $_SESSION['page'] = 'playlist.php?id='.$id_playlist;
-    require_once '../../Classes/Data/DataBase.php';
+    require_once dirname(__FILE__) . '/../../Classes/Data/DataBase.php';
     $data = new Data\DataBase();
     $playlist = $data->getPlaylist($id_playlist);
     $musiques = $data->getMusiquesPlaylist($id_playlist);

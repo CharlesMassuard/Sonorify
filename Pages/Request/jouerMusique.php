@@ -3,7 +3,7 @@
             session_start();
         }
         $id_musique = $_GET['id'] ?? 1;
-        require_once '../../Classes/Data/DataBase.php'; 
+        require_once dirname(__FILE__) . '/../../Classes/Data/DataBase.php'; 
         $data = new Data\DataBase();
         $musiqueDetails = $data->getMusique($id_musique);
         $nomMusique = $musiqueDetails['nom_musique'];

@@ -1,9 +1,9 @@
 <?php
-    require_once 'Classes/Factory.php';
-    require_once '../../Classes/Data/DataBase.php';
+    require_once dirname(__FILE__) . '/../../Classes/Factory.php';
+    require_once dirname(__FILE__) . '/../../Classes/Data/DataBase.php';
     $data = new Data\DataBase();
 
-    require 'Classes/Autoloader.php';
+    require dirname(__FILE__) . '/../../Classes/Autoloader.php';
     Autoloader::register();
     if (session_status() == PHP_SESSION_NONE) {
         session_start();

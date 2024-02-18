@@ -17,7 +17,7 @@
             $public = 0;
         }
         $user = $_SESSION['user'];
-        require_once '../../Classes/Data/DataBase.php'; 
+        require_once dirname(__FILE__) . '/../../Classes/Data/DataBase.php'; 
         $db = new Data\Database();
         $db->creerPlaylist($nom_playlist, $description, $public, $user['id_utilisateur']);
         $id_playlist = $db->getPlaylistsByName($nom_playlist)[0]['id_playlist'];

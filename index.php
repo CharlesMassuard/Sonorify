@@ -3,7 +3,7 @@ declare(strict_types=1);
 session_start();
 
 // Autoload
-// require 'Classes/Autoloader.php';
+// require dirname(__FILE__) . '/../../Classes/Autoloader.php';
 // Autoloader::register();
 
 ?>

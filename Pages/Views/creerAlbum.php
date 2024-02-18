@@ -13,7 +13,7 @@
         $date_sortie = date("Y-m-d", strtotime($date_sortie));
         $groupe = $_POST['groupe'];
         $image = $_POST['image'];
-        require_once '../../Classes/Data/DataBase.php'; 
+        require_once dirname(__FILE__) . '/../../Classes/Data/DataBase.php'; 
         $data = new Data\DataBase();
         $id_groupe = $data->getIdGroupe($groupe)['id_groupe'];
         if ($id_groupe){

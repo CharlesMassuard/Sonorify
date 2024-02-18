@@ -5,7 +5,7 @@
     }
     $id_album = $_GET['id'] ?? 1;
     $_SESSION['page'] = 'album.php?id='.$id_album;
-    require_once '../../Classes/Data/DataBase.php';
+    require_once dirname(__FILE__) . '/../../Classes/Data/DataBase.php';
     $data = new Data\DataBase();
     $album = $data->getAlbum($id_album);
     $musiques = $data->getMusiquesAlbum($id_album);

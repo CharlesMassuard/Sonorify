@@ -3,7 +3,7 @@
     $aleatoire = $_GET['aleatoire'] ?? false;
     $musiqueStart = $_GET['musiqueStart'] ?? false;
     $aleatoire = filter_var($_GET['aleatoire'], FILTER_VALIDATE_BOOLEAN);
-    require_once '../../Classes/Data/DataBase.php'; 
+    require_once dirname(__FILE__) . '/../../Classes/Data/DataBase.php'; 
     $data = new Data\DataBase();
     $musiques = $data->getMusiquesAlbum($id_album);
     if ($aleatoire) {

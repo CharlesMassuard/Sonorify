@@ -3,7 +3,7 @@ $data = $_POST['data'] ?? "gro";
 rechercheData($data);
 
 function rechercheData($data) {
-    require_once '../../Classes/Data/DataBase.php';
+    require_once dirname(__FILE__) . '/../../Classes/Data/DataBase.php';
     $database = new Data\DataBase();
     $groupes = $database->getGroupesByName( $data ?? null);
     $resultats = [];
