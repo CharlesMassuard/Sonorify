@@ -324,7 +324,20 @@ window.addEventListener('DOMContentLoaded', init);
 window.addEventListener('keydown', (event) => {
     if (event.key === 'F5') {
         event.preventDefault();
-        loadPage(document.querySelector('#Accueil'));
+        fetch(window.location.href)
+        .then(response => response.text())
+        .then(data => {
+            document.querySelector('main').innerHTML = data;
+            let searchResult = document.querySelector("#search_result");
+            searchResult.innerHTML = '';
+            init()
+            window.scrollTo(0, 0);
+            return loadScripts(['playlist.js']); 
+        })
+        .catch(error => {
+            console.log(error);
+        });
+
         detailsSection.style.transition = 'transform 0.3s ease';
         detailsSection.style.transform = 'translateY(0)'; // Faire descendre la section
         setTimeout(function () {
