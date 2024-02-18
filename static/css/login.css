@@ -88,3 +88,10 @@
 #to_register{
     width: auto;
 }
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    margin: 0;
+    padding: 0;
+}

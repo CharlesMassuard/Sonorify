@@ -588,6 +588,25 @@
             $stmt->bindParam(':id_album',$id_album);
             $stmt->execute();
         }
+        public function updateAlbum($id, $titre, $date_sortie, $id_groupe, $image){
+            $update="UPDATE ALBUM SET titre=:titre, dateSortie=:date_sortie, id_groupe=:id_groupe, image_album=:image where id_album=:id_album";
+            $stmt=$this->file_db->prepare($update);
+            $stmt->bindParam(':titre',$titre);
+            $stmt->bindParam(':date_sortie',$date_sortie);
+            $stmt->bindParam(':id_groupe',$id_groupe);
+            $stmt->bindParam(':image',$image);
+            $stmt->bindParam(':id_album',$id);
+            $stmt->execute();
+        }
+        public function updateGroupe($id, $nom, $description, $image){
+            $update="UPDATE GROUPE SET nom_groupe=:nom, description_groupe=:description, image_groupe=:image where id_groupe=:id_groupe";
+            $stmt=$this->file_db->prepare($update);
+            $stmt->bindParam(':nom',$nom);
+            $stmt->bindParam(':description',$description);
+            $stmt->bindParam(':image',$image);
+            $stmt->bindParam(':id_groupe',$id);
+            $stmt->execute();
+        }
         public function deleteMusiquePlaylist($id_musique,$id_playlist){
             $delete="DELETE FROM PLAYLIST_MUSIQUE WHERE id_playlist=:id_playlist and id_musique=:id_musique";
             $stmt=$this->file_db->prepare($delete);
@@ -623,6 +642,22 @@
             $stmt->bindParam(':id_musique',$id_musique);
             $stmt->bindParam(':id_utilisateur',$id_utilisateur);
             $stmt->execute();
+        }
+        public function deleteAlbum($id, $id_utilisateur){
+            if ($this->file_db->query('SELECT * from UTILISATEUR where id_utilisateur='.$id_utilisateur . ' and id_role=2')->fetch()){
+                $delete="DELETE FROM ALBUM where id_album=:id_album";
+                $stmt=$this->file_db->prepare($delete);
+                $stmt->bindParam(':id_album',$id);
+                $stmt->execute();
+            }
+        }
+        public function deleteGroupe($id, $id_utilisateur){
+            if ($this->file_db->query('SELECT * from UTILISATEUR where id_utilisateur='.$id_utilisateur . ' and id_role=2')->fetch()){
+                $delete="DELETE FROM GROUPE where id_groupe=:id_groupe";
+                $stmt=$this->file_db->prepare($delete);
+                $stmt->bindParam(':id_groupe',$id);
+                $stmt->execute();
+            }
         }
         public function isFavorisAlbum($id_album,$id_utilisateur){
             $favoris = $this->file_db->query('SELECT * from ALBUM_FAVORIS where id_album='.$id_album.' and id_utilisateur='.$id_utilisateur);

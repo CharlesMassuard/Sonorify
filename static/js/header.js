@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         } else {
             searchBar.style.borderRadius = "10px 10px 0px 0px ";
-            fetch('rechercheData.php', {
+            fetch('/Pages/Request/rechercheData.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         var img = document.createElement("img");
                         nom.innerHTML = res['nom_playlist'];
                         details.innerHTML = "Playlsit";
-                        img.setAttribute("src", "./ressources/images/playlist.png");
+                        img.setAttribute("src", "/static/img/playlist.png");
                         nom.style.fontWeight = "bold";
                         nom.style.textAlign = "left";
                         textDiv.appendChild(nom);
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         div.appendChild(img);
                         div.appendChild(textDiv);
                         a.appendChild(div);
-                        a.setAttribute("href", "playlist.php?id=" + res['id_playlist']);
+                        a.setAttribute("href", "/Pages/Views/playlist.php?id=" + res['id_playlist']);
                         a.setAttribute("id", "Playlist");
                         document.querySelector("#search_result").appendChild(a);
                         
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         nom.style.fontWeight = "bold";
                         nom.style.textAlign = "left";
                         details.innerHTML = "Artiste";
-                        img.setAttribute("src", "./ressources/images/"+ res['image_groupe']);
+                        img.setAttribute("src", "/static/img/"+ res['image_groupe']);
                         img.style.width = "35px";
                         img.style.height = "auto";
                         textDiv.appendChild(nom);
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         div.appendChild(img);
                         div.appendChild(textDiv);
                         a.appendChild(div);
-                        a.setAttribute("href", "groupe.php?id=" + res['id_groupe']);
+                        a.setAttribute("href", "/Pages/Views/groupe.php?id=" + res['id_groupe']);
                         a.setAttribute("id", "Groupe");
                         document.querySelector("#search_result").appendChild(a);
 
@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         var nom = document.createElement("p");
                         var details = document.createElement("p");
                         var img = document.createElement("img");
-                        img.setAttribute("src", "./ressources/images/"+ res['image_album']);
+                        img.setAttribute("src", "/static/img/"+ res['image_album']);
                         nom.innerHTML = res['titre'];
                         nom.style.fontWeight = "bold";
                         nom.style.textAlign = "left";
@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         div.appendChild(img);
                         div.appendChild(textDiv);
                         a.appendChild(div);
-                        a.setAttribute("href", "album.php?id=" + res['id_album']);
+                        a.setAttribute("href", "/Pages/Views/album.php?id=" + res['id_album']);
                         a.setAttribute("id", "Album");
                         document.querySelector("#search_result").appendChild(a);
                         div.style.display = "flex";
@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         var nom = document.createElement("p");
                         var img = document.createElement("img");
                         var details = document.createElement("p");
-                        img.setAttribute("src", "./ressources/images/"+ res['image_genre']);
+                        img.setAttribute("src", "/static/img/"+ res['image_genre']);
                         nom.innerHTML = res['nom_genre'];
                         nom.style.fontWeight = "bold";
                         nom.style.textAlign = "left";
@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         div.appendChild(img);
                         div.appendChild(textDiv);
                         a.appendChild(div);
-                        a.setAttribute("href", "genre.php?id=" + res['id_genre']);
+                        a.setAttribute("href", "/Pages/Views/genre.php?id=" + res['id_genre']);
                         a.setAttribute("id", "Genre");
                         document.querySelector("#search_result").appendChild(a);
                         div.style.display = "flex";
@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         var nom = document.createElement("p");
                         var details = document.createElement("p");
                         var img = document.createElement("img");
-                        img.setAttribute("src", "./ressources/images/"+ res['image_album']);
+                        img.setAttribute("src", "/static/img/"+ res['image_album']);
                         nom.innerHTML = res['nom_musique'];
                         nom.style.fontWeight = "bold";
                         nom.style.textAlign = "left";
@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         div.appendChild(img);
                         div.appendChild(textDiv);
                         a.appendChild(div);
-                        a.setAttribute("href", "jouerMusique.php?id=" + res['id_musique']);
+                        a.setAttribute("href", "/Pages/Request/jouerMusique.php?id=" + res['id_musique']);
                         a.setAttribute("id", "PlayMusique");
                         document.querySelector("#search_result").appendChild(a);
                         // Apply CSS styles

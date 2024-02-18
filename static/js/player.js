@@ -83,24 +83,24 @@ export function addToPlaylist(id_musique, nom, cover, nomGroupe, nomAlbum, url) 
 export function addToListeLecture(id_musique, nom, cover, nomGroupe, nomAlbum, url, index) {
     if(inLecture == id_musique) {
         musiquesASuivre.innerHTML += "<li  class='musicEnLecture' id='oneMusicListeLecture'>"+
-                                    "<a href='jouerIndex.php?id="+id_musique+"&index="+index+"' id=changeTrack>"+
+                                    "<a href='/Pages/Request/jouerIndex.php?id="+id_musique+"&index="+index+"' id=changeTrack>"+
                                         "<div class='flexContainerListeLecture'>" +
                                             "<div id='coverBigPlayer'>" +
-                                                "<img class='imgListeLecture' src='../../ressources/images/"+cover+"' alt='cover'>" +
+                                                "<img class='imgListeLecture' src='/static/img/"+cover+"' alt='cover'>" +
                                             "</div>" +
                                             "<div id='infoListeLecture'>" +
                                                 "<h4 id='titleListe'>"+nom+"</h4>" +
                                                 "<p id='artisteListe'>"+nomGroupe+" • "+nomAlbum+"</p>" +
                                             "</div>" +
-                                            "<img src='../../ressources/images/sound.gif' alt='wave' id='wave'>" +
+                                            "<img src='/static/img/sound.gif' alt='wave' id='wave'>" +
                                         "</div>" +
                                     "</a></li>";
     } else {
         musiquesASuivre.innerHTML += "<li id='oneMusicListeLecture'>"+
-                                    "<a href='jouerIndex.php?id="+id_musique+"&index="+index+"' id=changeTrack>"+
+                                    "<a href='/Pages/Request/jouerIndex.php?id="+id_musique+"&index="+index+"' id=changeTrack>"+
                                         "<div class='flexContainerListeLecture'>" +
                                             "<div id='coverBigPlayer'>" +
-                                                "<img class='imgListeLecture' src='../../ressources/images/"+cover+"' alt='cover'>" +
+                                                "<img class='imgListeLecture' src='/static/img/"+cover+"' alt='cover'>" +
                                             "</div>" +
                                             "<div id='infoListeLecture'>" +
                                                 "<h4 id='titleListe'>"+nom+"</h4>" +
@@ -168,8 +168,8 @@ export function playPlaylist() {
             }
             // Sélectionnez l'élément en cours de lecture
             inLecture = playlistDetails[currentTrackIndex][4];
-            cover.src = "../../ressources/images/"+playlistDetails[currentTrackIndex][1];
-            bigCover.src = "../../ressources/images/"+playlistDetails[currentTrackIndex][1];
+            cover.src = "/static/img/"+playlistDetails[currentTrackIndex][1];
+            bigCover.src = "/static/img/"+playlistDetails[currentTrackIndex][1];
             artiste.textContent = playlistDetails[currentTrackIndex][2];
             artiste.setAttribute('href', 'artiste.php?id='+playlistDetails[currentTrackIndex][2]);
             album.textContent = playlistDetails[currentTrackIndex][3];
