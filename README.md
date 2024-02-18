@@ -9,7 +9,15 @@
 ## À propos
 
 Cette application web offre un service de joueur de musique en ligne.  
-Vous pouvez écoutez vos albums et musiques préférés ou même faire vos propre playlist. Laissez vous tenter par les meilleurs notés dans l'accueil afin de découvrir de nouveaux talents!  
+Vous pouvez écoutez vos albums et musiques préférés ou même faire vos propre playlist. Laissez vous tenter par les mieux notés dans l'accueil afin de découvrir de nouveaux talents!  
+
+## Module administrateur
+
+Pour se connecter en tant qu'administrateur, veuillez utiliser les logins suivants:
+```txt
+Login: admin
+Password: admin
+```
 
 ## Requirements  
 
