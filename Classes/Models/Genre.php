@@ -5,10 +5,11 @@
     use Interfaces\RenderInterface;
 
     class Genre implements RenderInterface {
-        private $id_genre;
-        private $nom_genre;
-        private $image_genre;
-        public function __construct($id_genre, $nom_genre, $image_genre){
+        private int $id_genre;
+        private string $nom_genre;
+        private string $image_genre;
+
+        public function __construct(int $id_genre, string $nom_genre, ?string $image_genre){
             $this->id_genre = $id_genre;
             $this->nom_genre = $nom_genre;
             $this->image_genre = $image_genre;
@@ -22,6 +23,5 @@
             echo '</div>';
             echo '</a>';
         }
-
-        // reste
     }
+?>
