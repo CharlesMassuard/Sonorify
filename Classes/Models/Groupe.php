@@ -14,6 +14,10 @@
             $this->id_groupe = $id_groupe;
             $this->nom_groupe = $nom_groupe;
             $this->description_groupe = $description_groupe;
+            $imagePath = "./ressources/images/".$image_groupe;
+            if (!file_exists($imagePath)) {
+                $image_groupe = "default.jpg"; // replace with your default image name
+            }
             $this->image_groupe = $image_groupe;
         }
         

@@ -12,6 +12,10 @@
         public function __construct(int $id_genre, string $nom_genre, ?string $image_genre){
             $this->id_genre = $id_genre;
             $this->nom_genre = $nom_genre;
+            $imagePath = "./ressources/images/".$image_genre;
+            if (!file_exists($imagePath)) {
+                $image_genre = "default.jpg"; // replace with your default image name
+            }
             $this->image_genre = $image_genre;
         }
 

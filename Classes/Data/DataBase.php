@@ -162,7 +162,7 @@
             $this->file_db->exec("CREATE TABLE IF NOT EXISTS MUSIQUE_HISTORIQUE (
                 id_musique INTEGER,
                 id_utilisateur INTEGER,
-                date_lecture DATE,
+                date_lecture DATETIME,
                 PRIMARY KEY (id_musique, id_utilisateur, date_lecture),
                 FOREIGN KEY (id_musique) REFERENCES MUSIQUE(id_musique),
                 FOREIGN KEY (id_utilisateur) REFERENCES UTILISATEUR(id_utilisateur))");
@@ -262,7 +262,7 @@
             return $musiques->fetchAll();
         }
         public function getMusiqueRecemmentEcoutee(){
-            $musiques = $this->file_db->query('SELECT * from MUSIQUE  natural join ALBUM natural join GROUPE natural join MUSIQUE_HISTORIQUE order by date_lecture desc');
+            $musiques = $this->file_db->query('SELECT * from MUSIQUE  natural join ALBUM natural join GROUPE natural join MUSIQUE_HISTORIQUE order by date_lecture desc LIMIT 15');
             return $musiques->fetchAll();
         }
         public function getGroupes(){
@@ -539,19 +539,19 @@
             }
             $estPresent = $this->file_db->query('SELECT * from MUSIQUE_HISTORIQUE where id_musique='.$id_musique.' and id_utilisateur='.$id_utilisateur);
             if ($estPresent->fetch()){
-                $update = "UPDATE MUSIQUE_HISTORIQUE SET date_lecture = DATE() where id_musique=:id_musique and id_utilisateur=:id_utilisateur";
+                $update = "UPDATE MUSIQUE_HISTORIQUE SET date_lecture = DATETIME() where id_musique=:id_musique and id_utilisateur=:id_utilisateur";
                 $stmt=$this->file_db->prepare($update);
                 $stmt->bindParam(':id_musique',$id_musique);
                 $stmt->bindParam(':id_utilisateur',$id_utilisateur);
                 $stmt->execute();
             } else if ($total > 9){
-                $update = "UPDATE MUSIQUE_HISTORIQUE SET date_lecture = DATE(), id_musique=:id_musique where id_utilisateur=:id_utilisateur and date_lecture = (SELECT date_lecture from MUSIQUE_HISTORIQUE where id_utilisateur=:id_utilisateur order by date_lecture asc LIMIT 1)";
+                $update = "UPDATE MUSIQUE_HISTORIQUE SET date_lecture = DATETIME(), id_musique=:id_musique where id_utilisateur=:id_utilisateur and date_lecture = (SELECT date_lecture from MUSIQUE_HISTORIQUE where id_utilisateur=:id_utilisateur order by date_lecture asc LIMIT 1)";
                 $stmt=$this->file_db->prepare($update);
                 $stmt->bindParam(':id_utilisateur',$id_utilisateur);
                 $stmt->bindParam(':id_musique',$id_musique);
                 $stmt->execute();
             } else {
-                $insert="INSERT INTO MUSIQUE_HISTORIQUE (id_musique, id_utilisateur, date_lecture) VALUES (:id_musique, :id_utilisateur, DATE())";
+                $insert="INSERT INTO MUSIQUE_HISTORIQUE (id_musique, id_utilisateur, date_lecture) VALUES (:id_musique, :id_utilisateur, DATETIME())";
                 $stmt=$this->file_db->prepare($insert);
                 $stmt->bindParam(':id_musique',$id_musique);
                 $stmt->bindParam(':id_utilisateur',$id_utilisateur);
@@ -705,27 +705,33 @@
         public function insertDataProvider($data){
             foreach ($data as $album) {
                 $index_musique = 0;
-
+        
+                // Check if image exists, if not use default
+                $imagePath = $album['img'] ?? "";
+                if (!file_exists("./ressources/images/".$imagePath)) {
+                    $imagePath = "default2.jpg"; // replace with your default image name
+                }
+        
                 // Insert into GROUPE table
                 $stmt = $this->file_db->prepare('INSERT INTO GROUPE (nom_groupe, image_groupe, description_groupe) VALUES (?, ?, ?)');
-                $stmt->execute([$album['by'], $album['img']??"", $album['description']??""]);
+                $stmt->execute([$album['by'], $imagePath, $album['description']??""]);
         
                 // Get the id of the group we just inserted
                 $id_groupe = $this->file_db->lastInsertId();
-
+        
                 // Insert into ARTISTE table
                 $stmt = $this->file_db->prepare('INSERT INTO ARTISTE (pseudo_artiste, image_artiste) VALUES (?, ?)');
-                $stmt->execute([$album['by'], $album['img']??""]);
-
+                $stmt->execute([$album['by'], $imagePath]);
+        
                 // Get the id of the artist we just inserted
                 $id_artiste = $this->file_db->lastInsertId();
-
+        
                 // Insert into GROUPE_ARTISTE table
                 $stmt = $this->file_db->prepare('INSERT INTO GROUPE_ARTISTE (id_groupe, id_artiste) VALUES (?, ?)');
                 $stmt->execute([$id_groupe, $id_artiste]);
                 
                 // Insert into ALBUM table
-                $this->creerAlbum($album['title'], $album['releaseYear'], $id_groupe, $album['img']);
+                $this->creerAlbum($album['title'], $album['releaseYear'], $id_groupe, $imagePath);
         
                 // Get the id of the album we just inserted
                 $id_album = $this->file_db->lastInsertId();
@@ -735,7 +741,7 @@
                     if($genre != null){
                         $genre[0] = strtoupper($genre[0]);
                         $index_musique += 1;
-
+        
                         $stmt = $this->file_db->prepare('INSERT OR IGNORE INTO GENRE (nom_genre) VALUES (?)');
                         $stmt->execute([$genre]);
             

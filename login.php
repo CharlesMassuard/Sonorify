@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             <label for="mdp" class="form-label">Mot-De-Passe</label>
             <input type="password" name="mdp" id="mdp" class="form-input" placeholder="Mot-De-Passe" required>
             <div class="button-container">
-                <input type="submit" class="submit-button" value="Login">
+                <input type="submit" class="submit-button" value="Se connecter">
             </div>
         </form>
         <a href="register.php" id="to_register" class="register-link">Pas encore inscrit ?</a>

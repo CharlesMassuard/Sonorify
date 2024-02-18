@@ -94,6 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         div.appendChild(textDiv);
                         a.appendChild(div);
                         a.setAttribute("href", "groupe.php?id=" + res['id_groupe']);
+                        a.setAttribute("id", "Groupe");
                         document.querySelector("#search_result").appendChild(a);
 
                         div.style.display = "flex";
