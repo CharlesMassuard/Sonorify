@@ -29,9 +29,9 @@
     } 
 ?>
 <header>
-    <link rel="stylesheet" href="./static/css/creationPlaylist.css">
+    <link rel="stylesheet" href="./static/css/creations.css">
 </header>
-<form id="creationPlaylist" action="creerPlaylist.php" method="post">
+<form id="boxCreation" action="creerPlaylist.php" method="post">
     <h2>Créer une playlist</h2>
     <label for="nom_playlist">Nom de la Playlist:</label><br>
     <input type="text" id="nom_playlist" name="nom_playlist"><br>

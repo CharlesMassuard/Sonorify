@@ -29,7 +29,11 @@
         }
     } 
 ?>
-<form action="creerMusique.php" method="post">
+<header>
+    <link rel="stylesheet" href="./static/css/creations.css">
+</header>
+<form id="boxCreation" action="creerMusique.php" method="post">
+    <h2>Créer une musique</h2>
     <label for="nom_musique">Nom de Musique</label>
     <input type="text" id="nom_musique" name="nom_musique" required>
     <label for="duree">Durée</label>

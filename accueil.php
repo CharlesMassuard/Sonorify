@@ -92,11 +92,6 @@ if (isset($_SESSION['user']) && $_SESSION['user']['id_role'] == 2){
 <div class="sections">
 <div id="titleSectionsAccueil">
 <h2>Genres</h2>
-<?php 
-if (isset($_SESSION['user']) && $_SESSION['user']['id_role'] == 2){
-   echo '<a href="creerGenre.php" id="Ajouter">Créer un genre</a>';
-}
-?>
 </div>
 <div id="genres" class="sections_accueil">
     <?php 

@@ -23,7 +23,10 @@
         }
     } 
 ?>
-<form action="creerGroupe.php" method="post">
+<header>
+    <link rel="stylesheet" href="./static/css/creations.css">
+</header>
+<form id="boxCreation" action="creerGroupe.php" method="post">
     <label for="nom_groupe">Nom de Groupe</label>
     <input type="text" id="nom_groupe" name="nom_groupe" required>
     <label for="description">Description</label>

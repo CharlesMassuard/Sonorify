@@ -1,4 +1,4 @@
-#creationPlaylist {
+#boxCreation {
     display: flex;
     width: 25%;
     flex-direction: column;
@@ -15,6 +15,10 @@
     transform: translate(-50%, -50%);
 }
 
-#creationPlaylist h2 {
+#boxCreation h2 {
     font-size: 35px;
+}
+
+#boxCreation input {
+    margin-bottom: 20px;
 }

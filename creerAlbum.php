@@ -25,7 +25,10 @@
         }
     } 
 ?>
-<form action="creerAlbum.php" method="post">
+<header>
+    <link rel="stylesheet" href="./static/css/creations.css">
+</header>
+<form id="boxCreation" action="creerAlbum.php" method="post">
     <label for="nom_album">Nom de l'album:</label><br>
     <input type="text" id="nom_album" name="nom_album"><br>
     <label for="date_sortie">Date de sortie:</label><br>
