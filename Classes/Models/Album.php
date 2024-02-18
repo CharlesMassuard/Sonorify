@@ -18,6 +18,10 @@
             $this->id_album = $id_album;
             $this->titre = $titre;
             $this->dateSortie = $dateSortie;
+            $imagePath = "./ressources/images/".$image_album;
+            if (!file_exists($imagePath)) {
+                $image_album = "default.jpg"; // replace with your default image name
+            }
             $this->image_album = $image_album;
             $this->nom_groupe = $nom_groupe;
         }

@@ -15,7 +15,7 @@
         public function __construct(array $options){
             $this->id_playlist = $options['id_playlist'];
             $this->nom_playlist = $options['nom_playlist'];
-            $this->image_playlist = $options['image_album'] ?? 'default.jpg';
+            $this->image_playlist = $options['image_album'];
             $this->description_playlist = $options['description_playlist'] ?? null;
             $this->public = $options['public'] ?? null;
             $this->moyenne_note = $options['moyenne_note'] ?? null;

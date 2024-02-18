@@ -1,11 +1,11 @@
 INSERT INTO GROUPE (nom_groupe, image_groupe, description_groupe) VALUES
-    ("Adèle Castillon", "groupes_artistes/adele_castillon.jpg", "Adèle Castillon"),
-    ("Vidéoclub", "groupes_artistes/videoclub.png", "Vidéoclub"),
-    ("Tagada Jones", "groupes_artistes/tagadajones.jpg", "TagadaJones"),
-    ("Hans Zimmer", "groupes_artistes/hanszimmer.jpg", "Hans Zimmer"),
-    ("Avicii", "groupes_artistes/avicii.jpg", "Avicii"),
-    ("Red Hot Chili Peppers", "groupes_artistes/redhotchilipeppers.jpg", "Red Hot Chili Peppers"),
-    ("Les Fatals Picards", "groupes_artistes/lesfatalspicards.jpg", "Les Fatals Picards");
+    ("Adèle Castillon", "groupes_artistes/adele_castillon.jpg", "Adèle Castillon, née le 24 octobre 2001 à Angers, est une chanteuse, actrice et vidéaste française. Elle formait avec Matthieu Reynaud le groupe Videoclub de 2018 à 2021, avant d'entamer une carrière solo."),
+    ("Vidéoclub", "groupes_artistes/videoclub.png", "ideoclub est un duo d'electropop français, originaire de Nantes, formé en 2018 par Adèle Castillon et Matthieu Reynaud. Le groupe n'a sorti qu'un seul album studio, intitulé Euphories, avant sa séparation en 2021."),
+    ("Tagada Jones", "groupes_artistes/tagadajones.jpg", "Tagada Jones est un groupe de punk métal français, originaire de Rennes, en Bretagne. Le style musical du groupe est entre autres teinté de heavy métal et d'électro."),
+    ("Hans Zimmer", "groupes_artistes/hanszimmer.jpg", "Hans Zimmer, né le 12 septembre 1957 à Francfort-sur-le-Main, est un compositeur de musique de film et producteur de trames sonores germano-américain."),
+    ("Avicii", "groupes_artistes/avicii.jpg", "Avicii, souvent stylisé ΛVICII, de son vrai nom Tim Bergling, né le 8 septembre 1989 à Stockholm et mort le 20 avril 2018 à Mascate, est un producteur, musicien et disc jockey suédois."),
+    ("Red Hot Chili Peppers", "groupes_artistes/redhotchilipeppers.jpg", "Les Red Hot Chili Peppers sont un groupe de funk rock américain, originaire de Los Angeles, en Californie, actif depuis 1982."),
+    ("Les Fatals Picards", "groupes_artistes/lesfatalspicards.jpg", "Les Fatals Picards est un groupe de comedy rock français, mêlant humour, second degré et engagement à travers divers styles, allant de la chanson française au punk, en passant par le rock.");
 
 INSERT INTO ALBUM (titre, image_album, id_groupe, dateSortie) VALUES
     ("Plaisir Risque Dépendance", "Cover/PRD.jpg", 1, "20-10-2023"),
