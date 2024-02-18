@@ -28,9 +28,9 @@
         }
 
         public function render(){
-            echo '<a class="a_accueil" href= "jouerMusique.php?id='.$this->id_musique.'" id="PlayMusique">';
+            echo '<a class="a_accueil" href= "/Pages/Request/jouerMusique.php?id='.$this->id_musique.'" id="PlayMusique">';
             echo '<div class="a_content">';
-            echo '<img src="./ressources/images/'.$this->image_musique.'">';
+            echo '<img src="/static/img/'.$this->image_musique.'">';
             echo '<h3>'.$this->nom_musique.'</h3>';
             echo '<p class="infos_supp">'.$this->nom_groupe.'</p>';
             echo '</div>';
