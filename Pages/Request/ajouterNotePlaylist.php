@@ -4,7 +4,7 @@
     }
     if (!isset($_SESSION['user'])) {
         $_SESSION['redirect_to'] = $_SERVER['REQUEST_URI'];
-        header('Location: login.php');
+        header('Location: /Pages/Views/login.php');
     } else {
         $id_playlist = $_GET['id'] ?? 1;
         $note = $_GET['note'] ?? 1;
@@ -12,6 +12,6 @@
         require_once dirname(__FILE__) . '/../../Classes/Data/DataBase.php'; 
         $data = new Data\DataBase();
         $userStatement = $data->insertNotePlaylist($id_playlist, $id_utilisateur, $note);
-        header('Location: playlist.php?id='.$id_playlist);
+        header('Location: /Pages/Views/playlist.php?id='.$id_playlist);
     }
 ?>

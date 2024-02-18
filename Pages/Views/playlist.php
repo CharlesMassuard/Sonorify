@@ -55,31 +55,31 @@
                         for ($i=0; $i < 5; $i++) { 
                             
                             if ($i<$note){
-                                echo '<a id="ajout_note" href="ajouterNotePlaylist.php?id='.$playlist['id_playlist'].'&note='.($i+1).'" class="active">';
+                                echo '<a id="ajout_note" href="/Pages/Request/ajouterNotePlaylist.php?id='.$playlist['id_playlist'].'&note='.($i+1).'" class="active">';
                             } else {
-                                echo '<a id="ajout_note" href="ajouterNotePlaylist.php?id='.$playlist['id_playlist'].'&note='.($i+1).'">';
+                                echo '<a id="ajout_note" href="/Pages/Request/ajouterNotePlaylist.php?id='.$playlist['id_playlist'].'&note='.($i+1).'">';
                             }
                             echo '<i class="material-icons">star</i>';
                             echo '</a>';
                         }
                         echo '</div>';
                         echo '<div id="inputPlaylistAlbum">';
-                        echo '<form id="PlayPlaylist" action="jouerPlaylist.php?id_playlist='.$id_playlist.'&aleatoire=false" method="post">';
+                        echo '<form id="PlayPlaylist" action="/Pages/Request/jouerPlaylist.php?id_playlist='.$id_playlist.'&aleatoire=false" method="post">';
                         echo '<input type="submit" id="jouerPlaylist" name="jouerPlaylist" style="display: none;">';
                         echo '<label for="jouerPlaylist"  title="Lire la playlist"><i class="material-icons">play_arrow</i></label>';
                         echo '</form>';
 
-                        echo '<form id="PlayPlaylist" action="jouerPlaylist.php?id_playlist='.$id_playlist.'&aleatoire=true" method="post">';
+                        echo '<form id="PlayPlaylist" action="/Pages/Request/jouerPlaylist.php?id_playlist='.$id_playlist.'&aleatoire=true" method="post">';
                         echo '<input type="submit" id="jouerPlaylistAleatoire" name="jouerPlaylistAleatoire" style="display: none;">';
                         echo '<label for="jouerPlaylistAleatoire"  title="Lire la playlist aléatoirement"><i class="material-icons">shuffle</i></label>';
                         echo '</form>';
                         if ($_SESSION  && isset($_SESSION['user']) && $data->isFavorisPlaylist($id_playlist, $_SESSION['user']['id_utilisateur']) ?? false){
-                            echo '<form id="Favoris" action="supprimerFavorisPlaylist.php?id='.$id_playlist.'" method="post">';
+                            echo '<form id="Favoris" action="/Pages/Request/supprimerFavorisPlaylist.php?id='.$id_playlist.'" method="post">';
                             echo '<input type="submit" id="favAlbum" name="deleteFavoriteAlbum" style="display: none;">';
                             echo '<label for="favAlbum"  title="Supprimer des favoris"><i class="material-icons" id="UnFav">favorite</i></label>';
                             echo '</form>';
                         } else {
-                            echo '<form id="Favoris" action="ajouterFavorisPlaylist.php?id='.$id_playlist.'" method="post">';
+                            echo '<form id="Favoris" action="/Pages/Request/ajouterFavorisPlaylist.php?id='.$id_playlist.'" method="post">';
                             echo '<input type="submit" id="favAlbum" name="addFavoriteAlbum" style="display: none;">';
                             echo '<label for="favAlbum"  title="Ajouter aux favoris"><i class="material-icons" id="Fav">favorite_border</i></label>';
                             echo '</form>';
@@ -93,7 +93,7 @@
             <div id="musiquesPlaylist">
                 <?php
                 if (isset($_SESSION['user']) && $playlist['id_auteur'] == $_SESSION['user']['id_utilisateur']){
-                    echo '<form id="ajouterMusiquePlaylist" action="ajouterMusiquePlaylist.php?id='.$id_playlist.'" method="post">';
+                    echo '<form id="ajouterMusiquePlaylist" action="/Pages/Request/ajouterMusiquePlaylist.php?id='.$id_playlist.'" method="post">';
                     echo '<input type="text" id="nomMusiquePlaylist" name="nom_musique" list="musiques" placeholder="Ajouter une musique à la playlist">';
                     echo '<datalist id="musiques">';
                     foreach ($data->getMusiques() as $musique) {
@@ -108,10 +108,10 @@
                     echo '<div id="musique">';
                     $album = $data->getAlbumByMusique($musique['id_musique']);
                     echo '<img id="imgMusiqueAlbum" src="/static/img/'.$album["image_album"].'">';
-                    echo '<a href= "jouerPlaylist.php?id_playlist='.$id_playlist.'&aleatoire=false&musiqueStart='.$musique["id_musique"].'" id="PlayPlaylistMusique">';
+                    echo '<a href= "/Pages/Request/jouerPlaylist.php?id_playlist='.$id_playlist.'&aleatoire=false&musiqueStart='.$musique["id_musique"].'" id="PlayPlaylistMusique">';
                     echo '<h2>'.$musique['nom_musique'].'</h2>';
                     echo '</a>';
-                    echo '<a id="Groupe" href="groupe.php?id='.$musique['id_groupe'].'">'.$data->getGroupe($musique['id_groupe'])['nom_groupe'].'</a>';
+                    echo '<a id="Groupe" href="/Pages/Views/groupe.php?id='.$musique['id_groupe'].'">'.$data->getGroupe($musique['id_groupe'])['nom_groupe'].'</a>';
                     echo '<div id="note">';
 
                     if (isset($_SESSION['user']) && $data->isMusiqueNotee($musique['id_musique'], $_SESSION['user']['id_utilisateur']) ?? false){
@@ -121,9 +121,9 @@
                     }
                     for ($i=0; $i < 5; $i++) { 
                         if ($i<$note){
-                            echo '<a id="ajout_note" href="ajouterNoteMusique.php?id='.$musique['id_musique'].'&note='.($i+1).'" class="active">'; 
+                            echo '<a id="ajout_note" href="/Pages/Request/ajouterNoteMusique.php?id='.$musique['id_musique'].'&note='.($i+1).'" class="active">'; 
                         } else {
-                            echo '<a id="ajout_note" href="ajouterNoteMusique.php?id='.$musique['id_musique'].'&note='.($i+1).'">';
+                            echo '<a id="ajout_note" href="/Pages/Request/ajouterNoteMusique.php?id='.$musique['id_musique'].'&note='.($i+1).'">';
                         }
                         echo '<i class="material-icons">star</i>';
                         echo '</a>';
@@ -136,18 +136,18 @@
                         echo '<p>0/5</p>';
                     }
                     if (isset($_SESSION['user']) && $data->isFavorisMusique($musique['id_musique'], $_SESSION['user']['id_utilisateur']) ?? false){
-                        echo '<form id="Favoris" action="supprimerFavorisMusique.php?id='.$musique['id_musique'].'" method="post">';
+                        echo '<form id="Favoris" action="/Pages/Request/supprimerFavorisMusique.php?id='.$musique['id_musique'].'" method="post">';
                         echo '<input type="submit" id="favMusique'.$musique['id_musique'].'" name="deleteFavoriteMusique" style="display: none;">';
                         echo '<label for="favMusique'.$musique['id_musique'].'"  title="Supprimer des favoris"><i class="material-icons" id="UnFav">favorite</i></label>';
                         echo '</form>';
                         } else {
-                        echo '<form id="Favoris" action="ajouterFavorisMusique.php?id='.$musique['id_musique'].'" method="post">';
+                        echo '<form id="Favoris" action="/Pages/Request/ajouterFavorisMusique.php?id='.$musique['id_musique'].'" method="post">';
                         echo '<input type="submit" id="favMusique'.$musique['id_musique'].'" name="addFavoriteMusique" style="display: none;">';
                         echo '<label for="favMusique'.$musique['id_musique'].'"  title="Ajouter aux favoris"><i class="material-icons" id="Fav">favorite_border</i></label>';
                         echo '</form>';
                     }
                     if ($_SESSION  && isset($_SESSION['user']) && $playlist['id_auteur'] == $_SESSION['user']['id_utilisateur']){
-                        echo '<form id="Supprimer" action="supprimerMusiquePlaylist.php?id_musique='.$musique['id_musique'].'&id_playlist='.$id_playlist.'" method="post">';
+                        echo '<form id="Supprimer" action="/Pages/Request/supprimerMusiquePlaylist.php?id_musique='.$musique['id_musique'].'&id_playlist='.$id_playlist.'" method="post">';
                         echo '<input type="submit" id="deleteMusiquePlaylist" name="deleteMusiquePlaylist" style="display: none;">';
                         echo '<label for="deleteMusiquePlaylist"  title="Supprimer de la playlist" onclick="return confirm(\'Êtes-vous sûr de vouloir supprimer cette musique de la playlist ?\')"><i class="material-icons">delete</i></label>';
                         echo '</form>';

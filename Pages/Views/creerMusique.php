@@ -4,7 +4,7 @@
     }
     if (!isset($_SESSION['user'])) {
         $_SESSION['redirect_to'] = $_SERVER['REQUEST_URI'];
-        header('Location: login.php');
+        header('Location: /Pages/Views/login.php');
     }
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -23,13 +23,13 @@
         $db->creerMusique($nom_musique, $duree, $id_groupe, $id_album, $id_genre, $url);
         $id_musique = $db->getMusiquesByName($nom_musique)[0]['id_musique'];
         if ($id_musique){
-            header('Location: accueil.php');
+            header('Location: /Pages/Views/accueil.php');
         } else {
             echo "<strong>La musique n'a pas été créée</strong>";
         }
     } 
 ?>
-<form action="creerMusique.php" method="post">
+<form action="creerMusique.php" method="post" id ="Creer">
     <label for="nom_musique">Nom de Musique</label>
     <input type="text" id="nom_musique" name="nom_musique" required>
     <label for="duree">Durée</label>

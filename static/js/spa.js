@@ -49,6 +49,11 @@ export function init() {
         form.addEventListener('submit', ajouterHandler);
     } );
 
+    document.querySelectorAll('#Creer').forEach(form => {
+        form.removeEventListener('submit', ajouterHandler);
+        form.addEventListener('submit', ajouterHandler);
+    } );
+
     document.querySelectorAll('#Supprimer').forEach(form => {
         form.removeEventListener('submit', supprimerHandler);
         form.addEventListener('submit', supprimerHandler);

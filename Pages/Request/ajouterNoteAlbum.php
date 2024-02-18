@@ -4,14 +4,14 @@
     }
     if (!isset($_SESSION['user'])) {
         $_SESSION['redirect_to'] = $_SERVER['REQUEST_URI'];
-        header('Location: login.php');
+        header('Location: /Pages/Views/login.php');
     } else {
         $id_album = $_GET['id'] ?? 1;
         $note = $_GET['note'] ?? 1;
         $id_utilisateur = $_SESSION['user']['id_utilisateur'] ?? 1;
-        require_once dirname(__FILE__) . '/../../Classes/Data/DataBase.php'; 
+        require_once '../../Classes/Data/DataBase.php'; 
         $data = new Data\DataBase();
         $userStatement = $data->insertNoteAlbum($id_album, $id_utilisateur, $note);
-        header('Location: album.php?id='.$id_album);
+        header('Location: /Pages/Views/album.php?id='.$id_album);
     }
 ?>

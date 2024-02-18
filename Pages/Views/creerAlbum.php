@@ -4,7 +4,7 @@
     }
     if (!isset($_SESSION['user'])) {
         $_SESSION['redirect_to'] = $_SERVER['REQUEST_URI'];
-        header('Location: login.php');
+        header('Location: /Pages/Views/login.php');
     }
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -19,13 +19,13 @@
         if ($id_groupe){
             $data->creerAlbum($nom_album, $date_sortie, $id_groupe, $image);
             $id_album = $data->getIdAlbum($nom_album)['id_album'];
-            header('Location: album.php?id='.$id_album);
+            header('Location: /Pages/Views/album.php?id='.$id_album);
         } else {
             echo "<strong>Le groupe n'existe pas</strong>";
         }
     } 
 ?>
-<form action="creerAlbum.php" method="post">
+<form action="creerAlbum.php" method="post" id ="Creer">
     <label for="nom_album">Nom de l'album:</label><br>
     <input type="text" id="nom_album" name="nom_album"><br>
     <label for="date_sortie">Date de sortie:</label><br>

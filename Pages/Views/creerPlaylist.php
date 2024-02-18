@@ -4,7 +4,7 @@
     }
     if (!isset($_SESSION['user'])) {
         $_SESSION['redirect_to'] = $_SERVER['REQUEST_URI'];
-        header('Location: login.php');
+        header('Location: /Pages/Views/login.php');
     }
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -22,13 +22,13 @@
         $db->creerPlaylist($nom_playlist, $description, $public, $user['id_utilisateur']);
         $id_playlist = $db->getPlaylistsByName($nom_playlist)[0]['id_playlist'];
         if ($id_playlist){
-            header('Location: accueil.php');
+            header('Location: /Pages/Views/accueil.php');
         } else {
             echo "<strong>La playlist n'a pas été créée</strong>";
         }
     } 
 ?>
-<form action="creerPlaylist.php" method="post">
+<form action="creerPlaylist.php" method="post" id ="Creer">
     <label for="nom_playlist">Nom de la Playlist:</label><br>
     <input type="text" id="nom_playlist" name="nom_playlist"><br>
     <label for="description">Description:</label><br>
