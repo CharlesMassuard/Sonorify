@@ -23,6 +23,7 @@ session_start();
     <link rel="stylesheet" href="/static/css/register.css">
     <link rel="stylesheet" href="/static/css/profil.css">
     <link rel="stylesheet" href="/static/css/modification.css">
+    <link rel="stylesheet" href="/static/css/groupe.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="/static/js/index.js" defer></script>
     <script src="/static/js/accueil.js" defer></script>
