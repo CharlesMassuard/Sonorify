@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         div.appendChild(img);
                         div.appendChild(textDiv);
                         a.appendChild(div);
-                        a.setAttribute("href", "playlist.php?id=" + res['id_playlist']);
+                        a.setAttribute("href", "/Pages/Views/playlist.php?id=" + res['id_playlist']);
                         a.setAttribute("id", "Playlist");
                         document.querySelector("#search_result").appendChild(a);
                         
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         div.appendChild(img);
                         div.appendChild(textDiv);
                         a.appendChild(div);
-                        a.setAttribute("href", "groupe.php?id=" + res['id_groupe']);
+                        a.setAttribute("href", "/Pages/Views/groupe.php?id=" + res['id_groupe']);
                         a.setAttribute("id", "Groupe");
                         document.querySelector("#search_result").appendChild(a);
 
@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         div.appendChild(img);
                         div.appendChild(textDiv);
                         a.appendChild(div);
-                        a.setAttribute("href", "album.php?id=" + res['id_album']);
+                        a.setAttribute("href", "/Pages/Views/album.php?id=" + res['id_album']);
                         a.setAttribute("id", "Album");
                         document.querySelector("#search_result").appendChild(a);
                         div.style.display = "flex";
@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         div.appendChild(img);
                         div.appendChild(textDiv);
                         a.appendChild(div);
-                        a.setAttribute("href", "genre.php?id=" + res['id_genre']);
+                        a.setAttribute("href", "/Pages/Views/genre.php?id=" + res['id_genre']);
                         a.setAttribute("id", "Genre");
                         document.querySelector("#search_result").appendChild(a);
                         div.style.display = "flex";
@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         div.appendChild(img);
                         div.appendChild(textDiv);
                         a.appendChild(div);
-                        a.setAttribute("href", "jouerMusique.php?id=" + res['id_musique']);
+                        a.setAttribute("href", "/Pages/Request/jouerMusique.php?id=" + res['id_musique']);
                         a.setAttribute("id", "PlayMusique");
                         document.querySelector("#search_result").appendChild(a);
                         // Apply CSS styles
