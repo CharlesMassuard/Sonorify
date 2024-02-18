@@ -29,7 +29,7 @@
         <p id="descGroupe"><?php echo $groupe['description_groupe'] ?></p>
         <?php
         echo '<div id="inputGroupe">';
-        echo '<form id="PlayGroupe" action="jouerGroupe.php?id_groupe='.$id_groupe.'" method="post">';
+        echo '<form id="PlayGroupe" action="/Pages/Request/jouerGroupe.php?id_groupe='.$id_groupe.'" method="post">';
         echo '<input type="submit" id="jouerGroupe" name="jouerGroupe" style="display: none;">';
         echo '<label for="jouerGroupe"  title="Ecouter le groupe"><i class="material-icons">play_arrow</i></label>';
         echo '</form>';

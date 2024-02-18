@@ -4,9 +4,9 @@
     }
     $id_groupe = $_GET['id_groupe'] ?? 1;
     $type = $_GET['type'] ?? 'musique';
-    require_once 'Classes/Data/DataBase.php';
+    require_once dirname(__FILE__) . '/../../Classes/Data/DataBase.php'; 
     $data = new Data\DataBase();
-    require_once 'Classes/Autoloader.php';
+    require_once dirname(__FILE__) . '/../../Classes/Autoloader.php';
     Autoloader::register();
     $groupe = $data->getGroupeById($id_groupe);
     if($type == 'musique') {

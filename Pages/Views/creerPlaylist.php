@@ -10,7 +10,7 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $nom_playlist = $_POST['nom_playlist'];
         $description = $_POST['description'];
-        $public = $_POST['public'];
+        $public = $_POST['public'] ?? "off";
         if ($public == "on"){
             $public = 1;
         } else {
@@ -22,7 +22,7 @@
         $db->creerPlaylist($nom_playlist, $description, $public, $user['id_utilisateur']);
         $id_playlist = $db->getPlaylistsByName($nom_playlist)[0]['id_playlist'];
         if ($id_playlist){
-            header('Location: /Pages/Views/accueil.php');
+            header('Location: /Pages/Views/playlist.php?id='.$id_playlist);
         } else {
             echo "<strong>La playlist n'a pas été créée</strong>";
         }

@@ -14,7 +14,11 @@
 ?>
 <div id="playlistAlbum">
     <div id="playlist">
-        <img id="imgPlaylistAlbum" src="/static/img/<?php echo $album["image_album"]?>">
+        <img id="imgPlaylistAlbum" src="/static/img/<?php 
+        $image_album = __DIR__ ."/../../static/img/".$album["image_album"];
+        if (!file_exists($image_album)) {
+            $image_album = "default.jpg"; // replace with your default image name
+        }echo $image_album?>">
         <div id="playlistDetails">
             <h1><?php echo $album['titre'] ?></h1>
             <?php  

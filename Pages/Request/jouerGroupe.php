@@ -1,6 +1,6 @@
 <?php
     $id_groupe = $_GET['id_groupe'] ?? 1;
-    require_once 'Classes/Data/DataBase.php'; 
+    require_once dirname(__FILE__) . '/../../Classes/Data/DataBase.php';
     $data = new Data\DataBase();
     $musiques = $data->getMusiquesByGroupe($id_groupe);
     $musiques = array_slice($musiques, 0, 100); //limitation pour éviter de trop charger
