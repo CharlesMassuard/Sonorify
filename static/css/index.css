@@ -1,0 +1,162 @@
+:root {
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+    overflow-y: scroll;
+    max-width: 99%;
+    background-color: black;
+    background-position: center center;
+    background-size: cover;
+    position: relative;
+    padding-top: 50px;
+}
+
+main {
+    width: 100%;
+    height: 100vh;
+    font-family: 'Luminari', sans-serif;
+}
+
+.sections_accueil{
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    flex-wrap: wrap;
+    /* margin-bottom: 20px; */
+    overflow-x: hidden;
+    white-space: nowrap;
+}
+.sections_accueil:hover{
+    overflow-x: auto;
+}
+.infos_supp{
+    flex-basis: 100%;
+    margin-top: -15px;
+    color: rgb(96, 96, 96);
+    font-size: 18px;
+    font-weight: 500;
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+h1{
+    flex-basis: 100%;
+    margin: 20px;
+    color: white;
+    font-size: 50px;
+}
+h2{
+    flex-basis: 100%;
+    margin: 20px;
+    color: white;
+    font-size: 40px;
+}
+h3 {
+    color: white;
+    font-size: 20px;
+    display: flex;
+    white-space: normal;
+}
+
+
+.a_accueil{
+    text-decoration: none;
+    color: white;
+    background-color: transparent;
+    display: inline-block;
+    margin: 20px;
+    padding: 10px;
+    width: 11%; 
+    font-size: auto;
+}
+.a_accueil:hover{
+    transform: scale(1.02);
+    opacity: 0.9;
+}
+.a_accueil img{
+    width: 10vw;
+}
+
+#bottomPage{
+    padding-bottom: 80px;
+}
+
+.a_content {
+    display: flex;
+    flex-direction: column;
+}
+
+#context-menu {
+    background: #2c2c2c;
+    padding: 10px;
+    z-index: 50;
+    top: 0;
+    left: 0;
+}
+
+#optionsAccueil{
+    list-style: none;
+}
+
+#titleSectionsAccueil{
+    display: flex;
+}
+
+#Ajouter{
+    position: relative;
+    background-color: rgb(0, 0, 0);
+    border: 1px solid white;
+    border-radius: 15px;
+    height: 40px;
+    color: white;
+    font-size: 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    width: 15%;
+    white-space: nowrap;
+    margin-top: 31px;
+    text-align: center;
+    line-height: 40px;
+}
+
+#Ajouter:hover{
+    opacity: 0.5;
+}
+
+
+@media screen and (max-width: 800px){
+    .a_accueil{
+        width: 20%;
+    }
+    .sections_accueil{
+        width: 100%;
+    }
+    h1{
+        font-size: 40px;    
+    }
+    h2{
+        font-size: 30px;
+    }
+    h3{
+        font-size: 20px;
+    }
+    .infos_supp{
+        font-size: 15px;
+    }
+    
+}
+.sections{
+    display: flex;
+    flex-wrap: wrap;
+}
+.sections h2{
+    flex-basis: 80%;
+    flex-grow: 1;
+}
+.sections div{
+    flex-basis: 100%;
+}

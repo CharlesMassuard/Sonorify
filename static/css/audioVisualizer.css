@@ -1,0 +1,19 @@
+/* ::selected{
+  color: var(--textColorDark);
+}
+
+#canvas {
+  position: absolute;
+  top: 0;
+}
+
+#out {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+
+
+
+ */

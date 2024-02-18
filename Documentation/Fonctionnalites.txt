@@ -1,0 +1,21 @@
+Module utilisateur:
+- Peut créer un compte ou se connecter
+- Peut se déconnecter
+- Peut rechercher des musiques, des albums, des artistes, des groupes et des playlists publiques
+- Peut noter les musiques, les albums et les playlists
+- Peut ajouter en favoris des musiques, des albums et les playlists
+- Peut créer une playlist, et la rendre privée ou publique
+- Peut ajouter des musiques à ses playlist
+- Peut supprimer ses playlist (pas implémenter)
+- Peut obtenir des informations sur les albums, les musiques et les groupes
+- Peut écouter une musique, un album, une playlist et un groupe
+- Peut utiliser le player en bas de page pour:
+Pause, retour, avancer, aléatoire, répétition liste lecture, répétition musique, pas de répétition
+Acceder a la liste de lecture
+Modifier le volume
+
+Module administrateur
+- Peut ajouter et supprimer des musiques, albums, artistes et groupes
+- Peut rajouter des musiques aux albums si la mausique n'est pas déjà dans un album
+- Peut modifier les informations des albums et des groupes
+- peut supprimer des albums et des groupes
