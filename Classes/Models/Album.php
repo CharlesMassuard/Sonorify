@@ -32,7 +32,6 @@
         public function render(){
             echo '<a class="a_accueil" href= "/Pages/Views/album.php?id='.$this->id_album.'" id="Album">';
             echo '<div class="a_content">';
-            echo $this->image_album;
             echo '<img src="'.$this->image_album.'">';
             echo '<h3>'.$this->titre.'</h3>';
             echo '<p class="infos_supp">'.$this->nom_groupe.'</p>';
