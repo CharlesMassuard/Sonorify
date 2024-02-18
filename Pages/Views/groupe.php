@@ -33,6 +33,11 @@
         echo '<input type="submit" id="jouerGroupe" name="jouerGroupe" style="display: none;">';
         echo '<label for="jouerGroupe"  title="Ecouter le groupe"><i class="material-icons">play_arrow</i></label>';
         echo '</form>';
+        if ($_SESSION  && isset($_SESSION['user']) && $_SESSION['user']['id_role'] == 2){
+            echo '<a id="Groupe" href="/Pages/Views/modifierGroupe.php?id='.$id_groupe.'"><i class="material-icons">edit</i></a>';
+            echo '<a id="Groupe" href="/Pages/Request/supprimerGroupe.php?id='.$id_groupe.'"><i class="material-icons">delete</i></a>';
+        }
+
         // if ($_SESSION  && isset($_SESSION['user']) && is_array($_SESSION) && $data->isFavorisAlbum($id_album, $_SESSION['user']['id_utilisateur']) ?? false){
         //     echo '<form id="FavorisGroupe" action="supprimerFavorisGroupe.php?id='.$id_album.'" method="post">';
         //     echo '<input type="submit" id="favAlbum" name="deleteFavoriteAlbum" style="display: none;">';
