@@ -19,22 +19,26 @@
         }
     ?>
 </div>
-<?php
-    if (isset($_SESSION['user']) && count($data->getMusiqueRecemmentEcoutee())>=4) {
-        $musiques = $data->getMusiqueRecemmentEcoutee();
-        if(count($musiques) == 0) {
-            $musiques = $data->getMusiqueRecente();
-            echo '<h2>Musiques</h2>';
+<div id="titleSectionsAccueil">
+    <?php
+        if (isset($_SESSION['user']) && count($data->getMusiqueRecemmentEcoutee())>=4) {
+            $musiques = $data->getMusiqueRecemmentEcoutee();
+            if(count($musiques) == 0) {
+                $musiques = $data->getMusiqueRecente();
+                echo '<h2>Musiques</h2>';
+            } else {
+                echo '<h2>Musiques Recemment Ecoutées</h2>';
+            }
         } else {
-            echo '<h2>Musiques Recemment Ecoutées</h2>';
+            echo '<h2>Musiques</h2>';
+            $musiques = $data->getMusiqueRecente();       
         }
-    } else {
-        echo '<h2>Musiques</h2>';
-        $musiques = $data->getMusiqueRecente();       
-    }
-    if (isset($_SESSION['user']) && $_SESSION['user']['id_role'] == 2) {
-        echo '<a href="creerMusique.php" id="Ajouter">Créer</a>';
-    }
+        if (isset($_SESSION['user']) && $_SESSION['user']['id_role'] == 2) {
+            echo '<a href="creerMusique.php" id="Ajouter">Créer une musique</a>';
+        }
+    ?>
+</div>
+<?php
     $musiques = Factory::createMusiques($musiques);
     echo '<div id="musiques" class="sections_accueil">';
     foreach ($musiques as $musique) {
@@ -42,8 +46,13 @@
     }
     echo '</div>';
 ?>
+<div id="titleSectionsAccueil">
 <h2>Playlists</h2>
-<a href="creerPlaylist.php" id="Ajouter">Créer</a>
+<?php if(isset($_SESSION['user'])){
+    echo '<a href="creerPlaylist.php" id="Ajouter">Créer une playlist</a>';
+}
+?>
+</div>
 <div id="playlist" class="sections_accueil">
     <?php 
     $playlists = $data->getPlaylistsTrieesParNote();
@@ -54,13 +63,15 @@
     ?>
 </div>
 <div class="sections">
+<div id="titleSectionsAccueil">
 <h2>Albums</h2>
 
 <?php 
 if (isset($_SESSION['user']) && $_SESSION['user']['id_role'] == 2){
-   echo '<a href="creerAlbum.php" id="Ajouter">Créer</a>';
+   echo '<a href="creerAlbum.php" id="Ajouter">Créer un album</a>';
 }
 ?>
+</div>
 <div id="albums" class="sections_accueil">
     <?php 
     $albums = $data->getAlbumsTrieesParNote();
@@ -72,12 +83,14 @@ if (isset($_SESSION['user']) && $_SESSION['user']['id_role'] == 2){
 </div>
 </div>
 <div class="sections">
+<div id="titleSectionsAccueil">
 <h2>Genres</h2>
 <?php 
 if (isset($_SESSION['user']) && $_SESSION['user']['id_role'] == 2){
-   echo '<a href="creerGenre.php" id="Ajouter">Créer</a>';
+   echo '<a href="creerGenre.php" id="Ajouter">Créer un genre</a>';
 }
 ?>
+</div>
 <div id="genres" class="sections_accueil">
     <?php 
     $genres = $data->getGenres();
@@ -89,12 +102,14 @@ if (isset($_SESSION['user']) && $_SESSION['user']['id_role'] == 2){
 </div>
 </div>
 <div class="sections">
+<div id="titleSectionsAccueil">
 <h2>Groupes et Artistes</h2>
 <?php 
 if (isset($_SESSION['user']) && $_SESSION['user']['id_role'] == 2){
-   echo '<a href="creerGroupe.php" id="Ajouter">Créer</a>';
+   echo '<a href="creerGroupe.php" id="Ajouter">Créer un groupe/artiste</a>';
 }
 ?>
+</div>
 <div id="groupes" class="sections_accueil">
     <?php 
     $groupes = $data->getGroupes();

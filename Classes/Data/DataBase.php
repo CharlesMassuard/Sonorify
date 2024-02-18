@@ -705,27 +705,33 @@
         public function insertDataProvider($data){
             foreach ($data as $album) {
                 $index_musique = 0;
-
+        
+                // Check if image exists, if not use default
+                $imagePath = $album['img'] ?? "";
+                if (!file_exists("./ressources/images/".$imagePath)) {
+                    $imagePath = "default2.jpg"; // replace with your default image name
+                }
+        
                 // Insert into GROUPE table
                 $stmt = $this->file_db->prepare('INSERT INTO GROUPE (nom_groupe, image_groupe, description_groupe) VALUES (?, ?, ?)');
-                $stmt->execute([$album['by'], $album['img']??"", $album['description']??""]);
+                $stmt->execute([$album['by'], $imagePath, $album['description']??""]);
         
                 // Get the id of the group we just inserted
                 $id_groupe = $this->file_db->lastInsertId();
-
+        
                 // Insert into ARTISTE table
                 $stmt = $this->file_db->prepare('INSERT INTO ARTISTE (pseudo_artiste, image_artiste) VALUES (?, ?)');
-                $stmt->execute([$album['by'], $album['img']??""]);
-
+                $stmt->execute([$album['by'], $imagePath]);
+        
                 // Get the id of the artist we just inserted
                 $id_artiste = $this->file_db->lastInsertId();
-
+        
                 // Insert into GROUPE_ARTISTE table
                 $stmt = $this->file_db->prepare('INSERT INTO GROUPE_ARTISTE (id_groupe, id_artiste) VALUES (?, ?)');
                 $stmt->execute([$id_groupe, $id_artiste]);
                 
                 // Insert into ALBUM table
-                $this->creerAlbum($album['title'], $album['releaseYear'], $id_groupe, $album['img']);
+                $this->creerAlbum($album['title'], $album['releaseYear'], $id_groupe, $imagePath);
         
                 // Get the id of the album we just inserted
                 $id_album = $this->file_db->lastInsertId();
@@ -735,7 +741,7 @@
                     if($genre != null){
                         $genre[0] = strtoupper($genre[0]);
                         $index_musique += 1;
-
+        
                         $stmt = $this->file_db->prepare('INSERT OR IGNORE INTO GENRE (nom_genre) VALUES (?)');
                         $stmt->execute([$genre]);
             
