@@ -2,17 +2,14 @@
     declare(strict_types=1);
 
     namespace Models;
-    use Interfaces\MusicPlayerInterface;
     use Interfaces\RenderInterface;
     
-    #[\AllowDynamicProperties]
-    class Album implements MusicPlayerInterface, RenderInterface {
-        private $id_album;
-        private $titre;
-        private $image_album;
-        private $id_groupe;
-        private $dateSortie;
-        private $note;
+    class Album implements RenderInterface {
+        private int $id_album;
+        private string $titre;
+        private string $image_album;
+        private int $id_groupe;
+        private string $dateSortie;
     
         public function __construct(int $id_album, string $titre, string $dateSortie, string $image_album, string $nom_groupe){
             $this->id_album = $id_album;
@@ -35,9 +32,5 @@
             echo '</div>';
             echo '</a>';
         }
-        public function play(){
-            echo "Playing album";
-        }
-        // implement the methods from the interfaces
     }
 ?>

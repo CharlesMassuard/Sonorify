@@ -2,17 +2,17 @@
     declare(strict_types=1);
 
     namespace Models;
-    use Interfaces\MusicPlayerInterface;
     use Interfaces\RenderInterface;
 
-    class Musique implements MusicPlayerInterface, RenderInterface {
-        private $id_musique;
-        private $nom_musique;
-        private $duree;
-        private $nom_groupe;
-        private $id_album;
-        private $id_genre;
-        private $image_musique;
+    class Musique implements RenderInterface {
+        private int $id_musique;
+        private string $nom_musique;
+        private string $duree;
+        private string$nom_groupe;
+        private int $id_album;
+        private int $id_genre;
+        private string $image_musique;
+
         public function __construct(int $id_musique, string $nom_musique, string $duree, string $nom_groupe, int $id_album, int $id_genre, string $image_musique = null){
             $this->id_musique = $id_musique;
             $this->nom_musique = $nom_musique;
@@ -42,10 +42,6 @@
             echo '<li>Option 3</li>';
             echo '</ul>';
             echo '</div>';
-        }
-
-        public function play(){
-            echo "Playing musique";
         }
     }
 ?>

@@ -5,10 +5,11 @@
     use Interfaces\RenderInterface;
 
     class Groupe implements RenderInterface {
-        private $id_groupe;
-        private $nom_groupe;
-        private $description_groupe;
-        private $image_groupe;
+        private int $id_groupe;
+        private string $nom_groupe;
+        private string $description_groupe;
+        private string $image_groupe;
+
         public function __construct(int $id_groupe, string $nom_groupe, string $description_groupe, string $image_groupe){
             $this->id_groupe = $id_groupe;
             $this->nom_groupe = $nom_groupe;
@@ -28,7 +29,5 @@
             echo '</div>';
             echo '</a>';
         }
-    
-        // implement the methods from the RenderInterface
     }
 ?>

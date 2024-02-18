@@ -5,14 +5,14 @@
     use Interfaces\RenderInterface;
 
     class Genre implements RenderInterface {
-        private $id_genre;
-        private $nom_genre;
-        private $image_genre;
-        public function __construct($id_genre, $nom_genre, $image_genre){
+        private int $id_genre;
+        private string $nom_genre;
+        private string $image_genre;
+
+        public function __construct(int $id_genre, string $nom_genre, ?string $image_genre){
             $this->id_genre = $id_genre;
             $this->nom_genre = $nom_genre;
-            $imagePath = __DIR__ ."/../../static/img/".$image_genre;
-            if (!file_exists($imagePath)) {
+            if ($image_genre === null || !file_exists(__DIR__ ."/../../static/img/".$image_genre)) {
                 $image_genre = "default.jpg"; // replace with your default image name
             }
             $this->image_genre = $image_genre;
@@ -26,6 +26,5 @@
             echo '</div>';
             echo '</a>';
         }
-
-        // reste
     }
+?>
