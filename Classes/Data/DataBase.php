@@ -744,7 +744,7 @@
                 // Check if image exists, if not use default
                 $imagePath = $album['img'] ?? "";
                 if (!file_exists("./ressources/images/".$imagePath)) {
-                    $imagePath = "default2.jpg"; // replace with your default image name
+                    $imagePath = "default.jpg"; // replace with your default image name
                 }
         
                 // Insert into GROUPE table
