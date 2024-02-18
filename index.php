@@ -13,16 +13,20 @@ session_start();
 <head>
     <title>Sonorify</title>
     <link rel="icon" type="image/x-icon" href="/static/img/logo.png">
-    <link rel="stylesheet" href="./static/css/index.css">
-    <link rel="stylesheet" href="./static/css/aside.css">
-    <link rel="stylesheet" href="./static/css/header.css">
-    <link rel="stylesheet" href="./static/css/player.css">
-    <link rel="stylesheet" href="./static/css/playlist.css">
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/aside.css">
+    <link rel="stylesheet" href="/static/css/header.css">
+    <link rel="stylesheet" href="/static/css/player.css">
+    <link rel="stylesheet" href="/static/css/playlist.css">
+    <link rel="stylesheet" href="/static/css/allGroupe.css">
+    <link rel="stylesheet" href="/static/css/login.css">
+    <link rel="stylesheet" href="/static/css/register.css">
+    <link rel="stylesheet" href="/static/css/profil.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="./static/js/index.js" defer></script>
-    <script src="./static/js/accueil.js" defer></script>
-    <script src="./static/js/playlist.js" defer></script>
-    <script type="module" src="./static/js/header.js" defer></script>
+    <script src="/static/js/index.js" defer></script>
+    <script src="/static/js/accueil.js" defer></script>
+    <script src="/static/js/playlist.js" defer></script>
+    <script type="module" src="/static/js/header.js" defer></script>
 </head>
 <body>
     <?php include 'Pages/Views/aside.php'; ?>

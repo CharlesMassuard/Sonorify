@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         } else {
             searchBar.style.borderRadius = "10px 10px 0px 0px ";
-            fetch('rechercheData.php', {
+            fetch('/Pages/Request/rechercheData.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',

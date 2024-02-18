@@ -10,7 +10,7 @@ require_once dirname(__FILE__) . '/../../Classes/Data/DataBase.php';
 $data = new Data\DataBase();
 
 // Autoload
-require dirname(__FILE__) . '/../../Classes/Autoloader.php';
+require_once dirname(__FILE__) . '/../../Classes/Autoloader.php';
 Autoloader::register();
 ?>
 <head>

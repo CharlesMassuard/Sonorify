@@ -20,7 +20,7 @@
             $this->nom_groupe = $nom_groupe;
             $this->id_album = $id_album;
             $this->id_genre = $id_genre;
-            $imagePath = "./ressources/images/".$image_musique;
+            $imagePath = __DIR__ ."/../../static/img/".$image_musique;
             if (!file_exists($imagePath)) {
                 $image_musique = "default.jpg"; // replace with your default image name
             }

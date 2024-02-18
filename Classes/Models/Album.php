@@ -18,7 +18,7 @@
             $this->id_album = $id_album;
             $this->titre = $titre;
             $this->dateSortie = $dateSortie;
-            $imagePath = "./ressources/images/".$image_album;
+            $imagePath = __DIR__ ."/../../static/img/".$image_album;
             if (!file_exists($imagePath)) {
                 $image_album = "default.jpg"; // replace with your default image name
             }

@@ -3,7 +3,7 @@
     require_once dirname(__FILE__) . '/../../Classes/Data/DataBase.php';
     $data = new Data\DataBase();
 
-    require dirname(__FILE__) . '/../../Classes/Autoloader.php';
+    require_once dirname(__FILE__) . '/../../Classes/Autoloader.php';
     Autoloader::register();
     if (session_status() == PHP_SESSION_NONE) {
         session_start();

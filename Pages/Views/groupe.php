@@ -5,7 +5,7 @@
     $id_groupe = $_GET['id'] ?? 1;
     require_once dirname(__FILE__) . '/../../Classes/Data/DataBase.php';
     $data = new Data\DataBase();
-    require dirname(__FILE__) . '/../../Classes/Autoloader.php';
+    require_once dirname(__FILE__) . '/../../Classes/Autoloader.php';
     Autoloader::register();
     $groupe = $data->getGroupeById($id_groupe);
     $nbMusiques = count($data->getMusiquesByGroupe($id_groupe));

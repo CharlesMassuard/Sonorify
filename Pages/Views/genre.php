@@ -5,7 +5,7 @@
     $id_genre = $_GET['id'] ?? 1;
     require_once dirname(__FILE__) . '/../../Classes/Data/DataBase.php';
     $data = new Data\DataBase();
-    require dirname(__FILE__) . '/../../Classes/Autoloader.php';
+    require_once dirname(__FILE__) . '/../../Classes/Autoloader.php';
     Autoloader::register();
     $genre = $data->getGenresById($id_genre);
     $musiques = $data->getMusiquesByGenre($id_genre);
