@@ -23,7 +23,7 @@
         }
     } 
 ?>
-<form action="creerGroupe.php" method="post" id ="Creer">
+<form action="creerGroupe.php" method="post" id ="Creer" class="boxCreation">
     <label for="nom_groupe">Nom de Groupe</label>
     <input type="text" id="nom_groupe" name="nom_groupe" required>
     <label for="description">Description</label>

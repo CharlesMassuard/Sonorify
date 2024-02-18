@@ -29,7 +29,7 @@
         }
     } 
 ?>
-<form action="creerMusique.php" method="post" id ="Creer">
+<form action="creerMusique.php" method="post" id ="Creer" class="boxCreation">
     <label for="nom_musique">Nom de Musique</label>
     <input type="text" id="nom_musique" name="nom_musique" required>
     <label for="duree">Durée</label>
