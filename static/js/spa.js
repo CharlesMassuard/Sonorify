@@ -59,6 +59,12 @@ export function init() {
         form.addEventListener('submit', ajouterHandler);
     } );
 
+    document.querySelectorAll('#Modifier').forEach(form => {
+        form.removeEventListener('submit', ajouterHandler);
+        form.addEventListener('submit', ajouterHandler);
+        console.log('modifier');
+    } );
+
     document.querySelectorAll('#Supprimer').forEach(form => {
         form.removeEventListener('submit', supprimerHandler);
         form.addEventListener('submit', supprimerHandler);

@@ -23,7 +23,7 @@
     }
 ?>
 
-<form id="Modifier=" method="post" action="/Pages/Views/modifierAlbum.php?id=<?php echo $id_album ?>">
+<form id="Modifier" method="post" action="/Pages/Views/modifierAlbum.php?id=<?php echo $id_album ?>">
     <input type="hidden" name="id_album" value="<?php echo $id_album ?>">
     <label for="nom_album">Nom de l'album</label>
     <input type="text" name="nom_album" placeholder="Nom de l'album" value="<?php echo $album['titre'] ?>">
