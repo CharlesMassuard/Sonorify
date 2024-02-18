@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 } ?>
 <head>
     <title>Sonorify</title>
-    <link rel="stylesheet" href="./static/css/login.css">
+    <link rel="stylesheet" href="/static/css/login.css">
 </head>
 <body>
     <main id="main-content">

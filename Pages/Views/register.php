@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 <html>
 <head>
     <title>Sonorify</title>
-    <link rel="stylesheet" href="./static/css/register.css">
+    <link rel="stylesheet" href="/static/css/register.css">
 </head>
 <body>
 <main id="main-content">
