@@ -20,7 +20,7 @@
             $this->nom_groupe = $nom_groupe;
             $this->id_album = $id_album;
             $this->id_genre = $id_genre;
-            $imagePath = "./ressources/images/".$image_musique;
+            $imagePath = __DIR__ ."/../../static/img/".$image_musique;
             if (!file_exists($imagePath)) {
                 $image_musique = "default.jpg"; // replace with your default image name
             }
@@ -28,9 +28,9 @@
         }
 
         public function render(){
-            echo '<a class="a_accueil" href= "jouerMusique.php?id='.$this->id_musique.'" id="PlayMusique">';
+            echo '<a class="a_accueil" href= "/Pages/Request/jouerMusique.php?id='.$this->id_musique.'" id="PlayMusique">';
             echo '<div class="a_content">';
-            echo '<img src="./ressources/images/'.$this->image_musique.'">';
+            echo '<img src="/static/img/'.$this->image_musique.'">';
             echo '<h3>'.$this->nom_musique.'</h3>';
             echo '<p class="infos_supp">'.$this->nom_groupe.'</p>';
             echo '</div>';
