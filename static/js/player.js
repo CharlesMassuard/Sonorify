@@ -83,7 +83,7 @@ export function addToPlaylist(id_musique, nom, cover, nomGroupe, nomAlbum, url) 
 export function addToListeLecture(id_musique, nom, cover, nomGroupe, nomAlbum, url, index) {
     if(inLecture == id_musique) {
         musiquesASuivre.innerHTML += "<li  class='musicEnLecture' id='oneMusicListeLecture'>"+
-                                    "<a href='jouerIndex.php?id="+id_musique+"&index="+index+"' id=changeTrack>"+
+                                    "<a href='/Pages/Request/jouerIndex.php?id="+id_musique+"&index="+index+"' id=changeTrack>"+
                                         "<div class='flexContainerListeLecture'>" +
                                             "<div id='coverBigPlayer'>" +
                                                 "<img class='imgListeLecture' src='/static/img/"+cover+"' alt='cover'>" +
@@ -97,7 +97,7 @@ export function addToListeLecture(id_musique, nom, cover, nomGroupe, nomAlbum, u
                                     "</a></li>";
     } else {
         musiquesASuivre.innerHTML += "<li id='oneMusicListeLecture'>"+
-                                    "<a href='jouerIndex.php?id="+id_musique+"&index="+index+"' id=changeTrack>"+
+                                    "<a href='/Pages/Request/jouerIndex.php?id="+id_musique+"&index="+index+"' id=changeTrack>"+
                                         "<div class='flexContainerListeLecture'>" +
                                             "<div id='coverBigPlayer'>" +
                                                 "<img class='imgListeLecture' src='/static/img/"+cover+"' alt='cover'>" +
