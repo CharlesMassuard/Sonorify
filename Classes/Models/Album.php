@@ -4,7 +4,6 @@
     namespace Models;
     use Interfaces\RenderInterface;
     
-    #[\AllowDynamicProperties]
     class Album implements RenderInterface {
         private int $id_album;
         private string $titre;

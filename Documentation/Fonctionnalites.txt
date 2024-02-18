@@ -14,5 +14,5 @@ Acceder a la liste de lecture
 Modifier le volume
 
 Module administrateur
-- Peut ajouter et supprimer (non fonctionnel) des musiques, albums, artistes, groupes et genres
+- Peut ajouter et supprimer (non fonctionnel) des musiques, albums, artistes et groupes
 - Peut rajouter des musiques aux albums (normalement?)
