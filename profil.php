@@ -68,7 +68,7 @@ Autoloader::register();
         <?php 
             $albums = $data->getAlbumsFavorisByUser($_SESSION['user']['id_utilisateur']);
             if (count($albums) > 0) {
-                echo '<h2>Vos Albums :</h2>';
+                echo '<h2>Vos Albums favoris :</h2>';
                 $albums = Factory::createAlbums($albums);
                 foreach ($albums as $album) {
                     $album->render();
@@ -81,7 +81,7 @@ Autoloader::register();
         <?php
             $groupes = $data->getGroupesFavorisByUser($_SESSION['user']['id_utilisateur']);
             if (count($groupes) > 0) {
-                echo '<h2>Vos Groupes :</h2>';
+                echo '<h2>Vos Groupes favoris :</h2>';
                 $groupes = Factory::createGroupes($groupes);
                 foreach ($groupes as $groupe) {
                     $groupe->render();

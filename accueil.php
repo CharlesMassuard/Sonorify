@@ -55,6 +55,13 @@
 </div>
 <div id="playlist" class="sections_accueil">
     <?php 
+    if(isset($_SESSION['user'])){
+        $playlistUser = $data->getPlaylistsByUser($_SESSION['user']['id_utilisateur']);
+        $playlistUser = Factory::createPlaylists($playlistUser);
+        foreach ($playlistUser as $playlist) {
+            $playlist->render();
+        }
+    }
     $playlists = $data->getPlaylistsTrieesParNote();
     $playlists = Factory::createPlaylists($playlists);
     foreach ($playlists as $playlist) {

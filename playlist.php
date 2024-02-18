@@ -17,7 +17,7 @@
                     <h1><?php echo $playlist['nom_playlist']; ?></h1>
                     <?php 
                         $status = ($playlist['public'] ? "Publique" : "Privée");
-                        $auteur =  $data->getUtilisateur($playlist['id_auteur'])['nom_utilisateur']; 
+                        $auteur =  $data->getUtilisateur($playlist['id_auteur'])['prenom_utilisateur']; 
                         echo '<p> Playlist • '.$status.' • Par '.$auteur.'</p>';
                         ?>
                         <p><?php 

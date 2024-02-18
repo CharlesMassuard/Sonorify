@@ -28,12 +28,16 @@
         }
     } 
 ?>
-<form action="creerPlaylist.php" method="post">
+<header>
+    <link rel="stylesheet" href="./static/css/creationPlaylist.css">
+</header>
+<form id="creationPlaylist" action="creerPlaylist.php" method="post">
+    <h2>Créer une playlist</h2>
     <label for="nom_playlist">Nom de la Playlist:</label><br>
     <input type="text" id="nom_playlist" name="nom_playlist"><br>
     <label for="description">Description:</label><br>
     <input type="text" id="description" name="description"><br>
-    <label for="public">Public:</label><br>
+    <label for="public">Publique ?</label><br>
     <input type="checkbox" id="public" name="public"><br>
-    <input type="submit" value="Submit">
+    <input type="submit" value="Créer la playlist">
 </form>
