@@ -1,4 +1,4 @@
-#boxCreation {
+.boxCreation {
     display: flex;
     width: 25%;
     flex-direction: column;
@@ -15,10 +15,10 @@
     transform: translate(-50%, -50%);
 }
 
-#boxCreation h2 {
+.boxCreation h2 {
     font-size: 35px;
 }
 
-#boxCreation input {
+.boxCreation input {
     margin-bottom: 20px;
 }
