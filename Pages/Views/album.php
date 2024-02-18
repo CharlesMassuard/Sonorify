@@ -118,7 +118,7 @@
             echo '<a id="PlayAlbumMusique" href= "/Pages/Request/jouerAlbum.php?id_album='.$album["id_album"].'&aleatoire=false&musiqueStart='.$musique["id_musique"].'" method="post">';
             echo '<h2>'.$musique['nom_musique'].'</h2>';
             echo '</a>';
-            echo '<a href="/Pages/Views/groupe.php?id='.$musique['id_groupe'].'">'.$data->getGroupe($musique['id_groupe'])['nom_groupe'].'</a>';
+            echo '<a id="Groupe" href="/Pages/Views/groupe.php?id='.$musique['id_groupe'].'">'.$data->getGroupe($musique['id_groupe'])['nom_groupe'].'</a>';
             echo '<div id="note">';
             if (isset($_SESSION['user']) && $data->isMusiqueNotee($musique['id_musique'], $_SESSION['user']['id_utilisateur']) ?? false){
                 $note = $data->getNoteMusique($musique['id_musique'], $_SESSION['user']['id_utilisateur'])['note'];

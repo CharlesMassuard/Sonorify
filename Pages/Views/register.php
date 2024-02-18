@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                 unset($_SESSION['redirect_to']);
                 header('Location: ' . $redirect_url);
             }
-            header('Location: index.php');
+            header('Location: /index.php');
         }
         else {
             echo "<strong>Uh oh...</strong>";
@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 <html>
 <head>
     <title>Sonorify</title>
-    <link rel="stylesheet" href="./static/css/register.css">
+    <link rel="stylesheet" href="/static/css/register.css">
 </head>
 <body>
 <main id="main-content">
