@@ -88,15 +88,9 @@
                 echo '<label for="favAlbum"  title="Ajouter aux favoris"><i class="material-icons" id="Fav">favorite_border</i></label>';
                 echo '</form>';
             }
-            if (isset($_SESSION) && isset($_SESSION['user']) && $_SESSION['user']['id_utilisateur'] == $album['id_utilisateur']) {
-                echo '<form id="modifierAlbum" action="/Pages/Views/modifierAlbum.php?id='.$id_album.'" method="post">';
-                echo '<input type="submit" id="modifAlbum" name="modifierAlbum" style="display: none;">';
-                echo '<label for="modifAlbum"  title="Modifier l\'album"><i class="material-icons" id="Modifier">create</i></label>';
-                echo '</form>';
-                echo '<form id="SupprimerAlbum" action="/Pages/Request/supprimerAlbum.php?id='.$id_album.'" method="post">';
-                echo '<input type="submit" id="supprimerAlbum" name="supprimerAlbum" style="display: none;">';
-                echo '<label for="supprimerAlbum"  title="Supprimer l\'album"><i class="material-icons" id="Supprimer">delete</i></label>';
-                echo '</form>';
+            if (isset($_SESSION) && isset($_SESSION['user']) && $_SESSION['user']['id_role'] == 2){
+                echo '<a id="Album" href="/Pages/Views/modifierAlbum.php?id='.$album["id_album"].'"><i class="material-icons">create</i></a>';
+                echo '<a id="Album" href="/Pages/Request/supprimerAlbum.php?id='.$album["id_album"].'"><i class="material-icons">delete</i></a>';
             }
             echo '</div>';
             ?>
