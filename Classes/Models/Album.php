@@ -10,6 +10,7 @@
         private string $image_album;
         private int $id_groupe;
         private string $dateSortie;
+        private string $nom_groupe;
     
         public function __construct(int $id_album, string $titre, string $dateSortie, string $image_album, string $nom_groupe){
             $this->id_album = $id_album;
