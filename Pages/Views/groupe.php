@@ -23,7 +23,18 @@
 </header>
 
 <div id="headerGroupe">
-    <img id="imgGroupe" src="/static/img/<?php echo $groupe['image_groupe']?>">
+    <img id="imgGroupe" src="<?php 
+        $imagePath = __DIR__ ."/../../static/img/".$groupe['image_groupe'];
+        $imagePath2 = __DIR__ ."/../../ressources/images/".$groupe['image_groupe'];
+        if (file_exists($imagePath) ) {
+            $image_groupe = "/static/img/".$groupe['image_groupe'];
+        } 
+        else if (file_exists($imagePath2)) {
+            $image_groupe = "/ressources/images/".$groupe['image_groupe'];
+        }
+        else {
+            $image_groupe = "/static/img/default.jpg"; // replace with your default image name
+        }echo $image_groupe?>">
     <div id="infosGroupe">
         <h1><?php echo $groupe['nom_groupe'] ?></h1>
         <p id="descGroupe"><?php echo $groupe['description_groupe'] ?></p>

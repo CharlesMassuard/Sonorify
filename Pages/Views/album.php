@@ -14,10 +14,18 @@
 ?>
 <div id="playlistAlbum">
     <div id="playlist">
-        <img id="imgPlaylistAlbum" src="/static/img/<?php 
-        $image_album = __DIR__ ."/../../static/img/".$album["image_album"];
-        if (!file_exists($image_album)) {
-            $image_album = "default.jpg"; // replace with your default image name
+        <img id="imgPlaylistAlbum" src="<?php 
+        $image_album = $album["image_album"];
+        $imagePath = __DIR__ ."/../../static/img/".$image_album;
+        $imagePath2 = __DIR__ ."/../../ressources/images/".$image_album;
+        if (file_exists($imagePath) ) {
+            $image_album = "/static/img/".$image_album;
+        } 
+        else if (file_exists($imagePath2)) {
+            $image_album = "/ressources/images/".$image_album;
+        }
+        else {
+            $image_album = "/static/img/default.jpg"; // replace with your default image name
         }echo $image_album?>">
         <div id="playlistDetails">
             <h1><?php echo $album['titre'] ?></h1>
@@ -118,7 +126,19 @@
         
         foreach ($musiques as $musique) {
             echo '<div id="musique">';
-            echo '<img id="imgMusiqueAlbum" src="/static/img/'.$album['image_album'].'">';
+            $image_album = $album["image_album"];
+            $imagePath = __DIR__ ."/../../static/img/".$image_album;
+            $imagePath2 = __DIR__ ."/../../ressources/images/".$image_album;
+            if (file_exists($imagePath) ) {
+                $image_album = "/static/img/".$image_album;
+            } 
+            else if (file_exists($imagePath2)) {
+                $image_album = "/ressources/images/".$image_album;
+            }
+            else {
+                $image_album = "/static/img/default.jpg"; // replace with your default image name
+            }
+            echo '<img id="imgMusiqueAlbum" src="'.$image_album.'">';
             echo '<a id="PlayAlbumMusique" href= "/Pages/Request/jouerAlbum.php?id_album='.$album["id_album"].'&aleatoire=false&musiqueStart='.$musique["id_musique"].'" method="post">';
             echo '<h2>'.$musique['nom_musique'].'</h2>';
             echo '</a>';
