@@ -1,27 +1,19 @@
-# SAE_PHP
+# Sonorify
+Ecoutez vos albums et musiques préférés, créez vos propres playlists et laissez vous tenter par les mieux notés dans l'accueil afin de découvrir de nouveaux talents, grâce à Sonorify !
 
-## Contributeurs
+![grandLogo](https://github.com/CharlesMassuard/Sonorify/assets/118757823/a6213d8d-e320-4b8f-8998-62b61c8c4cec)
 
-- LUDMANN Dorian
-- MASSUARD Charles
-- HAUDEBOURG Baptiste
-  
-## À propos
+<br><br>
 
-Cette application web offre un service streaming de musiques en ligne.  
-Vous pouvez écouter vos albums et musiques préférés ou même faire vos propres playlists. Laissez vous tenter par les mieux notés dans l'accueil afin de découvrir de nouveaux talents !  
+## Technologies
 
-## Module administrateur
+Sonorify est codée en PHP et JS. La mise en place d'une SPA a été effectuée afin d'apporter un confort d'écoute à l'utilisateur.  
 
-Pour se connecter en tant qu'administrateur, veuillez utiliser les logins suivants:
-```txt
-Login: admin
-Password: admin
-```
+## Installation 
 
-> *La BD est une BD locale, ce qui implique que chaque utilisateur peut se connecter en tant qu'administrateur, ce qui n'affectera pas les autres utilisateurs*
+L'application n'est pour le moment pas hebergée. Afin de l'utiliser, téléchargez les fichiers sources grâce à la *Release* de *GitHub*.
 
-## Requirements  
+### Requirements  
 
 L'application a donc besoin de PHP, mais aussi d'un de ses modules: PDO.  
 Voici quelque commandes afin d'installer toutes les dépendances nécéssaires au bon fonctionnement de l'application sous Linux.  
@@ -54,6 +46,19 @@ Pour lancer l'application, ouvrez un terminal dans le répertoire où ce README 
     php -S localhost:8080
 ```
 
-## Technologies
+## Module administrateur
 
-Notre application est codée en PHP et JS. La mise en place d'une SPA a été effectuée afin d'apporter un confort d'écoute à l'utilisateur.  
+Pour se connecter en tant qu'administrateur, veuillez utiliser les logins suivants:
+```txt
+Login: admin
+Password: admin
+```
+
+> *La BD est une BD locale, ce qui implique que chaque utilisateur peut se connecter en tant qu'administrateur, ce qui n'affectera pas les autres utilisateurs*
+<br>
+
+-----
+
+*Ce projet a été réalisé dans le cadre d'une SAÉ lors de la deuxième année de BUT Informatique.*
+
+*MASSUARD Charles, LUDMANN Dorian, HAUDEBOURG Baptiste*
