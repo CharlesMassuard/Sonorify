@@ -5,6 +5,11 @@ Ecoutez vos albums et musiques préférés, créez vos propres playlists et lais
 
 <br><br>
 
+## Host expiré
+
+L'hébergement des musiques contenues dans l'application a expiré. Ainsi, les musiques présentes ne peuvent plus être lues. 
+L'application peut toujours être utilisée, seulement la lecture n'est plus possible.
+
 ## Technologies
 
 Sonorify est codée en PHP et JS. La mise en place d'une SPA a été effectuée afin d'apporter un confort d'écoute à l'utilisateur.  
